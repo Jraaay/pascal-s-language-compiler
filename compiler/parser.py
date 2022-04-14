@@ -10,6 +10,7 @@ class Parser:
         "variables": [],
         "subFunc": []
     }
+    error = None
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
@@ -109,6 +110,14 @@ class Parser:
 
         def t_error(t):
             print(f'Illegal character at line {t.lineno} : {t.value}')
+            self.error = {
+                "type": "Syntax error",
+                "info": {
+                    "line": t.lineno,
+                    "value": t.value,
+                    "lexpos": t.lexpos
+                }
+            }
             t.lexer.skip(1)
 
         lexer = lex(debug=debug)
@@ -783,6 +792,14 @@ class Parser:
 
         def p_error(p):
             print(f'Syntax error at line {p.lineno} : {p.value}')
+            self.error = {
+                "type": "Syntax error",
+                "info": {
+                    "line": p.lineno,
+                    "value": p.value,
+                    "lexpos": p.lexpos
+                }
+            }
 
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
@@ -792,4 +809,8 @@ class Parser:
             "variables": [],
             "subFunc": []
         }
-        return self.parser.parse(data)
+        self.error = None
+        return {
+            "ast": self.parser.parse(data),
+            "error": self.error,
+        }
