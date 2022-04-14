@@ -31,7 +31,7 @@ def main():
                         json.dump(ans, f, indent=4)
 
 
-@app.route("/", methods=["POST"])
+@app.route("/api", methods=["POST"])
 async def pascal2c(request):
     code = request.body.decode("utf-8")
     code = code.replace("\r\n", "\n")
