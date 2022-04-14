@@ -1,0 +1,11 @@
+{
+    "ast": null,
+    "error": {
+        "type": "Syntax error",
+        "info": {
+            "line": 20,
+            "value": "=",
+            "lexpos": 121
+        }
+    }
+}

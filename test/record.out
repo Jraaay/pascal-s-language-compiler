@@ -1,0 +1,217 @@
+{
+    "ast": {
+        "type": "programstruct",
+        "program_head": {
+            "type": "program_head",
+            "ID": "example",
+            "idlist": {
+                "type": "idlist",
+                "ids": [
+                    "input",
+                    "output"
+                ]
+            }
+        },
+        "program_body": {
+            "type": "program_body",
+            "const_declarations": null,
+            "var_declarations": {
+                "type": "var_declarations",
+                "var_declaration": {
+                    "type": "var_declaration",
+                    "values": [
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "Books"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": "RECORD",
+                                "multype": {
+                                    "type": "MULOP",
+                                    "_type": {
+                                        "type": "MULOP",
+                                        "_type": {
+                                            "type": "MULOP",
+                                            "_type": {
+                                                "type": "MULOP",
+                                                "_type": "title",
+                                                "ID": ":"
+                                            },
+                                            "ID": "author"
+                                        },
+                                        "ID": "subject"
+                                    },
+                                    "ID": "bookid"
+                                }
+                            }
+                        },
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "a"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": "ARRAY",
+                                "period": {
+                                    "type": "period",
+                                    "values": [
+                                        {
+                                            "start": 1,
+                                            "END": 100
+                                        }
+                                    ]
+                                },
+                                "basic_type": "of"
+                            }
+                        },
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "b"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "integer"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "subprogram_declarations": {
+                "type": "subprogram_declarations",
+                "subprograms": []
+            },
+            "compound_statement": {
+                "type": "compound_statement",
+                "statement_list": {
+                    "type": "statement_list",
+                    "statements": [
+                        {
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "type": "variable",
+                                "ID": "a",
+                                "id_varpart": {
+                                    "type": "id_varpart",
+                                    "expression_list": {
+                                        "type": "expression_list",
+                                        "expressions": [
+                                            {
+                                                "type": "expression",
+                                                "simple_expression": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "NUM",
+                                                            "NUM": 1
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "type": "expression",
+                                "simple_expression": {
+                                    "type": "simple_expression",
+                                    "term": {
+                                        "type": "term",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": [
+                                                    "Books",
+                                                    "title"
+                                                ],
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": {
+                                                        "type": "expression_list",
+                                                        "expressions": [
+                                                            {
+                                                                "type": "expression",
+                                                                "simple_expression": {
+                                                                    "type": "simple_expression",
+                                                                    "term": {
+                                                                        "type": "term",
+                                                                        "factor": {
+                                                                            "type": "factor",
+                                                                            "_type": "NUM",
+                                                                            "NUM": 1
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "type": "variable",
+                                "ID": "b",
+                                "id_varpart": {
+                                    "type": "id_varpart",
+                                    "expression_list": null
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "type": "expression",
+                                "simple_expression": {
+                                    "type": "simple_expression",
+                                    "term": {
+                                        "type": "term",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": [
+                                                    "Books",
+                                                    "bookid"
+                                                ],
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "error": null
+}

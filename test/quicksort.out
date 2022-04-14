@@ -1,0 +1,1586 @@
+{
+    "ast": {
+        "type": "programstruct",
+        "program_head": {
+            "type": "program_head",
+            "ID": "sort",
+            "idlist": {
+                "type": "idlist",
+                "ids": [
+                    "input",
+                    "output"
+                ]
+            }
+        },
+        "program_body": {
+            "type": "program_body",
+            "const_declarations": null,
+            "var_declarations": {
+                "type": "var_declarations",
+                "var_declaration": {
+                    "type": "var_declaration",
+                    "values": [
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "a"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": "ARRAY",
+                                "period": {
+                                    "type": "period",
+                                    "values": [
+                                        {
+                                            "start": 0,
+                                            "END": 4
+                                        }
+                                    ]
+                                },
+                                "basic_type": "Of"
+                            }
+                        },
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "x",
+                                    "y"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "integer"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "subprogram_declarations": {
+                "type": "subprogram_declarations",
+                "subprograms": [
+                    {
+                        "type": "subprogram",
+                        "subprogram_head": {
+                            "type": "subprogram_head",
+                            "_type": "PROCEDURE",
+                            "ID": "readarray",
+                            "formal_parameter": {
+                                "type": "formal_parameter",
+                                "parameter_list": null
+                            }
+                        },
+                        "subprogram_body": {
+                            "type": "subprogram_body",
+                            "const_declarations": null,
+                            "var_declarations": {
+                                "type": "var_declarations",
+                                "var_declaration": {
+                                    "type": "var_declaration",
+                                    "values": [
+                                        {
+                                            "idlist": {
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "i"
+                                                ]
+                                            },
+                                            "type": {
+                                                "type": "type",
+                                                "_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "compound_statement": {
+                                "type": "compound_statement",
+                                "statement_list": {
+                                    "type": "statement_list",
+                                    "statements": [
+                                        {
+                                            "type": "statement",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": "i",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            },
+                                            "ASSIGNOP": ":=",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "NUM",
+                                                            "NUM": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "statement",
+                                            "_type": "WHILE",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression_1": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "i",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "RELOP": "<",
+                                                "simple_expression_2": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "NUM",
+                                                            "NUM": 5
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "statement": {
+                                                "type": "statement",
+                                                "_type": "compound_statement",
+                                                "compound_statement": {
+                                                    "type": "compound_statement",
+                                                    "statement_list": {
+                                                        "type": "statement_list",
+                                                        "statements": [
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "READ",
+                                                                "variable_list": {
+                                                                    "type": "variable_list",
+                                                                    "variables": [
+                                                                        {
+                                                                            "type": "variable",
+                                                                            "ID": "y",
+                                                                            "id_varpart": {
+                                                                                "type": "id_varpart",
+                                                                                "expression_list": null
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "variable",
+                                                                "variable": {
+                                                                    "type": "variable",
+                                                                    "ID": "a",
+                                                                    "id_varpart": {
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": {
+                                                                            "type": "expression_list",
+                                                                            "expressions": [
+                                                                                {
+                                                                                    "type": "expression",
+                                                                                    "simple_expression": {
+                                                                                        "type": "simple_expression",
+                                                                                        "term": {
+                                                                                            "type": "term",
+                                                                                            "factor": {
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "variable": {
+                                                                                                    "type": "variable",
+                                                                                                    "ID": "i",
+                                                                                                    "id_varpart": {
+                                                                                                        "type": "id_varpart",
+                                                                                                        "expression_list": null
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "ASSIGNOP": ":=",
+                                                                "expression": {
+                                                                    "type": "expression",
+                                                                    "simple_expression": {
+                                                                        "type": "simple_expression",
+                                                                        "term": {
+                                                                            "type": "term",
+                                                                            "factor": {
+                                                                                "type": "factor",
+                                                                                "_type": "variable",
+                                                                                "variable": {
+                                                                                    "type": "variable",
+                                                                                    "ID": "y",
+                                                                                    "id_varpart": {
+                                                                                        "type": "id_varpart",
+                                                                                        "expression_list": null
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "variable",
+                                                                "variable": {
+                                                                    "type": "variable",
+                                                                    "ID": "i",
+                                                                    "id_varpart": {
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": null
+                                                                    }
+                                                                },
+                                                                "ASSIGNOP": ":=",
+                                                                "expression": {
+                                                                    "type": "expression",
+                                                                    "simple_expression": {
+                                                                        "type": "simple_expression",
+                                                                        "simple_expression": {
+                                                                            "type": "simple_expression",
+                                                                            "term": {
+                                                                                "type": "term",
+                                                                                "factor": {
+                                                                                    "type": "factor",
+                                                                                    "_type": "variable",
+                                                                                    "variable": {
+                                                                                        "type": "variable",
+                                                                                        "ID": "i",
+                                                                                        "id_varpart": {
+                                                                                            "type": "id_varpart",
+                                                                                            "expression_list": null
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "ADDOP": "+",
+                                                                        "term": {
+                                                                            "type": "term",
+                                                                            "factor": {
+                                                                                "type": "factor",
+                                                                                "_type": "NUM",
+                                                                                "NUM": 1
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "subprogram",
+                        "subprogram_head": {
+                            "type": "subprogram_head",
+                            "_type": "PROCEDURE",
+                            "ID": "quicksort",
+                            "formal_parameter": {
+                                "type": "formal_parameter",
+                                "parameter_list": {
+                                    "type": "parameter_list",
+                                    "parameters": [
+                                        {
+                                            "type": "parameter",
+                                            "value": {
+                                                "type": "value_parameter",
+                                                "idlist": {
+                                                    "type": "idlist",
+                                                    "ids": [
+                                                        "l",
+                                                        "h"
+                                                    ]
+                                                },
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "subprogram_body": {
+                            "type": "subprogram_body",
+                            "const_declarations": null,
+                            "var_declarations": {
+                                "type": "var_declarations",
+                                "var_declaration": {
+                                    "type": "var_declaration",
+                                    "values": [
+                                        {
+                                            "idlist": {
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "i",
+                                                    "j",
+                                                    "k",
+                                                    "m"
+                                                ]
+                                            },
+                                            "type": {
+                                                "type": "type",
+                                                "_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "compound_statement": {
+                                "type": "compound_statement",
+                                "statement_list": {
+                                    "type": "statement_list",
+                                    "statements": [
+                                        {
+                                            "type": "statement",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": "i",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            },
+                                            "ASSIGNOP": ":=",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "l",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "statement",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": "j",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            },
+                                            "ASSIGNOP": ":=",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "h",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "statement",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": "k",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            },
+                                            "ASSIGNOP": ":=",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "a",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": {
+                                                                        "type": "expression_list",
+                                                                        "expressions": [
+                                                                            {
+                                                                                "type": "expression",
+                                                                                "simple_expression": {
+                                                                                    "type": "simple_expression",
+                                                                                    "term": {
+                                                                                        "type": "term",
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "variable",
+                                                                                            "variable": {
+                                                                                                "type": "variable",
+                                                                                                "ID": "i",
+                                                                                                "id_varpart": {
+                                                                                                    "type": "id_varpart",
+                                                                                                    "expression_list": null
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "statement",
+                                            "_type": "IF",
+                                            "expression": {
+                                                "type": "expression",
+                                                "simple_expression_1": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "l",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "RELOP": "<",
+                                                "simple_expression_2": {
+                                                    "type": "simple_expression",
+                                                    "term": {
+                                                        "type": "term",
+                                                        "factor": {
+                                                            "type": "factor",
+                                                            "_type": "variable",
+                                                            "variable": {
+                                                                "type": "variable",
+                                                                "ID": "h",
+                                                                "id_varpart": {
+                                                                    "type": "id_varpart",
+                                                                    "expression_list": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "statement": {
+                                                "type": "statement",
+                                                "_type": "compound_statement",
+                                                "compound_statement": {
+                                                    "type": "compound_statement",
+                                                    "statement_list": {
+                                                        "type": "statement_list",
+                                                        "statements": [
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "WHILE",
+                                                                "expression": {
+                                                                    "type": "expression",
+                                                                    "simple_expression_1": {
+                                                                        "type": "simple_expression",
+                                                                        "term": {
+                                                                            "type": "term",
+                                                                            "factor": {
+                                                                                "type": "factor",
+                                                                                "_type": "variable",
+                                                                                "variable": {
+                                                                                    "type": "variable",
+                                                                                    "ID": "i",
+                                                                                    "id_varpart": {
+                                                                                        "type": "id_varpart",
+                                                                                        "expression_list": null
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "RELOP": "<",
+                                                                    "simple_expression_2": {
+                                                                        "type": "simple_expression",
+                                                                        "term": {
+                                                                            "type": "term",
+                                                                            "factor": {
+                                                                                "type": "factor",
+                                                                                "_type": "variable",
+                                                                                "variable": {
+                                                                                    "type": "variable",
+                                                                                    "ID": "j",
+                                                                                    "id_varpart": {
+                                                                                        "type": "id_varpart",
+                                                                                        "expression_list": null
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "statement": {
+                                                                    "type": "statement",
+                                                                    "_type": "compound_statement",
+                                                                    "compound_statement": {
+                                                                        "type": "compound_statement",
+                                                                        "statement_list": {
+                                                                            "type": "statement_list",
+                                                                            "statements": [
+                                                                                {
+                                                                                    "type": "statement",
+                                                                                    "_type": "WHILE",
+                                                                                    "expression": {
+                                                                                        "type": "expression",
+                                                                                        "simple_expression": {
+                                                                                            "type": "simple_expression",
+                                                                                            "term": {
+                                                                                                "type": "term",
+                                                                                                "factor": {
+                                                                                                    "type": "term",
+                                                                                                    "factor": {
+                                                                                                        "type": "factor",
+                                                                                                        "_type": "expression_list",
+                                                                                                        "expression_list": {
+                                                                                                            "type": "expression_list",
+                                                                                                            "expressions": [
+                                                                                                                {
+                                                                                                                    "type": "expression",
+                                                                                                                    "simple_expression_1": {
+                                                                                                                        "type": "simple_expression",
+                                                                                                                        "term": {
+                                                                                                                            "type": "term",
+                                                                                                                            "factor": {
+                                                                                                                                "type": "factor",
+                                                                                                                                "_type": "variable",
+                                                                                                                                "variable": {
+                                                                                                                                    "type": "variable",
+                                                                                                                                    "ID": "a",
+                                                                                                                                    "id_varpart": {
+                                                                                                                                        "type": "id_varpart",
+                                                                                                                                        "expression_list": {
+                                                                                                                                            "type": "expression_list",
+                                                                                                                                            "expressions": [
+                                                                                                                                                {
+                                                                                                                                                    "type": "expression",
+                                                                                                                                                    "simple_expression": {
+                                                                                                                                                        "type": "simple_expression",
+                                                                                                                                                        "term": {
+                                                                                                                                                            "type": "term",
+                                                                                                                                                            "factor": {
+                                                                                                                                                                "type": "factor",
+                                                                                                                                                                "_type": "variable",
+                                                                                                                                                                "variable": {
+                                                                                                                                                                    "type": "variable",
+                                                                                                                                                                    "ID": "j",
+                                                                                                                                                                    "id_varpart": {
+                                                                                                                                                                        "type": "id_varpart",
+                                                                                                                                                                        "expression_list": null
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "RELOP": ">=",
+                                                                                                                    "simple_expression_2": {
+                                                                                                                        "type": "simple_expression",
+                                                                                                                        "term": {
+                                                                                                                            "type": "term",
+                                                                                                                            "factor": {
+                                                                                                                                "type": "factor",
+                                                                                                                                "_type": "variable",
+                                                                                                                                "variable": {
+                                                                                                                                    "type": "variable",
+                                                                                                                                    "ID": "k",
+                                                                                                                                    "id_varpart": {
+                                                                                                                                        "type": "id_varpart",
+                                                                                                                                        "expression_list": null
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "statement": {
+                                                                                        "type": "statement",
+                                                                                        "_type": "compound_statement",
+                                                                                        "compound_statement": {
+                                                                                            "type": "compound_statement",
+                                                                                            "statement_list": {
+                                                                                                "type": "statement_list",
+                                                                                                "statements": [
+                                                                                                    {
+                                                                                                        "type": "statement",
+                                                                                                        "_type": "variable",
+                                                                                                        "variable": {
+                                                                                                            "type": "variable",
+                                                                                                            "ID": "j",
+                                                                                                            "id_varpart": {
+                                                                                                                "type": "id_varpart",
+                                                                                                                "expression_list": null
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "ASSIGNOP": ":=",
+                                                                                                        "expression": {
+                                                                                                            "type": "expression",
+                                                                                                            "simple_expression": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "simple_expression": {
+                                                                                                                    "type": "simple_expression",
+                                                                                                                    "term": {
+                                                                                                                        "type": "term",
+                                                                                                                        "factor": {
+                                                                                                                            "type": "factor",
+                                                                                                                            "_type": "variable",
+                                                                                                                            "variable": {
+                                                                                                                                "type": "variable",
+                                                                                                                                "ID": "j",
+                                                                                                                                "id_varpart": {
+                                                                                                                                    "type": "id_varpart",
+                                                                                                                                    "expression_list": null
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "ADDOP": "-",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "NUM",
+                                                                                                                        "NUM": 1
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "statement",
+                                                                                    "_type": "variable",
+                                                                                    "variable": {
+                                                                                        "type": "variable",
+                                                                                        "ID": "a",
+                                                                                        "id_varpart": {
+                                                                                            "type": "id_varpart",
+                                                                                            "expression_list": {
+                                                                                                "type": "expression_list",
+                                                                                                "expressions": [
+                                                                                                    {
+                                                                                                        "type": "expression",
+                                                                                                        "simple_expression": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "ID": "i",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "ASSIGNOP": ":=",
+                                                                                    "expression": {
+                                                                                        "type": "expression",
+                                                                                        "simple_expression": {
+                                                                                            "type": "simple_expression",
+                                                                                            "term": {
+                                                                                                "type": "term",
+                                                                                                "factor": {
+                                                                                                    "type": "factor",
+                                                                                                    "_type": "variable",
+                                                                                                    "variable": {
+                                                                                                        "type": "variable",
+                                                                                                        "ID": "a",
+                                                                                                        "id_varpart": {
+                                                                                                            "type": "id_varpart",
+                                                                                                            "expression_list": {
+                                                                                                                "type": "expression_list",
+                                                                                                                "expressions": [
+                                                                                                                    {
+                                                                                                                        "type": "expression",
+                                                                                                                        "simple_expression": {
+                                                                                                                            "type": "simple_expression",
+                                                                                                                            "term": {
+                                                                                                                                "type": "term",
+                                                                                                                                "factor": {
+                                                                                                                                    "type": "factor",
+                                                                                                                                    "_type": "variable",
+                                                                                                                                    "variable": {
+                                                                                                                                        "type": "variable",
+                                                                                                                                        "ID": "j",
+                                                                                                                                        "id_varpart": {
+                                                                                                                                            "type": "id_varpart",
+                                                                                                                                            "expression_list": null
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "statement",
+                                                                                    "_type": "WHILE",
+                                                                                    "expression": {
+                                                                                        "type": "expression",
+                                                                                        "simple_expression": {
+                                                                                            "type": "simple_expression",
+                                                                                            "term": {
+                                                                                                "type": "term",
+                                                                                                "factor": {
+                                                                                                    "type": "term",
+                                                                                                    "factor": {
+                                                                                                        "type": "factor",
+                                                                                                        "_type": "expression_list",
+                                                                                                        "expression_list": {
+                                                                                                            "type": "expression_list",
+                                                                                                            "expressions": [
+                                                                                                                {
+                                                                                                                    "type": "expression",
+                                                                                                                    "simple_expression_1": {
+                                                                                                                        "type": "simple_expression",
+                                                                                                                        "term": {
+                                                                                                                            "type": "term",
+                                                                                                                            "factor": {
+                                                                                                                                "type": "factor",
+                                                                                                                                "_type": "variable",
+                                                                                                                                "variable": {
+                                                                                                                                    "type": "variable",
+                                                                                                                                    "ID": "a",
+                                                                                                                                    "id_varpart": {
+                                                                                                                                        "type": "id_varpart",
+                                                                                                                                        "expression_list": {
+                                                                                                                                            "type": "expression_list",
+                                                                                                                                            "expressions": [
+                                                                                                                                                {
+                                                                                                                                                    "type": "expression",
+                                                                                                                                                    "simple_expression": {
+                                                                                                                                                        "type": "simple_expression",
+                                                                                                                                                        "term": {
+                                                                                                                                                            "type": "term",
+                                                                                                                                                            "factor": {
+                                                                                                                                                                "type": "factor",
+                                                                                                                                                                "_type": "variable",
+                                                                                                                                                                "variable": {
+                                                                                                                                                                    "type": "variable",
+                                                                                                                                                                    "ID": "i",
+                                                                                                                                                                    "id_varpart": {
+                                                                                                                                                                        "type": "id_varpart",
+                                                                                                                                                                        "expression_list": null
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "RELOP": "<=",
+                                                                                                                    "simple_expression_2": {
+                                                                                                                        "type": "simple_expression",
+                                                                                                                        "term": {
+                                                                                                                            "type": "term",
+                                                                                                                            "factor": {
+                                                                                                                                "type": "factor",
+                                                                                                                                "_type": "variable",
+                                                                                                                                "variable": {
+                                                                                                                                    "type": "variable",
+                                                                                                                                    "ID": "k",
+                                                                                                                                    "id_varpart": {
+                                                                                                                                        "type": "id_varpart",
+                                                                                                                                        "expression_list": null
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "statement": {
+                                                                                        "type": "statement",
+                                                                                        "_type": "compound_statement",
+                                                                                        "compound_statement": {
+                                                                                            "type": "compound_statement",
+                                                                                            "statement_list": {
+                                                                                                "type": "statement_list",
+                                                                                                "statements": [
+                                                                                                    {
+                                                                                                        "type": "statement",
+                                                                                                        "_type": "variable",
+                                                                                                        "variable": {
+                                                                                                            "type": "variable",
+                                                                                                            "ID": "i",
+                                                                                                            "id_varpart": {
+                                                                                                                "type": "id_varpart",
+                                                                                                                "expression_list": null
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "ASSIGNOP": ":=",
+                                                                                                        "expression": {
+                                                                                                            "type": "expression",
+                                                                                                            "simple_expression": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "simple_expression": {
+                                                                                                                    "type": "simple_expression",
+                                                                                                                    "term": {
+                                                                                                                        "type": "term",
+                                                                                                                        "factor": {
+                                                                                                                            "type": "factor",
+                                                                                                                            "_type": "variable",
+                                                                                                                            "variable": {
+                                                                                                                                "type": "variable",
+                                                                                                                                "ID": "i",
+                                                                                                                                "id_varpart": {
+                                                                                                                                    "type": "id_varpart",
+                                                                                                                                    "expression_list": null
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "ADDOP": "+",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "NUM",
+                                                                                                                        "NUM": 1
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "statement",
+                                                                                    "_type": "variable",
+                                                                                    "variable": {
+                                                                                        "type": "variable",
+                                                                                        "ID": "a",
+                                                                                        "id_varpart": {
+                                                                                            "type": "id_varpart",
+                                                                                            "expression_list": {
+                                                                                                "type": "expression_list",
+                                                                                                "expressions": [
+                                                                                                    {
+                                                                                                        "type": "expression",
+                                                                                                        "simple_expression": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "ID": "j",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "ASSIGNOP": ":=",
+                                                                                    "expression": {
+                                                                                        "type": "expression",
+                                                                                        "simple_expression": {
+                                                                                            "type": "simple_expression",
+                                                                                            "term": {
+                                                                                                "type": "term",
+                                                                                                "factor": {
+                                                                                                    "type": "factor",
+                                                                                                    "_type": "variable",
+                                                                                                    "variable": {
+                                                                                                        "type": "variable",
+                                                                                                        "ID": "a",
+                                                                                                        "id_varpart": {
+                                                                                                            "type": "id_varpart",
+                                                                                                            "expression_list": {
+                                                                                                                "type": "expression_list",
+                                                                                                                "expressions": [
+                                                                                                                    {
+                                                                                                                        "type": "expression",
+                                                                                                                        "simple_expression": {
+                                                                                                                            "type": "simple_expression",
+                                                                                                                            "term": {
+                                                                                                                                "type": "term",
+                                                                                                                                "factor": {
+                                                                                                                                    "type": "factor",
+                                                                                                                                    "_type": "variable",
+                                                                                                                                    "variable": {
+                                                                                                                                        "type": "variable",
+                                                                                                                                        "ID": "i",
+                                                                                                                                        "id_varpart": {
+                                                                                                                                            "type": "id_varpart",
+                                                                                                                                            "expression_list": null
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "variable",
+                                                                "variable": {
+                                                                    "type": "variable",
+                                                                    "ID": "a",
+                                                                    "id_varpart": {
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": {
+                                                                            "type": "expression_list",
+                                                                            "expressions": [
+                                                                                {
+                                                                                    "type": "expression",
+                                                                                    "simple_expression": {
+                                                                                        "type": "simple_expression",
+                                                                                        "term": {
+                                                                                            "type": "term",
+                                                                                            "factor": {
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "variable": {
+                                                                                                    "type": "variable",
+                                                                                                    "ID": "i",
+                                                                                                    "id_varpart": {
+                                                                                                        "type": "id_varpart",
+                                                                                                        "expression_list": null
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "ASSIGNOP": ":=",
+                                                                "expression": {
+                                                                    "type": "expression",
+                                                                    "simple_expression": {
+                                                                        "type": "simple_expression",
+                                                                        "term": {
+                                                                            "type": "term",
+                                                                            "factor": {
+                                                                                "type": "factor",
+                                                                                "_type": "variable",
+                                                                                "variable": {
+                                                                                    "type": "variable",
+                                                                                    "ID": "k",
+                                                                                    "id_varpart": {
+                                                                                        "type": "id_varpart",
+                                                                                        "expression_list": null
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "procedure_call",
+                                                                "procedure_call": {
+                                                                    "type": "procedure_call",
+                                                                    "ID": "quicksort",
+                                                                    "expression_list": {
+                                                                        "type": "expression_list",
+                                                                        "expressions": [
+                                                                            {
+                                                                                "type": "expression",
+                                                                                "simple_expression": {
+                                                                                    "type": "simple_expression",
+                                                                                    "term": {
+                                                                                        "type": "term",
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "variable",
+                                                                                            "variable": {
+                                                                                                "type": "variable",
+                                                                                                "ID": "l",
+                                                                                                "id_varpart": {
+                                                                                                    "type": "id_varpart",
+                                                                                                    "expression_list": null
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "expression",
+                                                                                "simple_expression": {
+                                                                                    "type": "simple_expression",
+                                                                                    "simple_expression": {
+                                                                                        "type": "simple_expression",
+                                                                                        "term": {
+                                                                                            "type": "term",
+                                                                                            "factor": {
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "variable": {
+                                                                                                    "type": "variable",
+                                                                                                    "ID": "i",
+                                                                                                    "id_varpart": {
+                                                                                                        "type": "id_varpart",
+                                                                                                        "expression_list": null
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "ADDOP": "-",
+                                                                                    "term": {
+                                                                                        "type": "term",
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "NUM",
+                                                                                            "NUM": 1
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "statement",
+                                                                "_type": "procedure_call",
+                                                                "procedure_call": {
+                                                                    "type": "procedure_call",
+                                                                    "ID": "quicksort",
+                                                                    "expression_list": {
+                                                                        "type": "expression_list",
+                                                                        "expressions": [
+                                                                            {
+                                                                                "type": "expression",
+                                                                                "simple_expression": {
+                                                                                    "type": "simple_expression",
+                                                                                    "simple_expression": {
+                                                                                        "type": "simple_expression",
+                                                                                        "term": {
+                                                                                            "type": "term",
+                                                                                            "factor": {
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "variable": {
+                                                                                                    "type": "variable",
+                                                                                                    "ID": "j",
+                                                                                                    "id_varpart": {
+                                                                                                        "type": "id_varpart",
+                                                                                                        "expression_list": null
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "ADDOP": "+",
+                                                                                    "term": {
+                                                                                        "type": "term",
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "NUM",
+                                                                                            "NUM": 1
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "expression",
+                                                                                "simple_expression": {
+                                                                                    "type": "simple_expression",
+                                                                                    "term": {
+                                                                                        "type": "term",
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "variable",
+                                                                                            "variable": {
+                                                                                                "type": "variable",
+                                                                                                "ID": "h",
+                                                                                                "id_varpart": {
+                                                                                                    "type": "id_varpart",
+                                                                                                    "expression_list": null
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "else_part": {
+                                                "type": "else_part",
+                                                "statement": {
+                                                    "type": "statement",
+                                                    "_type": "variable",
+                                                    "variable": {
+                                                        "type": "variable",
+                                                        "ID": "m",
+                                                        "id_varpart": {
+                                                            "type": "id_varpart",
+                                                            "expression_list": null
+                                                        }
+                                                    },
+                                                    "ASSIGNOP": ":=",
+                                                    "expression": {
+                                                        "type": "expression",
+                                                        "simple_expression": {
+                                                            "type": "simple_expression",
+                                                            "term": {
+                                                                "type": "term",
+                                                                "factor": {
+                                                                    "type": "factor",
+                                                                    "_type": "NUM",
+                                                                    "NUM": 0
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "compound_statement": {
+                "type": "compound_statement",
+                "statement_list": {
+                    "type": "statement_list",
+                    "statements": [
+                        {
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "type": "variable",
+                                "ID": "x",
+                                "id_varpart": {
+                                    "type": "id_varpart",
+                                    "expression_list": null
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "type": "expression",
+                                "simple_expression": {
+                                    "type": "simple_expression",
+                                    "term": {
+                                        "type": "term",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "NUM",
+                                            "NUM": 0
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "statement",
+                            "_type": "procedure_call",
+                            "procedure_call": {
+                                "type": "procedure_call",
+                                "ID": "readarray"
+                            }
+                        },
+                        {
+                            "type": "statement",
+                            "_type": "procedure_call",
+                            "procedure_call": {
+                                "type": "procedure_call",
+                                "ID": "quicksort",
+                                "expression_list": {
+                                    "type": "expression_list",
+                                    "expressions": [
+                                        {
+                                            "type": "expression",
+                                            "simple_expression": {
+                                                "type": "simple_expression",
+                                                "term": {
+                                                    "type": "term",
+                                                    "factor": {
+                                                        "type": "factor",
+                                                        "_type": "NUM",
+                                                        "NUM": 0
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "expression",
+                                            "simple_expression": {
+                                                "type": "simple_expression",
+                                                "term": {
+                                                    "type": "term",
+                                                    "factor": {
+                                                        "type": "factor",
+                                                        "_type": "NUM",
+                                                        "NUM": 4
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "statement",
+                            "_type": "WHILE",
+                            "expression": {
+                                "type": "expression",
+                                "simple_expression_1": {
+                                    "type": "simple_expression",
+                                    "term": {
+                                        "type": "term",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "type": "variable",
+                                                "ID": "x",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "RELOP": "<",
+                                "simple_expression_2": {
+                                    "type": "simple_expression",
+                                    "term": {
+                                        "type": "term",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "NUM",
+                                            "NUM": 5
+                                        }
+                                    }
+                                }
+                            },
+                            "statement": {
+                                "type": "statement",
+                                "_type": "compound_statement",
+                                "compound_statement": {
+                                    "type": "compound_statement",
+                                    "statement_list": {
+                                        "type": "statement_list",
+                                        "statements": [
+                                            {
+                                                "type": "statement",
+                                                "_type": "variable",
+                                                "variable": {
+                                                    "type": "variable",
+                                                    "ID": "y",
+                                                    "id_varpart": {
+                                                        "type": "id_varpart",
+                                                        "expression_list": null
+                                                    }
+                                                },
+                                                "ASSIGNOP": ":=",
+                                                "expression": {
+                                                    "type": "expression",
+                                                    "simple_expression": {
+                                                        "type": "simple_expression",
+                                                        "term": {
+                                                            "type": "term",
+                                                            "factor": {
+                                                                "type": "factor",
+                                                                "_type": "variable",
+                                                                "variable": {
+                                                                    "type": "variable",
+                                                                    "ID": "a",
+                                                                    "id_varpart": {
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": {
+                                                                            "type": "expression_list",
+                                                                            "expressions": [
+                                                                                {
+                                                                                    "type": "expression",
+                                                                                    "simple_expression": {
+                                                                                        "type": "simple_expression",
+                                                                                        "term": {
+                                                                                            "type": "term",
+                                                                                            "factor": {
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "variable": {
+                                                                                                    "type": "variable",
+                                                                                                    "ID": "x",
+                                                                                                    "id_varpart": {
+                                                                                                        "type": "id_varpart",
+                                                                                                        "expression_list": null
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "statement",
+                                                "_type": "procedure_call",
+                                                "procedure_call": {
+                                                    "type": "procedure_call",
+                                                    "ID": "writeln",
+                                                    "expression_list": {
+                                                        "type": "expression_list",
+                                                        "expressions": [
+                                                            {
+                                                                "type": "expression",
+                                                                "simple_expression": {
+                                                                    "type": "simple_expression",
+                                                                    "term": {
+                                                                        "type": "term",
+                                                                        "factor": {
+                                                                            "type": "factor",
+                                                                            "_type": "variable",
+                                                                            "variable": {
+                                                                                "type": "variable",
+                                                                                "ID": "y",
+                                                                                "id_varpart": {
+                                                                                    "type": "id_varpart",
+                                                                                    "expression_list": null
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "statement",
+                                                "_type": "variable",
+                                                "variable": {
+                                                    "type": "variable",
+                                                    "ID": "x",
+                                                    "id_varpart": {
+                                                        "type": "id_varpart",
+                                                        "expression_list": null
+                                                    }
+                                                },
+                                                "ASSIGNOP": ":=",
+                                                "expression": {
+                                                    "type": "expression",
+                                                    "simple_expression": {
+                                                        "type": "simple_expression",
+                                                        "simple_expression": {
+                                                            "type": "simple_expression",
+                                                            "term": {
+                                                                "type": "term",
+                                                                "factor": {
+                                                                    "type": "factor",
+                                                                    "_type": "variable",
+                                                                    "variable": {
+                                                                        "type": "variable",
+                                                                        "ID": "x",
+                                                                        "id_varpart": {
+                                                                            "type": "id_varpart",
+                                                                            "expression_list": null
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ADDOP": "+",
+                                                        "term": {
+                                                            "type": "term",
+                                                            "factor": {
+                                                                "type": "factor",
+                                                                "_type": "NUM",
+                                                                "NUM": 1
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "error": null
+}
