@@ -40,9 +40,30 @@
                                             "start": 1,
                                             "END": 100
                                         }
-                                    ]
+                                    ],
+                                    "SymbolTable": {
+                                        "dimension": 1,
+                                        "size": [
+                                            100
+                                        ],
+                                        "start": [
+                                            1
+                                        ]
+                                    }
                                 },
-                                "basic_type": "of"
+                                "basic_type": "of",
+                                "SymbolTable": {
+                                    "type": "integer",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        100
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                }
                             }
                         },
                         {
@@ -62,12 +83,277 @@
                                 "type": "type",
                                 "_type": {
                                     "type": "basic_type",
-                                    "_type": "integer"
+                                    "_type": "integer",
+                                    "SymbolTable": "integer"
+                                },
+                                "SymbolTable": {
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
                                 }
                             }
                         }
+                    ],
+                    "SymbolTable": [
+                        {
+                            "id": 24,
+                            "token": "a",
+                            "type": "integer",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 25,
+                            "token": "b",
+                            "type": "integer",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 26,
+                            "token": "v",
+                            "type": "integer",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 27,
+                            "token": "p",
+                            "type": "integer",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 28,
+                            "token": "n",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 29,
+                            "token": "m",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 30,
+                            "token": "i",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 31,
+                            "token": "ans",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 32,
+                            "token": "tot",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 33,
+                            "token": "x",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 34,
+                            "token": "y",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        }
                     ]
-                }
+                },
+                "SymbolTable": [
+                    {
+                        "id": 24,
+                        "token": "a",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 25,
+                        "token": "b",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 26,
+                        "token": "v",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 27,
+                        "token": "p",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 28,
+                        "token": "n",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 29,
+                        "token": "m",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 30,
+                        "token": "i",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 31,
+                        "token": "ans",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 32,
+                        "token": "tot",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 33,
+                        "token": "x",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 34,
+                        "token": "y",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    }
+                ]
             },
             "subprogram_declarations": {
                 "type": "subprogram_declarations",
@@ -96,12 +382,172 @@
                                                 },
                                                 "basic_type": {
                                                     "type": "basic_type",
-                                                    "_type": "integer"
+                                                    "_type": "integer",
+                                                    "SymbolTable": "integer"
+                                                },
+                                                "SymbolTable": {
+                                                    "references": [
+                                                        false,
+                                                        false
+                                                    ],
+                                                    "size": 2,
+                                                    "variables": [
+                                                        {
+                                                            "id": 35,
+                                                            "token": "l",
+                                                            "type": "integer",
+                                                            "isArray": false,
+                                                            "dimension": 0,
+                                                            "size": [],
+                                                            "start": [],
+                                                            "recordType": null
+                                                        },
+                                                        {
+                                                            "id": 36,
+                                                            "token": "r",
+                                                            "type": "integer",
+                                                            "isArray": false,
+                                                            "dimension": 0,
+                                                            "size": [],
+                                                            "start": [],
+                                                            "recordType": null
+                                                        }
+                                                    ]
                                                 }
+                                            },
+                                            "SymbolTable": {
+                                                "references": [
+                                                    false,
+                                                    false
+                                                ],
+                                                "size": 2,
+                                                "variables": [
+                                                    {
+                                                        "id": 35,
+                                                        "token": "l",
+                                                        "type": "integer",
+                                                        "isArray": false,
+                                                        "dimension": 0,
+                                                        "size": [],
+                                                        "start": [],
+                                                        "recordType": null
+                                                    },
+                                                    {
+                                                        "id": 36,
+                                                        "token": "r",
+                                                        "type": "integer",
+                                                        "isArray": false,
+                                                        "dimension": 0,
+                                                        "size": [],
+                                                        "start": [],
+                                                        "recordType": null
+                                                    }
+                                                ]
                                             }
                                         }
+                                    ],
+                                    "SymbolTable": {
+                                        "params": 2,
+                                        "references": [
+                                            [
+                                                false,
+                                                false
+                                            ]
+                                        ],
+                                        "variables": [
+                                            [
+                                                {
+                                                    "id": 35,
+                                                    "token": "l",
+                                                    "type": "integer",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordType": null
+                                                },
+                                                {
+                                                    "id": 36,
+                                                    "token": "r",
+                                                    "type": "integer",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordType": null
+                                                }
+                                            ]
+                                        ]
+                                    }
+                                },
+                                "SymbolTable": {
+                                    "params": 2,
+                                    "references": [
+                                        [
+                                            false,
+                                            false
+                                        ]
+                                    ],
+                                    "variables": [
+                                        [
+                                            {
+                                                "id": 35,
+                                                "token": "l",
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordType": null
+                                            },
+                                            {
+                                                "id": 36,
+                                                "token": "r",
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordType": null
+                                            }
+                                        ]
                                     ]
                                 }
+                            },
+                            "SymbolTable": {
+                                "token": "sort",
+                                "type": null,
+                                "params": 2,
+                                "references": [
+                                    [
+                                        false,
+                                        false
+                                    ]
+                                ],
+                                "variables": [
+                                    [
+                                        {
+                                            "id": 35,
+                                            "token": "l",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        },
+                                        {
+                                            "id": 36,
+                                            "token": "r",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        }
+                                    ]
+                                ]
                             }
                         },
                         "subprogram_body": {
@@ -126,12 +572,105 @@
                                                 "type": "type",
                                                 "_type": {
                                                     "type": "basic_type",
-                                                    "_type": "integer"
+                                                    "_type": "integer",
+                                                    "SymbolTable": "integer"
+                                                },
+                                                "SymbolTable": {
+                                                    "type": "integer",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordTable": null
                                                 }
                                             }
                                         }
+                                    ],
+                                    "SymbolTable": [
+                                        {
+                                            "id": 37,
+                                            "token": "i",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordTable": null
+                                        },
+                                        {
+                                            "id": 38,
+                                            "token": "j",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordTable": null
+                                        },
+                                        {
+                                            "id": 39,
+                                            "token": "x",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordTable": null
+                                        },
+                                        {
+                                            "id": 40,
+                                            "token": "y",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordTable": null
+                                        }
                                     ]
-                                }
+                                },
+                                "SymbolTable": [
+                                    {
+                                        "id": 37,
+                                        "token": "i",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 38,
+                                        "token": "j",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 39,
+                                        "token": "x",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 40,
+                                        "token": "y",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    }
+                                ]
                             },
                             "compound_statement": {
                                 "type": "compound_statement",
@@ -1579,6 +2118,130 @@
                                         }
                                     ]
                                 }
+                            },
+                            "SymbolTable": {
+                                "constants": [],
+                                "variables": [
+                                    {
+                                        "id": 37,
+                                        "token": "i",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 38,
+                                        "token": "j",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 39,
+                                        "token": "x",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 40,
+                                        "token": "y",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    }
+                                ]
+                            }
+                        },
+                        "SymbolTable": {
+                            "id": 41,
+                            "token": "sort",
+                            "type": null,
+                            "table": {
+                                "params": 2,
+                                "references": [
+                                    [
+                                        false,
+                                        false
+                                    ]
+                                ],
+                                "constants": [],
+                                "variables": [
+                                    [
+                                        {
+                                            "id": 35,
+                                            "token": "l",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        },
+                                        {
+                                            "id": 36,
+                                            "token": "r",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        }
+                                    ],
+                                    {
+                                        "id": 37,
+                                        "token": "i",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 38,
+                                        "token": "j",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 39,
+                                        "token": "x",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 40,
+                                        "token": "y",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    }
+                                ]
                             }
                         }
                     },
@@ -1605,16 +2268,122 @@
                                                 },
                                                 "basic_type": {
                                                     "type": "basic_type",
-                                                    "_type": "integer"
+                                                    "_type": "integer",
+                                                    "SymbolTable": "integer"
+                                                },
+                                                "SymbolTable": {
+                                                    "references": [
+                                                        false
+                                                    ],
+                                                    "size": 1,
+                                                    "variables": [
+                                                        {
+                                                            "id": 42,
+                                                            "token": "x",
+                                                            "type": "integer",
+                                                            "isArray": false,
+                                                            "dimension": 0,
+                                                            "size": [],
+                                                            "start": [],
+                                                            "recordType": null
+                                                        }
+                                                    ]
                                                 }
+                                            },
+                                            "SymbolTable": {
+                                                "references": [
+                                                    false
+                                                ],
+                                                "size": 1,
+                                                "variables": [
+                                                    {
+                                                        "id": 42,
+                                                        "token": "x",
+                                                        "type": "integer",
+                                                        "isArray": false,
+                                                        "dimension": 0,
+                                                        "size": [],
+                                                        "start": [],
+                                                        "recordType": null
+                                                    }
+                                                ]
                                             }
                                         }
+                                    ],
+                                    "SymbolTable": {
+                                        "params": 1,
+                                        "references": [
+                                            [
+                                                false
+                                            ]
+                                        ],
+                                        "variables": [
+                                            [
+                                                {
+                                                    "id": 42,
+                                                    "token": "x",
+                                                    "type": "integer",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordType": null
+                                                }
+                                            ]
+                                        ]
+                                    }
+                                },
+                                "SymbolTable": {
+                                    "params": 1,
+                                    "references": [
+                                        [
+                                            false
+                                        ]
+                                    ],
+                                    "variables": [
+                                        [
+                                            {
+                                                "id": 42,
+                                                "token": "x",
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordType": null
+                                            }
+                                        ]
                                     ]
                                 }
                             },
                             "basic_type": {
                                 "type": "basic_type",
-                                "_type": "integer"
+                                "_type": "integer",
+                                "SymbolTable": "integer"
+                            },
+                            "SymbolTable": {
+                                "token": "doit",
+                                "type": "integer",
+                                "params": 1,
+                                "references": [
+                                    [
+                                        false
+                                    ]
+                                ],
+                                "variables": [
+                                    [
+                                        {
+                                            "id": 42,
+                                            "token": "x",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        }
+                                    ]
+                                ]
                             }
                         },
                         "subprogram_body": {
@@ -1929,7 +2698,148 @@
                                         }
                                     ]
                                 }
+                            },
+                            "SymbolTable": {
+                                "constants": [],
+                                "variables": []
                             }
+                        },
+                        "SymbolTable": {
+                            "id": 43,
+                            "token": "doit",
+                            "type": "integer",
+                            "table": {
+                                "params": 1,
+                                "references": [
+                                    [
+                                        false
+                                    ]
+                                ],
+                                "constants": [],
+                                "variables": [
+                                    [
+                                        {
+                                            "id": 42,
+                                            "token": "x",
+                                            "type": "integer",
+                                            "isArray": false,
+                                            "dimension": 0,
+                                            "size": [],
+                                            "start": [],
+                                            "recordType": null
+                                        }
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "SymbolTable": [
+                    {
+                        "id": 41,
+                        "token": "sort",
+                        "type": null,
+                        "table": {
+                            "params": 2,
+                            "references": [
+                                [
+                                    false,
+                                    false
+                                ]
+                            ],
+                            "constants": [],
+                            "variables": [
+                                [
+                                    {
+                                        "id": 35,
+                                        "token": "l",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    },
+                                    {
+                                        "id": 36,
+                                        "token": "r",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    }
+                                ],
+                                {
+                                    "id": 37,
+                                    "token": "i",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 38,
+                                    "token": "j",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 39,
+                                    "token": "x",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 40,
+                                    "token": "y",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 43,
+                        "token": "doit",
+                        "type": "integer",
+                        "table": {
+                            "params": 1,
+                            "references": [
+                                [
+                                    false
+                                ]
+                            ],
+                            "constants": [],
+                            "variables": [
+                                [
+                                    {
+                                        "id": 42,
+                                        "token": "x",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    }
+                                ]
+                            ]
                         }
                     }
                 ]
@@ -2717,8 +3627,488 @@
                         }
                     ]
                 }
+            },
+            "SymbolTable": {
+                "constants": [],
+                "variables": [
+                    {
+                        "id": 24,
+                        "token": "a",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 25,
+                        "token": "b",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 26,
+                        "token": "v",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 27,
+                        "token": "p",
+                        "type": "integer",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 28,
+                        "token": "n",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 29,
+                        "token": "m",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 30,
+                        "token": "i",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 31,
+                        "token": "ans",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 32,
+                        "token": "tot",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 33,
+                        "token": "x",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 34,
+                        "token": "y",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    }
+                ],
+                "subFunc": [
+                    {
+                        "id": 41,
+                        "token": "sort",
+                        "type": null,
+                        "table": {
+                            "params": 2,
+                            "references": [
+                                [
+                                    false,
+                                    false
+                                ]
+                            ],
+                            "constants": [],
+                            "variables": [
+                                [
+                                    {
+                                        "id": 35,
+                                        "token": "l",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    },
+                                    {
+                                        "id": 36,
+                                        "token": "r",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    }
+                                ],
+                                {
+                                    "id": 37,
+                                    "token": "i",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 38,
+                                    "token": "j",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 39,
+                                    "token": "x",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 40,
+                                    "token": "y",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 43,
+                        "token": "doit",
+                        "type": "integer",
+                        "table": {
+                            "params": 1,
+                            "references": [
+                                [
+                                    false
+                                ]
+                            ],
+                            "constants": [],
+                            "variables": [
+                                [
+                                    {
+                                        "id": 42,
+                                        "token": "x",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordType": null
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
             }
         }
+    },
+    "symbolTable": {
+        "constants": [],
+        "variables": [
+            {
+                "id": 24,
+                "token": "a",
+                "type": "integer",
+                "isArray": true,
+                "dimension": 1,
+                "size": [
+                    100
+                ],
+                "start": [
+                    1
+                ],
+                "recordTable": null
+            },
+            {
+                "id": 25,
+                "token": "b",
+                "type": "integer",
+                "isArray": true,
+                "dimension": 1,
+                "size": [
+                    100
+                ],
+                "start": [
+                    1
+                ],
+                "recordTable": null
+            },
+            {
+                "id": 26,
+                "token": "v",
+                "type": "integer",
+                "isArray": true,
+                "dimension": 1,
+                "size": [
+                    100
+                ],
+                "start": [
+                    1
+                ],
+                "recordTable": null
+            },
+            {
+                "id": 27,
+                "token": "p",
+                "type": "integer",
+                "isArray": true,
+                "dimension": 1,
+                "size": [
+                    100
+                ],
+                "start": [
+                    1
+                ],
+                "recordTable": null
+            },
+            {
+                "id": 28,
+                "token": "n",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 29,
+                "token": "m",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 30,
+                "token": "i",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 31,
+                "token": "ans",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 32,
+                "token": "tot",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 33,
+                "token": "x",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 34,
+                "token": "y",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            }
+        ],
+        "subFunc": [
+            {
+                "id": 41,
+                "token": "sort",
+                "type": null,
+                "table": {
+                    "params": 2,
+                    "references": [
+                        [
+                            false,
+                            false
+                        ]
+                    ],
+                    "constants": [],
+                    "variables": [
+                        [
+                            {
+                                "id": 35,
+                                "token": "l",
+                                "type": "integer",
+                                "isArray": false,
+                                "dimension": 0,
+                                "size": [],
+                                "start": [],
+                                "recordType": null
+                            },
+                            {
+                                "id": 36,
+                                "token": "r",
+                                "type": "integer",
+                                "isArray": false,
+                                "dimension": 0,
+                                "size": [],
+                                "start": [],
+                                "recordType": null
+                            }
+                        ],
+                        {
+                            "id": 37,
+                            "token": "i",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 38,
+                            "token": "j",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 39,
+                            "token": "x",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 40,
+                            "token": "y",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 43,
+                "token": "doit",
+                "type": "integer",
+                "table": {
+                    "params": 1,
+                    "references": [
+                        [
+                            false
+                        ]
+                    ],
+                    "constants": [],
+                    "variables": [
+                        [
+                            {
+                                "id": 42,
+                                "token": "x",
+                                "type": "integer",
+                                "isArray": false,
+                                "dimension": 0,
+                                "size": [],
+                                "start": [],
+                                "recordType": null
+                            }
+                        ]
+                    ]
+                }
+            }
+        ]
     },
     "error": null
 }

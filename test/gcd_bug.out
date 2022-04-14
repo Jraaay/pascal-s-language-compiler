@@ -1,5 +1,10 @@
 {
     "ast": null,
+    "symbolTable": {
+        "constants": [],
+        "variables": [],
+        "subFunc": []
+    },
     "error": {
         "type": "Syntax error",
         "info": {

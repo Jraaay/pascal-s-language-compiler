@@ -31,21 +31,584 @@
                                 "type": "type",
                                 "_type": "RECORD",
                                 "multype": {
-                                    "type": "MULOP",
-                                    "_type": {
-                                        "type": "MULOP",
-                                        "_type": {
-                                            "type": "MULOP",
-                                            "_type": {
-                                                "type": "MULOP",
-                                                "_type": "title",
-                                                "ID": ":"
+                                    "type": [
+                                        {
+                                            "type": "type",
+                                            "_type": "ARRAY",
+                                            "period": {
+                                                "type": "period",
+                                                "values": [
+                                                    {
+                                                        "start": 1,
+                                                        "END": 50
+                                                    }
+                                                ],
+                                                "SymbolTable": {
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ]
+                                                }
                                             },
-                                            "ID": "author"
+                                            "basic_type": "of",
+                                            "SymbolTable": {
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            }
                                         },
-                                        "ID": "subject"
+                                        {
+                                            "type": "type",
+                                            "_type": "ARRAY",
+                                            "period": {
+                                                "type": "period",
+                                                "values": [
+                                                    {
+                                                        "start": 1,
+                                                        "END": 50
+                                                    }
+                                                ],
+                                                "SymbolTable": {
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ]
+                                                }
+                                            },
+                                            "basic_type": "of",
+                                            "SymbolTable": {
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            }
+                                        },
+                                        {
+                                            "type": "type",
+                                            "_type": "ARRAY",
+                                            "period": {
+                                                "type": "period",
+                                                "values": [
+                                                    {
+                                                        "start": 1,
+                                                        "END": 100
+                                                    }
+                                                ],
+                                                "SymbolTable": {
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        100
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ]
+                                                }
+                                            },
+                                            "basic_type": "of",
+                                            "SymbolTable": {
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    100
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            }
+                                        },
+                                        {
+                                            "type": "type",
+                                            "_type": {
+                                                "type": "basic_type",
+                                                "_type": "integer",
+                                                "SymbolTable": "integer"
+                                            },
+                                            "SymbolTable": {
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordTable": null
+                                            }
+                                        }
+                                    ],
+                                    "multype": {
+                                        "type": [
+                                            {
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "END": 50
+                                                        }
+                                                    ],
+                                                    "SymbolTable": {
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ]
+                                                    }
+                                                },
+                                                "basic_type": "of",
+                                                "SymbolTable": {
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                }
+                                            },
+                                            {
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "END": 50
+                                                        }
+                                                    ],
+                                                    "SymbolTable": {
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ]
+                                                    }
+                                                },
+                                                "basic_type": "of",
+                                                "SymbolTable": {
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                }
+                                            },
+                                            {
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "END": 100
+                                                        }
+                                                    ],
+                                                    "SymbolTable": {
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            100
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ]
+                                                    }
+                                                },
+                                                "basic_type": "of",
+                                                "SymbolTable": {
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        100
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                }
+                                            }
+                                        ],
+                                        "multype": {
+                                            "type": [
+                                                {
+                                                    "type": "type",
+                                                    "_type": "ARRAY",
+                                                    "period": {
+                                                        "type": "period",
+                                                        "values": [
+                                                            {
+                                                                "start": 1,
+                                                                "END": 50
+                                                            }
+                                                        ],
+                                                        "SymbolTable": {
+                                                            "dimension": 1,
+                                                            "size": [
+                                                                50
+                                                            ],
+                                                            "start": [
+                                                                1
+                                                            ]
+                                                        }
+                                                    },
+                                                    "basic_type": "of",
+                                                    "SymbolTable": {
+                                                        "type": "char",
+                                                        "isArray": true,
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ],
+                                                        "recordTable": null
+                                                    }
+                                                },
+                                                {
+                                                    "type": "type",
+                                                    "_type": "ARRAY",
+                                                    "period": {
+                                                        "type": "period",
+                                                        "values": [
+                                                            {
+                                                                "start": 1,
+                                                                "END": 50
+                                                            }
+                                                        ],
+                                                        "SymbolTable": {
+                                                            "dimension": 1,
+                                                            "size": [
+                                                                50
+                                                            ],
+                                                            "start": [
+                                                                1
+                                                            ]
+                                                        }
+                                                    },
+                                                    "basic_type": "of",
+                                                    "SymbolTable": {
+                                                        "type": "char",
+                                                        "isArray": true,
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ],
+                                                        "recordTable": null
+                                                    }
+                                                }
+                                            ],
+                                            "multype": {
+                                                "type": [
+                                                    {
+                                                        "type": "type",
+                                                        "_type": "ARRAY",
+                                                        "period": {
+                                                            "type": "period",
+                                                            "values": [
+                                                                {
+                                                                    "start": 1,
+                                                                    "END": 50
+                                                                }
+                                                            ],
+                                                            "SymbolTable": {
+                                                                "dimension": 1,
+                                                                "size": [
+                                                                    50
+                                                                ],
+                                                                "start": [
+                                                                    1
+                                                                ]
+                                                            }
+                                                        },
+                                                        "basic_type": "of",
+                                                        "SymbolTable": {
+                                                            "type": "char",
+                                                            "isArray": true,
+                                                            "dimension": 1,
+                                                            "size": [
+                                                                50
+                                                            ],
+                                                            "start": [
+                                                                1
+                                                            ],
+                                                            "recordTable": null
+                                                        }
+                                                    }
+                                                ],
+                                                "ID": [
+                                                    "title"
+                                                ],
+                                                "SymbolTable": {
+                                                    "variables": [
+                                                        {
+                                                            "id": 56,
+                                                            "token": "title",
+                                                            "type": "char",
+                                                            "isArray": true,
+                                                            "dimension": 1,
+                                                            "size": [
+                                                                50
+                                                            ],
+                                                            "start": [
+                                                                1
+                                                            ],
+                                                            "recordTable": null
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "ID": [
+                                                "title",
+                                                "author"
+                                            ],
+                                            "SymbolTable": {
+                                                "variables": [
+                                                    {
+                                                        "id": 56,
+                                                        "token": "title",
+                                                        "type": "char",
+                                                        "isArray": true,
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ],
+                                                        "recordTable": null
+                                                    },
+                                                    {
+                                                        "id": 56,
+                                                        "token": "author",
+                                                        "type": "char",
+                                                        "isArray": true,
+                                                        "dimension": 1,
+                                                        "size": [
+                                                            50
+                                                        ],
+                                                        "start": [
+                                                            1
+                                                        ],
+                                                        "recordTable": null
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "ID": [
+                                            "title",
+                                            "author",
+                                            "subject"
+                                        ],
+                                        "SymbolTable": {
+                                            "variables": [
+                                                {
+                                                    "id": 56,
+                                                    "token": "title",
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                },
+                                                {
+                                                    "id": 56,
+                                                    "token": "author",
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        50
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                },
+                                                {
+                                                    "id": 56,
+                                                    "token": "subject",
+                                                    "type": "char",
+                                                    "isArray": true,
+                                                    "dimension": 1,
+                                                    "size": [
+                                                        100
+                                                    ],
+                                                    "start": [
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                }
+                                            ]
+                                        }
                                     },
-                                    "ID": "bookid"
+                                    "ID": [
+                                        "title",
+                                        "author",
+                                        "subject",
+                                        "bookid"
+                                    ],
+                                    "SymbolTable": {
+                                        "variables": [
+                                            {
+                                                "id": 56,
+                                                "token": "title",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "author",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "subject",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    100
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "bookid",
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordTable": null
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SymbolTable": {
+                                    "type": "RECORD",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": {
+                                        "variables": [
+                                            {
+                                                "id": 56,
+                                                "token": "title",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "author",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    50
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "subject",
+                                                "type": "char",
+                                                "isArray": true,
+                                                "dimension": 1,
+                                                "size": [
+                                                    100
+                                                ],
+                                                "start": [
+                                                    1
+                                                ],
+                                                "recordTable": null
+                                            },
+                                            {
+                                                "id": 56,
+                                                "token": "bookid",
+                                                "type": "integer",
+                                                "isArray": false,
+                                                "dimension": 0,
+                                                "size": [],
+                                                "start": [],
+                                                "recordTable": null
+                                            }
+                                        ]
+                                    }
                                 }
                             }
                         },
@@ -66,9 +629,30 @@
                                             "start": 1,
                                             "END": 100
                                         }
-                                    ]
+                                    ],
+                                    "SymbolTable": {
+                                        "dimension": 1,
+                                        "size": [
+                                            100
+                                        ],
+                                        "start": [
+                                            1
+                                        ]
+                                    }
                                 },
-                                "basic_type": "of"
+                                "basic_type": "of",
+                                "SymbolTable": {
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        100
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                }
                             }
                         },
                         {
@@ -82,16 +666,208 @@
                                 "type": "type",
                                 "_type": {
                                     "type": "basic_type",
-                                    "_type": "integer"
+                                    "_type": "integer",
+                                    "SymbolTable": "integer"
+                                },
+                                "SymbolTable": {
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
                                 }
                             }
                         }
+                    ],
+                    "SymbolTable": [
+                        {
+                            "id": 56,
+                            "token": "Books",
+                            "type": "RECORD",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": {
+                                "variables": [
+                                    {
+                                        "id": 56,
+                                        "token": "title",
+                                        "type": "char",
+                                        "isArray": true,
+                                        "dimension": 1,
+                                        "size": [
+                                            50
+                                        ],
+                                        "start": [
+                                            1
+                                        ],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 56,
+                                        "token": "author",
+                                        "type": "char",
+                                        "isArray": true,
+                                        "dimension": 1,
+                                        "size": [
+                                            50
+                                        ],
+                                        "start": [
+                                            1
+                                        ],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 56,
+                                        "token": "subject",
+                                        "type": "char",
+                                        "isArray": true,
+                                        "dimension": 1,
+                                        "size": [
+                                            100
+                                        ],
+                                        "start": [
+                                            1
+                                        ],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 56,
+                                        "token": "bookid",
+                                        "type": "integer",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 57,
+                            "token": "a",
+                            "type": "char",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 58,
+                            "token": "b",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        }
                     ]
-                }
+                },
+                "SymbolTable": [
+                    {
+                        "id": 56,
+                        "token": "Books",
+                        "type": "RECORD",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": {
+                            "variables": [
+                                {
+                                    "id": 56,
+                                    "token": "title",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        50
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "author",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        50
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "subject",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        100
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "bookid",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 57,
+                        "token": "a",
+                        "type": "char",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 58,
+                        "token": "b",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    }
+                ]
             },
             "subprogram_declarations": {
                 "type": "subprogram_declarations",
-                "subprograms": []
+                "subprograms": [],
+                "SymbolTable": []
             },
             "compound_statement": {
                 "type": "compound_statement",
@@ -210,8 +986,198 @@
                         }
                     ]
                 }
+            },
+            "SymbolTable": {
+                "constants": [],
+                "variables": [
+                    {
+                        "id": 56,
+                        "token": "Books",
+                        "type": "RECORD",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": {
+                            "variables": [
+                                {
+                                    "id": 56,
+                                    "token": "title",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        50
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "author",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        50
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "subject",
+                                    "type": "char",
+                                    "isArray": true,
+                                    "dimension": 1,
+                                    "size": [
+                                        100
+                                    ],
+                                    "start": [
+                                        1
+                                    ],
+                                    "recordTable": null
+                                },
+                                {
+                                    "id": 56,
+                                    "token": "bookid",
+                                    "type": "integer",
+                                    "isArray": false,
+                                    "dimension": 0,
+                                    "size": [],
+                                    "start": [],
+                                    "recordTable": null
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 57,
+                        "token": "a",
+                        "type": "char",
+                        "isArray": true,
+                        "dimension": 1,
+                        "size": [
+                            100
+                        ],
+                        "start": [
+                            1
+                        ],
+                        "recordTable": null
+                    },
+                    {
+                        "id": 58,
+                        "token": "b",
+                        "type": "integer",
+                        "isArray": false,
+                        "dimension": 0,
+                        "size": [],
+                        "start": [],
+                        "recordTable": null
+                    }
+                ],
+                "subFunc": []
             }
         }
+    },
+    "symbolTable": {
+        "constants": [],
+        "variables": [
+            {
+                "id": 56,
+                "token": "Books",
+                "type": "RECORD",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": {
+                    "variables": [
+                        {
+                            "id": 56,
+                            "token": "title",
+                            "type": "char",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                50
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 56,
+                            "token": "author",
+                            "type": "char",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                50
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 56,
+                            "token": "subject",
+                            "type": "char",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 56,
+                            "token": "bookid",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 57,
+                "token": "a",
+                "type": "char",
+                "isArray": true,
+                "dimension": 1,
+                "size": [
+                    100
+                ],
+                "start": [
+                    1
+                ],
+                "recordTable": null
+            },
+            {
+                "id": 58,
+                "token": "b",
+                "type": "integer",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            }
+        ],
+        "subFunc": []
     },
     "error": null
 }

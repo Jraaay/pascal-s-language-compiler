@@ -11,6 +11,7 @@ class Parser:
         "subFunc": []
     }
     error = None
+    id = 0
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
@@ -131,6 +132,11 @@ class Parser:
                 "program_head": p[1],
                 "program_body": p[3]
             }
+            self.SymbolTable = {
+                "constants": p[3]["SymbolTable"]["constants"],
+                "variables": p[3]["SymbolTable"]["variables"],
+                "subFunc": p[3]["SymbolTable"]["subFunc"]
+            }
 
         def p_program_head(p):
             '''
@@ -163,6 +169,11 @@ class Parser:
                 "subprogram_declarations": p[3],
                 "compound_statement": p[4]
             }
+            p[0]["SymbolTable"] = {
+                "constants": p[1]["SymbolTable"] if p[1] else [],
+                "variables": p[2]["SymbolTable"] if p[2] else [],
+                "subFunc": p[3]["SymbolTable"] if p[3] else []
+            }
 
         def p_idlist(p):
             '''
@@ -192,6 +203,7 @@ class Parser:
                     "type": "const_declarations",
                     "const_declaration": p[2]
                 }
+                p[0]["SymbolTable"] = p[2]["SymbolTable"]
             else:
                 p[0] = None
 
@@ -206,6 +218,14 @@ class Parser:
                     "const_value": p[5]
                 }]
             }
+            p[0]["SymbolTable"] = p[1]["SymbolTable"] + [{
+                "id": self.id,
+                "token": p[3],
+                "type": "digits" if type(p[5]) == int else ("NUM" if type(p[5]) == float else "LETTER"),
+                "value": p[5],
+                "positive": True if type(p[5]) != str and p[5] > 0 else False
+            }]
+            self.id += 1
 
         def p_const_declaration_id(p):
             '''
@@ -218,10 +238,19 @@ class Parser:
                     "const_value": p[3]
                 }]
             }
+            p[0]["SymbolTable"] = [{
+                "id": self.id,
+                "token": p[1],
+                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "value": p[3],
+                "positive": True if type(p[3]) != str and p[3] > 0 else False
+            }]
+            self.id += 1
 
         def p_const_value_addop(p):
             '''
             const_value : ADDOP NUM
+                        | ADDOP DIGITS
             '''
             p[0] = {
                 "type": "const_value",
@@ -260,6 +289,7 @@ class Parser:
                     "type": "var_declarations",
                     "var_declaration": p[2]
                 }
+                p[0]["SymbolTable"] = p[2]["SymbolTable"]
             else:
                 p[0] = []
 
@@ -276,6 +306,19 @@ class Parser:
                         "type": p[5]
                     }]
                 }
+                p[0]["SymbolTable"] = p[1]["SymbolTable"]
+                for i in p[3]["ids"]:
+                    p[0]["SymbolTable"] += [{
+                        "id": self.id,
+                        "token": i,
+                        "type": p[5]["SymbolTable"]["type"],
+                        "isArray": p[5]["SymbolTable"]["isArray"],
+                        "dimension": p[5]["SymbolTable"]["dimension"],
+                        "size": p[5]["SymbolTable"]["size"],
+                        "start": p[5]["SymbolTable"]["start"],
+                        "recordTable": p[5]["SymbolTable"]["recordTable"]
+                    }]
+                    self.id += 1
             else:
                 p[0] = {
                     "type": "var_declaration",
@@ -284,6 +327,19 @@ class Parser:
                         "type": p[3]
                     }]
                 }
+                p[0]["SymbolTable"] = []
+                for i in p[1]["ids"]:
+                    p[0]["SymbolTable"] += [{
+                        "id": self.id,
+                        "token": i,
+                        "type": p[3]["SymbolTable"]["type"],
+                        "isArray": p[3]["SymbolTable"]["isArray"],
+                        "dimension": p[3]["SymbolTable"]["dimension"],
+                        "size": p[3]["SymbolTable"]["size"],
+                        "start": p[3]["SymbolTable"]["start"],
+                        "recordTable": p[3]["SymbolTable"]["recordTable"]
+                    }]
+                    self.id += 1
 
         def p_type(p):
             '''
@@ -298,16 +354,40 @@ class Parser:
                     "period": p[3],
                     "basic_type": p[5]
                 }
+                p[0]["SymbolTable"] = {
+                    "type": p[6]["SymbolTable"],
+                    "isArray": True,
+                    "dimension": p[3]["SymbolTable"]["dimension"],
+                    "size": p[3]["SymbolTable"]["size"],
+                    "start": p[3]["SymbolTable"]["start"],
+                    "recordTable": None
+                }
             elif not type(p[1]) == dict and p[1].upper() == 'RECORD':
                 p[0] = {
                     "type": "type",
                     "_type": "RECORD",
                     "multype": p[2]
                 }
+                p[0]["SymbolTable"] = {
+                    "type": "RECORD",
+                    "isArray": False,
+                    "dimension": 0,
+                    "size": [],
+                    "start": [],
+                    "recordTable": p[2]["SymbolTable"]
+                }
             else:
                 p[0] = {
                     "type": "type",
                     "_type": p[1]
+                }
+                p[0]["SymbolTable"] = {
+                    "type": p[1]["SymbolTable"],
+                    "isArray": False,
+                    "dimension": 0,
+                    "size": [],
+                    "start": [],
+                    "recordTable": None
                 }
 
         def p_basic_type(p):
@@ -321,19 +401,25 @@ class Parser:
                 "type": "basic_type",
                 "_type": p[1]
             }
+            p[0]["SymbolTable"] = p[1]
 
         def p_period(p):
             '''
             period : period COM DIGITS POINTTO DIGITS
                 | DIGITS POINTTO DIGITS
             '''
-            if len(p) == 5:
+            if len(p) == 6:
                 p[0] = {
                     "type": "period",
                     "values": p[1]["values"] + [{
                         "start": p[3],
                         "END": p[5]
                     }]
+                }
+                p[0]["SymbolTable"] = {
+                    "dimension": p[1]["SymbolTable"]["dimension"] + 1,
+                    "size": p[1]["SymbolTable"]["size"] + [p[5] - p[3] + 1],
+                    "start": p[1]["SymbolTable"]["start"] + [p[3]],
                 }
             else:
                 p[0] = {
@@ -342,6 +428,11 @@ class Parser:
                         "start": p[1],
                         "END": p[3]
                     }]
+                }
+                p[0]["SymbolTable"] = {
+                    "dimension": 1,
+                    "size": [p[3] - p[1] + 1],
+                    "start": [p[1]],
                 }
 
         def p_subprogram_declarations(p):
@@ -354,11 +445,13 @@ class Parser:
                     "type": "subprogram_declarations",
                     "subprograms": p[1]["subprograms"] + [p[2]] if p[2] else p[1]["subprograms"]
                 }
+                p[0]["SymbolTable"] = p[1]["SymbolTable"] + [p[2]["SymbolTable"]]
             else:
                 p[0] = {
                     "type": "subprogram_declarations",
                     "subprograms": []
                 }
+                p[0]["SymbolTable"] = []
 
         def p_subprogram(p):
             '''
@@ -368,6 +461,19 @@ class Parser:
                 "type": "subprogram",
                 "subprogram_head": p[1],
                 "subprogram_body": p[3]
+            }
+            p[0]["SymbolTable"] = {
+                "id": self.id,
+                "token": p[1]["SymbolTable"]["token"],
+                "type": p[1]["SymbolTable"]["type"],
+                "table": None
+            }
+            self.id += 1
+            p[0]["SymbolTable"]["table"] = {
+                "params": p[1]["SymbolTable"]["params"],
+                "references": p[1]["SymbolTable"]["references"],
+                "constants": p[3]["SymbolTable"]["constants"],
+                "variables": p[1]["SymbolTable"]["variables"] + p[3]["SymbolTable"]["variables"],
             }
 
         def p_subprogram_head(p):
@@ -382,6 +488,13 @@ class Parser:
                     "ID": p[2],
                     "formal_parameter": p[3]
                 }
+                p[0]["SymbolTable"] = {
+                    "token": p[2],
+                    "type": None,
+                    "params": p[3]["SymbolTable"]["params"],
+                    "references": p[3]["SymbolTable"]["references"],
+                    "variables": p[3]["SymbolTable"]["variables"],
+                }
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
                 p[0] = {
                     "type": "subprogram_head",
@@ -389,6 +502,13 @@ class Parser:
                     "ID": p[2],
                     "formal_parameter": p[3],
                     "basic_type": p[5]
+                }
+                p[0]["SymbolTable"] = {
+                    "token": p[2],
+                    "type": p[5]["SymbolTable"],
+                    "params": p[3]["SymbolTable"]["params"],
+                    "references": p[3]["SymbolTable"]["references"],
+                    "variables": p[3]["SymbolTable"]["variables"],
                 }
 
         def p_formal_parameter(p):
@@ -401,10 +521,20 @@ class Parser:
                     "type": "formal_parameter",
                     "parameter_list": p[2]
                 }
+                p[0]["SymbolTable"] = {
+                    "params": p[2]["SymbolTable"]["params"],
+                    "references": p[2]["SymbolTable"]["references"],
+                    "variables": p[2]["SymbolTable"]["variables"],
+                }
             else:
                 p[0] = {
                     "type": "formal_parameter",
                     "parameter_list": None
+                }
+                p[0]["SymbolTable"] = {
+                    "params": 0,
+                    "references": [],
+                    "variables": [],
                 }
 
         def p_parameter_list(p):
@@ -417,10 +547,20 @@ class Parser:
                     "type": "parameter_list",
                     "parameters": p[1]["parameters"] + [p[3]] if p[3] else p[1]["parameters"]
                 }
+                p[0]["SymbolTable"] = {
+                    "params": p[1]["SymbolTable"]["params"] + p[1]["SymbolTable"]["size"],
+                    "references": p[1]["SymbolTable"]["references"] + [p[3]["SymbolTable"]["references"]],
+                    "variables": p[1]["SymbolTable"]["variables"] + [p[3]["SymbolTable"]["variables"]],
+                }
             else:
                 p[0] = {
                     "type": "parameter_list",
                     "parameters": [p[1]]
+                }
+                p[0]["SymbolTable"] = {
+                    "params": p[1]["SymbolTable"]["size"],
+                    "references": [p[1]["SymbolTable"]["references"]],
+                    "variables": [p[1]["SymbolTable"]["variables"]],
                 }
 
         def p_parameter(p):
@@ -432,6 +572,7 @@ class Parser:
                 "type": "parameter",
                 "value": p[1]
             }
+            p[0]["SymbolTable"] = p[1]["SymbolTable"]
 
         def p_var_parameter(p):
             '''
@@ -440,6 +581,11 @@ class Parser:
             p[0] = {
                 "type": "var_parameter",
                 "value_parameter": p[2]
+            }
+            p[0]["SymbolTable"] = {
+                "references": [True for i in range(p[2]["SymbolTable"]["size"])],
+                "variables": p[2]["SymbolTable"]["variables"],
+                "size": p[2]["SymbolTable"]["size"]
             }
 
         def p_value_parameter(p):
@@ -451,6 +597,23 @@ class Parser:
                 "idlist": p[1],
                 "basic_type": p[3]
             }
+            p[0]["SymbolTable"] = {
+                "references": [False for i in range(len(p[1]["ids"]))],
+                "size": len(p[1]["ids"]),
+                "variables": []
+            }
+            for i in p[1]["ids"]:
+                p[0]["SymbolTable"]["variables"] = p[0]["SymbolTable"]["variables"] + [{
+                    "id": self.id,
+                    "token": i,
+                    "type": p[3]["SymbolTable"],
+                    "isArray": False,
+                    "dimension": 0,
+                    "size": [],
+                    "start": [],
+                    "recordType": None,
+                }]
+                self.id += 1
 
         def p_subprogram_body(p):
             '''
@@ -461,6 +624,10 @@ class Parser:
                 "const_declarations": p[1],
                 "var_declarations": p[2],
                 "compound_statement": p[3]
+            }
+            p[0]["SymbolTable"] = {
+                "constants": p[1]["SymbolTable"] if p[1] else [],
+                "variables": p[2]["SymbolTable"] if p[2] else [],
             }
 
         def p_compound_statement(p):
@@ -784,11 +951,43 @@ class Parser:
             multype : multype ID COLON type SEMICOLON
                     | ID COLON type SEMICOLON
             '''
-            p[0] = {
-                "type": "MULOP",
-                "_type": p[1],
-                "ID": p[2]
-            }
+            if len(p) == 6:
+                p[0] = {
+                    "type": "multype",
+                    "multype": p[1],
+                    "ID": p[1]["ID"] + [p[2]],
+                    "type": p[1]["type"] + [p[4]]
+                }
+                p[0]["SymbolTable"] = {
+                    "variables": p[1]["SymbolTable"]["variables"] + [{
+                        "id": self.id,
+                        "token": p[2],
+                        "type": p[4]["SymbolTable"]["type"],
+                        "isArray": p[4]["SymbolTable"]["isArray"],
+                        "dimension": p[4]["SymbolTable"]["dimension"],
+                        "size": p[4]["SymbolTable"]["size"],
+                        "start": p[4]["SymbolTable"]["start"],
+                        "recordTable": p[4]["SymbolTable"]["recordTable"]
+                    }]
+                }
+            else:
+                p[0] = {
+                    "type": "multype",
+                    "ID": [p[1]],
+                    "type": [p[3]]
+                }
+                p[0]["SymbolTable"] = {
+                    "variables": [{
+                        "id": self.id,
+                        "token": p[1],
+                        "type": p[3]["SymbolTable"]["type"],
+                        "isArray": p[3]["SymbolTable"]["isArray"],
+                        "dimension": p[3]["SymbolTable"]["dimension"],
+                        "size": p[3]["SymbolTable"]["size"],
+                        "start": p[3]["SymbolTable"]["start"],
+                        "recordTable": p[3]["SymbolTable"]["recordTable"]
+                    }]
+                }
 
         def p_error(p):
             print(f'Syntax error at line {p.lineno} : {p.value}')
@@ -812,5 +1011,6 @@ class Parser:
         self.error = None
         return {
             "ast": self.parser.parse(data),
+            "symbolTable": self.SymbolTable,
             "error": self.error,
         }
