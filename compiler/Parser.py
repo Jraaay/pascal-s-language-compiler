@@ -111,14 +111,16 @@ class Parser:
 
         def t_error(t):
             print(f'Illegal character at line {t.lineno} : {t.value}')
-            self.error = {
-                "type": "Syntax error",
+            if not self.error:
+                self.error = []
+            self.error.append({
+                "type": "Illegal character error",
                 "info": {
                     "line": t.lineno,
-                    "value": t.value,
+                    "value": t.value.split('\n')[0],
                     "lexpos": t.lexpos
                 }
-            }
+            })
             t.lexer.skip(1)
 
         lexer = lex(debug=debug)
@@ -970,6 +972,7 @@ class Parser:
                         "recordTable": p[4]["SymbolTable"]["recordTable"]
                     }]
                 }
+                self.id += 1
             else:
                 p[0] = {
                     "type": "multype",
@@ -988,17 +991,20 @@ class Parser:
                         "recordTable": p[3]["SymbolTable"]["recordTable"]
                     }]
                 }
+                self.id += 1
 
         def p_error(p):
             print(f'Syntax error at line {p.lineno} : {p.value}')
-            self.error = {
+            if not self.error:
+                self.error = []
+            self.error.append({
                 "type": "Syntax error",
                 "info": {
                     "line": p.lineno,
                     "value": p.value,
                     "lexpos": p.lexpos
                 }
-            }
+            })
 
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
@@ -1009,8 +1015,9 @@ class Parser:
             "subFunc": []
         }
         self.error = None
+        ast = self.parser.parse(data)
         return {
-            "ast": self.parser.parse(data),
+            "ast": ast,
             "symbolTable": self.SymbolTable,
             "error": self.error,
         }

@@ -1,0 +1,34 @@
+{
+    "ast": null,
+    "symbolTable": {
+        "constants": [],
+        "variables": [],
+        "subFunc": []
+    },
+    "error": [
+        {
+            "type": "Syntax error",
+            "info": {
+                "line": 33,
+                "value": "=",
+                "lexpos": 121
+            }
+        },
+        {
+            "type": "Illegal character error",
+            "info": {
+                "line": 39,
+                "value": "!",
+                "lexpos": 201
+            }
+        },
+        {
+            "type": "Illegal character error",
+            "info": {
+                "line": 40,
+                "value": "~",
+                "lexpos": 205
+            }
+        }
+    ]
+}

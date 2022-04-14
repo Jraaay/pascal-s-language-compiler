@@ -5,12 +5,14 @@
         "variables": [],
         "subFunc": []
     },
-    "error": {
-        "type": "Syntax error",
-        "info": {
-            "line": 20,
-            "value": "=",
-            "lexpos": 121
+    "error": [
+        {
+            "type": "Syntax error",
+            "info": {
+                "line": 20,
+                "value": "=",
+                "lexpos": 121
+            }
         }
-    }
+    ]
 }
