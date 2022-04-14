@@ -3,7 +3,7 @@ from ply.yacc import yacc
 import json
 
 
-class parser:
+class Parser:
     parser = None
     SymbolTable = {
         "constants": [],
@@ -11,7 +11,7 @@ class parser:
         "subFunc": []
     }
 
-    def __init__(self, debug=False):
+    def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
                   'DIGITS', 'ASSIGNOP', 'FOR', 'DO', 'QUO',
                   'UMINUS', 'RECORD', 'OF', 'NUM', 'EQUAL',
@@ -78,8 +78,9 @@ class parser:
         t_SEMICOLON = r';'
         t_ADDOP = r'(?i)\+|-|OR'
 
-        def t_annotation(t):
+        def t_ignore_COMMENT(t):
             r'\{.*\}|//.*|\(\*(.|\n)*\*\)'
+            t.lexer.lineno += t.value.count('\n')
             pass
 
         def t_NUM(t):
@@ -783,7 +784,7 @@ class parser:
         def p_error(p):
             print(f'Syntax error at {p.value!r}')
 
-        self.parser = yacc(debug=debug, write_tables=debug)
+        self.parser = yacc(debug=debug, write_tables=write_tables)
 
     def parse(self, data):
         self.SymbolTable = {

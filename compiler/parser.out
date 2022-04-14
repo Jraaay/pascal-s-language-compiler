@@ -23,7 +23,7 @@ Rule 17    var_declaration -> var_declaration SEMICOLON idlist COLON type
 Rule 18    var_declaration -> idlist COLON type
 Rule 19    type -> basic_type
 Rule 20    type -> ARRAY LBRACKET period RBRACKET OF basic_type
-Rule 21    type -> RECORD multype END SEMICOLON
+Rule 21    type -> RECORD multype END
 Rule 22    basic_type -> INTEGER
 Rule 23    basic_type -> REAL
 Rule 24    basic_type -> BOOLEAN
@@ -123,7 +123,7 @@ REAL                 : 23
 RECORD               : 21
 RELOP                : 65
 RPAREN               : 2 33 50 51 60 75 76
-SEMICOLON            : 1 7 9 15 17 21 28 30 35 43 79 80
+SEMICOLON            : 1 7 9 15 17 28 30 35 43 79 80
 THEN                 : 48
 TO                   : 49
 UMINUS               : 78
@@ -499,7 +499,7 @@ state 31
     (18) var_declaration -> idlist COLON . type
     (19) type -> . basic_type
     (20) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
-    (21) type -> . RECORD multype END SEMICOLON
+    (21) type -> . RECORD multype END
     (22) basic_type -> . INTEGER
     (23) basic_type -> . REAL
     (24) basic_type -> . BOOLEAN
@@ -787,7 +787,7 @@ state 57
 
 state 58
 
-    (21) type -> RECORD . multype END SEMICOLON
+    (21) type -> RECORD . multype END
     (79) multype -> . multype ID COLON type SEMICOLON
     (80) multype -> . ID COLON type SEMICOLON
 
@@ -1367,7 +1367,7 @@ state 92
     (17) var_declaration -> var_declaration SEMICOLON idlist COLON . type
     (19) type -> . basic_type
     (20) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
-    (21) type -> . RECORD multype END SEMICOLON
+    (21) type -> . RECORD multype END
     (22) basic_type -> . INTEGER
     (23) basic_type -> . REAL
     (24) basic_type -> . BOOLEAN
@@ -1395,7 +1395,7 @@ state 93
 
 state 94
 
-    (21) type -> RECORD multype . END SEMICOLON
+    (21) type -> RECORD multype . END
     (79) multype -> multype . ID COLON type SEMICOLON
 
     END             shift and go to state 129
@@ -1891,16 +1891,16 @@ state 128
 
 state 129
 
-    (21) type -> RECORD multype END . SEMICOLON
+    (21) type -> RECORD multype END .
 
-    SEMICOLON       shift and go to state 156
+    SEMICOLON       reduce using rule 21 (type -> RECORD multype END .)
 
 
 state 130
 
     (79) multype -> multype ID . COLON type SEMICOLON
 
-    COLON           shift and go to state 157
+    COLON           shift and go to state 156
 
 
 state 131
@@ -1908,7 +1908,7 @@ state 131
     (80) multype -> ID COLON . type SEMICOLON
     (19) type -> . basic_type
     (20) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
-    (21) type -> . RECORD multype END SEMICOLON
+    (21) type -> . RECORD multype END
     (22) basic_type -> . INTEGER
     (23) basic_type -> . REAL
     (24) basic_type -> . BOOLEAN
@@ -1921,7 +1921,7 @@ state 131
     BOOLEAN         shift and go to state 61
     CHAR            shift and go to state 62
 
-    type                           shift and go to state 158
+    type                           shift and go to state 157
     basic_type                     shift and go to state 56
 
 state 132
@@ -1931,13 +1931,13 @@ state 132
     (62) else_part -> .
 
   ! shift/reduce conflict for ELSE resolved as shift
-    ELSE            shift and go to state 160
+    ELSE            shift and go to state 159
     END             reduce using rule 62 (else_part -> .)
     SEMICOLON       reduce using rule 62 (else_part -> .)
 
   ! ELSE            [ reduce using rule 62 (else_part -> .) ]
 
-    else_part                      shift and go to state 159
+    else_part                      shift and go to state 158
 
 state 133
 
@@ -2017,7 +2017,7 @@ state 137
     (75) factor -> ID LPAREN expression_list . RPAREN
     (63) expression_list -> expression_list . COM expression
 
-    RPAREN          shift and go to state 161
+    RPAREN          shift and go to state 160
     COM             shift and go to state 139
 
 
@@ -2066,7 +2066,7 @@ state 139
     NOT             shift and go to state 78
     UMINUS          shift and go to state 79
 
-    expression                     shift and go to state 162
+    expression                     shift and go to state 161
     simple_expression              shift and go to state 70
     term                           shift and go to state 71
     factor                         shift and go to state 72
@@ -2076,7 +2076,7 @@ state 140
 
     (49) statement -> FOR ID ASSIGNOP expression . TO expression DO statement
 
-    TO              shift and go to state 163
+    TO              shift and go to state 162
 
 
 state 141
@@ -2124,7 +2124,7 @@ state 144
 
     ID              shift and go to state 115
 
-    variable                       shift and go to state 164
+    variable                       shift and go to state 163
 
 state 145
 
@@ -2172,7 +2172,7 @@ state 149
     VAR             shift and go to state 123
     ID              shift and go to state 15
 
-    parameter                      shift and go to state 165
+    parameter                      shift and go to state 164
     var_parameter                  shift and go to state 121
     value_parameter                shift and go to state 122
     idlist                         shift and go to state 124
@@ -2198,7 +2198,7 @@ state 151
     BOOLEAN         shift and go to state 61
     CHAR            shift and go to state 62
 
-    basic_type                     shift and go to state 166
+    basic_type                     shift and go to state 165
 
 state 152
 
@@ -2211,36 +2211,29 @@ state 153
 
     (20) type -> ARRAY LBRACKET period RBRACKET . OF basic_type
 
-    OF              shift and go to state 167
+    OF              shift and go to state 166
 
 
 state 154
 
     (26) period -> period COM . DIGITS POINTTO DIGITS
 
-    DIGITS          shift and go to state 168
+    DIGITS          shift and go to state 167
 
 
 state 155
 
     (27) period -> DIGITS POINTTO . DIGITS
 
-    DIGITS          shift and go to state 169
+    DIGITS          shift and go to state 168
 
 
 state 156
 
-    (21) type -> RECORD multype END SEMICOLON .
-
-    SEMICOLON       reduce using rule 21 (type -> RECORD multype END SEMICOLON .)
-
-
-state 157
-
     (79) multype -> multype ID COLON . type SEMICOLON
     (19) type -> . basic_type
     (20) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
-    (21) type -> . RECORD multype END SEMICOLON
+    (21) type -> . RECORD multype END
     (22) basic_type -> . INTEGER
     (23) basic_type -> . REAL
     (24) basic_type -> . BOOLEAN
@@ -2253,17 +2246,17 @@ state 157
     BOOLEAN         shift and go to state 61
     CHAR            shift and go to state 62
 
-    type                           shift and go to state 170
+    type                           shift and go to state 169
     basic_type                     shift and go to state 56
 
-state 158
+state 157
 
     (80) multype -> ID COLON type . SEMICOLON
 
-    SEMICOLON       shift and go to state 171
+    SEMICOLON       shift and go to state 170
 
 
-state 159
+state 158
 
     (48) statement -> IF expression THEN statement else_part .
 
@@ -2272,7 +2265,7 @@ state 159
     ELSE            reduce using rule 48 (statement -> IF expression THEN statement else_part .)
 
 
-state 160
+state 159
 
     (61) else_part -> ELSE . statement
     (45) statement -> . variable ASSIGNOP expression
@@ -2300,12 +2293,12 @@ state 160
     ID              shift and go to state 47
     BEGIN           shift and go to state 26
 
-    statement                      shift and go to state 172
+    statement                      shift and go to state 171
     variable                       shift and go to state 42
     procedure_call                 shift and go to state 43
     compound_statement             shift and go to state 44
 
-state 161
+state 160
 
     (75) factor -> ID LPAREN expression_list RPAREN .
 
@@ -2324,7 +2317,7 @@ state 161
     TO              reduce using rule 75 (factor -> ID LPAREN expression_list RPAREN .)
 
 
-state 162
+state 161
 
     (63) expression_list -> expression_list COM expression .
 
@@ -2333,7 +2326,7 @@ state 162
     RBRACKET        reduce using rule 63 (expression_list -> expression_list COM expression .)
 
 
-state 163
+state 162
 
     (49) statement -> FOR ID ASSIGNOP expression TO . expression DO statement
     (65) expression -> . simple_expression RELOP simple_expression
@@ -2359,13 +2352,13 @@ state 163
     NOT             shift and go to state 78
     UMINUS          shift and go to state 79
 
-    expression                     shift and go to state 173
+    expression                     shift and go to state 172
     simple_expression              shift and go to state 70
     term                           shift and go to state 71
     factor                         shift and go to state 72
     variable                       shift and go to state 75
 
-state 164
+state 163
 
     (54) variable_list -> variable_list COM variable .
 
@@ -2373,7 +2366,7 @@ state 164
     COM             reduce using rule 54 (variable_list -> variable_list COM variable .)
 
 
-state 165
+state 164
 
     (35) parameter_list -> parameter_list SEMICOLON parameter .
 
@@ -2381,7 +2374,7 @@ state 165
     SEMICOLON       reduce using rule 35 (parameter_list -> parameter_list SEMICOLON parameter .)
 
 
-state 166
+state 165
 
     (40) value_parameter -> idlist COLON basic_type .
 
@@ -2389,7 +2382,7 @@ state 166
     SEMICOLON       reduce using rule 40 (value_parameter -> idlist COLON basic_type .)
 
 
-state 167
+state 166
 
     (20) type -> ARRAY LBRACKET period RBRACKET OF . basic_type
     (22) basic_type -> . INTEGER
@@ -2402,16 +2395,16 @@ state 167
     BOOLEAN         shift and go to state 61
     CHAR            shift and go to state 62
 
-    basic_type                     shift and go to state 174
+    basic_type                     shift and go to state 173
 
-state 168
+state 167
 
     (26) period -> period COM DIGITS . POINTTO DIGITS
 
-    POINTTO         shift and go to state 175
+    POINTTO         shift and go to state 174
 
 
-state 169
+state 168
 
     (27) period -> DIGITS POINTTO DIGITS .
 
@@ -2419,14 +2412,14 @@ state 169
     COM             reduce using rule 27 (period -> DIGITS POINTTO DIGITS .)
 
 
-state 170
+state 169
 
     (79) multype -> multype ID COLON type . SEMICOLON
 
-    SEMICOLON       shift and go to state 176
+    SEMICOLON       shift and go to state 175
 
 
-state 171
+state 170
 
     (80) multype -> ID COLON type SEMICOLON .
 
@@ -2434,7 +2427,7 @@ state 171
     ID              reduce using rule 80 (multype -> ID COLON type SEMICOLON .)
 
 
-state 172
+state 171
 
     (61) else_part -> ELSE statement .
 
@@ -2443,28 +2436,28 @@ state 172
     SEMICOLON       reduce using rule 61 (else_part -> ELSE statement .)
 
 
-state 173
+state 172
 
     (49) statement -> FOR ID ASSIGNOP expression TO expression . DO statement
 
-    DO              shift and go to state 177
+    DO              shift and go to state 176
 
 
-state 174
+state 173
 
     (20) type -> ARRAY LBRACKET period RBRACKET OF basic_type .
 
     SEMICOLON       reduce using rule 20 (type -> ARRAY LBRACKET period RBRACKET OF basic_type .)
 
 
-state 175
+state 174
 
     (26) period -> period COM DIGITS POINTTO . DIGITS
 
-    DIGITS          shift and go to state 178
+    DIGITS          shift and go to state 177
 
 
-state 176
+state 175
 
     (79) multype -> multype ID COLON type SEMICOLON .
 
@@ -2472,7 +2465,7 @@ state 176
     ID              reduce using rule 79 (multype -> multype ID COLON type SEMICOLON .)
 
 
-state 177
+state 176
 
     (49) statement -> FOR ID ASSIGNOP expression TO expression DO . statement
     (45) statement -> . variable ASSIGNOP expression
@@ -2500,12 +2493,12 @@ state 177
     ID              shift and go to state 47
     BEGIN           shift and go to state 26
 
-    statement                      shift and go to state 179
+    statement                      shift and go to state 178
     variable                       shift and go to state 42
     procedure_call                 shift and go to state 43
     compound_statement             shift and go to state 44
 
-state 178
+state 177
 
     (26) period -> period COM DIGITS POINTTO DIGITS .
 
@@ -2513,7 +2506,7 @@ state 178
     COM             reduce using rule 26 (period -> period COM DIGITS POINTTO DIGITS .)
 
 
-state 179
+state 178
 
     (49) statement -> FOR ID ASSIGNOP expression TO expression DO statement .
 
