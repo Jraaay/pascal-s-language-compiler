@@ -1,6 +1,10 @@
 from compiler import Parser
 import os
 import json
+import sanic
+
+app = sanic.Sanic(__name__)
+
 
 def main():
     parser = Parser.Parser(debug=True)
@@ -26,5 +30,19 @@ def main():
                     with open(test_file_path.replace(".pas", ".out"), "w") as f:
                         json.dump(ans, f, indent=4)
 
+
+@app.route("/", methods=["POST"])
+async def pascal2c(request):
+    code = request.body.decode("utf-8")
+    code = code.replace("\r\n", "\n")
+    if code is None:
+        return sanic.response.json({"error": "No code provided"})
+    ans = app.config['parser'].parse(code)
+    return sanic.response.json(ans)
+
+
 if __name__ == "__main__":
-    main()
+    # main()
+    parser = Parser.Parser(debug=False)
+    app.config['parser'] = parser
+    app.run()
