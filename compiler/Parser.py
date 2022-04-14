@@ -1008,6 +1008,18 @@ class Parser:
 
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
+    def _removeSymbolTable(self, p):
+        if type(p) == dict:
+            if "SymbolTable" in p:
+                del p["SymbolTable"]
+            for key in p:
+                if type(p[key]) == list:
+                    for item in p[key]:
+                        if type(item) == dict:
+                            self._removeSymbolTable(item)
+                elif type(p[key]) == dict:
+                    self._removeSymbolTable(p[key])
+
     def parse(self, data):
         self.SymbolTable = {
             "constants": [],
@@ -1016,6 +1028,7 @@ class Parser:
         }
         self.error = None
         ast = self.parser.parse(data)
+        self._removeSymbolTable(ast)
         return {
             "ast": ast,
             "symbolTable": self.SymbolTable,
