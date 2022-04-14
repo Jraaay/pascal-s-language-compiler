@@ -108,7 +108,7 @@ class Parser:
             t.lexer.lineno += t.value.count('\n')
 
         def t_error(t):
-            print(f'Illegal character {t.value[0]!r}')
+            print(f'Illegal character at line {t.lineno} : {t.value}')
             t.lexer.skip(1)
 
         lexer = lex(debug=debug)
@@ -782,7 +782,7 @@ class Parser:
             }
 
         def p_error(p):
-            print(f'Syntax error at {p.value!r}')
+            print(f'Syntax error at line {p.lineno} : {p.value}')
 
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
