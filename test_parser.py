@@ -103,3 +103,39 @@ class TestParser(object):
         with open('./test/record.out') as f:
             expected = json.load(f)
         assert ans == expected
+
+    def test_parser_record_period_error(self):
+        """
+        id="69"
+        """
+        ans = None
+        expected = None
+        with open('./test/record_period_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./test/record_period_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+    
+    def test_parser_gcd_c02_error(self):
+        """
+        id="72"
+        """
+        ans = None
+        expected = None
+        with open('./test/gcd_c02_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./test/gcd_c02_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+    
+    def test_parser_gcd_c03_error(self):
+        """
+        id="75"
+        """
+        ans = None
+        expected = None
+        with open('./test/gcd_c03_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./test/gcd_c03_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
