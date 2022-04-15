@@ -42,7 +42,7 @@ async def pascal2c(request):
 
 
 if __name__ == "__main__":
-    # main()
+    main()
     parser = Parser.Parser(debug=False)
     app.config['parser'] = parser
     app.run()
