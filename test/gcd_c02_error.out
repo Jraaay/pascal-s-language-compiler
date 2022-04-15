@@ -33,7 +33,7 @@
                                 "type": "type",
                                 "_type": {
                                     "type": "basic_type",
-                                    "_type": "integer"
+                                    "_type": "INTEGER"
                                 }
                             }
                         }
@@ -68,7 +68,7 @@
                                                 },
                                                 "basic_type": {
                                                     "type": "basic_type",
-                                                    "_type": "integer"
+                                                    "_type": "INTEGER"
                                                 }
                                             }
                                         }
@@ -77,7 +77,7 @@
                             },
                             "basic_type": {
                                 "type": "basic_type",
-                                "_type": "integer"
+                                "_type": "INTEGER"
                             }
                         },
                         "subprogram_body": {

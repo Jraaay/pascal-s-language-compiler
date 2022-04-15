@@ -544,7 +544,7 @@ class Parser:
             '''
             p[0] = {
                 "type": "basic_type",
-                "_type": p[1]
+                "_type": p[1].upper()
             }
             p[0]["SymbolTable"] = p[1].upper()
 
