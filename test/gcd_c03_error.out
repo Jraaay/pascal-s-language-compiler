@@ -17,6 +17,7 @@
             "const_declarations": {
                 "type": "const_declarations",
                 "const_declaration": {
+                    "id": 0,
                     "type": "const_declaration",
                     "values": [
                         {
@@ -33,6 +34,7 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
+                    "id": 1,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -59,6 +61,7 @@
                 "type": "subprogram_declarations",
                 "subprograms": [
                     {
+                        "id": 6,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -384,7 +387,7 @@
             {
                 "id": 1,
                 "token": "a",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -394,7 +397,7 @@
             {
                 "id": 2,
                 "token": "x",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -404,7 +407,7 @@
             {
                 "id": 3,
                 "token": "y",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -416,7 +419,7 @@
             {
                 "id": 6,
                 "token": "gcd",
-                "type": "integer",
+                "type": "INTEGER",
                 "table": {
                     "params": 2,
                     "references": [
@@ -430,7 +433,7 @@
                         {
                             "id": 4,
                             "token": "a",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -440,7 +443,7 @@
                         {
                             "id": 5,
                             "token": "b",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],

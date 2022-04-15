@@ -18,6 +18,7 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
+                    "id": 1,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -65,6 +66,7 @@
                 "type": "subprogram_declarations",
                 "subprograms": [
                     {
+                        "id": 4,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -81,6 +83,7 @@
                             "var_declarations": {
                                 "type": "var_declarations",
                                 "var_declaration": {
+                                    "id": 3,
                                     "type": "var_declaration",
                                     "values": [
                                         {
@@ -310,6 +313,7 @@
                         }
                     },
                     {
+                        "id": 11,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -347,6 +351,7 @@
                             "var_declarations": {
                                 "type": "var_declarations",
                                 "var_declaration": {
+                                    "id": 7,
                                     "type": "var_declaration",
                                     "values": [
                                         {
@@ -1588,7 +1593,7 @@
             {
                 "id": 0,
                 "token": "a",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": true,
                 "dimension": 1,
                 "size": [
@@ -1602,7 +1607,7 @@
             {
                 "id": 1,
                 "token": "x",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -1612,7 +1617,7 @@
             {
                 "id": 2,
                 "token": "y",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -1633,7 +1638,7 @@
                         {
                             "id": 3,
                             "token": "i",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1660,7 +1665,7 @@
                         {
                             "id": 5,
                             "token": "l",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1670,7 +1675,7 @@
                         {
                             "id": 6,
                             "token": "h",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1680,7 +1685,7 @@
                         {
                             "id": 7,
                             "token": "i",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1690,7 +1695,7 @@
                         {
                             "id": 8,
                             "token": "j",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1700,7 +1705,7 @@
                         {
                             "id": 9,
                             "token": "k",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -1710,7 +1715,7 @@
                         {
                             "id": 10,
                             "token": "m",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],

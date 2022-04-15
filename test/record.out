@@ -18,6 +18,7 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
+                    "id": 6,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -31,6 +32,7 @@
                                 "type": "type",
                                 "_type": "RECORD",
                                 "multype": {
+                                    "id": 3,
                                     "type": [
                                         {
                                             "type": "type",
@@ -83,6 +85,7 @@
                                         }
                                     ],
                                     "multype": {
+                                        "id": 2,
                                         "type": [
                                             {
                                                 "type": "type",
@@ -128,6 +131,7 @@
                                             }
                                         ],
                                         "multype": {
+                                            "id": 1,
                                             "type": [
                                                 {
                                                     "type": "type",
@@ -159,6 +163,7 @@
                                                 }
                                             ],
                                             "multype": {
+                                                "id": 0,
                                                 "type": [
                                                     {
                                                         "type": "type",
@@ -379,7 +384,7 @@
                         {
                             "id": 0,
                             "token": "title",
-                            "type": "char",
+                            "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
                             "size": [
@@ -393,7 +398,7 @@
                         {
                             "id": 1,
                             "token": "author",
-                            "type": "char",
+                            "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
                             "size": [
@@ -407,7 +412,7 @@
                         {
                             "id": 2,
                             "token": "subject",
-                            "type": "char",
+                            "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
                             "size": [
@@ -421,7 +426,7 @@
                         {
                             "id": 3,
                             "token": "bookid",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -434,7 +439,7 @@
             {
                 "id": 5,
                 "token": "a",
-                "type": "char",
+                "type": "CHAR",
                 "isArray": true,
                 "dimension": 1,
                 "size": [
@@ -448,7 +453,7 @@
             {
                 "id": 6,
                 "token": "b",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],

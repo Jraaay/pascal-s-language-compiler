@@ -18,6 +18,7 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
+                    "id": 0,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -43,6 +44,7 @@
                 "type": "subprogram_declarations",
                 "subprograms": [
                     {
+                        "id": 4,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -356,7 +358,7 @@
             {
                 "id": 0,
                 "token": "x",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -366,7 +368,7 @@
             {
                 "id": 1,
                 "token": "y",
-                "type": "integer",
+                "type": "INTEGER",
                 "isArray": false,
                 "dimension": 0,
                 "size": [],
@@ -378,7 +380,7 @@
             {
                 "id": 4,
                 "token": "gcd",
-                "type": "integer",
+                "type": "INTEGER",
                 "table": {
                     "params": 2,
                     "references": [
@@ -392,7 +394,7 @@
                         {
                             "id": 2,
                             "token": "a",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],
@@ -402,7 +404,7 @@
                         {
                             "id": 3,
                             "token": "b",
-                            "type": "integer",
+                            "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],

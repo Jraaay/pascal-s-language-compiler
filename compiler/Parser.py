@@ -301,6 +301,7 @@ class Parser:
             const_declaration : const_declaration SEMICOLON ID EQUAL const_value
             '''
             p[0] = {
+                        "id": self.id,
                 "type": "const_declaration",
                 "values": p[1]["values"] + [{
                     "ID": p[3],
@@ -310,7 +311,7 @@ class Parser:
             p[0]["SymbolTable"] = p[1]["SymbolTable"] + [{
                 "id": self.id,
                 "token": p[3],
-                "type": "digits" if type(p[5]) == int else ("NUM" if type(p[5]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
                 "value": p[5],
                 "positive": True if type(p[5]) != str and p[5] > 0 else False
             }]
@@ -343,6 +344,7 @@ class Parser:
             const_declaration : ID EQUAL const_value
             '''
             p[0] = {
+                        "id": self.id,
                 "type": "const_declaration",
                 "values": [{
                     "ID": p[1],
@@ -441,6 +443,7 @@ class Parser:
             '''
             if len(p) == 6:
                 p[0] = {
+                        "id": self.id,
                     "type": "var_declaration",
                     "values": p[1]["values"] + [{
                         "idlist": p[3],
@@ -462,6 +465,7 @@ class Parser:
                     self.id += 1
             else:
                 p[0] = {
+                        "id": self.id,
                     "type": "var_declaration",
                     "values": [{
                         "idlist": p[1],
@@ -542,7 +546,7 @@ class Parser:
                 "type": "basic_type",
                 "_type": p[1]
             }
-            p[0]["SymbolTable"] = p[1]
+            p[0]["SymbolTable"] = p[1].upper()
 
         def p_period(p):
             '''
@@ -622,6 +626,7 @@ class Parser:
             subprogram : subprogram_head SEMICOLON subprogram_body
             '''
             p[0] = {
+                        "id": self.id,
                 "type": "subprogram",
                 "subprogram_head": p[1],
                 "subprogram_body": p[3]
@@ -690,7 +695,6 @@ class Parser:
             self.subSymbol = [p[3]]
             for i in p[0]["SymbolTable"]["variables"]:
                 self.subSymbol += [i["token"]]
-
 
         def p_formal_parameter(p):
             '''
@@ -1156,6 +1160,7 @@ class Parser:
             '''
             if len(p) == 6:
                 p[0] = {
+                    "id": self.id,
                     "type": "multype",
                     "multype": p[1],
                     "ID": p[1]["ID"] + [p[2]],
@@ -1176,6 +1181,7 @@ class Parser:
                 self.id += 1
             else:
                 p[0] = {
+                    "id": self.id,
                     "type": "multype",
                     "ID": [p[1]],
                     "type": [p[3]]
