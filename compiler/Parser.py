@@ -183,6 +183,7 @@ class Parser:
             programstruct : program_head SEMICOLON program_body POINT
             '''
             p[0] = {
+                "length": len(p),
                 "type": "programstruct",
                 "program_head": p[1],
                 "program_body": p[3]
@@ -198,6 +199,7 @@ class Parser:
             program_head : PROGRAM ID LPAREN idlist RPAREN
             '''
             p[0] = {
+                "length": len(p),
                 "type": "program_head",
                 "ID": p[2],
                 "idlist": p[4]
@@ -208,6 +210,7 @@ class Parser:
             program_head : PROGRAM ID
             '''
             p[0] = {
+                "length": len(p),
                 "type": "program_head",
                 "ID": p[2],
                 "idlist": []
@@ -218,6 +221,7 @@ class Parser:
             program_body : const_declarations var_declarations subprogram_declarations compound_statement
             '''
             p[0] = {
+                "length": len(p),
                 "type": "program_body",
                 "const_declarations": p[1],
                 "var_declarations": p[2],
@@ -235,6 +239,7 @@ class Parser:
             idlist : idlist COM ID
             '''
             p[0] = {
+                "length": len(p),
                 "type": "idlist",
                 "ids": p[1]["ids"] + [p[3]] if p[3] else p[1]["ids"]
             }
@@ -266,6 +271,7 @@ class Parser:
             idlist : ID
             '''
             p[0] = {
+                "length": len(p),
                 "type": "idlist",
                 "ids": [p[1]]
             }
@@ -299,6 +305,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "const_declarations",
                     "const_declaration": p[2]
                 }
@@ -320,6 +327,7 @@ class Parser:
             const_declaration : const_declaration SEMICOLON ID EQUAL const_value
             '''
             p[0] = {
+                "length": len(p),
                 "id": self.id,
                 "type": "const_declaration",
                 "values": p[1]["values"] + [{
@@ -370,6 +378,7 @@ class Parser:
             const_declaration : ID EQUAL const_value
             '''
             p[0] = {
+                "length": len(p),
                 "id": self.id,
                 "type": "const_declaration",
                 "values": [{
@@ -421,6 +430,7 @@ class Parser:
                         | ADDOP DIGITS
             '''
             p[0] = {
+                "length": len(p),
                 "type": "const_value",
                 "_type": "NUM",
                 "value": p[2] if p[1] == '+' else -p[2]
@@ -432,6 +442,7 @@ class Parser:
                         | DIGITS
             '''
             p[0] = {
+                "length": len(p),
                 "type": "const_value",
                 "_type": "NUM",
                 "value": p[1]
@@ -442,6 +453,7 @@ class Parser:
             const_value : QUO LETTER QUO
             '''
             p[0] = {
+                "length": len(p),
                 "type": "const_value",
                 "_type": "LETTER",
                 "value": p[2]
@@ -454,6 +466,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "var_declarations",
                     "var_declaration": p[2]
                 }
@@ -467,7 +480,7 @@ class Parser:
                     for i in p[0]["SymbolTable"]:
                         self.subSymbol[i["token"]] = i["id"]
             else:
-                p[0] = []
+                p[0] = None
 
         def p_var_declaration(p):
             '''
@@ -476,6 +489,7 @@ class Parser:
             '''
             if len(p) == 6:
                 p[0] = {
+                    "length": len(p),
                     "type": "var_declaration",
                     "values": p[1]["values"] + [{
                         "idlist": p[3],
@@ -507,6 +521,7 @@ class Parser:
                     self.id += 1
             else:
                 p[0] = {
+                    "length": len(p),
                     "id": self.id,
                     "type": "var_declaration",
                     "values": [{
@@ -546,6 +561,7 @@ class Parser:
             '''
             if not type(p[1]) == dict and p[1].upper() == 'ARRAY':
                 p[0] = {
+                    "length": len(p),
                     "type": "type",
                     "_type": "ARRAY",
                     "period": p[3],
@@ -561,6 +577,7 @@ class Parser:
                 }
             elif not type(p[1]) == dict and p[1].upper() == 'RECORD':
                 p[0] = {
+                    "length": len(p),
                     "type": "type",
                     "_type": "RECORD",
                     "multype": p[2]
@@ -575,6 +592,7 @@ class Parser:
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "type",
                     "_type": p[1]
                 }
@@ -618,6 +636,7 @@ class Parser:
                         }
                     }]
                 p[0] = {
+                    "length": len(p),
                     "type": "period",
                     "values": p[1]["values"] + [{
                         "start": p[3],
@@ -642,6 +661,7 @@ class Parser:
                         }
                     }]
                 p[0] = {
+                    "length": len(p),
                     "type": "period",
                     "values": [{
                         "start": p[1],
@@ -662,12 +682,14 @@ class Parser:
             self.inSubFun = False
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "subprogram_declarations",
                     "subprograms": p[1]["subprograms"] + [p[2]] if p[2] else p[1]["subprograms"]
                 }
                 p[0]["SymbolTable"] = p[1]["SymbolTable"] + [p[2]["SymbolTable"]]
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "subprogram_declarations",
                     "subprograms": []
                 }
@@ -678,6 +700,7 @@ class Parser:
             subprogram : subprogram_head SEMICOLON subprogram_body
             '''
             p[0] = {
+                "length": len(p),
                 "id": p[1]["SymbolTable"]["id"],
                 "type": "subprogram",
                 "subprogram_head": p[1],
@@ -717,6 +740,7 @@ class Parser:
             '''
             if not type(p[1]) == dict and p[1].upper() == 'PROCEDURE':
                 p[0] = {
+                    "length": len(p),
                     "type": "subprogram_head",
                     "_type": "PROCEDURE",
                     "ID": p[3],
@@ -746,6 +770,7 @@ class Parser:
                 self.id += 1
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
                 p[0] = {
+                    "length": len(p),
                     "type": "subprogram_head",
                     "_type": "FUNCTION",
                     "ID": p[3],
@@ -785,6 +810,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "formal_parameter",
                     "parameter_list": p[2]
                 }
@@ -795,6 +821,7 @@ class Parser:
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "formal_parameter",
                     "parameter_list": None
                 }
@@ -811,6 +838,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "parameter_list",
                     "parameters": p[1]["parameters"] + [p[3]] if p[3] else p[1]["parameters"]
                 }
@@ -821,6 +849,7 @@ class Parser:
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "parameter_list",
                     "parameters": [p[1]]
                 }
@@ -836,6 +865,7 @@ class Parser:
                     | value_parameter
             '''
             p[0] = {
+                "length": len(p),
                 "type": "parameter",
                 "value": p[1]
             }
@@ -846,6 +876,7 @@ class Parser:
             var_parameter : VAR value_parameter
             '''
             p[0] = {
+                "length": len(p),
                 "type": "var_parameter",
                 "value_parameter": p[2]
             }
@@ -860,6 +891,7 @@ class Parser:
             value_parameter : idlist COLON basic_type
             '''
             p[0] = {
+                "length": len(p),
                 "type": "value_parameter",
                 "idlist": p[1],
                 "basic_type": p[3]
@@ -897,6 +929,7 @@ class Parser:
             subprogram_body : const_declarations var_declarations compound_statement
             '''
             p[0] = {
+                "length": len(p),
                 "type": "subprogram_body",
                 "const_declarations": p[1],
                 "var_declarations": p[2],
@@ -912,6 +945,7 @@ class Parser:
             compound_statement : BEGIN statement_list END
             '''
             p[0] = {
+                "length": len(p),
                 "type": "compound_statement",
                 "statement_list": p[2]
             }
@@ -923,11 +957,13 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "statement_list",
                     "statements": p[1]["statements"] + [p[3]] if p[3] else p[1]["statements"]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "statement_list",
                     "statements": [p[1]]
                 }
@@ -948,6 +984,7 @@ class Parser:
                 p[0] = None
             elif not type(p[1]) == dict and p[1].upper() == 'IF':
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "IF",
                     "expression": p[2],
@@ -956,6 +993,7 @@ class Parser:
                 }
             elif not type(p[1]) == dict and p[1].upper() == 'FOR':
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "FOR",
                     "ID": p[2],
@@ -1013,18 +1051,21 @@ class Parser:
                             }]
             elif not type(p[1]) == dict and p[1].upper() == 'READ':
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "READ",
                     "variable_list": p[3]
                 }
             elif not type(p[1]) == dict and p[1].upper() == 'WRITE':
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "WRITE",
                     "expression_list": p[3]
                 }
             elif not type(p[1]) == dict and p[1].upper() == 'WHILE':
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "WHILE",
                     "expression": p[2],
@@ -1032,6 +1073,7 @@ class Parser:
                 }
             elif p[1]["type"] == "variable":
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "variable",
                     "variable": p[1],
@@ -1098,12 +1140,14 @@ class Parser:
                         }]
             elif p[1]["type"] == "procedure_call":
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "procedure_call",
                     "procedure_call": p[1]
                 }
             elif p[1]["type"] == "compound_statement":
                 p[0] = {
+                    "length": len(p),
                     "type": "statement",
                     "_type": "compound_statement",
                     "compound_statement": p[1]
@@ -1118,11 +1162,13 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "variable_list",
                     "variables": p[1]["variables"] + [p[3]] if p[3] else p[1]["variables"]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "variable_list",
                     "variables": [p[1]]
                 }
@@ -1132,6 +1178,7 @@ class Parser:
             variable : ID id_varpart
             '''
             p[0] = {
+                "length": len(p),
                 "type": "variable",
                 "__type": self.search_symbol(p[1])["type"] if self.search_symbol(p[1]) else "UNDEFINED",
                 "ID": p[1],
@@ -1196,11 +1243,13 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "id_varpart",
                     "expression_list": p[2]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "id_varpart",
                     "expression_list": None
                 }
@@ -1212,11 +1261,13 @@ class Parser:
             '''
             if len(p) == 2:
                 p[0] = {
+                    "length": len(p),
                     "type": "procedure_call",
                     "ID": p[1]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "procedure_call",
                     "ID": p[1],
                     "expression_list": p[3]
@@ -1229,11 +1280,13 @@ class Parser:
             '''
             if len(p) == 3:
                 p[0] = {
+                    "length": len(p),
                     "type": "else_part",
                     "statement": p[2]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "else_part",
                     "statement": None
                 }
@@ -1245,12 +1298,14 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "expression_list",
                     "__type": p[1]["__type"] + [p[3]["__type"] if p[3] else None],
                     "expressions": p[1]["expressions"] + [p[3]] if p[3] else p[1]["expressions"]
                 }
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "expression_list",
                     "__type": [p[1]["__type"]],
                     "expressions": [p[1]]
@@ -1263,6 +1318,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "expression",
                     "__type": "BOOLEAN",
                     "simple_expression_1": p[1],
@@ -1291,6 +1347,7 @@ class Parser:
                     }]
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "expression",
                     "__type": p[1]["__type"],
                     "simple_expression": p[1]
@@ -1301,6 +1358,7 @@ class Parser:
             expression : simple_expression EQUAL simple_expression
             '''
             p[0] = {
+                "length": len(p),
                 "type": "expression",
                 "simple_expression_1": p[1],
                 "RELOP": p[2],
@@ -1324,6 +1382,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "simple_expression",
                     "simple_expression": p[1],
                     "ADDOP": p[2],
@@ -1373,6 +1432,7 @@ class Parser:
                     p[0]["__type"] = "UNDEFINED"
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "simple_expression",
                     "__type": p[1]["__type"],
                     "term": p[1]
@@ -1385,6 +1445,7 @@ class Parser:
             '''
             if len(p) == 4:
                 p[0] = {
+                    "length": len(p),
                     "type": "term",
                     "term": p[1],
                     "factor": p[3]
@@ -1433,6 +1494,7 @@ class Parser:
                     p[0]["__type"] = "UNDEFINED"
             else:
                 p[0] = {
+                    "length": len(p),
                     "type": "term",
                     "__type": p[1]["__type"],
                     "factor": p[1]
@@ -1444,6 +1506,7 @@ class Parser:
                    | DIGITS
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "NUM",
                 "__type": "INTEGER" if type(p[1]) == int else "REAL",
@@ -1455,6 +1518,7 @@ class Parser:
             factor : variable
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "variable",
                 "__type": p[1]["__type"],
@@ -1466,6 +1530,7 @@ class Parser:
             factor : ID LPAREN expression_list RPAREN
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "procedure_id",
                 "__type": self.subFuncMap[p[1]]["type"],
@@ -1527,6 +1592,7 @@ class Parser:
             factor : LPAREN expression RPAREN
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "expression",
                 "__type": p[2]["__type"],
@@ -1538,6 +1604,7 @@ class Parser:
             factor : NOT factor
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "NOT",
                 "__type": p[2]["__type"],
@@ -1550,6 +1617,7 @@ class Parser:
                    | ADDOP factor
             '''
             p[0] = {
+                "length": len(p),
                 "type": "factor",
                 "_type": "UMINUS" if p[1] == "-" else "NORMAL",
                 "__type": p[2]["__type"],
@@ -1563,6 +1631,7 @@ class Parser:
             '''
             if len(p) == 6:
                 p[0] = {
+                    "length": len(p),
                     "id": self.id,
                     "type": "multype",
                     "multype": p[1],
@@ -1594,6 +1663,7 @@ class Parser:
                 self.id += 1
             else:
                 p[0] = {
+                    "length": len(p),
                     "id": self.id,
                     "type": "multype",
                     "ID": [p[1]],
