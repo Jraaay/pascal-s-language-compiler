@@ -389,28 +389,26 @@
                     ],
                     "constants": [],
                     "variables": [
-                        [
-                            {
-                                "id": 2,
-                                "token": "a",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            },
-                            {
-                                "id": 3,
-                                "token": "b",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            }
-                        ]
+                        {
+                            "id": 2,
+                            "token": "a",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        },
+                        {
+                            "id": 3,
+                            "token": "b",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        }
                     ]
                 }
             }

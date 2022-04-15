@@ -12,6 +12,9 @@ class Parser:
     }
     error = None
     id = 0
+    curSymbol = []
+    subSymbol = []
+    inSubFun = False
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
@@ -72,13 +75,17 @@ class Parser:
         t_FUNCTION = r'(?i)FUNCTION'
         t_END = r'(?i)END'
         t_RBRACKET = r'\]'
-        t_PROGRAM = r'(?i)PROGRAM'
         t_READ = r'(?i)READ'
         t_WRITE = r'(?i)WRITE'
         t_NOT = r'(?i)NOT'
         t_BEGIN = r'(?i)BEGIN'
         t_SEMICOLON = r';'
         t_ADDOP = r'(?i)\+|-|OR'
+
+        def t_PROGRAM(t):
+            r'(?i)PROGRAM'
+            t.lexer.lineno = 0
+            return t
 
         def t_ignore_COMMENT(t):
             r'\{.*\}|//.*|\(\*(.|\n)*\*\)'
@@ -96,13 +103,41 @@ class Parser:
             return t
 
         def t_ID(t):
-            r'[a-zA-Z_][a-zA-Z_0-9]*(\.[a-zA-Z_][a-zA-Z_0-9]*)*'
+            r'[0-9a-zA-Z_][a-zA-Z_0-9]*(\.[0-9a-zA-Z_][a-zA-Z_0-9]*)*'
             if t.value.upper() in reserved:
                 t.type = t.value.upper()
             elif t.value.upper() in reserved_2:
                 t.type = reserved_2_map[t.value.upper()]
             elif '.' in t.value:
                 t.value = t.value.split('.')
+                for i in t.value:
+                    if t.value[0].isdigit():
+                        if not self.error:
+                            self.error = []
+                        self.error.append({
+                            "code": "A-01",
+                            "info": {
+                                "line": t.lineno,
+                                "value": t.value.split('\n')[0],
+                                "lexpos": t.lexpos
+                            }
+                        })
+                    while i[0].isdigit():
+                        i = i[1:]
+            else:
+                if t.value[0].isdigit():
+                    if not self.error:
+                        self.error = []
+                    self.error.append({
+                        "code": "A-01",
+                        "info": {
+                            "line": t.lineno,
+                            "value": t.value.split('\n')[0],
+                            "lexpos": t.lexpos
+                        }
+                    })
+                while t.value[0].isdigit():
+                    t.value = t.value[1:]
             return t
 
         def t_ignore_newline(t):
@@ -110,11 +145,10 @@ class Parser:
             t.lexer.lineno += t.value.count('\n')
 
         def t_error(t):
-            print(f'Illegal character at line {t.lineno} : {t.value}')
             if not self.error:
                 self.error = []
             self.error.append({
-                "type": "Illegal character error",
+                "code": "A-02",
                 "info": {
                     "line": t.lineno,
                     "value": t.value.split('\n')[0],
@@ -185,6 +219,28 @@ class Parser:
                 "type": "idlist",
                 "ids": p[1]["ids"] + [p[3]] if p[3] else p[1]["ids"]
             }
+            if self.inSubFun and p[3] in self.subSymbol and p[3]:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "A-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[3],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
+            elif not self.inSubFun and p[3] in self.curSymbol and p[3]:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "A-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[3],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
 
         def p_idlist_id(p):
             '''
@@ -194,6 +250,28 @@ class Parser:
                 "type": "idlist",
                 "ids": [p[1]]
             }
+            if self.inSubFun and p[1] in self.subSymbol and p[1]:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "A-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[1],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
+            elif not self.inSubFun and p[1] in self.curSymbol and p[1]:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "A-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[1],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
 
         def p_const_declarations(p):
             '''
@@ -206,6 +284,15 @@ class Parser:
                     "const_declaration": p[2]
                 }
                 p[0]["SymbolTable"] = p[2]["SymbolTable"]
+                if not self.inSubFun:
+                    # self.curSymbol = p[0]["SymbolTable"]
+                    self.curSymbol = []
+                    for i in p[0]["SymbolTable"]:
+                        self.curSymbol += [i["token"]]
+                else:
+                    # self.subSymbol = self.subSymbol + p[0]["SymbolTable"]
+                    for i in p[0]["SymbolTable"]:
+                        self.subSymbol += [i["token"]]
             else:
                 p[0] = None
 
@@ -228,6 +315,28 @@ class Parser:
                 "positive": True if type(p[5]) != str and p[5] > 0 else False
             }]
             self.id += 1
+            if self.inSubFun and p[3] in self.subSymbol:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "C-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[3],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
+            elif not self.inSubFun and p[3] in self.curSymbol:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "C-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[3],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
 
         def p_const_declaration_id(p):
             '''
@@ -248,6 +357,28 @@ class Parser:
                 "positive": True if type(p[3]) != str and p[3] > 0 else False
             }]
             self.id += 1
+            if self.inSubFun and p[1] in self.subSymbol:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "C-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[1],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
+            elif not self.inSubFun and p[1] in self.curSymbol:
+                if not self.error:
+                    self.error = []
+                self.error.append({
+                    "code": "C-03",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[1],
+                        "lexpos": p.lexer.lexpos
+                    }
+                })
 
         def p_const_value_addop(p):
             '''
@@ -292,6 +423,14 @@ class Parser:
                     "var_declaration": p[2]
                 }
                 p[0]["SymbolTable"] = p[2]["SymbolTable"]
+                if not self.inSubFun:
+                    # self.curSymbol = self.curSymbol + p[0]["SymbolTable"]
+                    for i in p[0]["SymbolTable"]:
+                        self.curSymbol += [i["token"]]
+                else:
+                    # self.subSymbol = self.subSymbol + p[0]["SymbolTable"]
+                    for i in p[0]["SymbolTable"]:
+                        self.subSymbol += [i["token"]]
             else:
                 p[0] = []
 
@@ -411,6 +550,18 @@ class Parser:
                 | DIGITS POINTTO DIGITS
             '''
             if len(p) == 6:
+                if p[3] > p[5]:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-01",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": [p[3], p[5]],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    raise Exception("SemanticError")
                 p[0] = {
                     "type": "period",
                     "values": p[1]["values"] + [{
@@ -442,6 +593,7 @@ class Parser:
             subprogram_declarations : subprogram_declarations subprogram SEMICOLON
                                     | 
             '''
+            self.inSubFun = False
             if len(p) == 4:
                 p[0] = {
                     "type": "subprogram_declarations",
@@ -478,40 +630,57 @@ class Parser:
                 "variables": p[1]["SymbolTable"]["variables"] + p[3]["SymbolTable"]["variables"],
             }
 
+        def p_PROCEDURE(p):
+            '''
+            seen_PROCEDURE :
+            '''
+            self.inSubFun = True
+
+        def p_FUNCTION(p):
+            '''
+            seen_FUNCTION :
+            '''
+            self.inSubFun = True
+
         def p_subprogram_head(p):
             '''
-            subprogram_head : PROCEDURE ID formal_parameter
-                            | FUNCTION ID formal_parameter COLON basic_type 
+            subprogram_head : PROCEDURE seen_PROCEDURE ID formal_parameter
+                            | FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type 
             '''
             if not type(p[1]) == dict and p[1].upper() == 'PROCEDURE':
                 p[0] = {
                     "type": "subprogram_head",
                     "_type": "PROCEDURE",
-                    "ID": p[2],
-                    "formal_parameter": p[3]
+                    "ID": p[3],
+                    "formal_parameter": p[4]
                 }
                 p[0]["SymbolTable"] = {
-                    "token": p[2],
+                    "token": p[3],
                     "type": None,
-                    "params": p[3]["SymbolTable"]["params"],
-                    "references": p[3]["SymbolTable"]["references"],
-                    "variables": p[3]["SymbolTable"]["variables"],
+                    "params": p[4]["SymbolTable"]["params"],
+                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"],
                 }
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
                 p[0] = {
                     "type": "subprogram_head",
                     "_type": "FUNCTION",
-                    "ID": p[2],
-                    "formal_parameter": p[3],
-                    "basic_type": p[5]
+                    "ID": p[3],
+                    "formal_parameter": p[4],
+                    "basic_type": p[6]
                 }
                 p[0]["SymbolTable"] = {
-                    "token": p[2],
-                    "type": p[5]["SymbolTable"],
-                    "params": p[3]["SymbolTable"]["params"],
-                    "references": p[3]["SymbolTable"]["references"],
-                    "variables": p[3]["SymbolTable"]["variables"],
+                    "token": p[3],
+                    "type": p[6]["SymbolTable"],
+                    "params": p[4]["SymbolTable"]["params"],
+                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"],
                 }
+            # self.subSymbol = p[0]["SymbolTable"]["variables"]
+            self.subSymbol = [p[3]]
+            for i in p[0]["SymbolTable"]["variables"]:
+                self.subSymbol += [i["token"]]
+
 
         def p_formal_parameter(p):
             '''
@@ -562,7 +731,7 @@ class Parser:
                 p[0]["SymbolTable"] = {
                     "params": p[1]["SymbolTable"]["size"],
                     "references": [p[1]["SymbolTable"]["references"]],
-                    "variables": [p[1]["SymbolTable"]["variables"]],
+                    "variables": p[1]["SymbolTable"]["variables"],
                 }
 
         def p_parameter(p):
@@ -689,6 +858,17 @@ class Parser:
                     "to_expression": p[6],
                     "statement": p[8]
                 }
+                if p[2] not in self.curSymbol and self.inSubFun and p[2] not in self.subSymbol:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-02",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": p[2],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
             elif not type(p[1]) == dict and p[1].upper() == 'READ':
                 p[0] = {
                     "type": "statement",
@@ -756,6 +936,17 @@ class Parser:
                 "ID": p[1],
                 "id_varpart": p[2]
             }
+            if p[1] not in self.curSymbol and self.inSubFun and p[1] not in self.subSymbol:
+                if not self.error:
+                    self.error = []
+                self.error += [{
+                    "code": "C-02",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": p[1],
+                        "lexpos": p.lexer.lexpos
+                    }
+                }]
 
         def p_id_varpart(p):
             '''
@@ -994,11 +1185,10 @@ class Parser:
                 self.id += 1
 
         def p_error(p):
-            print(f'Syntax error at line {p.lineno} : {p.value}')
             if not self.error:
                 self.error = []
             self.error.append({
-                "type": "Syntax error",
+                "code": "B-01",
                 "info": {
                     "line": p.lineno,
                     "value": p.value,
@@ -1027,7 +1217,15 @@ class Parser:
             "subFunc": []
         }
         self.error = None
+        self.curSymbol = []
+        self.subSymbol = []
+        self.inSubFun = False
+        self.id = 0
+        ast = None
+        # try:
         ast = self.parser.parse(data)
+        # except:
+        #     pass
         self._removeSymbolTable(ast)
         return {
             "ast": ast,

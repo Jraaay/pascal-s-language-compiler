@@ -2724,7 +2724,7 @@
         "constants": [],
         "variables": [
             {
-                "id": 28,
+                "id": 0,
                 "token": "a",
                 "type": "integer",
                 "isArray": true,
@@ -2738,7 +2738,7 @@
                 "recordTable": null
             },
             {
-                "id": 29,
+                "id": 1,
                 "token": "b",
                 "type": "integer",
                 "isArray": true,
@@ -2752,7 +2752,7 @@
                 "recordTable": null
             },
             {
-                "id": 30,
+                "id": 2,
                 "token": "v",
                 "type": "integer",
                 "isArray": true,
@@ -2766,7 +2766,7 @@
                 "recordTable": null
             },
             {
-                "id": 31,
+                "id": 3,
                 "token": "p",
                 "type": "integer",
                 "isArray": true,
@@ -2780,7 +2780,7 @@
                 "recordTable": null
             },
             {
-                "id": 32,
+                "id": 4,
                 "token": "n",
                 "type": "integer",
                 "isArray": false,
@@ -2790,7 +2790,7 @@
                 "recordTable": null
             },
             {
-                "id": 33,
+                "id": 5,
                 "token": "m",
                 "type": "integer",
                 "isArray": false,
@@ -2800,7 +2800,7 @@
                 "recordTable": null
             },
             {
-                "id": 34,
+                "id": 6,
                 "token": "i",
                 "type": "integer",
                 "isArray": false,
@@ -2810,7 +2810,7 @@
                 "recordTable": null
             },
             {
-                "id": 35,
+                "id": 7,
                 "token": "ans",
                 "type": "integer",
                 "isArray": false,
@@ -2820,7 +2820,7 @@
                 "recordTable": null
             },
             {
-                "id": 36,
+                "id": 8,
                 "token": "tot",
                 "type": "integer",
                 "isArray": false,
@@ -2830,7 +2830,7 @@
                 "recordTable": null
             },
             {
-                "id": 37,
+                "id": 9,
                 "token": "x",
                 "type": "integer",
                 "isArray": false,
@@ -2840,7 +2840,7 @@
                 "recordTable": null
             },
             {
-                "id": 38,
+                "id": 10,
                 "token": "y",
                 "type": "integer",
                 "isArray": false,
@@ -2852,7 +2852,7 @@
         ],
         "subFunc": [
             {
-                "id": 45,
+                "id": 17,
                 "token": "sort",
                 "type": null,
                 "table": {
@@ -2865,30 +2865,28 @@
                     ],
                     "constants": [],
                     "variables": [
-                        [
-                            {
-                                "id": 39,
-                                "token": "l",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            },
-                            {
-                                "id": 40,
-                                "token": "r",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            }
-                        ],
                         {
-                            "id": 41,
+                            "id": 11,
+                            "token": "l",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        },
+                        {
+                            "id": 12,
+                            "token": "r",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        },
+                        {
+                            "id": 13,
                             "token": "i",
                             "type": "integer",
                             "isArray": false,
@@ -2898,7 +2896,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 42,
+                            "id": 14,
                             "token": "j",
                             "type": "integer",
                             "isArray": false,
@@ -2908,7 +2906,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 43,
+                            "id": 15,
                             "token": "x",
                             "type": "integer",
                             "isArray": false,
@@ -2918,7 +2916,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 44,
+                            "id": 16,
                             "token": "y",
                             "type": "integer",
                             "isArray": false,
@@ -2931,7 +2929,7 @@
                 }
             },
             {
-                "id": 47,
+                "id": 19,
                 "token": "doit",
                 "type": "integer",
                 "table": {
@@ -2943,22 +2941,29 @@
                     ],
                     "constants": [],
                     "variables": [
-                        [
-                            {
-                                "id": 46,
-                                "token": "x",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            }
-                        ]
+                        {
+                            "id": 18,
+                            "token": "x",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        }
                     ]
                 }
             }
         ]
     },
-    "error": null
+    "error": [
+        {
+            "code": "A-03",
+            "info": {
+                "line": 26,
+                "value": "x",
+                "lexpos": 626
+            }
+        }
+    ]
 }

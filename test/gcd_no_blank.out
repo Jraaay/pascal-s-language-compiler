@@ -354,7 +354,7 @@
         "constants": [],
         "variables": [
             {
-                "id": 13,
+                "id": 0,
                 "token": "x",
                 "type": "integer",
                 "isArray": false,
@@ -364,7 +364,7 @@
                 "recordTable": null
             },
             {
-                "id": 14,
+                "id": 1,
                 "token": "y",
                 "type": "integer",
                 "isArray": false,
@@ -376,7 +376,7 @@
         ],
         "subFunc": [
             {
-                "id": 17,
+                "id": 4,
                 "token": "gcd",
                 "type": "integer",
                 "table": {
@@ -389,28 +389,26 @@
                     ],
                     "constants": [],
                     "variables": [
-                        [
-                            {
-                                "id": 15,
-                                "token": "a",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            },
-                            {
-                                "id": 16,
-                                "token": "b",
-                                "type": "integer",
-                                "isArray": false,
-                                "dimension": 0,
-                                "size": [],
-                                "start": [],
-                                "recordType": null
-                            }
-                        ]
+                        {
+                            "id": 2,
+                            "token": "a",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        },
+                        {
+                            "id": 3,
+                            "token": "b",
+                            "type": "integer",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordType": null
+                        }
                     ]
                 }
             }

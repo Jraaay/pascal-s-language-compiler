@@ -367,7 +367,7 @@
         "constants": [],
         "variables": [
             {
-                "id": 64,
+                "id": 4,
                 "token": "Books",
                 "type": "RECORD",
                 "isArray": false,
@@ -377,7 +377,7 @@
                 "recordTable": {
                     "variables": [
                         {
-                            "id": 60,
+                            "id": 0,
                             "token": "title",
                             "type": "char",
                             "isArray": true,
@@ -391,7 +391,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 61,
+                            "id": 1,
                             "token": "author",
                             "type": "char",
                             "isArray": true,
@@ -405,7 +405,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 62,
+                            "id": 2,
                             "token": "subject",
                             "type": "char",
                             "isArray": true,
@@ -419,7 +419,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 63,
+                            "id": 3,
                             "token": "bookid",
                             "type": "integer",
                             "isArray": false,
@@ -432,7 +432,7 @@
                 }
             },
             {
-                "id": 65,
+                "id": 5,
                 "token": "a",
                 "type": "char",
                 "isArray": true,
@@ -446,7 +446,7 @@
                 "recordTable": null
             },
             {
-                "id": 66,
+                "id": 6,
                 "token": "b",
                 "type": "integer",
                 "isArray": false,

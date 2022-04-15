@@ -7,25 +7,25 @@
     },
     "error": [
         {
-            "type": "Syntax error",
+            "code": "B-01",
             "info": {
-                "line": 33,
+                "line": 5,
                 "value": "=",
                 "lexpos": 121
             }
         },
         {
-            "type": "Illegal character error",
+            "code": "A-02",
             "info": {
-                "line": 39,
+                "line": 11,
                 "value": "!",
                 "lexpos": 201
             }
         },
         {
-            "type": "Illegal character error",
+            "code": "A-02",
             "info": {
-                "line": 40,
+                "line": 12,
                 "value": "~",
                 "lexpos": 205
             }
