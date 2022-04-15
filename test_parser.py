@@ -9,6 +9,9 @@ class TestParser(object):
         pass
 
     def test_parser_gcd(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/gcd.pas') as f:
@@ -16,8 +19,11 @@ class TestParser(object):
         with open('./test/gcd.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_bug(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/gcd_bug.pas') as f:
@@ -27,6 +33,9 @@ class TestParser(object):
         assert ans == expected
 
     def test_parser_bug_2(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/gcd_bug_2.pas') as f:
@@ -34,8 +43,11 @@ class TestParser(object):
         with open('./test/gcd_bug_2.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_gcd_no_blank(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/gcd_no_blank.pas') as f:
@@ -43,8 +55,11 @@ class TestParser(object):
         with open('./test/gcd_no_blank.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_knapsack(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/knapsack.pas') as f:
@@ -54,6 +69,9 @@ class TestParser(object):
         assert ans == expected
 
     def test_kruskal(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/kruskal.pas') as f:
@@ -63,6 +81,9 @@ class TestParser(object):
         assert ans == expected
 
     def test_quicksort(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/quicksort.pas') as f:
@@ -70,8 +91,11 @@ class TestParser(object):
         with open('./test/quicksort.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_record(self):
+        """
+        id="44"
+        """
         ans = None
         expected = None
         with open('./test/record.pas') as f:
