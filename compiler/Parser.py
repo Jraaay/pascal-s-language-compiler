@@ -1146,10 +1146,11 @@ class Parser:
         def p_factor_uminus(p):
             '''
             factor : UMINUS factor
+                   | ADDOP factor
             '''
             p[0] = {
                 "type": "factor",
-                "_type": "UMINUS",
+                "_type": "UMINUS" if p[1] == "-" else "NORMAL",
                 "factor": p[2]
             }
 
