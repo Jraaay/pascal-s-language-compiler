@@ -968,7 +968,7 @@ class Parser:
                     if not self.error:
                         self.error = []
                     self.error += [{
-                        "code": "C-02",
+                        "code": "C-11",
                         "info": {
                             "line": p.lexer.lineno,
                             "value": p[2],
@@ -977,7 +977,18 @@ class Parser:
                     }]
                 id = self.search_symbol(p[2])
                 if id:
-                    if id["type"] not in safe_assign[p[4]["__type"]]:
+                    if p[4]["__type"] == "UNDEFINED":
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "C-10",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "value": p[2],
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
+                    elif id["type"] not in safe_assign[p[4]["__type"]]:
                         if id["type"] in warn_assign[p[4]["__type"]]:
                             if not self.warning:
                                 self.warning = []
@@ -1027,20 +1038,31 @@ class Parser:
                     "ASSIGNOP": p[2],
                     "expression": p[3]
                 }
+                if p[1]["__type"] == "UNDEFINED":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-11",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": p[1]["ID"],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
                 id = self.search_symbol(p[1]["ID"])
-                if id:
-                    if p[3]["__type"] == "UNDEFINED":
-                        if not self.error:
-                            self.error = []
-                        self.error += [{
-                            "code": "C-07",
-                            "info": {
-                                "line": p.lexer.lineno,
-                                "value": p[1]["ID"],
-                                "lexpos": p.lexer.lexpos
-                            }
-                        }]
-                    elif id["type"] not in safe_assign[p[3]["__type"]]:
+                if p[3]["__type"] == "UNDEFINED":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-10",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": p[1]["ID"],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                elif id:
+                    if id["type"] not in safe_assign[p[3]["__type"]]:
                         if id["type"] in warn_assign[p[3]["__type"]]:
                             if not self.warning:
                                 self.warning = []
@@ -1063,6 +1085,17 @@ class Parser:
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
+                    else:
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "C-11",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "value": p[1]["ID"],
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
             elif p[1]["type"] == "procedure_call":
                 p[0] = {
                     "type": "statement",
@@ -1235,7 +1268,17 @@ class Parser:
                     "RELOP": p[2],
                     "simple_expression_2": p[3]
                 }
-                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-09",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                elif p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
                     if not self.error:
                         self.error = []
                     self.error += [{
