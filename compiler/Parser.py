@@ -996,7 +996,7 @@ class Parser:
                                 "code": "W-01",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": p[2],
+                                    "value": [p[2], id["type"], p[4]["__type"]],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
@@ -1007,7 +1007,7 @@ class Parser:
                                 "code": "C-04",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": p[2],
+                                    "value": [p[2], id["type"], p[4]["__type"]],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
@@ -1070,7 +1070,7 @@ class Parser:
                                 "code": "W-01",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": p[1]["ID"],
+                                    "value": [p[1]["ID"], id["type"], p[3]["__type"]],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
@@ -1081,7 +1081,7 @@ class Parser:
                                 "code": "C-04",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": p[1]["ID"],
+                                    "value": [p[1]["ID"], id["type"], p[3]["__type"]],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
@@ -1246,12 +1246,13 @@ class Parser:
             if len(p) == 4:
                 p[0] = {
                     "type": "expression_list",
-                    "__type": "expression_list",
+                    "__type": p[1]["__type"] + [p[3]["__type"] if p[3] else None],
                     "expressions": p[1]["expressions"] + [p[3]] if p[3] else p[1]["expressions"]
                 }
             else:
                 p[0] = {
                     "type": "expression_list",
+                    "__type": [p[1]["__type"]],
                     "expressions": [p[1]]
                 }
 
@@ -1471,7 +1472,55 @@ class Parser:
                 "ID": p[1],
                 "expression_list": p[3]
             }
-            # TODO：检查参数个数和类型
+            if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"]):
+                if not self.error:
+                    self.error = []
+                self.error += [{
+                    "code": "C-12",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"])],
+                        "lexpos": p.lexer.lexpos
+                    }
+                }]
+            else:
+                for i in range(len(p[3]["__type"])):
+                    from_type = p[3]["__type"][i]
+                    to_type = self.subFuncMap[p[1]]["variables"][i]["type"]
+                    if from_type == "UNDEFINED":
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "C-13",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "value": [from_type, to_type],
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
+                    elif to_type not in safe_assign[from_type]:
+                        if to_type in warn_assign[from_type]:
+                            if not self.warning:
+                                self.warning = []
+                            self.warning += [{
+                                "code": "W-02",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
+                        else:
+                            if not self.error:
+                                self.error = []
+                            self.error += [{
+                                "code": "C-14",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
 
         def p_factor_expression(p):
             '''

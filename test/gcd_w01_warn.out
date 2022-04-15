@@ -203,7 +203,10 @@
                                                                     "ID": "gcd",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
-                                                                        "__type": "expression_list",
+                                                                        "__type": [
+                                                                            "INTEGER",
+                                                                            "INTEGER"
+                                                                        ],
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
@@ -328,6 +331,9 @@
                             "_type": "WRITE",
                             "expression_list": {
                                 "type": "expression_list",
+                                "__type": [
+                                    "BOOLEAN"
+                                ],
                                 "expressions": [
                                     {
                                         "type": "expression",
@@ -345,7 +351,10 @@
                                                     "ID": "gcd",
                                                     "expression_list": {
                                                         "type": "expression_list",
-                                                        "__type": "expression_list",
+                                                        "__type": [
+                                                            "INTEGER",
+                                                            "INTEGER"
+                                                        ],
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",
@@ -492,7 +501,11 @@
             "code": "W-01",
             "info": {
                 "line": 6,
-                "value": "gcd",
+                "value": [
+                    "gcd",
+                    "BOOLEAN",
+                    "INTEGER"
+                ],
                 "lexpos": 132
             }
         }

@@ -460,7 +460,11 @@
             "code": "C-04",
             "info": {
                 "line": 11,
-                "value": "x",
+                "value": [
+                    "x",
+                    "INTEGER",
+                    "RECORD"
+                ],
                 "lexpos": 208
             }
         },
@@ -475,7 +479,11 @@
             "code": "C-04",
             "info": {
                 "line": 12,
-                "value": "x",
+                "value": [
+                    "x",
+                    "INTEGER",
+                    "RECORD"
+                ],
                 "lexpos": 222
             }
         }

@@ -372,7 +372,11 @@
             "code": "C-04",
             "info": {
                 "line": 11,
-                "value": "x",
+                "value": [
+                    "x",
+                    "INTEGER",
+                    "RECORD"
+                ],
                 "lexpos": 204
             }
         }

@@ -220,7 +220,10 @@
                                                                     "ID": "gcd",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
-                                                                        "__type": "expression_list",
+                                                                        "__type": [
+                                                                            "INTEGER",
+                                                                            "INTEGER"
+                                                                        ],
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
@@ -345,6 +348,9 @@
                             "_type": "WRITE",
                             "expression_list": {
                                 "type": "expression_list",
+                                "__type": [
+                                    "INTEGER"
+                                ],
                                 "expressions": [
                                     {
                                         "type": "expression",
@@ -362,7 +368,10 @@
                                                     "ID": "gcd",
                                                     "expression_list": {
                                                         "type": "expression_list",
-                                                        "__type": "expression_list",
+                                                        "__type": [
+                                                            "INTEGER",
+                                                            "INTEGER"
+                                                        ],
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",

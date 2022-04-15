@@ -221,6 +221,9 @@
                                                                         "type": "id_varpart",
                                                                         "expression_list": {
                                                                             "type": "expression_list",
+                                                                            "__type": [
+                                                                                "INTEGER"
+                                                                            ],
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
@@ -527,6 +530,9 @@
                                                                     "type": "id_varpart",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
+                                                                        "__type": [
+                                                                            "INTEGER"
+                                                                        ],
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
@@ -722,6 +728,9 @@
                                                                                                                                 "type": "id_varpart",
                                                                                                                                 "expression_list": {
                                                                                                                                     "type": "expression_list",
+                                                                                                                                    "__type": [
+                                                                                                                                        "INTEGER"
+                                                                                                                                    ],
                                                                                                                                     "expressions": [
                                                                                                                                         {
                                                                                                                                             "type": "expression",
@@ -919,6 +928,9 @@
                                                                                             "type": "id_varpart",
                                                                                             "expression_list": {
                                                                                                 "type": "expression_list",
+                                                                                                "__type": [
+                                                                                                    "INTEGER"
+                                                                                                ],
                                                                                                 "expressions": [
                                                                                                     {
                                                                                                         "type": "expression",
@@ -972,6 +984,9 @@
                                                                                                             "type": "id_varpart",
                                                                                                             "expression_list": {
                                                                                                                 "type": "expression_list",
+                                                                                                                "__type": [
+                                                                                                                    "INTEGER"
+                                                                                                                ],
                                                                                                                 "expressions": [
                                                                                                                     {
                                                                                                                         "type": "expression",
@@ -1047,6 +1062,9 @@
                                                                                                                                 "type": "id_varpart",
                                                                                                                                 "expression_list": {
                                                                                                                                     "type": "expression_list",
+                                                                                                                                    "__type": [
+                                                                                                                                        "INTEGER"
+                                                                                                                                    ],
                                                                                                                                     "expressions": [
                                                                                                                                         {
                                                                                                                                             "type": "expression",
@@ -1244,6 +1262,9 @@
                                                                                             "type": "id_varpart",
                                                                                             "expression_list": {
                                                                                                 "type": "expression_list",
+                                                                                                "__type": [
+                                                                                                    "INTEGER"
+                                                                                                ],
                                                                                                 "expressions": [
                                                                                                     {
                                                                                                         "type": "expression",
@@ -1297,6 +1318,9 @@
                                                                                                             "type": "id_varpart",
                                                                                                             "expression_list": {
                                                                                                                 "type": "expression_list",
+                                                                                                                "__type": [
+                                                                                                                    "INTEGER"
+                                                                                                                ],
                                                                                                                 "expressions": [
                                                                                                                     {
                                                                                                                         "type": "expression",
@@ -1349,6 +1373,9 @@
                                                                         "type": "id_varpart",
                                                                         "expression_list": {
                                                                             "type": "expression_list",
+                                                                            "__type": [
+                                                                                "INTEGER"
+                                                                            ],
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
@@ -1416,7 +1443,10 @@
                                                                     "ID": "quicksort",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
-                                                                        "__type": "expression_list",
+                                                                        "__type": [
+                                                                            "INTEGER",
+                                                                            "INTEGER"
+                                                                        ],
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
@@ -1497,7 +1527,10 @@
                                                                     "ID": "quicksort",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
-                                                                        "__type": "expression_list",
+                                                                        "__type": [
+                                                                            "INTEGER",
+                                                                            "INTEGER"
+                                                                        ],
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
@@ -1670,7 +1703,10 @@
                                 "ID": "quicksort",
                                 "expression_list": {
                                     "type": "expression_list",
-                                    "__type": "expression_list",
+                                    "__type": [
+                                        "INTEGER",
+                                        "INTEGER"
+                                    ],
                                     "expressions": [
                                         {
                                             "type": "expression",
@@ -1798,6 +1834,9 @@
                                                                         "type": "id_varpart",
                                                                         "expression_list": {
                                                                             "type": "expression_list",
+                                                                            "__type": [
+                                                                                "INTEGER"
+                                                                            ],
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
@@ -1842,6 +1881,9 @@
                                                     "ID": "writeln",
                                                     "expression_list": {
                                                         "type": "expression_list",
+                                                        "__type": [
+                                                            "INTEGER"
+                                                        ],
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",

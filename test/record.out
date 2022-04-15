@@ -263,6 +263,9 @@
                                     "type": "id_varpart",
                                     "expression_list": {
                                         "type": "expression_list",
+                                        "__type": [
+                                            "INTEGER"
+                                        ],
                                         "expressions": [
                                             {
                                                 "type": "expression",
@@ -311,6 +314,9 @@
                                                     "type": "id_varpart",
                                                     "expression_list": {
                                                         "type": "expression_list",
+                                                        "__type": [
+                                                            "INTEGER"
+                                                        ],
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",
