@@ -18,7 +18,6 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
-                    "id": 6,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -258,6 +257,7 @@
                             "_type": "variable",
                             "variable": {
                                 "type": "variable",
+                                "__type": "CHAR",
                                 "ID": "a",
                                 "id_varpart": {
                                     "type": "id_varpart",
@@ -266,13 +266,17 @@
                                         "expressions": [
                                             {
                                                 "type": "expression",
+                                                "__type": "INTEGER",
                                                 "simple_expression": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "NUM",
+                                                            "__type": "INTEGER",
                                                             "NUM": 1
                                                         }
                                                     }
@@ -285,15 +289,20 @@
                             "ASSIGNOP": ":=",
                             "expression": {
                                 "type": "expression",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "type": "simple_expression",
+                                    "__type": "CHAR",
                                     "term": {
                                         "type": "term",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "type": "factor",
                                             "_type": "variable",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "title"
@@ -305,13 +314,17 @@
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",
+                                                                "__type": "INTEGER",
                                                                 "simple_expression": {
                                                                     "type": "simple_expression",
+                                                                    "__type": "INTEGER",
                                                                     "term": {
                                                                         "type": "term",
+                                                                        "__type": "INTEGER",
                                                                         "factor": {
                                                                             "type": "factor",
                                                                             "_type": "NUM",
+                                                                            "__type": "INTEGER",
                                                                             "NUM": 1
                                                                         }
                                                                     }
@@ -331,6 +344,7 @@
                             "_type": "variable",
                             "variable": {
                                 "type": "variable",
+                                "__type": "INTEGER",
                                 "ID": "b",
                                 "id_varpart": {
                                     "type": "id_varpart",
@@ -340,15 +354,20 @@
                             "ASSIGNOP": ":=",
                             "expression": {
                                 "type": "expression",
+                                "__type": "INTEGER",
                                 "simple_expression": {
                                     "type": "simple_expression",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "type": "term",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "type": "factor",
                                             "_type": "variable",
+                                            "__type": "INTEGER",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": [
                                                     "Books",
                                                     "bookid"
@@ -486,5 +505,6 @@
                 "lexpos": 169
             }
         }
-    ]
+    ],
+    "warning": []
 }

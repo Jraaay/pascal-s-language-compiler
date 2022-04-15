@@ -81,7 +81,7 @@ Rule 75    factor -> NUM
 Rule 76    factor -> DIGITS
 Rule 77    factor -> variable
 Rule 78    factor -> ID LPAREN expression_list RPAREN
-Rule 79    factor -> LPAREN expression_list RPAREN
+Rule 79    factor -> LPAREN expression RPAREN
 Rule 80    factor -> NOT factor
 Rule 81    factor -> UMINUS factor
 Rule 82    factor -> ADDOP factor
@@ -144,8 +144,8 @@ const_declaration    : 7 9
 const_declarations   : 4 44
 const_value          : 9 10
 else_part            : 51
-expression           : 48 51 52 52 55 66 67
-expression_list      : 54 60 63 66 78 79
+expression           : 48 51 52 52 55 66 67 79
+expression_list      : 54 60 63 66 78
 factor               : 73 74 80 81 82
 formal_parameter     : 34 35
 id_varpart           : 59
@@ -644,7 +644,7 @@ state 45
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -716,7 +716,7 @@ state 50
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -929,7 +929,7 @@ state 69
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -984,7 +984,7 @@ state 72
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1124,9 +1124,7 @@ state 78
 
 state 79
 
-    (79) factor -> LPAREN . expression_list RPAREN
-    (66) expression_list -> . expression_list COM expression
-    (67) expression_list -> . expression
+    (79) factor -> LPAREN . expression RPAREN
     (68) expression -> . simple_expression RELOP simple_expression
     (69) expression -> . simple_expression
     (70) expression -> . simple_expression EQUAL simple_expression
@@ -1138,7 +1136,7 @@ state 79
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1152,8 +1150,7 @@ state 79
     UMINUS          shift and go to state 81
     ADDOP           shift and go to state 72
 
-    expression_list                shift and go to state 108
-    expression                     shift and go to state 109
+    expression                     shift and go to state 108
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
@@ -1166,7 +1163,31 @@ state 80
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
+    (80) factor -> . NOT factor
+    (81) factor -> . UMINUS factor
+    (82) factor -> . ADDOP factor
+    (59) variable -> . ID id_varpart
+
+    NUM             shift and go to state 75
+    DIGITS          shift and go to state 76
+    ID              shift and go to state 78
+    LPAREN          shift and go to state 79
+    NOT             shift and go to state 80
+    UMINUS          shift and go to state 81
+    ADDOP           shift and go to state 72
+
+    factor                         shift and go to state 109
+    variable                       shift and go to state 77
+
+state 81
+
+    (81) factor -> UMINUS . factor
+    (75) factor -> . NUM
+    (76) factor -> . DIGITS
+    (77) factor -> . variable
+    (78) factor -> . ID LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1183,35 +1204,11 @@ state 80
     factor                         shift and go to state 110
     variable                       shift and go to state 77
 
-state 81
-
-    (81) factor -> UMINUS . factor
-    (75) factor -> . NUM
-    (76) factor -> . DIGITS
-    (77) factor -> . variable
-    (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
-    (80) factor -> . NOT factor
-    (81) factor -> . UMINUS factor
-    (82) factor -> . ADDOP factor
-    (59) variable -> . ID id_varpart
-
-    NUM             shift and go to state 75
-    DIGITS          shift and go to state 76
-    ID              shift and go to state 78
-    LPAREN          shift and go to state 79
-    NOT             shift and go to state 80
-    UMINUS          shift and go to state 81
-    ADDOP           shift and go to state 72
-
-    factor                         shift and go to state 111
-    variable                       shift and go to state 77
-
 state 82
 
     (52) statement -> FOR ID . ASSIGNOP expression TO expression DO statement
 
-    ASSIGNOP        shift and go to state 112
+    ASSIGNOP        shift and go to state 111
 
 
 state 83
@@ -1250,7 +1247,7 @@ state 84
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1264,8 +1261,8 @@ state 84
     UMINUS          shift and go to state 81
     ADDOP           shift and go to state 72
 
-    expression_list                shift and go to state 113
-    expression                     shift and go to state 109
+    expression_list                shift and go to state 112
+    expression                     shift and go to state 113
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
@@ -1287,7 +1284,7 @@ state 85
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1302,7 +1299,7 @@ state 85
     ADDOP           shift and go to state 72
 
     expression_list                shift and go to state 114
-    expression                     shift and go to state 109
+    expression                     shift and go to state 113
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
@@ -1336,7 +1333,7 @@ state 87
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1351,7 +1348,7 @@ state 87
     ADDOP           shift and go to state 72
 
     expression_list                shift and go to state 118
-    expression                     shift and go to state 109
+    expression                     shift and go to state 113
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
@@ -1526,7 +1523,7 @@ state 102
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1556,7 +1553,7 @@ state 103
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1584,7 +1581,7 @@ state 104
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1628,7 +1625,7 @@ state 106
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1661,7 +1658,7 @@ state 107
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1676,7 +1673,7 @@ state 107
     ADDOP           shift and go to state 72
 
     expression_list                shift and go to state 135
-    expression                     shift and go to state 109
+    expression                     shift and go to state 113
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
@@ -1684,23 +1681,12 @@ state 107
 
 state 108
 
-    (79) factor -> LPAREN expression_list . RPAREN
-    (66) expression_list -> expression_list . COM expression
+    (79) factor -> LPAREN expression . RPAREN
 
     RPAREN          shift and go to state 136
-    COM             shift and go to state 137
 
 
 state 109
-
-    (67) expression_list -> expression .
-
-    RPAREN          reduce using rule 67 (expression_list -> expression .)
-    COM             reduce using rule 67 (expression_list -> expression .)
-    RBRACKET        reduce using rule 67 (expression_list -> expression .)
-
-
-state 110
 
     (80) factor -> NOT factor .
 
@@ -1719,7 +1705,7 @@ state 110
     TO              reduce using rule 80 (factor -> NOT factor .)
 
 
-state 111
+state 110
 
     (81) factor -> UMINUS factor .
 
@@ -1738,7 +1724,7 @@ state 111
     TO              reduce using rule 81 (factor -> UMINUS factor .)
 
 
-state 112
+state 111
 
     (52) statement -> FOR ID ASSIGNOP . expression TO expression DO statement
     (68) expression -> . simple_expression RELOP simple_expression
@@ -1752,7 +1738,7 @@ state 112
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -1766,19 +1752,28 @@ state 112
     UMINUS          shift and go to state 81
     ADDOP           shift and go to state 72
 
-    expression                     shift and go to state 138
+    expression                     shift and go to state 137
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
     variable                       shift and go to state 77
 
-state 113
+state 112
 
     (63) procedure_call -> ID LPAREN expression_list . RPAREN
     (66) expression_list -> expression_list . COM expression
 
-    RPAREN          shift and go to state 139
-    COM             shift and go to state 137
+    RPAREN          shift and go to state 138
+    COM             shift and go to state 139
+
+
+state 113
+
+    (67) expression_list -> expression .
+
+    RPAREN          reduce using rule 67 (expression_list -> expression .)
+    COM             reduce using rule 67 (expression_list -> expression .)
+    RBRACKET        reduce using rule 67 (expression_list -> expression .)
 
 
 state 114
@@ -1787,7 +1782,7 @@ state 114
     (66) expression_list -> expression_list . COM expression
 
     RBRACKET        shift and go to state 140
-    COM             shift and go to state 137
+    COM             shift and go to state 139
 
 
 state 115
@@ -1825,7 +1820,7 @@ state 118
     (66) expression_list -> expression_list . COM expression
 
     RPAREN          shift and go to state 143
-    COM             shift and go to state 137
+    COM             shift and go to state 139
 
 
 state 119
@@ -2057,29 +2052,45 @@ state 135
     (66) expression_list -> expression_list . COM expression
 
     RPAREN          shift and go to state 160
-    COM             shift and go to state 137
+    COM             shift and go to state 139
 
 
 state 136
 
-    (79) factor -> LPAREN expression_list RPAREN .
+    (79) factor -> LPAREN expression RPAREN .
 
-    MULOP           reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    RELOP           reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    EQUAL           reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    ADDOP           reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    THEN            reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    DO              reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    END             reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    SEMICOLON       reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    ELSE            reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    RPAREN          reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    COM             reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    RBRACKET        reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
-    TO              reduce using rule 79 (factor -> LPAREN expression_list RPAREN .)
+    MULOP           reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    RELOP           reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    ADDOP           reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    THEN            reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    DO              reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    END             reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    ELSE            reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    COM             reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    RBRACKET        reduce using rule 79 (factor -> LPAREN expression RPAREN .)
+    TO              reduce using rule 79 (factor -> LPAREN expression RPAREN .)
 
 
 state 137
+
+    (52) statement -> FOR ID ASSIGNOP expression . TO expression DO statement
+
+    TO              shift and go to state 161
+
+
+state 138
+
+    (63) procedure_call -> ID LPAREN expression_list RPAREN .
+
+    END             reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
+    SEMICOLON       reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
+    ELSE            reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
+
+
+state 139
 
     (66) expression_list -> expression_list COM . expression
     (68) expression -> . simple_expression RELOP simple_expression
@@ -2093,7 +2104,7 @@ state 137
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -2107,27 +2118,11 @@ state 137
     UMINUS          shift and go to state 81
     ADDOP           shift and go to state 72
 
-    expression                     shift and go to state 161
+    expression                     shift and go to state 162
     simple_expression              shift and go to state 71
     term                           shift and go to state 73
     factor                         shift and go to state 74
     variable                       shift and go to state 77
-
-state 138
-
-    (52) statement -> FOR ID ASSIGNOP expression . TO expression DO statement
-
-    TO              shift and go to state 162
-
-
-state 139
-
-    (63) procedure_call -> ID LPAREN expression_list RPAREN .
-
-    END             reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
-    SEMICOLON       reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
-    ELSE            reduce using rule 63 (procedure_call -> ID LPAREN expression_list RPAREN .)
-
 
 state 140
 
@@ -2373,15 +2368,6 @@ state 160
 
 state 161
 
-    (66) expression_list -> expression_list COM expression .
-
-    RPAREN          reduce using rule 66 (expression_list -> expression_list COM expression .)
-    COM             reduce using rule 66 (expression_list -> expression_list COM expression .)
-    RBRACKET        reduce using rule 66 (expression_list -> expression_list COM expression .)
-
-
-state 162
-
     (52) statement -> FOR ID ASSIGNOP expression TO . expression DO statement
     (68) expression -> . simple_expression RELOP simple_expression
     (69) expression -> . simple_expression
@@ -2394,7 +2380,7 @@ state 162
     (76) factor -> . DIGITS
     (77) factor -> . variable
     (78) factor -> . ID LPAREN expression_list RPAREN
-    (79) factor -> . LPAREN expression_list RPAREN
+    (79) factor -> . LPAREN expression RPAREN
     (80) factor -> . NOT factor
     (81) factor -> . UMINUS factor
     (82) factor -> . ADDOP factor
@@ -2413,6 +2399,15 @@ state 162
     term                           shift and go to state 73
     factor                         shift and go to state 74
     variable                       shift and go to state 77
+
+state 162
+
+    (66) expression_list -> expression_list COM expression .
+
+    RPAREN          reduce using rule 66 (expression_list -> expression_list COM expression .)
+    COM             reduce using rule 66 (expression_list -> expression_list COM expression .)
+    RBRACKET        reduce using rule 66 (expression_list -> expression_list COM expression .)
+
 
 state 163
 

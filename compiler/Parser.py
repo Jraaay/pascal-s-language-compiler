@@ -10,11 +10,14 @@ class Parser:
         "variables": [],
         "subFunc": []
     }
-    error = None
+    error = []
+    warning = []
     id = 0
-    curSymbol = []
-    subSymbol = []
+    curSymbol = {}
+    subSymbol = {}
     inSubFun = False
+    symbolMap = {}
+    subFuncMap = {}
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
@@ -38,6 +41,22 @@ class Parser:
             'MOD': 'MULOP',
             'AND': 'MULOP',
             'OR': 'ADDOP',
+        }
+
+        safe_assign = {
+            'INTEGER': ['INTEGER', 'REAL'],
+            'REAL': ['REAL'],
+            'CHAR': ['CHAR', 'INTEGER', 'REAL'],
+            'BOOLEAN': ['BOOLEAN', 'INTEGER', 'REAL', 'CHAR'],
+            'RECORD': ['RECORD']
+        }
+
+        warn_assign = {
+            'INTEGER': ['CHAR', 'BOOLEAN'],
+            'REAL': ['CHAR', 'BOOLEAN', 'INTEGER'],
+            'CHAR': ['BOOLEAN'],
+            'BOOLEAN': [],
+            'RECORD': []
         }
 
         t_ignore = ' \t'
@@ -219,7 +238,7 @@ class Parser:
                 "type": "idlist",
                 "ids": p[1]["ids"] + [p[3]] if p[3] else p[1]["ids"]
             }
-            if self.inSubFun and p[3] in self.subSymbol and p[3]:
+            if self.inSubFun and p[3] in list(self.subSymbol.keys()) and p[3]:
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -230,7 +249,7 @@ class Parser:
                         "lexpos": p.lexer.lexpos
                     }
                 })
-            elif not self.inSubFun and p[3] in self.curSymbol and p[3]:
+            elif not self.inSubFun and p[3] in list(self.curSymbol.keys()) and p[3]:
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -250,7 +269,7 @@ class Parser:
                 "type": "idlist",
                 "ids": [p[1]]
             }
-            if self.inSubFun and p[1] in self.subSymbol and p[1]:
+            if self.inSubFun and p[1] in list(self.subSymbol.keys()) and p[1]:
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -261,7 +280,7 @@ class Parser:
                         "lexpos": p.lexer.lexpos
                     }
                 })
-            elif not self.inSubFun and p[1] in self.curSymbol and p[1]:
+            elif not self.inSubFun and p[1] in list(self.curSymbol.keys()) and p[1]:
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -286,13 +305,13 @@ class Parser:
                 p[0]["SymbolTable"] = p[2]["SymbolTable"]
                 if not self.inSubFun:
                     # self.curSymbol = p[0]["SymbolTable"]
-                    self.curSymbol = []
+                    self.curSymbol = {}
                     for i in p[0]["SymbolTable"]:
-                        self.curSymbol += [i["token"]]
+                        self.curSymbol[i["token"]] = i["id"]
                 else:
                     # self.subSymbol = self.subSymbol + p[0]["SymbolTable"]
                     for i in p[0]["SymbolTable"]:
-                        self.subSymbol += [i["token"]]
+                        self.subSymbol[i["token"]] = i["id"]
             else:
                 p[0] = None
 
@@ -301,7 +320,7 @@ class Parser:
             const_declaration : const_declaration SEMICOLON ID EQUAL const_value
             '''
             p[0] = {
-                        "id": self.id,
+                "id": self.id,
                 "type": "const_declaration",
                 "values": p[1]["values"] + [{
                     "ID": p[3],
@@ -315,8 +334,15 @@ class Parser:
                 "value": p[5],
                 "positive": True if type(p[5]) != str and p[5] > 0 else False
             }]
+            self.symbolMap[self.id] = {
+                "id": self.id,
+                "token": p[3],
+                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
+                "value": p[5],
+                "positive": True if type(p[5]) != str and p[5] > 0 else False
+            }
             self.id += 1
-            if self.inSubFun and p[3] in self.subSymbol:
+            if self.inSubFun and p[3] in list(self.subSymbol.keys()):
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -327,7 +353,7 @@ class Parser:
                         "lexpos": p.lexer.lexpos
                     }
                 })
-            elif not self.inSubFun and p[3] in self.curSymbol:
+            elif not self.inSubFun and p[3] in list(self.curSymbol.keys()):
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -344,7 +370,7 @@ class Parser:
             const_declaration : ID EQUAL const_value
             '''
             p[0] = {
-                        "id": self.id,
+                "id": self.id,
                 "type": "const_declaration",
                 "values": [{
                     "ID": p[1],
@@ -358,8 +384,15 @@ class Parser:
                 "value": p[3],
                 "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
             }]
+            self.symbolMap[self.id] = {
+                "id": self.id,
+                "token": p[1],
+                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "value": p[3],
+                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
+            }
             self.id += 1
-            if self.inSubFun and p[1] in self.subSymbol:
+            if self.inSubFun and p[1] in list(self.subSymbol.keys()):
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -370,7 +403,7 @@ class Parser:
                         "lexpos": p.lexer.lexpos
                     }
                 })
-            elif not self.inSubFun and p[1] in self.curSymbol:
+            elif not self.inSubFun and p[1] in list(self.curSymbol.keys()):
                 if not self.error:
                     self.error = []
                 self.error.append({
@@ -428,11 +461,11 @@ class Parser:
                 if not self.inSubFun:
                     # self.curSymbol = self.curSymbol + p[0]["SymbolTable"]
                     for i in p[0]["SymbolTable"]:
-                        self.curSymbol += [i["token"]]
+                        self.curSymbol[i["token"]] = i["id"]
                 else:
                     # self.subSymbol = self.subSymbol + p[0]["SymbolTable"]
                     for i in p[0]["SymbolTable"]:
-                        self.subSymbol += [i["token"]]
+                        self.subSymbol[i["token"]] = i["id"]
             else:
                 p[0] = []
 
@@ -443,7 +476,6 @@ class Parser:
             '''
             if len(p) == 6:
                 p[0] = {
-                        "id": self.id,
                     "type": "var_declaration",
                     "values": p[1]["values"] + [{
                         "idlist": p[3],
@@ -462,10 +494,20 @@ class Parser:
                         "start": p[5]["SymbolTable"]["start"],
                         "recordTable": p[5]["SymbolTable"]["recordTable"]
                     }]
+                    self.symbolMap[self.id] = {
+                        "id": self.id,
+                        "token": i,
+                        "type": p[5]["SymbolTable"]["type"],
+                        "isArray": p[5]["SymbolTable"]["isArray"],
+                        "dimension": p[5]["SymbolTable"]["dimension"],
+                        "size": p[5]["SymbolTable"]["size"],
+                        "start": p[5]["SymbolTable"]["start"],
+                        "recordTable": p[5]["SymbolTable"]["recordTable"]
+                    }
                     self.id += 1
             else:
                 p[0] = {
-                        "id": self.id,
+                    "id": self.id,
                     "type": "var_declaration",
                     "values": [{
                         "idlist": p[1],
@@ -484,6 +526,16 @@ class Parser:
                         "start": p[3]["SymbolTable"]["start"],
                         "recordTable": p[3]["SymbolTable"]["recordTable"]
                     }]
+                    self.symbolMap[self.id] = {
+                        "id": self.id,
+                        "token": i,
+                        "type": p[3]["SymbolTable"]["type"],
+                        "isArray": p[3]["SymbolTable"]["isArray"],
+                        "dimension": p[3]["SymbolTable"]["dimension"],
+                        "size": p[3]["SymbolTable"]["size"],
+                        "start": p[3]["SymbolTable"]["start"],
+                        "recordTable": p[3]["SymbolTable"]["recordTable"]
+                    }
                     self.id += 1
 
         def p_type(p):
@@ -626,18 +678,17 @@ class Parser:
             subprogram : subprogram_head SEMICOLON subprogram_body
             '''
             p[0] = {
-                        "id": self.id,
+                "id": p[1]["SymbolTable"]["id"],
                 "type": "subprogram",
                 "subprogram_head": p[1],
                 "subprogram_body": p[3]
             }
             p[0]["SymbolTable"] = {
-                "id": self.id,
+                "id": p[1]["SymbolTable"]["id"],
                 "token": p[1]["SymbolTable"]["token"],
                 "type": p[1]["SymbolTable"]["type"],
                 "table": None
             }
-            self.id += 1
             p[0]["SymbolTable"]["table"] = {
                 "params": p[1]["SymbolTable"]["params"],
                 "references": p[1]["SymbolTable"]["references"],
@@ -650,12 +701,14 @@ class Parser:
             seen_PROCEDURE :
             '''
             self.inSubFun = True
+            self.subSymbol = {}
 
         def p_FUNCTION(p):
             '''
             seen_FUNCTION :
             '''
             self.inSubFun = True
+            self.subSymbol = {}
 
         def p_subprogram_head(p):
             '''
@@ -670,12 +723,27 @@ class Parser:
                     "formal_parameter": p[4]
                 }
                 p[0]["SymbolTable"] = {
+                    "id": self.id,
                     "token": p[3],
                     "type": None,
                     "params": p[4]["SymbolTable"]["params"],
                     "references": p[4]["SymbolTable"]["references"],
                     "variables": p[4]["SymbolTable"]["variables"],
                 }
+                self.symbolMap[self.id] = {
+                    "id": self.id,
+                    "token": p[3],
+                    "type": None,
+                    "params": p[4]["SymbolTable"]["params"],
+                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"],
+                }
+                self.subSymbol = {p[3]: self.id}
+                self.subFuncMap[p[3]] = {
+                    "type": None,
+                    "variables": p[4]["SymbolTable"]["variables"],
+                }
+                self.id += 1
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
                 p[0] = {
                     "type": "subprogram_head",
@@ -685,16 +753,30 @@ class Parser:
                     "basic_type": p[6]
                 }
                 p[0]["SymbolTable"] = {
+                    "id": self.id,
                     "token": p[3],
                     "type": p[6]["SymbolTable"],
                     "params": p[4]["SymbolTable"]["params"],
                     "references": p[4]["SymbolTable"]["references"],
                     "variables": p[4]["SymbolTable"]["variables"],
                 }
-            # self.subSymbol = p[0]["SymbolTable"]["variables"]
-            self.subSymbol = [p[3]]
+                self.symbolMap[self.id] = {
+                    "id": self.id,
+                    "token": p[3],
+                    "type": p[6]["SymbolTable"],
+                    "params": p[4]["SymbolTable"]["params"],
+                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"],
+                }
+                # self.subSymbol = p[0]["SymbolTable"]["variables"]
+                self.subSymbol = {p[3]: self.id}
+                self.subFuncMap[p[3]] = {
+                    "type": p[6]["SymbolTable"],
+                    "variables": p[4]["SymbolTable"]["variables"],
+                }
+                self.id += 1
             for i in p[0]["SymbolTable"]["variables"]:
-                self.subSymbol += [i["token"]]
+                self.subSymbol[i["token"]] = i["id"]
 
         def p_formal_parameter(p):
             '''
@@ -798,6 +880,16 @@ class Parser:
                     "start": [],
                     "recordType": None,
                 }]
+                self.symbolMap[self.id] = {
+                    "id": self.id,
+                    "token": i,
+                    "type": p[3]["SymbolTable"],
+                    "isArray": False,
+                    "dimension": 0,
+                    "size": [],
+                    "start": [],
+                    "recordType": None,
+                }
                 self.id += 1
 
         def p_subprogram_body(p):
@@ -872,7 +964,7 @@ class Parser:
                     "to_expression": p[6],
                     "statement": p[8]
                 }
-                if p[2] not in self.curSymbol and self.inSubFun and p[2] not in self.subSymbol:
+                if p[2] not in list(self.curSymbol.keys()) and self.inSubFun and p[2] not in list(self.subSymbol.keys()):
                     if not self.error:
                         self.error = []
                     self.error += [{
@@ -883,6 +975,31 @@ class Parser:
                             "lexpos": p.lexer.lexpos
                         }
                     }]
+                id = self.search_symbol(p[2])
+                if id:
+                    if id["type"] not in safe_assign[p[4]["__type"]]:
+                        if id["type"] in warn_assign[p[4]["__type"]]:
+                            if not self.warning:
+                                self.warning = []
+                            self.warning += [{
+                                "code": "W-01",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": p[2],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
+                        else:
+                            if not self.error:
+                                self.error = []
+                            self.error += [{
+                                "code": "C-04",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": p[2],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
             elif not type(p[1]) == dict and p[1].upper() == 'READ':
                 p[0] = {
                     "type": "statement",
@@ -910,6 +1027,42 @@ class Parser:
                     "ASSIGNOP": p[2],
                     "expression": p[3]
                 }
+                id = self.search_symbol(p[1]["ID"])
+                if id:
+                    if p[3]["__type"] == "UNDEFINED":
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "C-07",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "value": p[1]["ID"],
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
+                    elif id["type"] not in safe_assign[p[3]["__type"]]:
+                        if id["type"] in warn_assign[p[3]["__type"]]:
+                            if not self.warning:
+                                self.warning = []
+                            self.warning += [{
+                                "code": "W-01",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": p[1]["ID"],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
+                        else:
+                            if not self.error:
+                                self.error = []
+                            self.error += [{
+                                "code": "C-04",
+                                "info": {
+                                    "line": p.lexer.lineno,
+                                    "value": p[1]["ID"],
+                                    "lexpos": p.lexer.lexpos
+                                }
+                            }]
             elif p[1]["type"] == "procedure_call":
                 p[0] = {
                     "type": "statement",
@@ -947,10 +1100,12 @@ class Parser:
             '''
             p[0] = {
                 "type": "variable",
+                "__type": self.search_symbol(p[1])["type"] if self.search_symbol(p[1]) else "UNDEFINED",
                 "ID": p[1],
                 "id_varpart": p[2]
             }
-            if p[1] not in self.curSymbol and self.inSubFun and p[1] not in self.subSymbol:
+            if type(p[1]) == str and p[1] not in list(self.curSymbol.keys()) and not (self.inSubFun and p[1] in list(self.subSymbol.keys())):
+
                 if not self.error:
                     self.error = []
                 self.error += [{
@@ -961,6 +1116,45 @@ class Parser:
                         "lexpos": p.lexer.lexpos
                     }
                 }]
+            elif type(p[1]) == list:
+                possiable_token = list(self.curSymbol.keys(
+                )) + (list(self.subSymbol.keys()) if self.inSubFun else [])
+                i = p[1][0]
+                if i not in possiable_token:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-02",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": i,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                elif self.search_symbol(i)["recordTable"]:
+                    possiable_token = [j["token"] for j in self.search_symbol(
+                        i)["recordTable"]["variables"]]
+                    record_table = self.search_symbol(i)["recordTable"]
+                for j in p[1][1:]:
+                    if j not in possiable_token:
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "C-02",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "value": j,
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
+                    elif self.search_symbol(j, record_table)["recordTable"]:
+                        possiable_token = [k["token"] for k in self.search_symbol(
+                            j, record_table)["recordTable"]["variables"]]
+                        record_table = self.search_symbol(
+                            j, record_table)["recordTable"]
+                    else:
+                        p[0]["__type"] = self.search_symbol(
+                            j, record_table)["type"]
 
         def p_id_varpart(p):
             '''
@@ -1019,6 +1213,7 @@ class Parser:
             if len(p) == 4:
                 p[0] = {
                     "type": "expression_list",
+                    "__type": "expression_list",
                     "expressions": p[1]["expressions"] + [p[3]] if p[3] else p[1]["expressions"]
                 }
             else:
@@ -1035,13 +1230,25 @@ class Parser:
             if len(p) == 4:
                 p[0] = {
                     "type": "expression",
+                    "__type": "BOOLEAN",
                     "simple_expression_1": p[1],
                     "RELOP": p[2],
                     "simple_expression_2": p[3]
                 }
+                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-05",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
             else:
                 p[0] = {
                     "type": "expression",
+                    "__type": p[1]["__type"],
                     "simple_expression": p[1]
                 }
 
@@ -1055,6 +1262,16 @@ class Parser:
                 "RELOP": p[2],
                 "simple_expression_2": p[3]
             }
+            if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                if not self.error:
+                    self.error = []
+                self.error += [{
+                    "code": "C-05",
+                    "info": {
+                        "line": p.lexer.lineno,
+                        "lexpos": p.lexer.lexpos
+                    }
+                }]
 
         def p_simple_expression(p):
             '''
@@ -1068,9 +1285,40 @@ class Parser:
                     "ADDOP": p[2],
                     "term": p[3]
                 }
+                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-06",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "RECORD"
+                elif p[1]["__type"] == "REAL" or p[3]["__type"] == "REAL":
+                    p[0]["__type"] = "REAL"
+                elif p[1]["__type"] == "INTEGER" or p[3]["__type"] == "INTEGER":
+                    p[0]["__type"] = "INTEGER"
+                elif p[1]["__type"] == "CHAR" or p[3]["__type"] == "CHAR":
+                    p[0]["__type"] = "CHAR"
+                elif p[1]["__type"] == "BOOLEAN" or p[3]["__type"] == "BOOLEAN":
+                    p[0]["__type"] = "BOOLEAN"
+                else:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-07",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "UNDEFINED"
             else:
                 p[0] = {
                     "type": "simple_expression",
+                    "__type": p[1]["__type"],
                     "term": p[1]
                 }
 
@@ -1085,9 +1333,40 @@ class Parser:
                     "MULOP": p[1],
                     "factor": p[2]
                 }
+                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-06",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "RECORD"
+                elif p[1]["__type"] == "REAL" or p[3]["__type"] == "REAL":
+                    p[0]["__type"] = "REAL"
+                elif p[1]["__type"] == "INTEGER" or p[3]["__type"] == "INTEGER":
+                    p[0]["__type"] = "INTEGER"
+                elif p[1]["__type"] == "CHAR" or p[3]["__type"] == "CHAR":
+                    p[0]["__type"] = "CHAR"
+                elif p[1]["__type"] == "BOOLEAN" or p[3]["__type"] == "BOOLEAN":
+                    p[0]["__type"] = "BOOLEAN"
+                else:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-07",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "UNDEFINED"
             else:
                 p[0] = {
                     "type": "term",
+                    "__type": p[1]["__type"],
                     "factor": p[1]
                 }
 
@@ -1099,6 +1378,7 @@ class Parser:
             p[0] = {
                 "type": "factor",
                 "_type": "NUM",
+                "__type": "INTEGER" if type(p[1]) == int else "REAL",
                 "NUM": p[1]
             }
 
@@ -1109,6 +1389,7 @@ class Parser:
             p[0] = {
                 "type": "factor",
                 "_type": "variable",
+                "__type": p[1]["__type"],
                 "variable": p[1]
             }
 
@@ -1119,18 +1400,21 @@ class Parser:
             p[0] = {
                 "type": "factor",
                 "_type": "procedure_id",
+                "__type": self.subFuncMap[p[1]]["type"],
                 "ID": p[1],
                 "expression_list": p[3]
             }
+            # TODO：检查参数个数和类型
 
-        def p_factor_expression_list(p):
+        def p_factor_expression(p):
             '''
-            factor : LPAREN expression_list RPAREN
+            factor : LPAREN expression RPAREN
             '''
             p[0] = {
                 "type": "factor",
-                "_type": "expression_list",
-                "expression_list": p[2]
+                "_type": "expression",
+                "__type": p[2]["__type"],
+                "expression": p[2]
             }
 
         def p_factor_not(p):
@@ -1140,6 +1424,7 @@ class Parser:
             p[0] = {
                 "type": "factor",
                 "_type": "NOT",
+                "__type": p[2]["__type"],
                 "factor": p[2]
             }
 
@@ -1151,6 +1436,7 @@ class Parser:
             p[0] = {
                 "type": "factor",
                 "_type": "UMINUS" if p[1] == "-" else "NORMAL",
+                "__type": p[2]["__type"],
                 "factor": p[2]
             }
 
@@ -1179,6 +1465,16 @@ class Parser:
                         "recordTable": p[4]["SymbolTable"]["recordTable"]
                     }]
                 }
+                self.symbolMap[self.id] = {
+                    "id": self.id,
+                    "token": p[2],
+                    "type": p[4]["SymbolTable"]["type"],
+                    "isArray": p[4]["SymbolTable"]["isArray"],
+                    "dimension": p[4]["SymbolTable"]["dimension"],
+                    "size": p[4]["SymbolTable"]["size"],
+                    "start": p[4]["SymbolTable"]["start"],
+                    "recordTable": p[4]["SymbolTable"]["recordTable"]
+                }
                 self.id += 1
             else:
                 p[0] = {
@@ -1199,6 +1495,16 @@ class Parser:
                         "recordTable": p[3]["SymbolTable"]["recordTable"]
                     }]
                 }
+                self.symbolMap[self.id] = {
+                    "id": self.id,
+                    "token": p[1],
+                    "type": p[3]["SymbolTable"]["type"],
+                    "isArray": p[3]["SymbolTable"]["isArray"],
+                    "dimension": p[3]["SymbolTable"]["dimension"],
+                    "size": p[3]["SymbolTable"]["size"],
+                    "start": p[3]["SymbolTable"]["start"],
+                    "recordTable": p[3]["SymbolTable"]["recordTable"]
+                }
                 self.id += 1
 
         def p_error(p):
@@ -1214,6 +1520,17 @@ class Parser:
             })
 
         self.parser = yacc(debug=debug, write_tables=write_tables)
+
+    def search_symbol(self, token, recordTable=None):
+        if recordTable is None:
+            if self.inSubFun and token in list(self.subSymbol.keys()):
+                return self.symbolMap[self.subSymbol[token]]
+            elif token in list(self.curSymbol.keys()):
+                return self.symbolMap[self.curSymbol[token]]
+        else:
+            for i in recordTable["variables"]:
+                if i["token"] == token:
+                    return i
 
     def _removeSymbolTable(self, p):
         if type(p) == dict:
@@ -1233,11 +1550,14 @@ class Parser:
             "variables": [],
             "subFunc": []
         }
-        self.error = None
-        self.curSymbol = []
-        self.subSymbol = []
+        self.error = []
+        self.warning = []
+        self.curSymbol = {}
+        self.subSymbol = {}
         self.inSubFun = False
         self.id = 0
+        self.symbolMap = {}
+        self.subFuncMap = {}
         ast = None
         # try:
         ast = self.parser.parse(data)
@@ -1248,4 +1568,5 @@ class Parser:
             "ast": ast,
             "symbolTable": self.SymbolTable,
             "error": self.error,
+            "warning": self.warning
         }

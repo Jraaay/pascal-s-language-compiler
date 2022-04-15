@@ -18,7 +18,6 @@
             "var_declarations": {
                 "type": "var_declarations",
                 "var_declaration": {
-                    "id": 1,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -66,7 +65,7 @@
                 "type": "subprogram_declarations",
                 "subprograms": [
                     {
-                        "id": 4,
+                        "id": 3,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -83,7 +82,7 @@
                             "var_declarations": {
                                 "type": "var_declarations",
                                 "var_declaration": {
-                                    "id": 3,
+                                    "id": 4,
                                     "type": "var_declaration",
                                     "values": [
                                         {
@@ -114,6 +113,7 @@
                                             "_type": "variable",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": "i",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
@@ -123,13 +123,17 @@
                                             "ASSIGNOP": ":=",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "INTEGER",
                                                 "simple_expression": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "NUM",
+                                                            "__type": "INTEGER",
                                                             "NUM": 0
                                                         }
                                                     }
@@ -141,15 +145,20 @@
                                             "_type": "WHILE",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "BOOLEAN",
                                                 "simple_expression_1": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "i",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -162,11 +171,14 @@
                                                 "RELOP": "<",
                                                 "simple_expression_2": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "NUM",
+                                                            "__type": "INTEGER",
                                                             "NUM": 5
                                                         }
                                                     }
@@ -188,6 +200,7 @@
                                                                     "variables": [
                                                                         {
                                                                             "type": "variable",
+                                                                            "__type": "INTEGER",
                                                                             "ID": "y",
                                                                             "id_varpart": {
                                                                                 "type": "id_varpart",
@@ -202,6 +215,7 @@
                                                                 "_type": "variable",
                                                                 "variable": {
                                                                     "type": "variable",
+                                                                    "__type": "INTEGER",
                                                                     "ID": "a",
                                                                     "id_varpart": {
                                                                         "type": "id_varpart",
@@ -210,15 +224,20 @@
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "simple_expression": {
                                                                                         "type": "simple_expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "term": {
                                                                                             "type": "term",
+                                                                                            "__type": "INTEGER",
                                                                                             "factor": {
                                                                                                 "type": "factor",
                                                                                                 "_type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "variable": {
                                                                                                     "type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "ID": "i",
                                                                                                     "id_varpart": {
                                                                                                         "type": "id_varpart",
@@ -236,15 +255,20 @@
                                                                 "ASSIGNOP": ":=",
                                                                 "expression": {
                                                                     "type": "expression",
+                                                                    "__type": "INTEGER",
                                                                     "simple_expression": {
                                                                         "type": "simple_expression",
+                                                                        "__type": "INTEGER",
                                                                         "term": {
                                                                             "type": "term",
+                                                                            "__type": "INTEGER",
                                                                             "factor": {
                                                                                 "type": "factor",
                                                                                 "_type": "variable",
+                                                                                "__type": "INTEGER",
                                                                                 "variable": {
                                                                                     "type": "variable",
+                                                                                    "__type": "INTEGER",
                                                                                     "ID": "y",
                                                                                     "id_varpart": {
                                                                                         "type": "id_varpart",
@@ -261,6 +285,7 @@
                                                                 "_type": "variable",
                                                                 "variable": {
                                                                     "type": "variable",
+                                                                    "__type": "INTEGER",
                                                                     "ID": "i",
                                                                     "id_varpart": {
                                                                         "type": "id_varpart",
@@ -270,17 +295,22 @@
                                                                 "ASSIGNOP": ":=",
                                                                 "expression": {
                                                                     "type": "expression",
+                                                                    "__type": "INTEGER",
                                                                     "simple_expression": {
                                                                         "type": "simple_expression",
                                                                         "simple_expression": {
                                                                             "type": "simple_expression",
+                                                                            "__type": "INTEGER",
                                                                             "term": {
                                                                                 "type": "term",
+                                                                                "__type": "INTEGER",
                                                                                 "factor": {
                                                                                     "type": "factor",
                                                                                     "_type": "variable",
+                                                                                    "__type": "INTEGER",
                                                                                     "variable": {
                                                                                         "type": "variable",
+                                                                                        "__type": "INTEGER",
                                                                                         "ID": "i",
                                                                                         "id_varpart": {
                                                                                             "type": "id_varpart",
@@ -293,12 +323,15 @@
                                                                         "ADDOP": "+",
                                                                         "term": {
                                                                             "type": "term",
+                                                                            "__type": "INTEGER",
                                                                             "factor": {
                                                                                 "type": "factor",
                                                                                 "_type": "NUM",
+                                                                                "__type": "INTEGER",
                                                                                 "NUM": 1
                                                                             }
-                                                                        }
+                                                                        },
+                                                                        "__type": "INTEGER"
                                                                     }
                                                                 }
                                                             }
@@ -313,7 +346,7 @@
                         }
                     },
                     {
-                        "id": 11,
+                        "id": 7,
                         "type": "subprogram",
                         "subprogram_head": {
                             "type": "subprogram_head",
@@ -351,7 +384,7 @@
                             "var_declarations": {
                                 "type": "var_declarations",
                                 "var_declaration": {
-                                    "id": 7,
+                                    "id": 8,
                                     "type": "var_declaration",
                                     "values": [
                                         {
@@ -385,6 +418,7 @@
                                             "_type": "variable",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": "i",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
@@ -394,15 +428,20 @@
                                             "ASSIGNOP": ":=",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "INTEGER",
                                                 "simple_expression": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "l",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -419,6 +458,7 @@
                                             "_type": "variable",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": "j",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
@@ -428,15 +468,20 @@
                                             "ASSIGNOP": ":=",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "INTEGER",
                                                 "simple_expression": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "h",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -453,6 +498,7 @@
                                             "_type": "variable",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": "k",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
@@ -462,15 +508,20 @@
                                             "ASSIGNOP": ":=",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "INTEGER",
                                                 "simple_expression": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "a",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -479,15 +530,20 @@
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "type": "simple_expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "term": {
                                                                                         "type": "term",
+                                                                                        "__type": "INTEGER",
                                                                                         "factor": {
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
+                                                                                            "__type": "INTEGER",
                                                                                             "variable": {
                                                                                                 "type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "ID": "i",
                                                                                                 "id_varpart": {
                                                                                                     "type": "id_varpart",
@@ -512,15 +568,20 @@
                                             "_type": "IF",
                                             "expression": {
                                                 "type": "expression",
+                                                "__type": "BOOLEAN",
                                                 "simple_expression_1": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "l",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -533,13 +594,17 @@
                                                 "RELOP": "<",
                                                 "simple_expression_2": {
                                                     "type": "simple_expression",
+                                                    "__type": "INTEGER",
                                                     "term": {
                                                         "type": "term",
+                                                        "__type": "INTEGER",
                                                         "factor": {
                                                             "type": "factor",
                                                             "_type": "variable",
+                                                            "__type": "INTEGER",
                                                             "variable": {
                                                                 "type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "ID": "h",
                                                                 "id_varpart": {
                                                                     "type": "id_varpart",
@@ -563,15 +628,20 @@
                                                                 "_type": "WHILE",
                                                                 "expression": {
                                                                     "type": "expression",
+                                                                    "__type": "BOOLEAN",
                                                                     "simple_expression_1": {
                                                                         "type": "simple_expression",
+                                                                        "__type": "INTEGER",
                                                                         "term": {
                                                                             "type": "term",
+                                                                            "__type": "INTEGER",
                                                                             "factor": {
                                                                                 "type": "factor",
                                                                                 "_type": "variable",
+                                                                                "__type": "INTEGER",
                                                                                 "variable": {
                                                                                     "type": "variable",
+                                                                                    "__type": "INTEGER",
                                                                                     "ID": "i",
                                                                                     "id_varpart": {
                                                                                         "type": "id_varpart",
@@ -584,13 +654,17 @@
                                                                     "RELOP": "<",
                                                                     "simple_expression_2": {
                                                                         "type": "simple_expression",
+                                                                        "__type": "INTEGER",
                                                                         "term": {
                                                                             "type": "term",
+                                                                            "__type": "INTEGER",
                                                                             "factor": {
                                                                                 "type": "factor",
                                                                                 "_type": "variable",
+                                                                                "__type": "INTEGER",
                                                                                 "variable": {
                                                                                     "type": "variable",
+                                                                                    "__type": "INTEGER",
                                                                                     "ID": "j",
                                                                                     "id_varpart": {
                                                                                         "type": "id_varpart",
@@ -614,84 +688,98 @@
                                                                                     "_type": "WHILE",
                                                                                     "expression": {
                                                                                         "type": "expression",
+                                                                                        "__type": "BOOLEAN",
                                                                                         "simple_expression": {
                                                                                             "type": "simple_expression",
+                                                                                            "__type": "BOOLEAN",
                                                                                             "term": {
                                                                                                 "type": "term",
+                                                                                                "__type": "BOOLEAN",
                                                                                                 "factor": {
                                                                                                     "type": "term",
+                                                                                                    "__type": "BOOLEAN",
                                                                                                     "factor": {
                                                                                                         "type": "factor",
-                                                                                                        "_type": "expression_list",
-                                                                                                        "expression_list": {
-                                                                                                            "type": "expression_list",
-                                                                                                            "expressions": [
-                                                                                                                {
-                                                                                                                    "type": "expression",
-                                                                                                                    "simple_expression_1": {
-                                                                                                                        "type": "simple_expression",
-                                                                                                                        "term": {
-                                                                                                                            "type": "term",
-                                                                                                                            "factor": {
-                                                                                                                                "type": "factor",
-                                                                                                                                "_type": "variable",
-                                                                                                                                "variable": {
-                                                                                                                                    "type": "variable",
-                                                                                                                                    "ID": "a",
-                                                                                                                                    "id_varpart": {
-                                                                                                                                        "type": "id_varpart",
-                                                                                                                                        "expression_list": {
-                                                                                                                                            "type": "expression_list",
-                                                                                                                                            "expressions": [
-                                                                                                                                                {
-                                                                                                                                                    "type": "expression",
-                                                                                                                                                    "simple_expression": {
-                                                                                                                                                        "type": "simple_expression",
-                                                                                                                                                        "term": {
-                                                                                                                                                            "type": "term",
-                                                                                                                                                            "factor": {
-                                                                                                                                                                "type": "factor",
-                                                                                                                                                                "_type": "variable",
-                                                                                                                                                                "variable": {
-                                                                                                                                                                    "type": "variable",
-                                                                                                                                                                    "ID": "j",
-                                                                                                                                                                    "id_varpart": {
-                                                                                                                                                                        "type": "id_varpart",
-                                                                                                                                                                        "expression_list": null
-                                                                                                                                                                    }
-                                                                                                                                                                }
+                                                                                                        "_type": "expression",
+                                                                                                        "__type": "BOOLEAN",
+                                                                                                        "expression": {
+                                                                                                            "type": "expression",
+                                                                                                            "__type": "BOOLEAN",
+                                                                                                            "simple_expression_1": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "variable": {
+                                                                                                                            "type": "variable",
+                                                                                                                            "__type": "INTEGER",
+                                                                                                                            "ID": "a",
+                                                                                                                            "id_varpart": {
+                                                                                                                                "type": "id_varpart",
+                                                                                                                                "expression_list": {
+                                                                                                                                    "type": "expression_list",
+                                                                                                                                    "expressions": [
+                                                                                                                                        {
+                                                                                                                                            "type": "expression",
+                                                                                                                                            "__type": "INTEGER",
+                                                                                                                                            "simple_expression": {
+                                                                                                                                                "type": "simple_expression",
+                                                                                                                                                "__type": "INTEGER",
+                                                                                                                                                "term": {
+                                                                                                                                                    "type": "term",
+                                                                                                                                                    "__type": "INTEGER",
+                                                                                                                                                    "factor": {
+                                                                                                                                                        "type": "factor",
+                                                                                                                                                        "_type": "variable",
+                                                                                                                                                        "__type": "INTEGER",
+                                                                                                                                                        "variable": {
+                                                                                                                                                            "type": "variable",
+                                                                                                                                                            "__type": "INTEGER",
+                                                                                                                                                            "ID": "j",
+                                                                                                                                                            "id_varpart": {
+                                                                                                                                                                "type": "id_varpart",
+                                                                                                                                                                "expression_list": null
                                                                                                                                                             }
                                                                                                                                                         }
                                                                                                                                                     }
                                                                                                                                                 }
-                                                                                                                                            ]
+                                                                                                                                            }
                                                                                                                                         }
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                    },
-                                                                                                                    "RELOP": ">=",
-                                                                                                                    "simple_expression_2": {
-                                                                                                                        "type": "simple_expression",
-                                                                                                                        "term": {
-                                                                                                                            "type": "term",
-                                                                                                                            "factor": {
-                                                                                                                                "type": "factor",
-                                                                                                                                "_type": "variable",
-                                                                                                                                "variable": {
-                                                                                                                                    "type": "variable",
-                                                                                                                                    "ID": "k",
-                                                                                                                                    "id_varpart": {
-                                                                                                                                        "type": "id_varpart",
-                                                                                                                                        "expression_list": null
-                                                                                                                                    }
+                                                                                                                                    ]
                                                                                                                                 }
                                                                                                                             }
                                                                                                                         }
                                                                                                                     }
                                                                                                                 }
-                                                                                                            ]
+                                                                                                            },
+                                                                                                            "RELOP": ">=",
+                                                                                                            "simple_expression_2": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "variable": {
+                                                                                                                            "type": "variable",
+                                                                                                                            "__type": "INTEGER",
+                                                                                                                            "ID": "k",
+                                                                                                                            "id_varpart": {
+                                                                                                                                "type": "id_varpart",
+                                                                                                                                "expression_list": null
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
                                                                                                         }
                                                                                                     }
                                                                                                 }
@@ -711,6 +799,7 @@
                                                                                                         "_type": "variable",
                                                                                                         "variable": {
                                                                                                             "type": "variable",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "ID": "j",
                                                                                                             "id_varpart": {
                                                                                                                 "type": "id_varpart",
@@ -720,17 +809,22 @@
                                                                                                         "ASSIGNOP": ":=",
                                                                                                         "expression": {
                                                                                                             "type": "expression",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "simple_expression": {
                                                                                                                 "type": "simple_expression",
                                                                                                                 "simple_expression": {
                                                                                                                     "type": "simple_expression",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "term": {
                                                                                                                         "type": "term",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "factor": {
                                                                                                                             "type": "factor",
                                                                                                                             "_type": "variable",
+                                                                                                                            "__type": "INTEGER",
                                                                                                                             "variable": {
                                                                                                                                 "type": "variable",
+                                                                                                                                "__type": "INTEGER",
                                                                                                                                 "ID": "j",
                                                                                                                                 "id_varpart": {
                                                                                                                                     "type": "id_varpart",
@@ -743,12 +837,15 @@
                                                                                                                 "ADDOP": "-",
                                                                                                                 "term": {
                                                                                                                     "type": "term",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "factor": {
                                                                                                                         "type": "factor",
                                                                                                                         "_type": "NUM",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "NUM": 1
                                                                                                                     }
-                                                                                                                }
+                                                                                                                },
+                                                                                                                "__type": "INTEGER"
                                                                                                             }
                                                                                                         }
                                                                                                     }
@@ -762,6 +859,7 @@
                                                                                     "_type": "variable",
                                                                                     "variable": {
                                                                                         "type": "variable",
+                                                                                        "__type": "INTEGER",
                                                                                         "ID": "a",
                                                                                         "id_varpart": {
                                                                                             "type": "id_varpart",
@@ -770,15 +868,20 @@
                                                                                                 "expressions": [
                                                                                                     {
                                                                                                         "type": "expression",
+                                                                                                        "__type": "INTEGER",
                                                                                                         "simple_expression": {
                                                                                                             "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "term": {
                                                                                                                 "type": "term",
+                                                                                                                "__type": "INTEGER",
                                                                                                                 "factor": {
                                                                                                                     "type": "factor",
                                                                                                                     "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "variable": {
                                                                                                                         "type": "variable",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "ID": "i",
                                                                                                                         "id_varpart": {
                                                                                                                             "type": "id_varpart",
@@ -796,15 +899,20 @@
                                                                                     "ASSIGNOP": ":=",
                                                                                     "expression": {
                                                                                         "type": "expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "simple_expression": {
                                                                                             "type": "simple_expression",
+                                                                                            "__type": "INTEGER",
                                                                                             "term": {
                                                                                                 "type": "term",
+                                                                                                "__type": "INTEGER",
                                                                                                 "factor": {
                                                                                                     "type": "factor",
                                                                                                     "_type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "variable": {
                                                                                                         "type": "variable",
+                                                                                                        "__type": "INTEGER",
                                                                                                         "ID": "a",
                                                                                                         "id_varpart": {
                                                                                                             "type": "id_varpart",
@@ -813,15 +921,20 @@
                                                                                                                 "expressions": [
                                                                                                                     {
                                                                                                                         "type": "expression",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "simple_expression": {
                                                                                                                             "type": "simple_expression",
+                                                                                                                            "__type": "INTEGER",
                                                                                                                             "term": {
                                                                                                                                 "type": "term",
+                                                                                                                                "__type": "INTEGER",
                                                                                                                                 "factor": {
                                                                                                                                     "type": "factor",
                                                                                                                                     "_type": "variable",
+                                                                                                                                    "__type": "INTEGER",
                                                                                                                                     "variable": {
                                                                                                                                         "type": "variable",
+                                                                                                                                        "__type": "INTEGER",
                                                                                                                                         "ID": "j",
                                                                                                                                         "id_varpart": {
                                                                                                                                             "type": "id_varpart",
@@ -846,84 +959,98 @@
                                                                                     "_type": "WHILE",
                                                                                     "expression": {
                                                                                         "type": "expression",
+                                                                                        "__type": "BOOLEAN",
                                                                                         "simple_expression": {
                                                                                             "type": "simple_expression",
+                                                                                            "__type": "BOOLEAN",
                                                                                             "term": {
                                                                                                 "type": "term",
+                                                                                                "__type": "BOOLEAN",
                                                                                                 "factor": {
                                                                                                     "type": "term",
+                                                                                                    "__type": "BOOLEAN",
                                                                                                     "factor": {
                                                                                                         "type": "factor",
-                                                                                                        "_type": "expression_list",
-                                                                                                        "expression_list": {
-                                                                                                            "type": "expression_list",
-                                                                                                            "expressions": [
-                                                                                                                {
-                                                                                                                    "type": "expression",
-                                                                                                                    "simple_expression_1": {
-                                                                                                                        "type": "simple_expression",
-                                                                                                                        "term": {
-                                                                                                                            "type": "term",
-                                                                                                                            "factor": {
-                                                                                                                                "type": "factor",
-                                                                                                                                "_type": "variable",
-                                                                                                                                "variable": {
-                                                                                                                                    "type": "variable",
-                                                                                                                                    "ID": "a",
-                                                                                                                                    "id_varpart": {
-                                                                                                                                        "type": "id_varpart",
-                                                                                                                                        "expression_list": {
-                                                                                                                                            "type": "expression_list",
-                                                                                                                                            "expressions": [
-                                                                                                                                                {
-                                                                                                                                                    "type": "expression",
-                                                                                                                                                    "simple_expression": {
-                                                                                                                                                        "type": "simple_expression",
-                                                                                                                                                        "term": {
-                                                                                                                                                            "type": "term",
-                                                                                                                                                            "factor": {
-                                                                                                                                                                "type": "factor",
-                                                                                                                                                                "_type": "variable",
-                                                                                                                                                                "variable": {
-                                                                                                                                                                    "type": "variable",
-                                                                                                                                                                    "ID": "i",
-                                                                                                                                                                    "id_varpart": {
-                                                                                                                                                                        "type": "id_varpart",
-                                                                                                                                                                        "expression_list": null
-                                                                                                                                                                    }
-                                                                                                                                                                }
+                                                                                                        "_type": "expression",
+                                                                                                        "__type": "BOOLEAN",
+                                                                                                        "expression": {
+                                                                                                            "type": "expression",
+                                                                                                            "__type": "BOOLEAN",
+                                                                                                            "simple_expression_1": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "variable": {
+                                                                                                                            "type": "variable",
+                                                                                                                            "__type": "INTEGER",
+                                                                                                                            "ID": "a",
+                                                                                                                            "id_varpart": {
+                                                                                                                                "type": "id_varpart",
+                                                                                                                                "expression_list": {
+                                                                                                                                    "type": "expression_list",
+                                                                                                                                    "expressions": [
+                                                                                                                                        {
+                                                                                                                                            "type": "expression",
+                                                                                                                                            "__type": "INTEGER",
+                                                                                                                                            "simple_expression": {
+                                                                                                                                                "type": "simple_expression",
+                                                                                                                                                "__type": "INTEGER",
+                                                                                                                                                "term": {
+                                                                                                                                                    "type": "term",
+                                                                                                                                                    "__type": "INTEGER",
+                                                                                                                                                    "factor": {
+                                                                                                                                                        "type": "factor",
+                                                                                                                                                        "_type": "variable",
+                                                                                                                                                        "__type": "INTEGER",
+                                                                                                                                                        "variable": {
+                                                                                                                                                            "type": "variable",
+                                                                                                                                                            "__type": "INTEGER",
+                                                                                                                                                            "ID": "i",
+                                                                                                                                                            "id_varpart": {
+                                                                                                                                                                "type": "id_varpart",
+                                                                                                                                                                "expression_list": null
                                                                                                                                                             }
                                                                                                                                                         }
                                                                                                                                                     }
                                                                                                                                                 }
-                                                                                                                                            ]
+                                                                                                                                            }
                                                                                                                                         }
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                    },
-                                                                                                                    "RELOP": "<=",
-                                                                                                                    "simple_expression_2": {
-                                                                                                                        "type": "simple_expression",
-                                                                                                                        "term": {
-                                                                                                                            "type": "term",
-                                                                                                                            "factor": {
-                                                                                                                                "type": "factor",
-                                                                                                                                "_type": "variable",
-                                                                                                                                "variable": {
-                                                                                                                                    "type": "variable",
-                                                                                                                                    "ID": "k",
-                                                                                                                                    "id_varpart": {
-                                                                                                                                        "type": "id_varpart",
-                                                                                                                                        "expression_list": null
-                                                                                                                                    }
+                                                                                                                                    ]
                                                                                                                                 }
                                                                                                                             }
                                                                                                                         }
                                                                                                                     }
                                                                                                                 }
-                                                                                                            ]
+                                                                                                            },
+                                                                                                            "RELOP": "<=",
+                                                                                                            "simple_expression_2": {
+                                                                                                                "type": "simple_expression",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "term": {
+                                                                                                                    "type": "term",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "factor": {
+                                                                                                                        "type": "factor",
+                                                                                                                        "_type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "variable": {
+                                                                                                                            "type": "variable",
+                                                                                                                            "__type": "INTEGER",
+                                                                                                                            "ID": "k",
+                                                                                                                            "id_varpart": {
+                                                                                                                                "type": "id_varpart",
+                                                                                                                                "expression_list": null
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
                                                                                                         }
                                                                                                     }
                                                                                                 }
@@ -943,6 +1070,7 @@
                                                                                                         "_type": "variable",
                                                                                                         "variable": {
                                                                                                             "type": "variable",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "ID": "i",
                                                                                                             "id_varpart": {
                                                                                                                 "type": "id_varpart",
@@ -952,17 +1080,22 @@
                                                                                                         "ASSIGNOP": ":=",
                                                                                                         "expression": {
                                                                                                             "type": "expression",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "simple_expression": {
                                                                                                                 "type": "simple_expression",
                                                                                                                 "simple_expression": {
                                                                                                                     "type": "simple_expression",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "term": {
                                                                                                                         "type": "term",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "factor": {
                                                                                                                             "type": "factor",
                                                                                                                             "_type": "variable",
+                                                                                                                            "__type": "INTEGER",
                                                                                                                             "variable": {
                                                                                                                                 "type": "variable",
+                                                                                                                                "__type": "INTEGER",
                                                                                                                                 "ID": "i",
                                                                                                                                 "id_varpart": {
                                                                                                                                     "type": "id_varpart",
@@ -975,12 +1108,15 @@
                                                                                                                 "ADDOP": "+",
                                                                                                                 "term": {
                                                                                                                     "type": "term",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "factor": {
                                                                                                                         "type": "factor",
                                                                                                                         "_type": "NUM",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "NUM": 1
                                                                                                                     }
-                                                                                                                }
+                                                                                                                },
+                                                                                                                "__type": "INTEGER"
                                                                                                             }
                                                                                                         }
                                                                                                     }
@@ -994,6 +1130,7 @@
                                                                                     "_type": "variable",
                                                                                     "variable": {
                                                                                         "type": "variable",
+                                                                                        "__type": "INTEGER",
                                                                                         "ID": "a",
                                                                                         "id_varpart": {
                                                                                             "type": "id_varpart",
@@ -1002,15 +1139,20 @@
                                                                                                 "expressions": [
                                                                                                     {
                                                                                                         "type": "expression",
+                                                                                                        "__type": "INTEGER",
                                                                                                         "simple_expression": {
                                                                                                             "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
                                                                                                             "term": {
                                                                                                                 "type": "term",
+                                                                                                                "__type": "INTEGER",
                                                                                                                 "factor": {
                                                                                                                     "type": "factor",
                                                                                                                     "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
                                                                                                                     "variable": {
                                                                                                                         "type": "variable",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "ID": "j",
                                                                                                                         "id_varpart": {
                                                                                                                             "type": "id_varpart",
@@ -1028,15 +1170,20 @@
                                                                                     "ASSIGNOP": ":=",
                                                                                     "expression": {
                                                                                         "type": "expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "simple_expression": {
                                                                                             "type": "simple_expression",
+                                                                                            "__type": "INTEGER",
                                                                                             "term": {
                                                                                                 "type": "term",
+                                                                                                "__type": "INTEGER",
                                                                                                 "factor": {
                                                                                                     "type": "factor",
                                                                                                     "_type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "variable": {
                                                                                                         "type": "variable",
+                                                                                                        "__type": "INTEGER",
                                                                                                         "ID": "a",
                                                                                                         "id_varpart": {
                                                                                                             "type": "id_varpart",
@@ -1045,15 +1192,20 @@
                                                                                                                 "expressions": [
                                                                                                                     {
                                                                                                                         "type": "expression",
+                                                                                                                        "__type": "INTEGER",
                                                                                                                         "simple_expression": {
                                                                                                                             "type": "simple_expression",
+                                                                                                                            "__type": "INTEGER",
                                                                                                                             "term": {
                                                                                                                                 "type": "term",
+                                                                                                                                "__type": "INTEGER",
                                                                                                                                 "factor": {
                                                                                                                                     "type": "factor",
                                                                                                                                     "_type": "variable",
+                                                                                                                                    "__type": "INTEGER",
                                                                                                                                     "variable": {
                                                                                                                                         "type": "variable",
+                                                                                                                                        "__type": "INTEGER",
                                                                                                                                         "ID": "i",
                                                                                                                                         "id_varpart": {
                                                                                                                                             "type": "id_varpart",
@@ -1083,6 +1235,7 @@
                                                                 "_type": "variable",
                                                                 "variable": {
                                                                     "type": "variable",
+                                                                    "__type": "INTEGER",
                                                                     "ID": "a",
                                                                     "id_varpart": {
                                                                         "type": "id_varpart",
@@ -1091,15 +1244,20 @@
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "simple_expression": {
                                                                                         "type": "simple_expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "term": {
                                                                                             "type": "term",
+                                                                                            "__type": "INTEGER",
                                                                                             "factor": {
                                                                                                 "type": "factor",
                                                                                                 "_type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "variable": {
                                                                                                     "type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "ID": "i",
                                                                                                     "id_varpart": {
                                                                                                         "type": "id_varpart",
@@ -1117,15 +1275,20 @@
                                                                 "ASSIGNOP": ":=",
                                                                 "expression": {
                                                                     "type": "expression",
+                                                                    "__type": "INTEGER",
                                                                     "simple_expression": {
                                                                         "type": "simple_expression",
+                                                                        "__type": "INTEGER",
                                                                         "term": {
                                                                             "type": "term",
+                                                                            "__type": "INTEGER",
                                                                             "factor": {
                                                                                 "type": "factor",
                                                                                 "_type": "variable",
+                                                                                "__type": "INTEGER",
                                                                                 "variable": {
                                                                                     "type": "variable",
+                                                                                    "__type": "INTEGER",
                                                                                     "ID": "k",
                                                                                     "id_varpart": {
                                                                                         "type": "id_varpart",
@@ -1145,18 +1308,24 @@
                                                                     "ID": "quicksort",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
+                                                                        "__type": "expression_list",
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "type": "simple_expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "term": {
                                                                                         "type": "term",
+                                                                                        "__type": "INTEGER",
                                                                                         "factor": {
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
+                                                                                            "__type": "INTEGER",
                                                                                             "variable": {
                                                                                                 "type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "ID": "l",
                                                                                                 "id_varpart": {
                                                                                                     "type": "id_varpart",
@@ -1169,17 +1338,22 @@
                                                                             },
                                                                             {
                                                                                 "type": "expression",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "type": "simple_expression",
                                                                                     "simple_expression": {
                                                                                         "type": "simple_expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "term": {
                                                                                             "type": "term",
+                                                                                            "__type": "INTEGER",
                                                                                             "factor": {
                                                                                                 "type": "factor",
                                                                                                 "_type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "variable": {
                                                                                                     "type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "ID": "i",
                                                                                                     "id_varpart": {
                                                                                                         "type": "id_varpart",
@@ -1192,12 +1366,15 @@
                                                                                     "ADDOP": "-",
                                                                                     "term": {
                                                                                         "type": "term",
+                                                                                        "__type": "INTEGER",
                                                                                         "factor": {
                                                                                             "type": "factor",
                                                                                             "_type": "NUM",
+                                                                                            "__type": "INTEGER",
                                                                                             "NUM": 1
                                                                                         }
-                                                                                    }
+                                                                                    },
+                                                                                    "__type": "INTEGER"
                                                                                 }
                                                                             }
                                                                         ]
@@ -1212,20 +1389,26 @@
                                                                     "ID": "quicksort",
                                                                     "expression_list": {
                                                                         "type": "expression_list",
+                                                                        "__type": "expression_list",
                                                                         "expressions": [
                                                                             {
                                                                                 "type": "expression",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "type": "simple_expression",
                                                                                     "simple_expression": {
                                                                                         "type": "simple_expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "term": {
                                                                                             "type": "term",
+                                                                                            "__type": "INTEGER",
                                                                                             "factor": {
                                                                                                 "type": "factor",
                                                                                                 "_type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "variable": {
                                                                                                     "type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "ID": "j",
                                                                                                     "id_varpart": {
                                                                                                         "type": "id_varpart",
@@ -1238,25 +1421,33 @@
                                                                                     "ADDOP": "+",
                                                                                     "term": {
                                                                                         "type": "term",
+                                                                                        "__type": "INTEGER",
                                                                                         "factor": {
                                                                                             "type": "factor",
                                                                                             "_type": "NUM",
+                                                                                            "__type": "INTEGER",
                                                                                             "NUM": 1
                                                                                         }
-                                                                                    }
+                                                                                    },
+                                                                                    "__type": "INTEGER"
                                                                                 }
                                                                             },
                                                                             {
                                                                                 "type": "expression",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "type": "simple_expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "term": {
                                                                                         "type": "term",
+                                                                                        "__type": "INTEGER",
                                                                                         "factor": {
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
+                                                                                            "__type": "INTEGER",
                                                                                             "variable": {
                                                                                                 "type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "ID": "h",
                                                                                                 "id_varpart": {
                                                                                                     "type": "id_varpart",
@@ -1282,6 +1473,7 @@
                                                     "_type": "variable",
                                                     "variable": {
                                                         "type": "variable",
+                                                        "__type": "INTEGER",
                                                         "ID": "m",
                                                         "id_varpart": {
                                                             "type": "id_varpart",
@@ -1291,13 +1483,17 @@
                                                     "ASSIGNOP": ":=",
                                                     "expression": {
                                                         "type": "expression",
+                                                        "__type": "INTEGER",
                                                         "simple_expression": {
                                                             "type": "simple_expression",
+                                                            "__type": "INTEGER",
                                                             "term": {
                                                                 "type": "term",
+                                                                "__type": "INTEGER",
                                                                 "factor": {
                                                                     "type": "factor",
                                                                     "_type": "NUM",
+                                                                    "__type": "INTEGER",
                                                                     "NUM": 0
                                                                 }
                                                             }
@@ -1323,6 +1519,7 @@
                             "_type": "variable",
                             "variable": {
                                 "type": "variable",
+                                "__type": "INTEGER",
                                 "ID": "x",
                                 "id_varpart": {
                                     "type": "id_varpart",
@@ -1332,13 +1529,17 @@
                             "ASSIGNOP": ":=",
                             "expression": {
                                 "type": "expression",
+                                "__type": "INTEGER",
                                 "simple_expression": {
                                     "type": "simple_expression",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "type": "term",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "type": "factor",
                                             "_type": "NUM",
+                                            "__type": "INTEGER",
                                             "NUM": 0
                                         }
                                     }
@@ -1361,16 +1562,21 @@
                                 "ID": "quicksort",
                                 "expression_list": {
                                     "type": "expression_list",
+                                    "__type": "expression_list",
                                     "expressions": [
                                         {
                                             "type": "expression",
+                                            "__type": "INTEGER",
                                             "simple_expression": {
                                                 "type": "simple_expression",
+                                                "__type": "INTEGER",
                                                 "term": {
                                                     "type": "term",
+                                                    "__type": "INTEGER",
                                                     "factor": {
                                                         "type": "factor",
                                                         "_type": "NUM",
+                                                        "__type": "INTEGER",
                                                         "NUM": 0
                                                     }
                                                 }
@@ -1378,13 +1584,17 @@
                                         },
                                         {
                                             "type": "expression",
+                                            "__type": "INTEGER",
                                             "simple_expression": {
                                                 "type": "simple_expression",
+                                                "__type": "INTEGER",
                                                 "term": {
                                                     "type": "term",
+                                                    "__type": "INTEGER",
                                                     "factor": {
                                                         "type": "factor",
                                                         "_type": "NUM",
+                                                        "__type": "INTEGER",
                                                         "NUM": 4
                                                     }
                                                 }
@@ -1399,15 +1609,20 @@
                             "_type": "WHILE",
                             "expression": {
                                 "type": "expression",
+                                "__type": "BOOLEAN",
                                 "simple_expression_1": {
                                     "type": "simple_expression",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "type": "term",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "type": "factor",
                                             "_type": "variable",
+                                            "__type": "INTEGER",
                                             "variable": {
                                                 "type": "variable",
+                                                "__type": "INTEGER",
                                                 "ID": "x",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
@@ -1420,11 +1635,14 @@
                                 "RELOP": "<",
                                 "simple_expression_2": {
                                     "type": "simple_expression",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "type": "term",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "type": "factor",
                                             "_type": "NUM",
+                                            "__type": "INTEGER",
                                             "NUM": 5
                                         }
                                     }
@@ -1443,6 +1661,7 @@
                                                 "_type": "variable",
                                                 "variable": {
                                                     "type": "variable",
+                                                    "__type": "INTEGER",
                                                     "ID": "y",
                                                     "id_varpart": {
                                                         "type": "id_varpart",
@@ -1452,15 +1671,20 @@
                                                 "ASSIGNOP": ":=",
                                                 "expression": {
                                                     "type": "expression",
+                                                    "__type": "INTEGER",
                                                     "simple_expression": {
                                                         "type": "simple_expression",
+                                                        "__type": "INTEGER",
                                                         "term": {
                                                             "type": "term",
+                                                            "__type": "INTEGER",
                                                             "factor": {
                                                                 "type": "factor",
                                                                 "_type": "variable",
+                                                                "__type": "INTEGER",
                                                                 "variable": {
                                                                     "type": "variable",
+                                                                    "__type": "INTEGER",
                                                                     "ID": "a",
                                                                     "id_varpart": {
                                                                         "type": "id_varpart",
@@ -1469,15 +1693,20 @@
                                                                             "expressions": [
                                                                                 {
                                                                                     "type": "expression",
+                                                                                    "__type": "INTEGER",
                                                                                     "simple_expression": {
                                                                                         "type": "simple_expression",
+                                                                                        "__type": "INTEGER",
                                                                                         "term": {
                                                                                             "type": "term",
+                                                                                            "__type": "INTEGER",
                                                                                             "factor": {
                                                                                                 "type": "factor",
                                                                                                 "_type": "variable",
+                                                                                                "__type": "INTEGER",
                                                                                                 "variable": {
                                                                                                     "type": "variable",
+                                                                                                    "__type": "INTEGER",
                                                                                                     "ID": "x",
                                                                                                     "id_varpart": {
                                                                                                         "type": "id_varpart",
@@ -1508,15 +1737,20 @@
                                                         "expressions": [
                                                             {
                                                                 "type": "expression",
+                                                                "__type": "INTEGER",
                                                                 "simple_expression": {
                                                                     "type": "simple_expression",
+                                                                    "__type": "INTEGER",
                                                                     "term": {
                                                                         "type": "term",
+                                                                        "__type": "INTEGER",
                                                                         "factor": {
                                                                             "type": "factor",
                                                                             "_type": "variable",
+                                                                            "__type": "INTEGER",
                                                                             "variable": {
                                                                                 "type": "variable",
+                                                                                "__type": "INTEGER",
                                                                                 "ID": "y",
                                                                                 "id_varpart": {
                                                                                     "type": "id_varpart",
@@ -1536,6 +1770,7 @@
                                                 "_type": "variable",
                                                 "variable": {
                                                     "type": "variable",
+                                                    "__type": "INTEGER",
                                                     "ID": "x",
                                                     "id_varpart": {
                                                         "type": "id_varpart",
@@ -1545,17 +1780,22 @@
                                                 "ASSIGNOP": ":=",
                                                 "expression": {
                                                     "type": "expression",
+                                                    "__type": "INTEGER",
                                                     "simple_expression": {
                                                         "type": "simple_expression",
                                                         "simple_expression": {
                                                             "type": "simple_expression",
+                                                            "__type": "INTEGER",
                                                             "term": {
                                                                 "type": "term",
+                                                                "__type": "INTEGER",
                                                                 "factor": {
                                                                     "type": "factor",
                                                                     "_type": "variable",
+                                                                    "__type": "INTEGER",
                                                                     "variable": {
                                                                         "type": "variable",
+                                                                        "__type": "INTEGER",
                                                                         "ID": "x",
                                                                         "id_varpart": {
                                                                             "type": "id_varpart",
@@ -1568,12 +1808,15 @@
                                                         "ADDOP": "+",
                                                         "term": {
                                                             "type": "term",
+                                                            "__type": "INTEGER",
                                                             "factor": {
                                                                 "type": "factor",
                                                                 "_type": "NUM",
+                                                                "__type": "INTEGER",
                                                                 "NUM": 1
                                                             }
-                                                        }
+                                                        },
+                                                        "__type": "INTEGER"
                                                     }
                                                 }
                                             }
@@ -1627,7 +1870,7 @@
         ],
         "subFunc": [
             {
-                "id": 4,
+                "id": 3,
                 "token": "readarray",
                 "type": null,
                 "table": {
@@ -1636,7 +1879,7 @@
                     "constants": [],
                     "variables": [
                         {
-                            "id": 3,
+                            "id": 4,
                             "token": "i",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1649,7 +1892,7 @@
                 }
             },
             {
-                "id": 11,
+                "id": 7,
                 "token": "quicksort",
                 "type": null,
                 "table": {
@@ -1683,7 +1926,7 @@
                             "recordType": null
                         },
                         {
-                            "id": 7,
+                            "id": 8,
                             "token": "i",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1693,7 +1936,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 8,
+                            "id": 9,
                             "token": "j",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1703,7 +1946,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 9,
+                            "id": 10,
                             "token": "k",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1713,7 +1956,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 10,
+                            "id": 11,
                             "token": "m",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1727,5 +1970,6 @@
             }
         ]
     },
-    "error": null
+    "error": [],
+    "warning": []
 }
