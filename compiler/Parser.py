@@ -1285,7 +1285,18 @@ class Parser:
                     "ADDOP": p[2],
                     "term": p[3]
                 }
-                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-07",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "UNDEFINED"
+                elif p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
                     if not self.error:
                         self.error = []
                     self.error += [{
@@ -1308,9 +1319,10 @@ class Parser:
                     if not self.error:
                         self.error = []
                     self.error += [{
-                        "code": "C-07",
+                        "code": "C-08",
                         "info": {
                             "line": p.lexer.lineno,
+                            "value": [p[1]["__type"], p[3]["__type"]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]
@@ -1333,7 +1345,18 @@ class Parser:
                     "MULOP": p[1],
                     "factor": p[2]
                 }
-                if p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
+                if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-07",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
+                    p[0]["__type"] = "UNDEFINED"
+                elif p[1]["__type"] == "RECORD" or p[3]["__type"] == "RECORD":
                     if not self.error:
                         self.error = []
                     self.error += [{
@@ -1356,9 +1379,10 @@ class Parser:
                     if not self.error:
                         self.error = []
                     self.error += [{
-                        "code": "C-07",
+                        "code": "C-08",
                         "info": {
                             "line": p.lexer.lineno,
+                            "value": [p[1]["__type"], p[3]["__type"]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]
