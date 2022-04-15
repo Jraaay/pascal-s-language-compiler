@@ -239,8 +239,7 @@
                                                                                     "__type": "INTEGER",
                                                                                     "term": {
                                                                                         "type": "term",
-                                                                                        "__type": "INTEGER",
-                                                                                        "factor": {
+                                                                                        "term": {
                                                                                             "type": "term",
                                                                                             "__type": "INTEGER",
                                                                                             "factor": {
@@ -257,7 +256,22 @@
                                                                                                     }
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "variable",
+                                                                                            "__type": "INTEGER",
+                                                                                            "variable": {
+                                                                                                "type": "variable",
+                                                                                                "__type": "INTEGER",
+                                                                                                "ID": "b",
+                                                                                                "id_varpart": {
+                                                                                                    "type": "id_varpart",
+                                                                                                    "expression_list": null
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        "__type": "INTEGER"
                                                                                     }
                                                                                 }
                                                                             }

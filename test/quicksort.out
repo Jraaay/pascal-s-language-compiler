@@ -694,8 +694,7 @@
                                                                                             "__type": "BOOLEAN",
                                                                                             "term": {
                                                                                                 "type": "term",
-                                                                                                "__type": "BOOLEAN",
-                                                                                                "factor": {
+                                                                                                "term": {
                                                                                                     "type": "term",
                                                                                                     "__type": "BOOLEAN",
                                                                                                     "factor": {
@@ -782,7 +781,62 @@
                                                                                                             }
                                                                                                         }
                                                                                                     }
-                                                                                                }
+                                                                                                },
+                                                                                                "factor": {
+                                                                                                    "type": "factor",
+                                                                                                    "_type": "expression",
+                                                                                                    "__type": "BOOLEAN",
+                                                                                                    "expression": {
+                                                                                                        "type": "expression",
+                                                                                                        "__type": "BOOLEAN",
+                                                                                                        "simple_expression_1": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "ID": "i",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "RELOP": "<",
+                                                                                                        "simple_expression_2": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "ID": "j",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                },
+                                                                                                "__type": "BOOLEAN"
                                                                                             }
                                                                                         }
                                                                                     },
@@ -965,8 +1019,7 @@
                                                                                             "__type": "BOOLEAN",
                                                                                             "term": {
                                                                                                 "type": "term",
-                                                                                                "__type": "BOOLEAN",
-                                                                                                "factor": {
+                                                                                                "term": {
                                                                                                     "type": "term",
                                                                                                     "__type": "BOOLEAN",
                                                                                                     "factor": {
@@ -1053,7 +1106,62 @@
                                                                                                             }
                                                                                                         }
                                                                                                     }
-                                                                                                }
+                                                                                                },
+                                                                                                "factor": {
+                                                                                                    "type": "factor",
+                                                                                                    "_type": "expression",
+                                                                                                    "__type": "BOOLEAN",
+                                                                                                    "expression": {
+                                                                                                        "type": "expression",
+                                                                                                        "__type": "BOOLEAN",
+                                                                                                        "simple_expression_1": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "ID": "i",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "RELOP": "<",
+                                                                                                        "simple_expression_2": {
+                                                                                                            "type": "simple_expression",
+                                                                                                            "__type": "INTEGER",
+                                                                                                            "term": {
+                                                                                                                "type": "term",
+                                                                                                                "__type": "INTEGER",
+                                                                                                                "factor": {
+                                                                                                                    "type": "factor",
+                                                                                                                    "_type": "variable",
+                                                                                                                    "__type": "INTEGER",
+                                                                                                                    "variable": {
+                                                                                                                        "type": "variable",
+                                                                                                                        "__type": "INTEGER",
+                                                                                                                        "ID": "j",
+                                                                                                                        "id_varpart": {
+                                                                                                                            "type": "id_varpart",
+                                                                                                                            "expression_list": null
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                },
+                                                                                                "__type": "BOOLEAN"
                                                                                             }
                                                                                         }
                                                                                     },

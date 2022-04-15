@@ -263,8 +263,7 @@
                                                                                     "__type": "INTEGER",
                                                                                     "term": {
                                                                                         "type": "term",
-                                                                                        "__type": "INTEGER",
-                                                                                        "factor": {
+                                                                                        "term": {
                                                                                             "type": "term",
                                                                                             "__type": "INTEGER",
                                                                                             "factor": {
@@ -321,7 +320,14 @@
                                                                                                     }
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+                                                                                        "factor": {
+                                                                                            "type": "factor",
+                                                                                            "_type": "NUM",
+                                                                                            "__type": "INTEGER",
+                                                                                            "NUM": 2
+                                                                                        },
+                                                                                        "__type": "INTEGER"
                                                                                     }
                                                                                 }
                                                                             }

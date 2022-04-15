@@ -1339,11 +1339,11 @@ class Parser:
             term : term MULOP factor
                  | factor
             '''
-            if len(p) == 3:
+            if len(p) == 4:
                 p[0] = {
                     "type": "term",
-                    "MULOP": p[1],
-                    "factor": p[2]
+                    "term": p[1],
+                    "factor": p[3]
                 }
                 if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":
                     if not self.error:
