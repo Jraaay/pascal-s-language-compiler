@@ -22,7 +22,7 @@ class TestParser(object):
 
     def test_parser_bug(self):
         """
-        id="44"
+        id="47"
         """
         ans = None
         expected = None
@@ -34,7 +34,7 @@ class TestParser(object):
 
     def test_parser_bug_2(self):
         """
-        id="44"
+        id="50"
         """
         ans = None
         expected = None
@@ -46,7 +46,7 @@ class TestParser(object):
 
     def test_parser_gcd_no_blank(self):
         """
-        id="44"
+        id="53"
         """
         ans = None
         expected = None
@@ -58,7 +58,7 @@ class TestParser(object):
 
     def test_parser_knapsack(self):
         """
-        id="44"
+        id="56"
         """
         ans = None
         expected = None
@@ -68,9 +68,9 @@ class TestParser(object):
             expected = json.load(f)
         assert ans == expected
 
-    def test_kruskal(self):
+    def test_parser_kruskal(self):
         """
-        id="44"
+        id="59"
         """
         ans = None
         expected = None
@@ -80,9 +80,9 @@ class TestParser(object):
             expected = json.load(f)
         assert ans == expected
 
-    def test_quicksort(self):
+    def test_parser_quicksort(self):
         """
-        id="44"
+        id="62"
         """
         ans = None
         expected = None
@@ -92,9 +92,9 @@ class TestParser(object):
             expected = json.load(f)
         assert ans == expected
 
-    def test_record(self):
+    def test_parser_record(self):
         """
-        id="44"
+        id="65"
         """
         ans = None
         expected = None
