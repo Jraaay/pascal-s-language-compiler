@@ -15,6 +15,7 @@ def main():
             ans = ''
             with open(test_file_path, "r") as f:
                 ans = parser.parse(f.read())
+                del(ans["ast_prod"])
             with open(test_file_path.replace(".pas", ".out"), "w") as f:
                 json.dump(ans, f, indent=4)
     dirs = os.listdir("./test")
@@ -27,6 +28,7 @@ def main():
                     ans = ''
                     with open(test_file_path, "r") as f:
                         ans = parser.parse(f.read())
+                        del(ans["ast_prod"])
                     with open(test_file_path.replace(".pas", ".out"), "w") as f:
                         json.dump(ans, f, indent=4)
 

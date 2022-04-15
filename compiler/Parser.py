@@ -1,6 +1,6 @@
 from ply.lex import lex
 from ply.yacc import yacc
-import json
+import copy
 
 
 class Parser:
@@ -1660,6 +1660,13 @@ class Parser:
                 elif type(p[key]) == dict:
                     self._removeSymbolTable(p[key])
 
+    def _processAST(self, ast):
+        # add father node
+        for key in ast:
+            if type(ast[key]) == dict and not key == "father":
+                ast[key]["father"] = ast
+                self._processAST(ast[key])
+
     def parse(self, data):
         self.SymbolTable = {
             "constants": [],
@@ -1680,9 +1687,13 @@ class Parser:
         # except:
         #     pass
         self._removeSymbolTable(ast)
+        ast_raw = copy.deepcopy(ast)
+        if ast:
+            self._processAST(ast)
         return {
-            "ast": ast,
+            "ast": ast_raw,
             "symbolTable": self.SymbolTable,
             "error": self.error,
-            "warning": self.warning
+            "warning": self.warning,
+            "ast_prod": ast
         }
