@@ -223,7 +223,7 @@ class Parser:
                 if not self.error:
                     self.error = []
                 self.error.append({
-                    "code": "A-03",
+                    "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
                         "value": p[3],
@@ -234,7 +234,7 @@ class Parser:
                 if not self.error:
                     self.error = []
                 self.error.append({
-                    "code": "A-03",
+                    "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
                         "value": p[3],
@@ -254,7 +254,7 @@ class Parser:
                 if not self.error:
                     self.error = []
                 self.error.append({
-                    "code": "A-03",
+                    "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
                         "value": p[1],
@@ -265,7 +265,7 @@ class Parser:
                 if not self.error:
                     self.error = []
                 self.error.append({
-                    "code": "A-03",
+                    "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
                         "value": p[1],
@@ -354,7 +354,7 @@ class Parser:
                 "token": p[1],
                 "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
                 "value": p[3],
-                "positive": True if type(p[3]) != str and p[3] > 0 else False
+                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
             }]
             self.id += 1
             if self.inSubFun and p[1] in self.subSymbol:
@@ -561,7 +561,6 @@ class Parser:
                             "lexpos": p.lexer.lexpos
                         }
                     }]
-                    raise Exception("SemanticError")
                 p[0] = {
                     "type": "period",
                     "values": p[1]["values"] + [{
@@ -575,6 +574,17 @@ class Parser:
                     "start": p[1]["SymbolTable"]["start"] + [p[3]],
                 }
             else:
+                if p[1] > p[3]:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-01",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": [p[1], p[3]],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
                 p[0] = {
                     "type": "period",
                     "values": [{

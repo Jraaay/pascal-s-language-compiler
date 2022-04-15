@@ -2958,7 +2958,7 @@
     },
     "error": [
         {
-            "code": "A-03",
+            "code": "C-03",
             "info": {
                 "line": 26,
                 "value": "x",
