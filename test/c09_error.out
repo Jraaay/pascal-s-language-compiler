@@ -1,0 +1,180 @@
+{
+    "ast": {
+        "type": "programstruct",
+        "program_head": {
+            "type": "program_head",
+            "ID": "example",
+            "idlist": {
+                "type": "idlist",
+                "ids": [
+                    "input",
+                    "output"
+                ]
+            }
+        },
+        "program_body": {
+            "type": "program_body",
+            "const_declarations": null,
+            "var_declarations": {
+                "type": "var_declarations",
+                "var_declaration": {
+                    "id": 0,
+                    "type": "var_declaration",
+                    "values": [
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "x",
+                                    "y"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "INTEGER"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "subprogram_declarations": {
+                "type": "subprogram_declarations",
+                "subprograms": []
+            },
+            "compound_statement": {
+                "type": "compound_statement",
+                "statement_list": {
+                    "type": "statement_list",
+                    "statements": [
+                        {
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "type": "variable",
+                                "__type": "INTEGER",
+                                "ID": "x",
+                                "id_varpart": {
+                                    "type": "id_varpart",
+                                    "expression_list": null
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "type": "expression",
+                                "__type": "BOOLEAN",
+                                "simple_expression_1": {
+                                    "type": "simple_expression",
+                                    "__type": "UNDEFINED",
+                                    "term": {
+                                        "type": "term",
+                                        "__type": "UNDEFINED",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "UNDEFINED",
+                                            "variable": {
+                                                "type": "variable",
+                                                "__type": "UNDEFINED",
+                                                "ID": "a",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "RELOP": ">",
+                                "simple_expression_2": {
+                                    "type": "simple_expression",
+                                    "__type": "UNDEFINED",
+                                    "term": {
+                                        "type": "term",
+                                        "__type": "UNDEFINED",
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "UNDEFINED",
+                                            "variable": {
+                                                "type": "variable",
+                                                "__type": "UNDEFINED",
+                                                "ID": "b",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "symbolTable": {
+        "constants": [],
+        "variables": [
+            {
+                "id": 0,
+                "token": "x",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 1,
+                "token": "y",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            }
+        ],
+        "subFunc": []
+    },
+    "error": [
+        {
+            "code": "C-02",
+            "info": {
+                "line": 5,
+                "value": "a",
+                "lexpos": 70
+            }
+        },
+        {
+            "code": "C-02",
+            "info": {
+                "line": 5,
+                "value": "b",
+                "lexpos": 73
+            }
+        },
+        {
+            "code": "C-09",
+            "info": {
+                "line": 5,
+                "lexpos": 73
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 5,
+                "value": "x",
+                "lexpos": 73
+            }
+        }
+    ],
+    "warning": []
+}

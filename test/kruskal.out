@@ -3416,6 +3416,207 @@
             }
         ]
     },
-    "error": [],
+    "error": [
+        {
+            "code": "C-11",
+            "info": {
+                "line": 10,
+                "value": "i",
+                "lexpos": 211
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 10,
+                "value": "j",
+                "lexpos": 219
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 10,
+                "value": "x",
+                "lexpos": 240
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 13,
+                "value": "i",
+                "lexpos": 302
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 14,
+                "value": "j",
+                "lexpos": 336
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 16,
+                "value": "y",
+                "lexpos": 387
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 16,
+                "value": "v",
+                "lexpos": 401
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 16,
+                "value": "v",
+                "lexpos": 412
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 17,
+                "value": "y",
+                "lexpos": 431
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 17,
+                "value": "a",
+                "lexpos": 445
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 17,
+                "value": "a",
+                "lexpos": 456
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 18,
+                "value": "y",
+                "lexpos": 475
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 18,
+                "value": "b",
+                "lexpos": 489
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 18,
+                "value": "b",
+                "lexpos": 500
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 19,
+                "value": "i",
+                "lexpos": 518
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 19,
+                "value": "j",
+                "lexpos": 528
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 29,
+                "value": "ans",
+                "lexpos": 691
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 30,
+                "value": "doit",
+                "lexpos": 706
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 33,
+                "value": "p",
+                "lexpos": 742
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 34,
+                "value": "doit",
+                "lexpos": 766
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 42,
+                "value": "p",
+                "lexpos": 889
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 44,
+                "value": "x",
+                "lexpos": 937
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 44,
+                "value": "y",
+                "lexpos": 954
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 46,
+                "value": "p",
+                "lexpos": 998
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 47,
+                "value": "tot",
+                "lexpos": 1021
+            }
+        }
+    ],
     "warning": []
 }

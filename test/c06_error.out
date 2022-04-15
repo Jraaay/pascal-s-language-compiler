@@ -24,14 +24,30 @@
                             "idlist": {
                                 "type": "idlist",
                                 "ids": [
-                                    "Books"
+                                    "x",
+                                    "y"
+                                ]
+                            },
+                            "type": {
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "INTEGER"
+                                }
+                            }
+                        },
+                        {
+                            "idlist": {
+                                "type": "idlist",
+                                "ids": [
+                                    "a"
                                 ]
                             },
                             "type": {
                                 "type": "type",
                                 "_type": "RECORD",
                                 "multype": {
-                                    "id": 3,
+                                    "id": 5,
                                     "type": [
                                         {
                                             "type": "type",
@@ -84,7 +100,7 @@
                                         }
                                     ],
                                     "multype": {
-                                        "id": 2,
+                                        "id": 4,
                                         "type": [
                                             {
                                                 "type": "type",
@@ -130,7 +146,7 @@
                                             }
                                         ],
                                         "multype": {
-                                            "id": 1,
+                                            "id": 3,
                                             "type": [
                                                 {
                                                     "type": "type",
@@ -162,7 +178,7 @@
                                                 }
                                             ],
                                             "multype": {
-                                                "id": 0,
+                                                "id": 2,
                                                 "type": [
                                                     {
                                                         "type": "type",
@@ -202,43 +218,6 @@
                                     ]
                                 }
                             }
-                        },
-                        {
-                            "idlist": {
-                                "type": "idlist",
-                                "ids": [
-                                    "a"
-                                ]
-                            },
-                            "type": {
-                                "type": "type",
-                                "_type": "ARRAY",
-                                "period": {
-                                    "type": "period",
-                                    "values": [
-                                        {
-                                            "start": 1,
-                                            "END": 100
-                                        }
-                                    ]
-                                },
-                                "basic_type": "of"
-                            }
-                        },
-                        {
-                            "idlist": {
-                                "type": "idlist",
-                                "ids": [
-                                    "b"
-                                ]
-                            },
-                            "type": {
-                                "type": "type",
-                                "_type": {
-                                    "type": "basic_type",
-                                    "_type": "INTEGER"
-                                }
-                            }
                         }
                     ]
                 }
@@ -257,95 +236,8 @@
                             "_type": "variable",
                             "variable": {
                                 "type": "variable",
-                                "__type": "CHAR",
-                                "ID": "a",
-                                "id_varpart": {
-                                    "type": "id_varpart",
-                                    "expression_list": {
-                                        "type": "expression_list",
-                                        "expressions": [
-                                            {
-                                                "type": "expression",
-                                                "__type": "INTEGER",
-                                                "simple_expression": {
-                                                    "type": "simple_expression",
-                                                    "__type": "INTEGER",
-                                                    "term": {
-                                                        "type": "term",
-                                                        "__type": "INTEGER",
-                                                        "factor": {
-                                                            "type": "factor",
-                                                            "_type": "NUM",
-                                                            "__type": "INTEGER",
-                                                            "NUM": 1
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            },
-                            "ASSIGNOP": ":=",
-                            "expression": {
-                                "type": "expression",
-                                "__type": "CHAR",
-                                "simple_expression": {
-                                    "type": "simple_expression",
-                                    "__type": "CHAR",
-                                    "term": {
-                                        "type": "term",
-                                        "__type": "CHAR",
-                                        "factor": {
-                                            "type": "factor",
-                                            "_type": "variable",
-                                            "__type": "CHAR",
-                                            "variable": {
-                                                "type": "variable",
-                                                "__type": "CHAR",
-                                                "ID": [
-                                                    "Books",
-                                                    "title"
-                                                ],
-                                                "id_varpart": {
-                                                    "type": "id_varpart",
-                                                    "expression_list": {
-                                                        "type": "expression_list",
-                                                        "expressions": [
-                                                            {
-                                                                "type": "expression",
-                                                                "__type": "INTEGER",
-                                                                "simple_expression": {
-                                                                    "type": "simple_expression",
-                                                                    "__type": "INTEGER",
-                                                                    "term": {
-                                                                        "type": "term",
-                                                                        "__type": "INTEGER",
-                                                                        "factor": {
-                                                                            "type": "factor",
-                                                                            "_type": "NUM",
-                                                                            "__type": "INTEGER",
-                                                                            "NUM": 1
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "type": "statement",
-                            "_type": "variable",
-                            "variable": {
-                                "type": "variable",
                                 "__type": "INTEGER",
-                                "ID": "b",
+                                "ID": "x",
                                 "id_varpart": {
                                     "type": "id_varpart",
                                     "expression_list": null
@@ -354,10 +246,32 @@
                             "ASSIGNOP": ":=",
                             "expression": {
                                 "type": "expression",
-                                "__type": "INTEGER",
+                                "__type": "RECORD",
                                 "simple_expression": {
                                     "type": "simple_expression",
-                                    "__type": "INTEGER",
+                                    "simple_expression": {
+                                        "type": "simple_expression",
+                                        "__type": "RECORD",
+                                        "term": {
+                                            "type": "term",
+                                            "__type": "RECORD",
+                                            "factor": {
+                                                "type": "factor",
+                                                "_type": "variable",
+                                                "__type": "RECORD",
+                                                "variable": {
+                                                    "type": "variable",
+                                                    "__type": "RECORD",
+                                                    "ID": "a",
+                                                    "id_varpart": {
+                                                        "type": "id_varpart",
+                                                        "expression_list": null
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ADDOP": "+",
                                     "term": {
                                         "type": "term",
                                         "__type": "INTEGER",
@@ -368,16 +282,72 @@
                                             "variable": {
                                                 "type": "variable",
                                                 "__type": "INTEGER",
-                                                "ID": [
-                                                    "Books",
-                                                    "bookid"
-                                                ],
+                                                "ID": "y",
                                                 "id_varpart": {
                                                     "type": "id_varpart",
                                                     "expression_list": null
                                                 }
                                             }
                                         }
+                                    },
+                                    "__type": "RECORD"
+                                }
+                            }
+                        },
+                        {
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "type": "variable",
+                                "__type": "INTEGER",
+                                "ID": "x",
+                                "id_varpart": {
+                                    "type": "id_varpart",
+                                    "expression_list": null
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "type": "expression",
+                                "__type": "RECORD",
+                                "simple_expression": {
+                                    "type": "simple_expression",
+                                    "__type": "RECORD",
+                                    "term": {
+                                        "type": "term",
+                                        "term": {
+                                            "type": "term",
+                                            "__type": "RECORD",
+                                            "factor": {
+                                                "type": "factor",
+                                                "_type": "variable",
+                                                "__type": "RECORD",
+                                                "variable": {
+                                                    "type": "variable",
+                                                    "__type": "RECORD",
+                                                    "ID": "a",
+                                                    "id_varpart": {
+                                                        "type": "id_varpart",
+                                                        "expression_list": null
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "factor": {
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "INTEGER",
+                                            "variable": {
+                                                "type": "variable",
+                                                "__type": "INTEGER",
+                                                "ID": "y",
+                                                "id_varpart": {
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        },
+                                        "__type": "RECORD"
                                     }
                                 }
                             }
@@ -391,8 +361,28 @@
         "constants": [],
         "variables": [
             {
-                "id": 4,
-                "token": "Books",
+                "id": 0,
+                "token": "x",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 1,
+                "token": "y",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 6,
+                "token": "a",
                 "type": "RECORD",
                 "isArray": false,
                 "dimension": 0,
@@ -401,7 +391,7 @@
                 "recordTable": {
                     "variables": [
                         {
-                            "id": 0,
+                            "id": 2,
                             "token": "title",
                             "type": "CHAR",
                             "isArray": true,
@@ -415,7 +405,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 1,
+                            "id": 3,
                             "token": "author",
                             "type": "CHAR",
                             "isArray": true,
@@ -429,7 +419,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 2,
+                            "id": 4,
                             "token": "subject",
                             "type": "CHAR",
                             "isArray": true,
@@ -443,7 +433,7 @@
                             "recordTable": null
                         },
                         {
-                            "id": 3,
+                            "id": 5,
                             "token": "bookid",
                             "type": "INTEGER",
                             "isArray": false,
@@ -454,49 +444,39 @@
                         }
                     ]
                 }
-            },
-            {
-                "id": 5,
-                "token": "a",
-                "type": "CHAR",
-                "isArray": true,
-                "dimension": 1,
-                "size": [
-                    100
-                ],
-                "start": [
-                    1
-                ],
-                "recordTable": null
-            },
-            {
-                "id": 6,
-                "token": "b",
-                "type": "INTEGER",
-                "isArray": false,
-                "dimension": 0,
-                "size": [],
-                "start": [],
-                "recordTable": null
             }
         ],
         "subFunc": []
     },
     "error": [
         {
-            "code": "C-11",
+            "code": "C-06",
             "info": {
-                "line": 14,
-                "value": "a",
-                "lexpos": 276
+                "line": 11,
+                "lexpos": 208
             }
         },
         {
-            "code": "C-11",
+            "code": "C-04",
             "info": {
-                "line": 15,
-                "value": "b",
-                "lexpos": 297
+                "line": 11,
+                "value": "x",
+                "lexpos": 208
+            }
+        },
+        {
+            "code": "C-06",
+            "info": {
+                "line": 12,
+                "lexpos": 222
+            }
+        },
+        {
+            "code": "C-04",
+            "info": {
+                "line": 12,
+                "value": "x",
+                "lexpos": 222
             }
         }
     ],

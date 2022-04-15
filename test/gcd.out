@@ -477,6 +477,23 @@
             }
         ]
     },
-    "error": [],
+    "error": [
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 132
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 7,
+                "value": "gcd",
+                "lexpos": 159
+            }
+        }
+    ],
     "warning": []
 }
