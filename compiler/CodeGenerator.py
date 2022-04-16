@@ -20,13 +20,18 @@ class CodeGenerator:
     def code_format(self):
         indent = 0
         in_quote = False
+        in_small = 0
         add_indent = False
         code_list = list(self.targetCode)
         for it in code_list:
             add_indent = False
             if it == '\"' or it == '\'':
                 in_quote = ~in_quote
-            if in_quote == False:
+            if it == '(':
+                in_small += 1
+            if it == ')':
+                in_small -= 1
+            if in_quote == False and in_small == 0:
                 if it == '{':
                     it += '\n'
                     indent += 1
