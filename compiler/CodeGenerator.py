@@ -1,3 +1,6 @@
+import copy
+
+
 class CodeGenerator:
     targetCode = ''  # 目标代码
     domain = []  # 作用域栈
@@ -47,8 +50,14 @@ class CodeGenerator:
 
     # programstruct : program_head ; program_body .
     def g_programstruct(self, node):
-        self.g_program_head(node["program_head"])
-        self.g_program_body(node["program_body"])
+        result = ""
+        # self.g_program_head(node["program_head"])
+        result.append(self.g_program_head(node["program_head"]))
+        # self.g_program_body(node["program_body"])
+        result.append(self.g_program_body(node["program_body"]))
+
+        self.targetCode = result
+
         self.domain.pop()
 
     def g_program_head(self, node):
@@ -120,13 +129,50 @@ class CodeGenerator:
     def g_subprogram_body(self, node):
         pass
 
+    # <---------------------------------分割线------------------------------------>
     def g_compound_statement(self, node):
-        pass
+        '''
+        compound_statement -> begin statement_list end
+        compound_statement -> {statement_list}
+        '''
+        assert node["type"] == "compound_statement"
+        result = ""
+        result.append("{")
+        result.append(self.g_statement_list(node["statement_list"]))
+        result.append("}")
+        return result
 
     def g_statement_list(self, node):
-        pass
+        '''
+        statement_list -> statement_list ; statement | statement
+        statement_list -> statement_list statement | statement
+        '''
+        assert node["type"] == "statement_list"
+        result = ""
+        assert len(node["statements"]) > 0
+        if len(node["statements"]) == 1:
+            result.append(self.g_statement(node["statement"][0]))
+        elif len(node["statements"]) > 1:
+            tmp_node = copy.deepcopy(node)
+            statement = tmp_node["statements"].pop()
+            result.append(self.g_statement_list(tmp_node))
+            result.append(" ")
+            result.append(self.g_statement(statement))
+        return result
 
     def g_statement(self, node):
+        '''
+        Pascal:                                                     C:
+        statement ->                                                statement ->
+        variable assignop expression                                variable = expression
+        | procedure_call                                            | procedure_call
+        | compound_statement                                        | compound_statement
+        | if expression then statement else_part                    | if(expression){statement}else{else_part}
+        | for id assignop expression to expression do statement     | TBD
+        | read ( variable_list )                                    | TBD
+        | write ( expression_list )                                 | TBD
+        | ε                                                         | TBD
+        '''
         pass
 
     def g_variable_list(self, node):
