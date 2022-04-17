@@ -447,14 +447,6 @@
                 "line": 11,
                 "lexpos": 208
             }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 11,
-                "value": "x",
-                "lexpos": 208
-            }
         }
     ],
     "warning": []

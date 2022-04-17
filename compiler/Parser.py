@@ -1127,17 +1127,17 @@ class Parser:
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
-                    else:
-                        if not self.error:
-                            self.error = []
-                        self.error += [{
-                            "code": "C-11",
-                            "info": {
-                                "line": p.lexer.lineno,
-                                "value": p[1]["ID"],
-                                "lexpos": p.lexer.lexpos
-                            }
-                        }]
+                else:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-11",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": p[1]["ID"],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
             elif p[1]["type"] == "procedure_call":
                 p[0] = {
                     "length": len(p),
@@ -1448,6 +1448,7 @@ class Parser:
                     "length": len(p),
                     "type": "term",
                     "term": p[1],
+                    "MULOP": p[2],
                     "factor": p[3]
                 }
                 if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":

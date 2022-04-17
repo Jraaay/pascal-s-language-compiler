@@ -7,6 +7,12 @@ app = sanic.Sanic(__name__)
 
 
 def main():
+    # parser = Parser.Parser(debug=True)
+    # with open("./test/generator_test.pas") as f:
+    #     ans = parser.parse(f.read())
+    #     del(ans["ast_prod"])
+    # with open("./test/generator_test.out", "w") as f:
+    #     json.dump(ans, f, indent=4)
     parser = Parser.Parser(debug=True)
     test_file_list = os.listdir("./test")
     for test_file in test_file_list:
