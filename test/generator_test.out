@@ -321,6 +321,7 @@
                                                                                                 }
                                                                                             }
                                                                                         },
+                                                                                        "MULOP": "Mod",
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",

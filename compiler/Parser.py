@@ -1448,6 +1448,7 @@ class Parser:
                     "length": len(p),
                     "type": "term",
                     "term": p[1],
+                    "MULOP": p[2],
                     "factor": p[3]
                 }
                 if p[1]["__type"] == "UNDEFINED" or p[3]["__type"] == "UNDEFINED":

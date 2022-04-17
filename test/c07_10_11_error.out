@@ -186,6 +186,7 @@
                                                 }
                                             }
                                         },
+                                        "MULOP": "*",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",

@@ -1765,39 +1765,6 @@
             }
         ]
     },
-    "error": [
-        {
-            "code": "C-11",
-            "info": {
-                "line": 10,
-                "value": "max",
-                "lexpos": 246
-            }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 10,
-                "value": "max",
-                "lexpos": 254
-            }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 22,
-                "value": "f",
-                "lexpos": 487
-            }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 24,
-                "value": "f",
-                "lexpos": 599
-            }
-        }
-    ],
+    "error": [],
     "warning": []
 }
