@@ -1,0 +1,153 @@
+{
+    "length": 4,
+    "type": "compound_statement",
+    "statement_list": {
+        "length": 4,
+        "type": "statement_list",
+        "statements": [
+            {
+                "length": 5,
+                "type": "statement",
+                "_type": "READ",
+                "variable_list": {
+                    "length": 4,
+                    "type": "variable_list",
+                    "variables": [
+                        {
+                            "length": 3,
+                            "type": "variable",
+                            "__type": "INTEGER",
+                            "ID": "x",
+                            "id_varpart": {
+                                "length": 1,
+                                "type": "id_varpart",
+                                "expression_list": null
+                            }
+                        },
+                        {
+                            "length": 3,
+                            "type": "variable",
+                            "__type": "INTEGER",
+                            "ID": "y",
+                            "id_varpart": {
+                                "length": 1,
+                                "type": "id_varpart",
+                                "expression_list": null
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "length": 5,
+                "type": "statement",
+                "_type": "WRITE",
+                "expression_list": {
+                    "length": 2,
+                    "type": "expression_list",
+                    "__type": [
+                        "INTEGER"
+                    ],
+                    "expressions": [
+                        {
+                            "length": 2,
+                            "type": "expression",
+                            "__type": "INTEGER",
+                            "simple_expression": {
+                                "length": 2,
+                                "type": "simple_expression",
+                                "__type": "INTEGER",
+                                "term": {
+                                    "length": 2,
+                                    "type": "term",
+                                    "__type": "INTEGER",
+                                    "factor": {
+                                        "length": 5,
+                                        "type": "factor",
+                                        "_type": "procedure_id",
+                                        "__type": "INTEGER",
+                                        "ID": "gcd",
+                                        "expression_list": {
+                                            "length": 4,
+                                            "type": "expression_list",
+                                            "__type": [
+                                                "INTEGER",
+                                                "INTEGER"
+                                            ],
+                                            "expressions": [
+                                                {
+                                                    "length": 2,
+                                                    "type": "expression",
+                                                    "__type": "INTEGER",
+                                                    "simple_expression": {
+                                                        "length": 2,
+                                                        "type": "simple_expression",
+                                                        "__type": "INTEGER",
+                                                        "term": {
+                                                            "length": 2,
+                                                            "type": "term",
+                                                            "__type": "INTEGER",
+                                                            "factor": {
+                                                                "length": 2,
+                                                                "type": "factor",
+                                                                "_type": "variable",
+                                                                "__type": "INTEGER",
+                                                                "variable": {
+                                                                    "length": 3,
+                                                                    "type": "variable",
+                                                                    "__type": "INTEGER",
+                                                                    "ID": "x",
+                                                                    "id_varpart": {
+                                                                        "length": 1,
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": null
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "length": 2,
+                                                    "type": "expression",
+                                                    "__type": "INTEGER",
+                                                    "simple_expression": {
+                                                        "length": 2,
+                                                        "type": "simple_expression",
+                                                        "__type": "INTEGER",
+                                                        "term": {
+                                                            "length": 2,
+                                                            "type": "term",
+                                                            "__type": "INTEGER",
+                                                            "factor": {
+                                                                "length": 2,
+                                                                "type": "factor",
+                                                                "_type": "variable",
+                                                                "__type": "INTEGER",
+                                                                "variable": {
+                                                                    "length": 3,
+                                                                    "type": "variable",
+                                                                    "__type": "INTEGER",
+                                                                    "ID": "y",
+                                                                    "id_varpart": {
+                                                                        "length": 1,
+                                                                        "type": "id_varpart",
+                                                                        "expression_list": null
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
