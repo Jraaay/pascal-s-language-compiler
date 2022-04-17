@@ -15,8 +15,8 @@ class CodeGenerator:
     symbolTable = None  # 符号表
 
     def __init__(self, _ast, _symbolTable):
-        ast = _ast
-        symbolTable = _symbolTable
+        self.ast = _ast
+        self.symbolTable = _symbolTable
 
     # 将生成的代码添加进目标代码
     def code_append(self, code):
@@ -29,29 +29,31 @@ class CodeGenerator:
         in_small = 0
         add_indent = False
         code_list = list(self.targetCode)
-        for it in code_list:
+        for i in range(0, len(code_list)-1):
             add_indent = False
-            if it == '\"' or it == '\'':
+            if code_list[i] == '\"' or code_list[i] == '\'':
                 in_quote = ~in_quote
-            if it == '(':
+            if code_list[i] == '(':
                 in_small += 1
-            if it == ')':
+            if code_list[i] == ')':
                 in_small -= 1
             if in_quote == False and in_small == 0:
-                if it == '{':
-                    it += '\n'
+                if code_list[i] == '{':
+                    code_list[i] += '\n'
                     indent += 1
                     add_indent = True
-                elif it == '}':
-                    it += '\n'
+                if code_list[i] == '}\n':
+                    add_indent = True
+                if code_list[i] == ';':
+                    code_list[i] += '\n'
+                    add_indent = True
+                if code_list[i+1] == '}':
+                    code_list[i+1] += '\n'
                     indent -= 1
                     add_indent = True
-                elif it == ';':
-                    it += '\n'
-                    add_indent = True
             if add_indent == True:
-                for i in range(0, indent):
-                    it += '\t'
+                for j in range(0, indent):
+                    code_list[i] += '\t'
         self.targetCode = ''.join(code_list)
 
     # 将分析阶段得到的头文件列表加到目标代码中
@@ -59,10 +61,11 @@ class CodeGenerator:
         for it in self.headFile:
             self.targetCode = it + self.targetCode
 
-    def g_programstruct(self, node):
+    def g_programstruct(self):
         '''
         programstruct : program_head ; program_body .
         '''
+        node = self.ast
         assert node["type"] == "programstruct"
         result = ""
         result += self.g_program_head(node["program_head"])
@@ -106,11 +109,10 @@ class CodeGenerator:
         const_declarations : CONST const_declaration SEMICOLON
                            | empty
         '''
-        assert node["type"] == "const_declarations"
         result = ""
         if node is not None:
+            assert node["type"] == "const_declarations"
             result += self.g_const_declaration(node["const_declaration"])
-            result += ';'
         return result
 
     def g_const_declaration(self, node):
@@ -118,21 +120,20 @@ class CodeGenerator:
         const_declaration : const_declaration SEMICOLON ID EQUAL const_value
                           | ID EQUAL const_value
         '''
-        assert node["type"] == "const_declarations"
+        assert node["type"] == "const_declaration"
         result = ""
-        if node["length"] == 6:
-            result += self.g_const_declaration(node["const_declaration"])
+        for it in node["values"]:
+            result += 'const '
+            if it["const_value"]["_type"] == "NUM":
+                if isinstance(it["const_value"]["value"], int):
+                    result += 'int '
+                if isinstance(it["const_value"]["value"], float):
+                    result += 'float '
+            if it["const_value"]["_type"] == "LETTER":
+                result += 'char '
+            result += it["ID"] + '= '
+            result += self.g_const_value(it["const_value"])
             result += ';'
-        result += 'const '
-        if node["const_value"]["_type"] == "NUM":
-            if isinstance(node["const_value"]["value"], int):
-                result += 'int '
-            if isinstance(node["const_value"]["value"], float):
-                result += 'float '
-        if node["const_value"]["_type"] == "LETTER":
-            result += 'char '
-        result += node["id"] + '= '
-        result += self.g_const_value(node["const_value"])
         return result
 
     def g_const_value(self, node):
@@ -142,7 +143,7 @@ class CodeGenerator:
         assert node["type"] == "const_value"
         result = ''
         if node["_type"] == "NUM":
-            result += node["value"]
+            result += str(node["value"])
         if node["_type"] == "LETTER":
             result += '\'' + node["value"] + '\''
         return result
@@ -152,11 +153,10 @@ class CodeGenerator:
         var_declarations : VAR var_declaration SEMICOLON
                         | 
         '''
-        assert node["type"] == "var_declaration"
         result = ''
         if node is not None:
+            assert node["type"] == "var_declarations"
             result += self.g_var_declaration(node["var_declaration"])
-            result += ';'
         return result
 
     def g_var_declaration(self, node):
@@ -164,27 +164,33 @@ class CodeGenerator:
         var_declaration : var_declaration SEMICOLON idlist COLON type
                         | idlist COLON type
         '''
-        assert node["type"] == "const_value"
+        assert node["type"] == "var_declaration"
         result = ''
-        if node["length"] == 6:
-            result += self.g_var_declaration(node["var_declaration"])
-            result += ';'
-        if node["values"]["type"]["_type"] == "ARRAY":
-            result += self.g_type(node["values"]["type"])
-            result += ' '
-            range = self.g_period(node["values"]["type"]["period"])
-            idlist = self.g_idlist(node["idlist"])
-            for id in idlist:
-                result += id
-                result += range
-                result += ', ' if id != idlist[-1] else ''
-
-        elif node["values"]["type"]["_type"] == "RECORD":
-            pass
-        else:
-            result += self.g_type(node["values"]["type"])
-            result += ' '
-            result += self.g_idlist(node["values"]["idlist"])
+        for it in node["values"]:
+            if it["type"]["_type"] == "ARRAY":
+                result += self.g_type(it["type"])
+                result += ' '
+                range = self.g_period(it["type"]["period"])
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += range
+                    result += ', ' if id != idlist[-1] else ';'
+            elif it["type"]["_type"] == "RECORD":
+                result += 'struct ' + '{'
+                result += self.g_multype(it["type"]["multype"])
+                result += '}'
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += ', ' if id != idlist[-1] else ';'
+            else:
+                result += self.g_type(it["type"])
+                result += ' '
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += ', ' if id != idlist[-1] else ';'
         return result
 
     def g_type(self, node):
@@ -197,9 +203,7 @@ class CodeGenerator:
         result = ''
         if node["_type"] == "ARRAY":
             result += self.g_basic_type(node["basic_type"])
-            result += ' '
-
-        if node["_type"] == "RECORD":
+        elif node["_type"] == "RECORD":
             pass
         else:
             result += self.g_basic_type(node["_type"])
@@ -212,6 +216,7 @@ class CodeGenerator:
                     | BOOLEAN
                     | CHAR
         '''
+        assert node["type"] == "basic_type"
         if node["_type"] == "INTEGER":
             return "int"
         if node["_type"] == "REAL":
@@ -219,72 +224,174 @@ class CodeGenerator:
         if node["_type"] == "BOOLEAN":
             self.headFile.append("#include<stdbool.h>\n")
             return "bool"
-        if node["_type"] == "BOOLEAN":
+        if node["_type"] == "CHAR":
             return "char"
+
+    def g_multype(self, node):
+        '''
+        multype : multype idlist COLON type SEMICOLON
+                | idlist COLON type SEMICOLON
+        '''
+        assert node["type"] == "multype"
+        result = ''
+        for it in node["values"]:
+            if it["type"]["_type"] == "ARRAY":
+                result += self.g_type(it["type"])
+                result += ' '
+                range = self.g_period(it["type"]["period"])
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += range
+                    result += ', ' if id != idlist[-1] else ';'
+            elif it["type"]["_type"] == "RECORD":
+                result += 'struct ' + '{'
+                result += self.g_multype(it["type"]["multype"])
+                result += '}'
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += ', ' if id != idlist[-1] else ';'
+            else:
+                result += self.g_type(it["type"])
+                result += ' '
+                idlist = self.g_idlist(it["idlist"])
+                for id in idlist:
+                    result += id
+                    result += ', ' if id != idlist[-1] else ';'
+        return result
 
     def g_period(self, node):
         '''
         period : period COM DIGITS POINTTO DIGITS
             | DIGITS POINTTO DIGITS
         '''
-
-    def p_multype(p):
-        '''
-        multype : multype ID COLON type SEMICOLON
-                | ID COLON type SEMICOLON
-        '''
+        assert node["type"] == "period"
+        result = ''
+        for period in node["values"]:
+            size = period["end"]-period["start"]+1
+            result += '['+str(size)+']'
+        return result
 
     def g_subprogram_declarations(self, node):
         '''
         subprogram_declarations : subprogram_declarations subprogram SEMICOLON
                                 | 
         '''
+        result = ''
+        if node is not None:
+            assert node["type"] == "subprogram_declarations"
+            for it in node["subprograms"]:
+                result += self.g_subprogram(it)
+                result += ';'
+        return result
 
     def g_subprogram(self, node):
         '''
         subprogram : subprogram_head SEMICOLON subprogram_body
         '''
+        assert node["type"] == "subprogram"
+        result = ''
+        result += self.g_subprogram_head(node["subprogram_head"])
+        result += self.g_subprogram_body(node["subprogram_body"])
+        self.domain.pop()
+        return result
 
     def g_subprogram_head(self, node):
         '''
-        subprogram_head : PROCEDURE seen_PROCEDURE ID formal_parameter
+        subprogram_head :  seen_PROCEDURE ID formal_parameter
                         | FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type 
         '''
+        assert node["type"] == "subprogram_head"
+        result = ''
+        if node["_type"] == 'PROCEDURE':
+            result += 'void '
+        else:
+            result += self.g_basic_type(node["basic_type"]) + ' '
+        result += node["ID"]
+        self.domain.append(node["ID"])
+        result += self.g_formal_parameter(node["formal_parameter"])
+        return result
 
     def g_formal_parameter(self, node):
         '''
         formal_parameter : LPAREN parameter_list RPAREN
                         | 
         '''
+        result = ''
+        if node is not None:
+            assert node["type"] == "formal_parameter"
+            result += '('
+            result += self.g_parameter_list(node["parameter_list"])
+            result += ')'
+        return result
 
     def g_parameter_list(self, node):
         '''
         parameter_list : parameter_list SEMICOLON parameter
                     | parameter
         '''
+        assert node["type"] == "parameter_list"
+        result = ''
+        for it in node["parameters"]:
+            result += self.g_parameter(it)
+            result += ', 'if it != node["parameters"][-1] else ''
+        return result
 
     def g_parameter(self, node):
         '''
         parameter : var_parameter
                 | value_parameter
         '''
+        assert node["type"] == "parameter"
+        result = ''
+        if node["value"]["type"] == "value_parameter":
+            result += self.g_value_parameter(node["value"])
+        else:
+            result += self.g_var_parameter(node["value"])
+        return result
 
     def g_var_parameter(self, node):
         '''
         var_parameter : VAR value_parameter
         '''
+        assert node["type"] == "var_parameter"
+        result = ''
+        type = self.g_basic_type(node["basic_type"])
+        idlist = self.g_idlist(node["idlist"])
+        for id in idlist:
+            result += type + '* '
+            result += id
+            result += ', ' if id != idlist[-1] else ''
+        return result
 
     def g_value_parameter(self, node):
         '''
         value_parameter : idlist COLON basic_type
         '''
+        assert node["type"] == "value_parameter"
+        result = ''
+        type = self.g_basic_type(node["basic_type"])
+        idlist = self.g_idlist(node["idlist"])
+        for id in idlist:
+            result += type + ' '
+            result += id
+            result += ', ' if id != idlist[-1] else ''
+        return result
 
     def g_subprogram_body(self, node):
         '''
         subprogram_body : const_declarations var_declarations compound_statement
         '''
+        assert node["type"] == "subprogram_body"
+        result = ""
+        result += self.g_const_declarations(node["const_declarations"])
+        result += self.g_var_declarations(node["var_declarations"])
+        result += self.g_compound_statement(node["compound_statement"])
+        return result
 
     # <---------------------------------分割线------------------------------------>
+
     def g_compound_statement(self, node):
         '''
         compound_statement -> begin statement_list end
@@ -473,7 +580,6 @@ class CodeGenerator:
             result += self.g_statement(node["statement"])
             result += "}"
         return result
-        pass
 
     def g_expression_list(self, node, for_array: bool = False, return_list=False):
         """
@@ -622,15 +728,8 @@ class CodeGenerator:
 
         return result
 
-    def g_multype(self, node):
-        """
-        multype -> multype ID COLON type SEMICOLON | ID COLON type SEMICOLON
-        """
-        return "multype TBD"
-        pass
-
     def code_generate(self):
-        self.g_programstruct(self.ast)  # 从programstruct节点开始生成目标代码
+        self.g_programstruct()  # 从programstruct节点开始生成目标代码
         self.code_format()  # 代码格式化
         self.add_headfile()  # 添加头文件
         return self.targetCode  # 返回生成的目标代码
@@ -643,587 +742,17 @@ class CodeGenerator:
         # print(self.targetCode)
 
 
-_ast = {
-    "length": 5,
-    "type": "programstruct",
-    "program_head": {
-        "length": 6,
-        "type": "program_head",
-        "ID": "example",
-        "idlist": {
-            "length": 4,
-            "type": "idlist",
-            "ids": [
-                "input",
-                "output"
-            ]
-        }
-    },
-    "program_body": {
-        "length": 5,
-        "type": "program_body",
-        "const_declarations": None,
-        "var_declarations": {
-            "length": 4,
-            "type": "var_declarations",
-            "var_declaration": {
-                "length": 4,
-                "id": 0,
-                "type": "var_declaration",
-                "values": [
-                    {
-                        "idlist": {
-                            "length": 4,
-                            "type": "idlist",
-                            "ids": [
-                                "x",
-                                "y"
-                            ]
-                        },
-                        "type": {
-                            "length": 2,
-                            "type": "type",
-                            "_type": {
-                                "type": "basic_type",
-                                "_type": "INTEGER"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "subprogram_declarations": {
-            "length": 4,
-            "type": "subprogram_declarations",
-            "subprograms": [
-                {
-                    "length": 4,
-                    "id": 4,
-                    "type": "subprogram",
-                    "subprogram_head": {
-                        "length": 7,
-                        "type": "subprogram_head",
-                        "_type": "FUNCTION",
-                        "ID": "gcd",
-                        "formal_parameter": {
-                            "length": 4,
-                            "type": "formal_parameter",
-                            "parameter_list": {
-                                "length": 2,
-                                "type": "parameter_list",
-                                "parameters": [
-                                    {
-                                        "length": 2,
-                                        "type": "parameter",
-                                        "value": {
-                                            "length": 4,
-                                            "type": "value_parameter",
-                                            "idlist": {
-                                                "length": 4,
-                                                "type": "idlist",
-                                                "ids": [
-                                                    "a",
-                                                    "b"
-                                                ]
-                                            },
-                                            "basic_type": {
-                                                "type": "basic_type",
-                                                "_type": "INTEGER"
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        "basic_type": {
-                            "type": "basic_type",
-                            "_type": "INTEGER"
-                        }
-                    },
-                    "subprogram_body": {
-                        "length": 4,
-                        "type": "subprogram_body",
-                        "const_declarations": None,
-                        "var_declarations": None,
-                        "compound_statement": {
-                            "length": 4,
-                            "type": "compound_statement",
-                            "statement_list": {
-                                "length": 2,
-                                "type": "statement_list",
-                                "statements": [
-                                    {
-                                        "length": 6,
-                                        "type": "statement",
-                                        "_type": "IF",
-                                        "expression": {
-                                            "length": 4,
-                                            "type": "expression",
-                                            "simple_expression_1": {
-                                                "length": 2,
-                                                "type": "simple_expression",
-                                                "__type": "INTEGER",
-                                                "term": {
-                                                    "length": 2,
-                                                    "type": "term",
-                                                    "__type": "INTEGER",
-                                                    "factor": {
-                                                        "length": 2,
-                                                        "type": "factor",
-                                                        "_type": "variable",
-                                                        "__type": "INTEGER",
-                                                        "variable": {
-                                                            "length": 3,
-                                                            "type": "variable",
-                                                            "__type": "INTEGER",
-                                                            "ID": "b",
-                                                            "id_varpart": {
-                                                                "length": 1,
-                                                                "type": "id_varpart",
-                                                                "expression_list": None
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "RELOP": "=",
-                                            "simple_expression_2": {
-                                                "length": 2,
-                                                "type": "simple_expression",
-                                                "__type": "INTEGER",
-                                                "term": {
-                                                    "length": 2,
-                                                    "type": "term",
-                                                    "__type": "INTEGER",
-                                                    "factor": {
-                                                        "length": 2,
-                                                        "type": "factor",
-                                                        "_type": "NUM",
-                                                        "__type": "INTEGER",
-                                                        "NUM": 0
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "statement": {
-                                            "length": 4,
-                                            "type": "statement",
-                                            "_type": "variable",
-                                            "variable": {
-                                                "length": 3,
-                                                "type": "variable",
-                                                "__type": "INTEGER",
-                                                "ID": "gcd",
-                                                "id_varpart": {
-                                                    "length": 1,
-                                                    "type": "id_varpart",
-                                                    "expression_list": None
-                                                }
-                                            },
-                                            "ASSIGNOP": ":=",
-                                            "expression": {
-                                                "length": 2,
-                                                "type": "expression",
-                                                "__type": "INTEGER",
-                                                "simple_expression": {
-                                                    "length": 2,
-                                                    "type": "simple_expression",
-                                                    "__type": "INTEGER",
-                                                    "term": {
-                                                        "length": 2,
-                                                        "type": "term",
-                                                        "__type": "INTEGER",
-                                                        "factor": {
-                                                            "length": 2,
-                                                            "type": "factor",
-                                                            "_type": "variable",
-                                                            "__type": "INTEGER",
-                                                            "variable": {
-                                                                "length": 3,
-                                                                "type": "variable",
-                                                                "__type": "INTEGER",
-                                                                "ID": "a",
-                                                                "id_varpart": {
-                                                                    "length": 1,
-                                                                    "type": "id_varpart",
-                                                                    "expression_list": None
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "else_part": {
-                                            "length": 3,
-                                            "type": "else_part",
-                                            "statement": {
-                                                "length": 4,
-                                                "type": "statement",
-                                                "_type": "variable",
-                                                "variable": {
-                                                    "length": 3,
-                                                    "type": "variable",
-                                                    "__type": "INTEGER",
-                                                    "ID": "gcd",
-                                                    "id_varpart": {
-                                                        "length": 1,
-                                                        "type": "id_varpart",
-                                                        "expression_list": None
-                                                    }
-                                                },
-                                                "ASSIGNOP": ":=",
-                                                "expression": {
-                                                    "length": 2,
-                                                    "type": "expression",
-                                                    "__type": "INTEGER",
-                                                    "simple_expression": {
-                                                        "length": 2,
-                                                        "type": "simple_expression",
-                                                        "__type": "INTEGER",
-                                                        "term": {
-                                                            "length": 2,
-                                                            "type": "term",
-                                                            "__type": "INTEGER",
-                                                            "factor": {
-                                                                "length": 5,
-                                                                "type": "factor",
-                                                                "_type": "procedure_id",
-                                                                "__type": "INTEGER",
-                                                                "ID": "gcd",
-                                                                "expression_list": {
-                                                                    "length": 4,
-                                                                    "type": "expression_list",
-                                                                    "__type": [
-                                                                        "INTEGER",
-                                                                        "INTEGER"
-                                                                    ],
-                                                                    "expressions": [
-                                                                        {
-                                                                            "length": 2,
-                                                                            "type": "expression",
-                                                                            "__type": "INTEGER",
-                                                                            "simple_expression": {
-                                                                                "length": 2,
-                                                                                "type": "simple_expression",
-                                                                                "__type": "INTEGER",
-                                                                                "term": {
-                                                                                    "length": 2,
-                                                                                    "type": "term",
-                                                                                    "__type": "INTEGER",
-                                                                                    "factor": {
-                                                                                        "length": 2,
-                                                                                        "type": "factor",
-                                                                                        "_type": "variable",
-                                                                                        "__type": "INTEGER",
-                                                                                        "variable": {
-                                                                                            "length": 3,
-                                                                                            "type": "variable",
-                                                                                            "__type": "INTEGER",
-                                                                                            "ID": "b",
-                                                                                            "id_varpart": {
-                                                                                                "length": 1,
-                                                                                                "type": "id_varpart",
-                                                                                                "expression_list": None
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        },
-                                                                        {
-                                                                            "length": 2,
-                                                                            "type": "expression",
-                                                                            "__type": "INTEGER",
-                                                                            "simple_expression": {
-                                                                                "length": 2,
-                                                                                "type": "simple_expression",
-                                                                                "__type": "INTEGER",
-                                                                                "term": {
-                                                                                    "length": 4,
-                                                                                    "type": "term",
-                                                                                    "term": {
-                                                                                        "length": 2,
-                                                                                        "type": "term",
-                                                                                        "__type": "INTEGER",
-                                                                                        "factor": {
-                                                                                            "length": 2,
-                                                                                            "type": "factor",
-                                                                                            "_type": "variable",
-                                                                                            "__type": "INTEGER",
-                                                                                            "variable": {
-                                                                                                "length": 3,
-                                                                                                "type": "variable",
-                                                                                                "__type": "INTEGER",
-                                                                                                "ID": "a",
-                                                                                                "id_varpart": {
-                                                                                                    "length": 1,
-                                                                                                    "type": "id_varpart",
-                                                                                                    "expression_list": None
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    },
-                                                                                    "factor": {
-                                                                                        "length": 2,
-                                                                                        "type": "factor",
-                                                                                        "_type": "variable",
-                                                                                        "__type": "INTEGER",
-                                                                                        "variable": {
-                                                                                            "length": 3,
-                                                                                            "type": "variable",
-                                                                                            "__type": "INTEGER",
-                                                                                            "ID": "b",
-                                                                                            "id_varpart": {
-                                                                                                "length": 1,
-                                                                                                "type": "id_varpart",
-                                                                                                "expression_list": None
-                                                                                            }
-                                                                                        }
-                                                                                    },
-                                                                                    "__type": "INTEGER"
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        "compound_statement": {
-            "length": 4,
-            "type": "compound_statement",
-            "statement_list": {
-                "length": 4,
-                "type": "statement_list",
-                "statements": [
-                    {
-                        "length": 5,
-                        "type": "statement",
-                        "_type": "READ",
-                        "variable_list": {
-                            "length": 4,
-                            "type": "variable_list",
-                            "variables": [
-                                {
-                                    "length": 3,
-                                    "type": "variable",
-                                    "__type": "INTEGER",
-                                    "ID": "x",
-                                    "id_varpart": {
-                                        "length": 1,
-                                        "type": "id_varpart",
-                                        "expression_list": None
-                                    }
-                                },
-                                {
-                                    "length": 3,
-                                    "type": "variable",
-                                    "__type": "INTEGER",
-                                    "ID": "y",
-                                    "id_varpart": {
-                                        "length": 1,
-                                        "type": "id_varpart",
-                                        "expression_list": None
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "length": 5,
-                        "type": "statement",
-                        "_type": "WRITE",
-                        "expression_list": {
-                            "length": 2,
-                            "type": "expression_list",
-                            "__type": [
-                                "INTEGER"
-                            ],
-                            "expressions": [
-                                {
-                                    "length": 2,
-                                    "type": "expression",
-                                    "__type": "INTEGER",
-                                    "simple_expression": {
-                                        "length": 2,
-                                        "type": "simple_expression",
-                                        "__type": "INTEGER",
-                                        "term": {
-                                            "length": 2,
-                                            "type": "term",
-                                            "__type": "INTEGER",
-                                            "factor": {
-                                                "length": 5,
-                                                "type": "factor",
-                                                "_type": "procedure_id",
-                                                "__type": "INTEGER",
-                                                "ID": "gcd",
-                                                "expression_list": {
-                                                    "length": 4,
-                                                    "type": "expression_list",
-                                                    "__type": [
-                                                        "INTEGER",
-                                                        "INTEGER"
-                                                    ],
-                                                    "expressions": [
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "x",
-                                                                            "id_varpart": {
-                                                                                "length": 1,
-                                                                                "type": "id_varpart",
-                                                                                "expression_list": None
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "y",
-                                                                            "id_varpart": {
-                                                                                "length": 1,
-                                                                                "type": "id_varpart",
-                                                                                "expression_list": None
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        }
-    }
-}
-
-_symbolTable = {
-    "constants": [],
-    "variables": [
-        {
-            "id": 0,
-            "token": "x",
-            "type": "INTEGER",
-            "isArray": False,
-            "dimension": 0,
-            "size": [],
-            "start": [],
-            "recordTable": None
-        },
-        {
-            "id": 1,
-            "token": "y",
-            "type": "INTEGER",
-            "isArray": False,
-            "dimension": 0,
-            "size": [],
-            "start": [],
-            "recordTable": None
-        }
-    ],
-    "subFunc": [
-        {
-            "id": 4,
-            "token": "gcd",
-            "type": "INTEGER",
-            "table": {
-                "params": 2,
-                "references": [
-                    [
-                        False,
-                        False
-                    ]
-                ],
-                "constants": [],
-                "variables": [
-                    {
-                        "id": 2,
-                        "token": "a",
-                        "type": "INTEGER",
-                        "isArray": False,
-                        "dimension": 0,
-                        "size": [],
-                        "start": [],
-                        "recordType": None
-                    },
-                    {
-                        "id": 3,
-                        "token": "b",
-                        "type": "INTEGER",
-                        "isArray": False,
-                        "dimension": 0,
-                        "size": [],
-                        "start": [],
-                        "recordType": None
-                    }
-                ]
-            }
-        }
-    ]
-}
-
 if __name__ == "__main__":
+    with open("generator_test/test.json") as test:
+        obj = json.load(test)
+        _ast = obj["ast"]
+        _symbolTable = obj["symbolTable"]
     generator = CodeGenerator(_ast, _symbolTable)
+    target_code = generator.code_generate()
+    with open("generator_test/test.c", 'w') as opt:
+        opt.write(target_code)
+
+    '''----单独测试----'''
     with open("generator_test/compound_statement.json") as f:
         node = json.load(f)
     generator.compound_statement_test(node)

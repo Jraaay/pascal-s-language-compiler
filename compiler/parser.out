@@ -85,8 +85,8 @@ Rule 79    factor -> LPAREN expression RPAREN
 Rule 80    factor -> NOT factor
 Rule 81    factor -> UMINUS factor
 Rule 82    factor -> ADDOP factor
-Rule 83    multype -> multype ID COLON type SEMICOLON
-Rule 84    multype -> ID COLON type SEMICOLON
+Rule 83    multype -> multype idlist COLON type SEMICOLON
+Rule 84    multype -> idlist COLON type SEMICOLON
 
 Terminals, with rules where they appear
 
@@ -106,7 +106,7 @@ END                  : 22 45
 EQUAL                : 9 10 70
 FOR                  : 52
 FUNCTION             : 35
-ID                   : 2 3 5 6 9 10 34 35 52 59 62 63 78 83 84
+ID                   : 2 3 5 6 9 10 34 35 52 59 62 63 78
 IF                   : 51
 INTEGER              : 23
 LBRACKET             : 21 60
@@ -148,7 +148,7 @@ expression_list      : 54 60 63 66 78
 factor               : 73 74 80 81 82
 formal_parameter     : 34 35
 id_varpart           : 59
-idlist               : 2 5 18 19 43
+idlist               : 2 5 18 19 43 83 84
 multype              : 22 83
 parameter            : 38 39
 parameter_list       : 36 38
@@ -796,12 +796,15 @@ state 57
 state 58
 
     (22) type -> RECORD . multype END
-    (83) multype -> . multype ID COLON type SEMICOLON
-    (84) multype -> . ID COLON type SEMICOLON
+    (83) multype -> . multype idlist COLON type SEMICOLON
+    (84) multype -> . idlist COLON type SEMICOLON
+    (5) idlist -> . idlist COM ID
+    (6) idlist -> . ID
 
-    ID              shift and go to state 95
+    ID              shift and go to state 15
 
     multype                        shift and go to state 94
+    idlist                         shift and go to state 95
 
 state 59
 
@@ -1427,17 +1430,22 @@ state 93
 state 94
 
     (22) type -> RECORD multype . END
-    (83) multype -> multype . ID COLON type SEMICOLON
+    (83) multype -> multype . idlist COLON type SEMICOLON
+    (5) idlist -> . idlist COM ID
+    (6) idlist -> . ID
 
     END             shift and go to state 125
-    ID              shift and go to state 126
+    ID              shift and go to state 15
 
+    idlist                         shift and go to state 126
 
 state 95
 
-    (84) multype -> ID . COLON type SEMICOLON
+    (84) multype -> idlist . COLON type SEMICOLON
+    (5) idlist -> idlist . COM ID
 
     COLON           shift and go to state 127
+    COM             shift and go to state 23
 
 
 state 96
@@ -1917,14 +1925,16 @@ state 125
 
 state 126
 
-    (83) multype -> multype ID . COLON type SEMICOLON
+    (83) multype -> multype idlist . COLON type SEMICOLON
+    (5) idlist -> idlist . COM ID
 
     COLON           shift and go to state 154
+    COM             shift and go to state 23
 
 
 state 127
 
-    (84) multype -> ID COLON . type SEMICOLON
+    (84) multype -> idlist COLON . type SEMICOLON
     (20) type -> . basic_type
     (21) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
     (22) type -> . RECORD multype END
@@ -2264,7 +2274,7 @@ state 153
 
 state 154
 
-    (83) multype -> multype ID COLON . type SEMICOLON
+    (83) multype -> multype idlist COLON . type SEMICOLON
     (20) type -> . basic_type
     (21) type -> . ARRAY LBRACKET period RBRACKET OF basic_type
     (22) type -> . RECORD multype END
@@ -2285,7 +2295,7 @@ state 154
 
 state 155
 
-    (84) multype -> ID COLON type . SEMICOLON
+    (84) multype -> idlist COLON type . SEMICOLON
 
     SEMICOLON       shift and go to state 171
 
@@ -2490,17 +2500,17 @@ state 169
 
 state 170
 
-    (83) multype -> multype ID COLON type . SEMICOLON
+    (83) multype -> multype idlist COLON type . SEMICOLON
 
     SEMICOLON       shift and go to state 178
 
 
 state 171
 
-    (84) multype -> ID COLON type SEMICOLON .
+    (84) multype -> idlist COLON type SEMICOLON .
 
-    END             reduce using rule 84 (multype -> ID COLON type SEMICOLON .)
-    ID              reduce using rule 84 (multype -> ID COLON type SEMICOLON .)
+    END             reduce using rule 84 (multype -> idlist COLON type SEMICOLON .)
+    ID              reduce using rule 84 (multype -> idlist COLON type SEMICOLON .)
 
 
 state 172
@@ -2551,10 +2561,10 @@ state 177
 
 state 178
 
-    (83) multype -> multype ID COLON type SEMICOLON .
+    (83) multype -> multype idlist COLON type SEMICOLON .
 
-    END             reduce using rule 83 (multype -> multype ID COLON type SEMICOLON .)
-    ID              reduce using rule 83 (multype -> multype ID COLON type SEMICOLON .)
+    END             reduce using rule 83 (multype -> multype idlist COLON type SEMICOLON .)
+    ID              reduce using rule 83 (multype -> multype idlist COLON type SEMICOLON .)
 
 
 state 179

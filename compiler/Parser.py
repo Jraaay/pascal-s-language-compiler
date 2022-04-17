@@ -1626,17 +1626,18 @@ class Parser:
 
         def p_multype(p):
             '''
-            multype : multype ID COLON type SEMICOLON
-                    | ID COLON type SEMICOLON
+            multype : multype idlist COLON type SEMICOLON
+                    | idlist COLON type SEMICOLON
             '''
             if len(p) == 6:
                 p[0] = {
                     "length": len(p),
                     "id": self.id,
                     "type": "multype",
-                    "multype": p[1],
-                    "ID": p[1]["ID"] + [p[2]],
-                    "type": p[1]["type"] + [p[4]]
+                    "values": p[1]["values"]+[{
+                        "idlist": p[2],
+                        "type":p[4]
+                    }]
                 }
                 p[0]["SymbolTable"] = {
                     "variables": p[1]["SymbolTable"]["variables"] + [{
@@ -1666,8 +1667,10 @@ class Parser:
                     "length": len(p),
                     "id": self.id,
                     "type": "multype",
-                    "ID": [p[1]],
-                    "type": [p[3]]
+                    "values": [{
+                        "idlist": p[1],
+                        "type":p[3]
+                    }]
                 }
                 p[0]["SymbolTable"] = {
                     "variables": [{

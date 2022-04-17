@@ -41,78 +41,17 @@
                                 "multype": {
                                     "length": 6,
                                     "id": 3,
-                                    "type": [
+                                    "type": "multype",
+                                    "values": [
                                         {
-                                            "length": 7,
-                                            "type": "type",
-                                            "_type": "ARRAY",
-                                            "period": {
-                                                "length": 4,
-                                                "type": "period",
-                                                "values": [
-                                                    {
-                                                        "start": 50,
-                                                        "end": 1
-                                                    }
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "title"
                                                 ]
                                             },
-                                            "basic_type": {
-                                                "type": "basic_type",
-                                                "_type": "CHAR"
-                                            }
-                                        },
-                                        {
-                                            "length": 7,
-                                            "type": "type",
-                                            "_type": "ARRAY",
-                                            "period": {
-                                                "length": 4,
-                                                "type": "period",
-                                                "values": [
-                                                    {
-                                                        "start": 1,
-                                                        "end": 50
-                                                    }
-                                                ]
-                                            },
-                                            "basic_type": {
-                                                "type": "basic_type",
-                                                "_type": "CHAR"
-                                            }
-                                        },
-                                        {
-                                            "length": 7,
-                                            "type": "type",
-                                            "_type": "ARRAY",
-                                            "period": {
-                                                "length": 4,
-                                                "type": "period",
-                                                "values": [
-                                                    {
-                                                        "start": 100,
-                                                        "end": 1
-                                                    }
-                                                ]
-                                            },
-                                            "basic_type": {
-                                                "type": "basic_type",
-                                                "_type": "CHAR"
-                                            }
-                                        },
-                                        {
-                                            "length": 2,
-                                            "type": "type",
-                                            "_type": {
-                                                "type": "basic_type",
-                                                "_type": "INTEGER"
-                                            }
-                                        }
-                                    ],
-                                    "multype": {
-                                        "length": 6,
-                                        "id": 2,
-                                        "type": [
-                                            {
+                                            "type": {
                                                 "length": 7,
                                                 "type": "type",
                                                 "_type": "ARRAY",
@@ -130,8 +69,17 @@
                                                     "type": "basic_type",
                                                     "_type": "CHAR"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "author"
+                                                ]
                                             },
-                                            {
+                                            "type": {
                                                 "length": 7,
                                                 "type": "type",
                                                 "_type": "ARRAY",
@@ -149,8 +97,17 @@
                                                     "type": "basic_type",
                                                     "_type": "CHAR"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "subject"
+                                                ]
                                             },
-                                            {
+                                            "type": {
                                                 "length": 7,
                                                 "type": "type",
                                                 "_type": "ARRAY",
@@ -169,94 +126,24 @@
                                                     "_type": "CHAR"
                                                 }
                                             }
-                                        ],
-                                        "multype": {
-                                            "length": 6,
-                                            "id": 1,
-                                            "type": [
-                                                {
-                                                    "length": 7,
-                                                    "type": "type",
-                                                    "_type": "ARRAY",
-                                                    "period": {
-                                                        "length": 4,
-                                                        "type": "period",
-                                                        "values": [
-                                                            {
-                                                                "start": 50,
-                                                                "end": 1
-                                                            }
-                                                        ]
-                                                    },
-                                                    "basic_type": {
-                                                        "type": "basic_type",
-                                                        "_type": "CHAR"
-                                                    }
-                                                },
-                                                {
-                                                    "length": 7,
-                                                    "type": "type",
-                                                    "_type": "ARRAY",
-                                                    "period": {
-                                                        "length": 4,
-                                                        "type": "period",
-                                                        "values": [
-                                                            {
-                                                                "start": 1,
-                                                                "end": 50
-                                                            }
-                                                        ]
-                                                    },
-                                                    "basic_type": {
-                                                        "type": "basic_type",
-                                                        "_type": "CHAR"
-                                                    }
-                                                }
-                                            ],
-                                            "multype": {
-                                                "length": 5,
-                                                "id": 0,
-                                                "type": [
-                                                    {
-                                                        "length": 7,
-                                                        "type": "type",
-                                                        "_type": "ARRAY",
-                                                        "period": {
-                                                            "length": 4,
-                                                            "type": "period",
-                                                            "values": [
-                                                                {
-                                                                    "start": 50,
-                                                                    "end": 1
-                                                                }
-                                                            ]
-                                                        },
-                                                        "basic_type": {
-                                                            "type": "basic_type",
-                                                            "_type": "CHAR"
-                                                        }
-                                                    }
-                                                ],
-                                                "ID": [
-                                                    "title"
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "bookid"
                                                 ]
                                             },
-                                            "ID": [
-                                                "title",
-                                                "author"
-                                            ]
-                                        },
-                                        "ID": [
-                                            "title",
-                                            "author",
-                                            "subject"
-                                        ]
-                                    },
-                                    "ID": [
-                                        "title",
-                                        "author",
-                                        "subject",
-                                        "bookid"
+                                            "type": {
+                                                "length": 2,
+                                                "type": "type",
+                                                "_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "INTEGER"
+                                                }
+                                            }
+                                        }
                                     ]
                                 }
                             }
@@ -370,24 +257,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "CHAR",
+                                "__type": "UNDEFINED",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "CHAR",
+                                    "__type": "UNDEFINED",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "CHAR",
+                                        "__type": "UNDEFINED",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "CHAR",
+                                            "__type": "UNDEFINED",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "CHAR",
+                                                "__type": "UNDEFINED",
                                                 "ID": [
                                                     "Books",
                                                     "title"
@@ -452,24 +339,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "INTEGER",
+                                "__type": "UNDEFINED",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "INTEGER",
+                                    "__type": "UNDEFINED",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "INTEGER",
+                                        "__type": "UNDEFINED",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "INTEGER",
+                                            "__type": "UNDEFINED",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "INTEGER",
+                                                "__type": "UNDEFINED",
                                                 "ID": [
                                                     "Books",
                                                     "bookid"
@@ -505,7 +392,13 @@
                     "variables": [
                         {
                             "id": 0,
-                            "token": "title",
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "title"
+                                ]
+                            },
                             "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
@@ -519,7 +412,13 @@
                         },
                         {
                             "id": 1,
-                            "token": "author",
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "author"
+                                ]
+                            },
                             "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
@@ -533,7 +432,13 @@
                         },
                         {
                             "id": 2,
-                            "token": "subject",
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "subject"
+                                ]
+                            },
                             "type": "CHAR",
                             "isArray": true,
                             "dimension": 1,
@@ -547,7 +452,13 @@
                         },
                         {
                             "id": 3,
-                            "token": "bookid",
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "bookid"
+                                ]
+                            },
                             "type": "INTEGER",
                             "isArray": false,
                             "dimension": 0,
@@ -606,6 +517,38 @@
                     1
                 ],
                 "lexpos": 169
+            }
+        },
+        {
+            "code": "C-02",
+            "info": {
+                "line": 14,
+                "value": "title",
+                "lexpos": 276
+            }
+        },
+        {
+            "code": "C-10",
+            "info": {
+                "line": 14,
+                "value": "a",
+                "lexpos": 276
+            }
+        },
+        {
+            "code": "C-02",
+            "info": {
+                "line": 15,
+                "value": "bookid",
+                "lexpos": 297
+            }
+        },
+        {
+            "code": "C-10",
+            "info": {
+                "line": 15,
+                "value": "b",
+                "lexpos": 297
             }
         }
     ],
