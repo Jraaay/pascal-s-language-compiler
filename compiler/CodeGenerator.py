@@ -18,10 +18,6 @@ class CodeGenerator:
         self.ast = _ast
         self.symbolTable = _symbolTable
 
-    # 将生成的代码添加进目标代码
-    def code_append(self, code):
-        self.target_code += code
-
     # 代码格式化：添加换行、缩进
     def code_format(self):
         indent = 0
@@ -58,8 +54,8 @@ class CodeGenerator:
 
     # 将分析阶段得到的头文件列表加到目标代码中
     def add_headfile(self):
-        for it in self.headFile:
-            self.targetCode = it + self.targetCode
+        result = ('').join(self.headFile)
+        self.targetCode = result + '\n' + self.targetCode
 
     def g_programstruct(self):
         '''
@@ -113,6 +109,7 @@ class CodeGenerator:
         if node is not None:
             assert node["type"] == "const_declarations"
             result += self.g_const_declaration(node["const_declaration"])
+            result += '\n'
         return result
 
     def g_const_declaration(self, node):
@@ -131,7 +128,7 @@ class CodeGenerator:
                     result += 'float '
             if it["const_value"]["_type"] == "LETTER":
                 result += 'char '
-            result += it["ID"] + '= '
+            result += it["ID"] + ' = '
             result += self.g_const_value(it["const_value"])
             result += ';'
         return result
@@ -157,6 +154,7 @@ class CodeGenerator:
         if node is not None:
             assert node["type"] == "var_declarations"
             result += self.g_var_declaration(node["var_declaration"])
+            result += '\n'
         return result
 
     def g_var_declaration(self, node):
@@ -283,7 +281,7 @@ class CodeGenerator:
             assert node["type"] == "subprogram_declarations"
             for it in node["subprograms"]:
                 result += self.g_subprogram(it)
-                result += ';'
+                result += '\n'
         return result
 
     def g_subprogram(self, node):
