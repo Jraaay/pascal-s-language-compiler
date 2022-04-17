@@ -172,9 +172,39 @@
                                                     "__type": "INTEGER",
                                                     "ID": "gcd",
                                                     "id_varpart": {
-                                                        "length": 1,
+                                                        "length": 4,
                                                         "type": "id_varpart",
-                                                        "expression_list": null
+                                                        "expression_list": {
+                                                            "length": 2,
+                                                            "type": "expression_list",
+                                                            "__type": [
+                                                                "INTEGER"
+                                                            ],
+                                                            "expressions": [
+                                                                {
+                                                                    "length": 2,
+                                                                    "type": "expression",
+                                                                    "__type": "INTEGER",
+                                                                    "simple_expression": {
+                                                                        "length": 2,
+                                                                        "type": "simple_expression",
+                                                                        "__type": "INTEGER",
+                                                                        "term": {
+                                                                            "length": 2,
+                                                                            "type": "term",
+                                                                            "__type": "INTEGER",
+                                                                            "factor": {
+                                                                                "length": 2,
+                                                                                "type": "factor",
+                                                                                "_type": "NUM",
+                                                                                "__type": "INTEGER",
+                                                                                "NUM": 114514
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "ASSIGNOP": ":=",
@@ -321,6 +351,7 @@
                                                                                                 }
                                                                                             }
                                                                                         },
+                                                                                        "MULOP": "Mod",
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",
@@ -687,6 +718,51 @@
             }
         ]
     },
+<<<<<<< HEAD
+    "error": [
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 140
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 164
+            }
+        },
+        {
+            "code": "C-02",
+            "info": {
+                "line": 8,
+                "value": "i",
+                "lexpos": 200
+            }
+        },
+        {
+            "code": "C-10",
+            "info": {
+                "line": 8,
+                "value": "b",
+                "lexpos": 200
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 8,
+                "value": "i",
+                "lexpos": 200
+            }
+        }
+    ],
+=======
     "error": [],
+>>>>>>> 66004ac34fc75ded95aa4ceac7b6bd743b906c90
     "warning": []
 }

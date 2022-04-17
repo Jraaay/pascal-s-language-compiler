@@ -577,22 +577,6 @@
                 ],
                 "lexpos": 169
             }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 14,
-                "value": "a",
-                "lexpos": 276
-            }
-        },
-        {
-            "code": "C-11",
-            "info": {
-                "line": 15,
-                "value": "b",
-                "lexpos": 297
-            }
         }
     ],
     "warning": []
