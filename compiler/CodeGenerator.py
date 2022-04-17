@@ -84,7 +84,9 @@ class CodeGenerator:
         result += self.g_subprogram_declarations(node["subprogram_declarations"])
         result += "int main(int argc, char* argv[])"
         self.domain += "main"
+        result += '{'
         result += self.g_compound_statement(node["compound_statement"])
+        result += '}'
         return result
 
     def g_idlist(self, node):
@@ -378,9 +380,11 @@ class CodeGenerator:
         '''
         assert node["type"] == "subprogram_body"
         result = ""
+        result += '{'
         result += self.g_const_declarations(node["const_declarations"])
         result += self.g_var_declarations(node["var_declarations"])
         result += self.g_compound_statement(node["compound_statement"])
+        result += '}'
         return result
 
     # <---------------------------------分割线------------------------------------>
@@ -388,13 +392,11 @@ class CodeGenerator:
     def g_compound_statement(self, node):
         '''
         compound_statement -> begin statement_list end
-        compound_statement -> {statement_list}
+        compound_statement -> statement_list
         '''
         assert node["type"] == "compound_statement"
         result = ""
-        result += "{"
         result += self.g_statement_list(node["statement_list"])
-        result += "}"
         return result
 
     def g_statement_list(self, node):
