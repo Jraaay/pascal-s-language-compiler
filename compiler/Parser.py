@@ -564,7 +564,7 @@ class Parser:
                     "type": "type",
                     "_type": "ARRAY",
                     "period": p[3],
-                    "basic_type": p[5]
+                    "basic_type": p[6]
                 }
                 p[0]["SymbolTable"] = {
                     "type": p[6]["SymbolTable"],
