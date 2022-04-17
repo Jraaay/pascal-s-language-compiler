@@ -1,4 +1,8 @@
 import copy
+from ctypes.wintypes import tagRECT
+import json
+
+from numpy import fromstring
 
 
 class CodeGenerator:
@@ -156,12 +160,12 @@ class CodeGenerator:
         result = ""
         assert len(node["statements"]) > 0
         if len(node["statements"]) == 1:
-            result += self.g_statement(node["statement"][0])
+            result += self.g_statement(node["statements"][0])
         elif len(node["statements"]) > 1:
             tmp_node = copy.deepcopy(node)
             statement = tmp_node["statements"].pop()
             result += self.g_statement_list(tmp_node)
-            result += " "
+            # result += " "
             result += self.g_statement(statement)
         return result
 
@@ -172,10 +176,10 @@ class CodeGenerator:
         variable assignop expression                                variable = expression
         | procedure_call                                            | procedure_call
         | compound_statement                                        | compound_statement
-        | if expression then statement else_part                    | if(expression){statement}else{else_part}
+        | if expression then statement else_part                    | if(expression){statement}else_part
         | for id assignop expression to expression do statement     | for(id=expression;id<expression;id++){statement}
-        | read ( variable_list )                                    | TBD
-        | write ( expression_list )                                 | TBD
+        | read ( variable_list )                                    | scanf("format_string",var1,var2)
+        | write ( expression_list )                                 | printf("format_string",var1,var2)
         | while expression do statement                             | while(expression){statement}
         | ε                                                         | TBD
         '''
@@ -183,32 +187,100 @@ class CodeGenerator:
             return ""
         assert node["_type"] in ["variable", "procedure_call", "compound_statement",
                                  "IF", "FOR", "READ", "WRITE", "WHILE"], "_type:{}".format(node["_type"])
+        format_tag_map = {"INTEGER": "%d",
+                          "REAL": "%f", "BOOLEAN": "%d", "CHAR": "%c"}
         type = node["_type"]
         result = ""
-        if type is "variable":
-            result += self.g_variable(node["variable"])
+        if type == "variable":
+            result += self.g_variable(node["variable"])[0]
             result += "="
             result += self.g_expression(node["expression"])
-        elif type is "procedure_call":
+        elif type == "procedure_call":
             pass
-        elif type is "compound_statement":
+        elif type == "compound_statement":
             pass
-        elif type is "IF":
+        elif type == "IF":
+            result += "if("
+            result += self.g_expression(node["expression"])
+            result += ")"
+            result += "{"
+            result += self.g_statement(node["statement"])
+            result += "}"
+            result += self.g_else_part(node["else_part"])
             pass
-        elif type is "FOR":
+        elif type == "FOR":
+            result += "for("
+            result += node["ID"]
+            result += "="
+            result += self.g_expression(node["expression"])
+            result += ";"
+            result += node["ID"]
+            result += "<"
+            result += self.g_expression(node["to_expression"])
+            result += node["ID"]
+            result += "++"
+            result += "){"
+            result += self.g_statement(node["statement"])
+            result += "}"
             pass
-        elif type is "READ":
+        elif type == "READ":
+            var, __type = self.g_variable_list(node["variable_list"])
+            var = var.split(",")
+            assert len(var) == len(__type)
+            assert len(var) > 0
+            format_string = ""
+            var_string = ""
+            for i in range(len(var)):
+                format_string += "{}".format(format_tag_map[__type[i]])
+                var_string += "&{},".format(var[i])
+            var_string = var_string[0: -1]
+            result += "scanf(\"{}\",{})".format(format_string, var_string)
             pass
-        elif type is "WRITE":
+        elif type == "WRITE":
+            var = self.g_expression_list(node["expression_list"])
+            var = var.split(",")
+            __type = node["expression_list"]["__type"]
+            print(var, __type)
+            assert len(var) == len(__type), len(var)
+            assert len(var) > 0
+            format_string = ""
+            var_string = ""
+            for i in range(len(var)):
+                format_string += "{}: {}\n".format(var[i],
+                                                   format_tag_map[__type[i]])
+                var_string += "{},".format(var[i])
+            var_string = var_string[0: -1]
+            result += "printf(\"{}\",{})".format(format_string, var_string)
             pass
-        elif type is "WHILE":
+        elif type == "WHILE":
             pass
+        if type in ["variable", "procedure_call", "READ", "WRITE"]:
+            result += ";"
         return result
 
     def g_variable_list(self, node):
         """
         variable_list -> variable_list , variable | variable
         """
+        assert node["type"] == "variable_list", "type:{}".format(node["type"])
+        result = ""
+        typelist = []
+        assert len(node["variables"]) > 0
+        if len(node["variables"]) == 1:
+            var, __type = self.g_variable(node["variables"][0])
+            result += var
+            typelist.append(__type)
+        elif len(node["variables"]) > 1:
+            tmp_node = copy.deepcopy(node)
+            variable = tmp_node["variables"].pop()
+            var, __type = self.g_variable_list(tmp_node)
+            typelist.extend(__type)
+            result += var
+            result += ","
+            var, __type = self.g_variable(variable)
+            result += var
+            typelist.append(__type)
+        return result, typelist
         pass
 
     def g_variable(self, node):
@@ -219,7 +291,7 @@ class CodeGenerator:
         result = ""
         result += node["ID"]
         result += self.g_id_varpart(node["id_varpart"])
-        return result
+        return result, node["__type"]
 
     def g_id_varpart(self, node):
         """
@@ -231,7 +303,8 @@ class CodeGenerator:
         if node["expression_list"] == None:
             return result
         else:
-            result += self.g_expression_list(node["expression_list"])
+            result += self.g_expression_list(
+                node["expression_list"], for_array=True)
             return result
         pass
 
@@ -245,36 +318,48 @@ class CodeGenerator:
         """
         else_part -> else statement | ε
         """
+        assert node["type"] == "else_part"
+        result = ""
+        if node["length"] == 3:
+            result += "else{"
+            result += self.g_statement(node["statement"])
+            result += "}"
+        return result
         pass
 
-    def g_expression_list(self, node, for_array: bool):
+    def g_expression_list(self, node, for_array: bool = False, return_list=False):
         """
         expression_list -> expression_list , expression | expression
         """
         assert node["type"] == "expression_list"
         assert len(node["expressions"]) > 0
         result = ""
-        if for_array is True:
+        result_list = []  # for printf format string
+        if for_array == True:
             if len(node["expressions"]) == 1:
-                result += "["
-                result += self.g_expression(node["expressions"][0])
-                result += "]"
-            elif len(node["expressions"] > 1):
-                tmp_node = copy.deepcopy(node["expressions"])
-                expression = tmp_node.pop()
-                result += self.g_expression_list(tmp_node, for_array=for_array)
-                result += "["
-                result += self.g_expression(expression)
-                result += "]"
+                tmp = "[{}]".format(self.g_expression(node["expressions"][0]))
+                result += tmp
+                result_list.append(tmp)
+            elif len(node["expressions"]) > 1:
+                tmp_node = copy.deepcopy(node)
+                expression = tmp_node["expressions"].pop()
+                tmp = "{}[{}]".format(self.g_expression_list(
+                    tmp_node, for_array=for_array), self.g_expression(expression))
+                result += tmp
+                result_list.append(tmp)
+
         else:
             if len(node["expressions"]) == 1:
-                result += self.g_expression(node["expressions"][0])
-            elif len(node["expressions"] > 1):
-                tmp_node = copy.deepcopy(node["expressions"])
-                expression = tmp_node.pop()
+                tmp = self.g_expression(node["expressions"][0])
+                result += tmp
+                result_list.append(tmp)
+
+            elif len(node["expressions"]) > 1:
+                tmp_node = copy.deepcopy(node)
+                expression = tmp_node["expressions"].pop()
                 result += self.g_expression_list(tmp_node, for_array=for_array)
                 result += ","
-                result += self.g_expression(expression, for_array=for_array)
+                result += self.g_expression(expression)
         return result
 
     def g_expression(self, node):
@@ -292,7 +377,10 @@ class CodeGenerator:
             assert node["RELOP"], "key missing: RELOP"
             assert node["simple_expression_2"], "key missing: simple_expression_2"
             result += self.g_simple_expression(node["simple_expression_1"])
-            result += node["RELOP"]
+            if node["RELOP"] == "=":
+                result += "=="
+            else:
+                result += node["RELOP"]
             result += self.g_simple_expression(node["simple_expression_2"])
         return result
 
@@ -312,7 +400,10 @@ class CodeGenerator:
             assert node["ADDOP"], "key missing: ADDOP"
             assert node["term"], "key missing: term"
             result += self.g_simple_expression(node["simple_expression"])
-            result += node["ADDOP"]
+            if node["ADDOP"].lower() == "or":
+                result += "||"
+            else:
+                result += node["ADDOP"]
             result += self.g_term(node["term"])
             pass
         return result
@@ -333,8 +424,15 @@ class CodeGenerator:
             assert node["MULOP"], "key missing: MULOP"
             assert node["factor"], "key missing: factor"
             result += self.g_term(node["term"])
-            result += node["MULOP"]
-            result += self.factor(node["factor"])
+            if node["MULOP"].lower() == "mod":
+                result += " mod "
+            elif node["MULOP"].lower() in ["/", "div"]:
+                result += "/"
+            elif node["MULOP"].lower() == "and":
+                result += "&&"
+            else:
+                result += node["MULOP"]
+            result += self.g_factor(node["factor"])
             pass
         return result
 
@@ -343,9 +441,44 @@ class CodeGenerator:
         factor -> num | digits | variable | id ( expression_list ) | ( expression ) | not factor | uminus factor | addop factor
         """
         assert node["type"] == "factor"
-        assert node["_type"] in ["num", "variable", "procedure_id",
+        assert node["_type"] in ["NUM", "variable", "procedure_id",
                                  "expression", "NOT", "UMINUS", "NORMAL"]
+        result = ""
+        type = node["_type"]
+        if type == "NUM":
+            result += str(node["NUM"])
+            pass
+        elif type == "variable":
+            result += self.g_variable(node["variable"])[0]
+            pass
+        elif type == "procedure_id":
+            result += "{}({})".format(node["ID"],
+                                      self.g_expression_list(node["expression_list"]))
+            pass
+        elif type == "expression":
+            result += "("
+            result += self.g_expression_list(node["expression"])
+            result += ")"
+            pass
+        elif type == "NOT":
+            result += "!"
+            result += self.g_factor(node["factor"])
+            pass
+        elif type == "UMINUS":
+            result += "-"
+            result += self.g_factor(node["factor"])
+            pass
+        elif type == "NORMAL":
+            result += self.g_factor(node["factor"])
+            pass
 
+        return result
+
+    def g_multype(self, node):
+        """
+        multype -> multype ID COLON type SEMICOLON | ID COLON type SEMICOLON
+        """
+        return "multype TBD"
         pass
 
     def code_generate(self):
@@ -353,6 +486,13 @@ class CodeGenerator:
         self.code_format()  # 代码格式化
         self.add_headfile()  # 添加头文件
         return self.targetCode  # 返回生成的目标代码
+
+    def compound_statement_test(self, node: dict):
+        result = self.g_compound_statement(node)
+        print(result)
+        # self.targetCode = result
+        # self.code_format()
+        # print(self.targetCode)
 
 
 _ast = {
@@ -936,5 +1076,6 @@ _symbolTable = {
 
 if __name__ == "__main__":
     generator = CodeGenerator(_ast, _symbolTable)
-    target_code = generator.code_generate()
-    print(target_code)
+    with open("generator_test/compound_statement.json") as f:
+        node = json.load(f)
+    generator.compound_statement_test(node)
