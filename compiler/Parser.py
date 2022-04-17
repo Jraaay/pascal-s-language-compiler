@@ -338,16 +338,16 @@ class Parser:
             p[0]["SymbolTable"] = p[1]["SymbolTable"] + [{
                 "id": self.id,
                 "token": p[3],
-                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
+                "type": "INTEGER" if type(p[5]["value"]) == int else ("REAL" if type(p[5]["value"]) == float else "CHAR"),
                 "value": p[5],
-                "positive": True if type(p[5]) != str and p[5] > 0 else False
+                "positive": True if type(p[5]["value"]) != str and p[5]["value"] > 0 else False
             }]
             self.symbolMap[self.id] = {
                 "id": self.id,
                 "token": p[3],
-                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
+                "type": "INTEGER" if type(p[5]["value"]) == int else ("REAL" if type(p[5]["value"]) == float else "CHAR"),
                 "value": p[5],
-                "positive": True if type(p[5]) != str and p[5] > 0 else False
+                "positive": True if type(p[5]["value"]) != str and p[5]["value"] > 0 else False
             }
             self.id += 1
             if self.inSubFun and p[3] in list(self.subSymbol.keys()):
@@ -389,16 +389,16 @@ class Parser:
             p[0]["SymbolTable"] = [{
                 "id": self.id,
                 "token": p[1],
-                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("NUM" if type(p[3]["value"]) == float else "LETTER"),
                 "value": p[3],
-                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
+                "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }]
             self.symbolMap[self.id] = {
                 "id": self.id,
                 "token": p[1],
-                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("NUM" if type(p[3]["value"]) == float else "LETTER"),
                 "value": p[3],
-                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
+                "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }
             self.id += 1
             if self.inSubFun and p[1] in list(self.subSymbol.keys()):

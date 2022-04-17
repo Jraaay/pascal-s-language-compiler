@@ -1,0 +1,215 @@
+{
+    "ast": {
+        "length": 5,
+        "type": "programstruct",
+        "program_head": {
+            "length": 6,
+            "type": "program_head",
+            "ID": "example",
+            "idlist": {
+                "length": 4,
+                "type": "idlist",
+                "ids": [
+                    "input",
+                    "output"
+                ]
+            }
+        },
+        "program_body": {
+            "length": 5,
+            "type": "program_body",
+            "const_declarations": {
+                "length": 4,
+                "type": "const_declarations",
+                "const_declaration": {
+                    "length": 6,
+                    "id": 1,
+                    "type": "const_declaration",
+                    "values": [
+                        {
+                            "ID": "a",
+                            "const_value": {
+                                "length": 2,
+                                "type": "const_value",
+                                "_type": "NUM",
+                                "value": 5
+                            }
+                        },
+                        {
+                            "ID": "b",
+                            "const_value": {
+                                "length": 2,
+                                "type": "const_value",
+                                "_type": "NUM",
+                                "value": 6
+                            }
+                        }
+                    ]
+                }
+            },
+            "var_declarations": {
+                "length": 4,
+                "type": "var_declarations",
+                "var_declaration": {
+                    "length": 4,
+                    "id": 2,
+                    "type": "var_declaration",
+                    "values": [
+                        {
+                            "idlist": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "c"
+                                ]
+                            },
+                            "type": {
+                                "length": 2,
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "INTEGER"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "subprogram_declarations": {
+                "length": 1,
+                "type": "subprogram_declarations",
+                "subprograms": []
+            },
+            "compound_statement": {
+                "length": 4,
+                "type": "compound_statement",
+                "statement_list": {
+                    "length": 2,
+                    "type": "statement_list",
+                    "statements": [
+                        {
+                            "length": 4,
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "length": 3,
+                                "type": "variable",
+                                "__type": "INTEGER",
+                                "ID": "c",
+                                "id_varpart": {
+                                    "length": 1,
+                                    "type": "id_varpart",
+                                    "expression_list": null
+                                }
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "length": 2,
+                                "type": "expression",
+                                "__type": "INTEGER",
+                                "simple_expression": {
+                                    "length": 4,
+                                    "type": "simple_expression",
+                                    "simple_expression": {
+                                        "length": 2,
+                                        "type": "simple_expression",
+                                        "__type": "INTEGER",
+                                        "term": {
+                                            "length": 2,
+                                            "type": "term",
+                                            "__type": "INTEGER",
+                                            "factor": {
+                                                "length": 2,
+                                                "type": "factor",
+                                                "_type": "variable",
+                                                "__type": "INTEGER",
+                                                "variable": {
+                                                    "length": 3,
+                                                    "type": "variable",
+                                                    "__type": "INTEGER",
+                                                    "ID": "a",
+                                                    "id_varpart": {
+                                                        "length": 1,
+                                                        "type": "id_varpart",
+                                                        "expression_list": null
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ADDOP": "+",
+                                    "term": {
+                                        "length": 2,
+                                        "type": "term",
+                                        "__type": "INTEGER",
+                                        "factor": {
+                                            "length": 2,
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "INTEGER",
+                                            "variable": {
+                                                "length": 3,
+                                                "type": "variable",
+                                                "__type": "INTEGER",
+                                                "ID": "b",
+                                                "id_varpart": {
+                                                    "length": 1,
+                                                    "type": "id_varpart",
+                                                    "expression_list": null
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "__type": "INTEGER"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "symbolTable": {
+        "constants": [
+            {
+                "id": 0,
+                "token": "a",
+                "type": "INTEGER",
+                "value": {
+                    "length": 2,
+                    "type": "const_value",
+                    "_type": "NUM",
+                    "value": 5
+                },
+                "positive": true
+            },
+            {
+                "id": 1,
+                "token": "b",
+                "type": "INTEGER",
+                "value": {
+                    "length": 2,
+                    "type": "const_value",
+                    "_type": "NUM",
+                    "value": 6
+                },
+                "positive": true
+            }
+        ],
+        "variables": [
+            {
+                "id": 2,
+                "token": "c",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            }
+        ],
+        "subFunc": []
+    },
+    "error": [],
+    "warning": []
+}

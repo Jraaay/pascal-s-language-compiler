@@ -538,7 +538,7 @@
             {
                 "id": 0,
                 "token": "a",
-                "type": "LETTER",
+                "type": "INTEGER",
                 "value": {
                     "length": 2,
                     "type": "const_value",
