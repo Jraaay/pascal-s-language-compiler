@@ -1,10 +1,6 @@
 import copy
 import json
 
-from numpy import fromstring
-
-from numpy import integer
-
 
 class CodeGenerator:
     targetCode = ''  # 目标代码
