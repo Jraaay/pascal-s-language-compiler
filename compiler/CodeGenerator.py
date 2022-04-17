@@ -301,6 +301,7 @@ class CodeGenerator:
             result += node["ID"]
             result += "<"
             result += self.g_expression(node["to_expression"])
+            result += ";"
             result += node["ID"]
             result += "++"
             result += "){"
@@ -321,20 +322,21 @@ class CodeGenerator:
             result += "scanf(\"{}\",{})".format(format_string, var_string)
             pass
         elif type == "WRITE":
-            var = self.g_expression_list(node["expression_list"])
-            var = var.split(",")
-            __type = node["expression_list"]["__type"]
-            print(var, __type)
-            assert len(var) == len(__type), len(var)
-            assert len(var) > 0
-            format_string = ""
-            var_string = ""
-            for i in range(len(var)):
-                format_string += "{}: {}\n".format(var[i],
-                                                   format_tag_map[__type[i]])
-                var_string += "{},".format(var[i])
-            var_string = var_string[0: -1]
-            result += "printf(\"{}\",{})".format(format_string, var_string)
+            # var = self.g_expression_list(node["expression_list"])
+            # var = var.split(",")
+            # __type = node["expression_list"]["__type"]
+            # print(var, __type)
+            # assert len(var) == len(__type), len(var)
+            # assert len(var) > 0
+            # format_string = ""
+            # var_string = ""
+            # for i in range(len(var)):
+            #     format_string += "{}: {}\n".format(var[i],
+            #                                        format_tag_map[__type[i]])
+            #     var_string += "{},".format(var[i])
+            # var_string = var_string[0: -1]
+            # result += "printf(\"{}\",{})".format(format_string, var_string)
+            result += "!!!printf TBD!!!"
             pass
         elif type == "WHILE":
             pass
