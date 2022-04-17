@@ -718,6 +718,51 @@
             }
         ]
     },
+<<<<<<< HEAD
+    "error": [
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 140
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 164
+            }
+        },
+        {
+            "code": "C-02",
+            "info": {
+                "line": 8,
+                "value": "i",
+                "lexpos": 200
+            }
+        },
+        {
+            "code": "C-10",
+            "info": {
+                "line": 8,
+                "value": "b",
+                "lexpos": 200
+            }
+        },
+        {
+            "code": "C-11",
+            "info": {
+                "line": 8,
+                "value": "i",
+                "lexpos": 200
+            }
+        }
+    ],
+=======
+>>>>>>> 9b989fcbd13394146c393314ea31ab63301707b1
     "error": [],
     "warning": []
 }

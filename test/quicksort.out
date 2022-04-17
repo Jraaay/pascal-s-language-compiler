@@ -48,7 +48,10 @@
                                         }
                                     ]
                                 },
-                                "basic_type": "Of"
+                                "basic_type": {
+                                    "type": "basic_type",
+                                    "_type": "INTEGER"
+                                }
                             }
                         },
                         {

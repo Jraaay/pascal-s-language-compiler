@@ -74,7 +74,10 @@
                                                     }
                                                 ]
                                             },
-                                            "basic_type": "of"
+                                            "basic_type": {
+                                                "type": "basic_type",
+                                                "_type": "CHAR"
+                                            }
                                         },
                                         {
                                             "length": 7,
@@ -90,7 +93,10 @@
                                                     }
                                                 ]
                                             },
-                                            "basic_type": "of"
+                                            "basic_type": {
+                                                "type": "basic_type",
+                                                "_type": "CHAR"
+                                            }
                                         },
                                         {
                                             "length": 7,
@@ -106,7 +112,10 @@
                                                     }
                                                 ]
                                             },
-                                            "basic_type": "of"
+                                            "basic_type": {
+                                                "type": "basic_type",
+                                                "_type": "CHAR"
+                                            }
                                         },
                                         {
                                             "length": 2,
@@ -135,7 +144,10 @@
                                                         }
                                                     ]
                                                 },
-                                                "basic_type": "of"
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
                                             },
                                             {
                                                 "length": 7,
@@ -151,7 +163,10 @@
                                                         }
                                                     ]
                                                 },
-                                                "basic_type": "of"
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
                                             },
                                             {
                                                 "length": 7,
@@ -167,7 +182,10 @@
                                                         }
                                                     ]
                                                 },
-                                                "basic_type": "of"
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
                                             }
                                         ],
                                         "multype": {
@@ -188,7 +206,10 @@
                                                             }
                                                         ]
                                                     },
-                                                    "basic_type": "of"
+                                                    "basic_type": {
+                                                        "type": "basic_type",
+                                                        "_type": "CHAR"
+                                                    }
                                                 },
                                                 {
                                                     "length": 7,
@@ -204,7 +225,10 @@
                                                             }
                                                         ]
                                                     },
-                                                    "basic_type": "of"
+                                                    "basic_type": {
+                                                        "type": "basic_type",
+                                                        "_type": "CHAR"
+                                                    }
                                                 }
                                             ],
                                             "multype": {
@@ -225,7 +249,10 @@
                                                                 }
                                                             ]
                                                         },
-                                                        "basic_type": "of"
+                                                        "basic_type": {
+                                                            "type": "basic_type",
+                                                            "_type": "CHAR"
+                                                        }
                                                     }
                                                 ],
                                                 "ID": [
