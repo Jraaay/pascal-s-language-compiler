@@ -1,5 +1,4 @@
 import copy
-from ctypes.wintypes import tagRECT
 import json
 
 from numpy import fromstring
