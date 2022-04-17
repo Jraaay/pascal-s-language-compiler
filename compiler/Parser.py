@@ -1127,17 +1127,17 @@ class Parser:
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
-                    else:
-                        if not self.error:
-                            self.error = []
-                        self.error += [{
-                            "code": "C-11",
-                            "info": {
-                                "line": p.lexer.lineno,
-                                "value": p[1]["ID"],
-                                "lexpos": p.lexer.lexpos
-                            }
-                        }]
+                else:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-11",
+                        "info": {
+                            "line": p.lexer.lineno,
+                            "value": p[1]["ID"],
+                            "lexpos": p.lexer.lexpos
+                        }
+                    }]
             elif p[1]["type"] == "procedure_call":
                 p[0] = {
                     "length": len(p),
