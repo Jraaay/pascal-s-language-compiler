@@ -1,6 +1,6 @@
 Program example(input, output);
-const a = 5; b = 6;
+const a = 5; b = 6; c = 'a';
 var c : integer;
 Begin
-    c = a + b
+    c := a + b
 End.
