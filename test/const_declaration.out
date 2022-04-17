@@ -23,7 +23,7 @@
                 "type": "const_declarations",
                 "const_declaration": {
                     "length": 6,
-                    "id": 1,
+                    "id": 2,
                     "type": "const_declaration",
                     "values": [
                         {
@@ -43,6 +43,15 @@
                                 "_type": "NUM",
                                 "value": 6
                             }
+                        },
+                        {
+                            "ID": "c",
+                            "const_value": {
+                                "length": 2,
+                                "type": "const_value",
+                                "_type": "LETTER",
+                                "value": "a"
+                            }
                         }
                     ]
                 }
@@ -52,7 +61,7 @@
                 "type": "var_declarations",
                 "var_declaration": {
                     "length": 4,
-                    "id": 2,
+                    "id": 3,
                     "type": "var_declaration",
                     "values": [
                         {
@@ -194,11 +203,23 @@
                     "value": 6
                 },
                 "positive": true
+            },
+            {
+                "id": 2,
+                "token": "c",
+                "type": "CHAR",
+                "value": {
+                    "length": 2,
+                    "type": "const_value",
+                    "_type": "LETTER",
+                    "value": "a"
+                },
+                "positive": false
             }
         ],
         "variables": [
             {
-                "id": 2,
+                "id": 3,
                 "token": "c",
                 "type": "INTEGER",
                 "isArray": false,
@@ -210,6 +231,15 @@
         ],
         "subFunc": []
     },
-    "error": [],
+    "error": [
+        {
+            "code": "C-03",
+            "info": {
+                "line": 2,
+                "value": "c",
+                "lexpos": 68
+            }
+        }
+    ],
     "warning": []
 }

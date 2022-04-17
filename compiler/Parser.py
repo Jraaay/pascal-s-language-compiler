@@ -21,7 +21,7 @@ class Parser:
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
-                  'DIGITS', 'ASSIGNOP', 'FOR', 'DO', 'QUO',
+                  'DIGITS', 'ASSIGNOP', 'FOR', 'DO',
                   'UMINUS', 'RECORD', 'OF', 'NUM', 'EQUAL',
                   'ELSE', 'CONST', 'COM', 'RPAREN', 'ARRAY',
                   'INTEGER', 'THEN', 'POINTTO', 'CHAR', 'MULOP',
@@ -68,7 +68,6 @@ class Parser:
         t_ASSIGNOP = r':='
         t_FOR = r'(?i)FOR'
         t_DO = r'(?i)DO'
-        t_QUO = r'\''
         t_RECORD = r'(?i)RECORD'
         t_OF = r'(?i)OF'
         t_EQUAL = r'='
@@ -86,7 +85,7 @@ class Parser:
         t_TO = r'(?i)TO'
         t_PROCEDURE = r'(?i)PROCEDURE'
         t_WHILE = r'(?i)WHILE'
-        t_LETTER = r'[a-zA-Z]'
+        t_LETTER = r'\'[a-zA-Z]\''
         t_RELOP = r'<=|>=|<>|<|>'
         t_VAR = r'(?i)VAR'
         t_BOOLEAN = r'(?i)BOOLEAN'
@@ -389,14 +388,14 @@ class Parser:
             p[0]["SymbolTable"] = [{
                 "id": self.id,
                 "token": p[1],
-                "type": "INTEGER" if type(p[3]["value"]) == int else ("NUM" if type(p[3]["value"]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("REAL" if type(p[3]["value"]) == float else "CHAR"),
                 "value": p[3],
                 "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }]
             self.symbolMap[self.id] = {
                 "id": self.id,
                 "token": p[1],
-                "type": "INTEGER" if type(p[3]["value"]) == int else ("NUM" if type(p[3]["value"]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("REAL" if type(p[3]["value"]) == float else "CHAR"),
                 "value": p[3],
                 "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }
@@ -450,13 +449,13 @@ class Parser:
 
         def p_const_value_letter(p):
             '''
-            const_value : QUO LETTER QUO
+            const_value : LETTER
             '''
             p[0] = {
                 "length": len(p),
                 "type": "const_value",
                 "_type": "LETTER",
-                "value": p[2]
+                "value": p[1].replace("'", "")
             }
 
         def p_var_declarations(p):
