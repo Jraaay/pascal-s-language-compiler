@@ -184,7 +184,6 @@ class CodeGenerator:
         type = node["_type"]
         result = ""
         if type is "variable":
-
             pass
         elif type is "procedure_call":
             pass
