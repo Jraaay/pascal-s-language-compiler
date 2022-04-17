@@ -142,9 +142,9 @@ class CodeGenerator:
         '''
         assert node["type"] == "compound_statement"
         result = ""
-        result.append("{")
-        result.append(self.g_statement_list(node["statement_list"]))
-        result.append("}")
+        result += "{"
+        result += self.g_statement_list(node["statement_list"])
+        result += "}"
         return result
 
     def g_statement_list(self, node):
@@ -156,13 +156,13 @@ class CodeGenerator:
         result = ""
         assert len(node["statements"]) > 0
         if len(node["statements"]) == 1:
-            result.append(self.g_statement(node["statement"][0]))
+            result += self.g_statement(node["statement"][0])
         elif len(node["statements"]) > 1:
             tmp_node = copy.deepcopy(node)
             statement = tmp_node["statements"].pop()
-            result.append(self.g_statement_list(tmp_node))
-            result.append(" ")
-            result.append(self.g_statement(statement))
+            result += self.g_statement_list(tmp_node)
+            result += " "
+            result += self.g_statement(statement)
         return result
 
     def g_statement(self, node):
@@ -179,12 +179,16 @@ class CodeGenerator:
         | while expression do statement                             | while(expression){statement}
         | ε                                                         | TBD
         '''
+        if(node == None):
+            return ""
         assert node["_type"] in ["variable", "procedure_call", "compound_statement",
                                  "IF", "FOR", "READ", "WRITE", "WHILE"], "_type:{}".format(node["_type"])
         type = node["_type"]
         result = ""
         if type is "variable":
-            pass
+            result += self.g_variable(node["variable"])
+            result += "="
+            result += self.g_expression(node["expression"])
         elif type is "procedure_call":
             pass
         elif type is "compound_statement":
@@ -202,33 +206,146 @@ class CodeGenerator:
         return result
 
     def g_variable_list(self, node):
+        """
+        variable_list -> variable_list , variable | variable
+        """
         pass
 
     def g_variable(self, node):
-        pass
+        """
+        variable -> id id_varpart
+        """
+        assert node["type"] == "variable"
+        result = ""
+        result += node["ID"]
+        result += self.g_id_varpart(node["id_varpart"])
+        return result
 
     def g_id_varpart(self, node):
+        """
+        id_varpart -> [ expression_list ] | ε       #[1,2,3] 
+        id_varpart -> expression_list | ε           #[1][2][3]
+        """
+        assert node["type"] == "id_varpart"
+        result = ""
+        if node["expression_list"] == None:
+            return result
+        else:
+            result += self.g_expression_list(node["expression_list"])
+            return result
         pass
 
     def g_procedure_call(self, node):
+        """
+        procedure_call -> id | id ( expression_list )
+        """
         pass
 
     def g_else_part(self, node):
+        """
+        else_part -> else statement | ε
+        """
         pass
 
-    def g_expression_list(self, node):
-        pass
+    def g_expression_list(self, node, for_array: bool):
+        """
+        expression_list -> expression_list , expression | expression
+        """
+        assert node["type"] == "expression_list"
+        assert len(node["expressions"]) > 0
+        result = ""
+        if for_array is True:
+            if len(node["expressions"]) == 1:
+                result += "["
+                result += self.g_expression(node["expressions"][0])
+                result += "]"
+            elif len(node["expressions"] > 1):
+                tmp_node = copy.deepcopy(node["expressions"])
+                expression = tmp_node.pop()
+                result += self.g_expression_list(tmp_node, for_array=for_array)
+                result += "["
+                result += self.g_expression(expression)
+                result += "]"
+        else:
+            if len(node["expressions"]) == 1:
+                result += self.g_expression(node["expressions"][0])
+            elif len(node["expressions"] > 1):
+                tmp_node = copy.deepcopy(node["expressions"])
+                expression = tmp_node.pop()
+                result += self.g_expression_list(tmp_node, for_array=for_array)
+                result += ","
+                result += self.g_expression(expression, for_array=for_array)
+        return result
 
     def g_expression(self, node):
-        pass
+        """
+        expression -> simple_expression relop simple_expression | simple_expression | simple_expression equal simple_expression
+        """
+        assert node["type"] == "expression"
+        assert node["length"] in [2, 4]
+        result = ""
+        if node["length"] == 2:
+            assert node["simple_expression"], "key missing: simple_expression"
+            result += self.g_simple_expression(node["simple_expression"])
+        elif node["length"] == 4:
+            assert node["simple_expression_1"], "key missing: simple_expression_1"
+            assert node["RELOP"], "key missing: RELOP"
+            assert node["simple_expression_2"], "key missing: simple_expression_2"
+            result += self.g_simple_expression(node["simple_expression_1"])
+            result += node["RELOP"]
+            result += self.g_simple_expression(node["simple_expression_2"])
+        return result
 
     def g_simple_expression(self, node):
-        pass
+        """
+        simple_expression -> simple_expression addop term | term
+        """
+        assert node["type"] == "simple_expression"
+        assert node["length"] in [2, 4]
+        result = ""
+        if node["length"] == 2:
+            assert node["term"], "key missing: term"
+            result += self.g_term(node["term"])
+            pass
+        elif node["length"] == 4:
+            assert node["simple_expression"], "key missing: simple_expression"
+            assert node["ADDOP"], "key missing: ADDOP"
+            assert node["term"], "key missing: term"
+            result += self.g_simple_expression(node["simple_expression"])
+            result += node["ADDOP"]
+            result += self.g_term(node["term"])
+            pass
+        return result
 
     def g_term(self, node):
-        pass
+        """
+        term -> term mulop factor | factor
+        """
+        assert node["type"] == "term"
+        assert node["length"] in [2, 4]
+        result = ""
+        if node["length"] == 2:
+            assert node["factor"], "key missing: factor"
+            result += self.g_factor(node["factor"])
+            pass
+        elif node["length"] == 4:
+            assert node["term"], "key missing: term"
+            assert node["MULOP"], "key missing: MULOP"
+            assert node["factor"], "key missing: factor"
+            result += self.g_term(node["term"])
+            result += node["MULOP"]
+            result += self.factor(node["factor"])
+            pass
+        return result
 
     def g_factor(self, node):
+        """
+        factor -> num | digits | variable | id ( expression_list ) | ( expression ) | not factor | uminus factor | addop factor
+        """
+        assert node["type"] == "factor"
+        assert node["_type"] in ["num", "variable", "procedure_id",
+                                 "expression", "NOT", "UMINUS", "NORMAL"]
+
         pass
 
     def code_generate(self):
