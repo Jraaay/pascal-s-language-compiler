@@ -152,7 +152,7 @@ class CodeGenerator:
         statement_list -> statement_list ; statement | statement
         statement_list -> statement_list statement | statement
         '''
-        assert node["type"] == "statement_list"
+        assert node["type"] == "statement_list", "type:{}".format(node["type"])
         result = ""
         assert len(node["statements"]) > 0
         if len(node["statements"]) == 1:
@@ -173,12 +173,34 @@ class CodeGenerator:
         | procedure_call                                            | procedure_call
         | compound_statement                                        | compound_statement
         | if expression then statement else_part                    | if(expression){statement}else{else_part}
-        | for id assignop expression to expression do statement     | TBD
+        | for id assignop expression to expression do statement     | for(id=expression;id<expression;id++){statement}
         | read ( variable_list )                                    | TBD
         | write ( expression_list )                                 | TBD
+        | while expression do statement                             | while(expression){statement}
         | ε                                                         | TBD
         '''
-        pass
+        assert node["_type"] in ["variable", "procedure_call", "compound_statement",
+                                 "IF", "FOR", "READ", "WRITE", "WHILE"], "_type:{}".format(node["_type"])
+        type = node["_type"]
+        result = ""
+        if type is "variable":
+
+            pass
+        elif type is "procedure_call":
+            pass
+        elif type is "compound_statement":
+            pass
+        elif type is "IF":
+            pass
+        elif type is "FOR":
+            pass
+        elif type is "READ":
+            pass
+        elif type is "WRITE":
+            pass
+        elif type is "WHILE":
+            pass
+        return result
 
     def g_variable_list(self, node):
         pass
