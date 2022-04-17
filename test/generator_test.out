@@ -171,9 +171,39 @@
                                                     "__type": "INTEGER",
                                                     "ID": "gcd",
                                                     "id_varpart": {
-                                                        "length": 1,
+                                                        "length": 4,
                                                         "type": "id_varpart",
-                                                        "expression_list": null
+                                                        "expression_list": {
+                                                            "length": 2,
+                                                            "type": "expression_list",
+                                                            "__type": [
+                                                                "INTEGER"
+                                                            ],
+                                                            "expressions": [
+                                                                {
+                                                                    "length": 2,
+                                                                    "type": "expression",
+                                                                    "__type": "INTEGER",
+                                                                    "simple_expression": {
+                                                                        "length": 2,
+                                                                        "type": "simple_expression",
+                                                                        "__type": "INTEGER",
+                                                                        "term": {
+                                                                            "length": 2,
+                                                                            "type": "term",
+                                                                            "__type": "INTEGER",
+                                                                            "factor": {
+                                                                                "length": 2,
+                                                                                "type": "factor",
+                                                                                "_type": "NUM",
+                                                                                "__type": "INTEGER",
+                                                                                "NUM": 114514
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "ASSIGNOP": ":=",
@@ -682,7 +712,7 @@
             "info": {
                 "line": 6,
                 "value": "gcd",
-                "lexpos": 132
+                "lexpos": 140
             }
         },
         {
@@ -690,7 +720,7 @@
             "info": {
                 "line": 6,
                 "value": "gcd",
-                "lexpos": 156
+                "lexpos": 164
             }
         },
         {
@@ -698,7 +728,7 @@
             "info": {
                 "line": 8,
                 "value": "i",
-                "lexpos": 192
+                "lexpos": 200
             }
         },
         {
@@ -706,7 +736,7 @@
             "info": {
                 "line": 8,
                 "value": "b",
-                "lexpos": 192
+                "lexpos": 200
             }
         },
         {
@@ -714,7 +744,7 @@
             "info": {
                 "line": 8,
                 "value": "i",
-                "lexpos": 192
+                "lexpos": 200
             }
         }
     ],
