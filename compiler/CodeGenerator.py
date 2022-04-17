@@ -57,86 +57,170 @@ class CodeGenerator:
         for it in self.headFile:
             self.targetCode = it + self.targetCode
 
-    # programstruct : program_head ; program_body .
     def g_programstruct(self, node):
+        '''
+        programstruct : program_head ; program_body .
+        '''
+        assert node["type"] == "programstruct"
         result = ""
-        # self.g_program_head(node["program_head"])
-        result.append(self.g_program_head(node["program_head"]))
-        # self.g_program_body(node["program_body"])
-        result.append(self.g_program_body(node["program_body"]))
-
+        result += self.g_program_head(node["program_head"])
+        result += self.g_program_body(node["program_body"])
         self.targetCode = result
-
         self.domain.pop()
 
     def g_program_head(self, node):
-        pass
+        '''
+        program_head : PROGRAM ID LPAREN idlist RPAREN
+        '''
+        assert node["type"] == "program_head"
+        result = ""
+        return result
 
     def g_program_body(self, node):
-        pass
+        '''
+        program_body : const_declarations var_declarations subprogram_declarations compound_statement
+        '''
+        assert node["type"] == "program_body"
+        self.domain += "global"
+        result = ""
+        result += self.g_program_head(node["const_declarations"])
+        result += self.g_program_head(node["var_declarations"])
+        result += self.g_program_head(node["subprogram_declarations"])
+        result += "int main(int argc, char* argv[])"
+        self.domain += "main"
+        result += self.g_program_head(node["compound_statement"])
+        return result
 
     def g_idlist(self, node):
-        pass
+        '''
+        idlist : idlist COM ID
+        '''
 
     def g_const_declarations(self, node):
-        pass
+        '''
+        const_declarations : CONST const_declaration SEMICOLON
+                           | empty
+        '''
+        assert node["type"] == "const_declarations"
+        result = ""
+        if node is not None:
+            result += self.g_program_head(node["const_declaration"])
+            result += ';'
+        return result
 
     def g_const_declaration(self, node):
-        pass
+        '''
+        const_declaration : const_declaration SEMICOLON ID EQUAL const_value
+                          | ID EQUAL const_value
+        '''
+        assert node["type"] == "const_declarations"
+        result = ""
+        if node["length"] == 6:
+            result += self.g_program_head(node["const_declaration"])
+            result += ';'
+        result += 'const '
+        if node["const_value"]["_type"] == "NUM":
+            if isinstance(node["const_value"]["value"], int):
+                result += 'int '
+            if isinstance(node["const_value"]["value"], float):
+                result += 'float '
+        if node["const_value"]["_type"] == "LETTER":
+            result += 'char '
+        result += node["id"] + '= '
 
     def g_const_value(self, node):
-        pass
+        '''
+        const_value : NUM | QUO LETTER QUO
+        '''
 
     def g_var_declarations(self, node):
-        pass
+        '''
+        var_declarations : VAR var_declaration SEMICOLON
+                        | 
+        '''
 
     def g_var_declaration(self, node):
-        pass
+        '''
+        var_declaration : var_declaration SEMICOLON idlist COLON type
+                        | idlist COLON type
+        '''
 
     def g__type(self, node):
-        pass
+        '''
+        type : basic_type
+            | ARRAY LBRACKET period RBRACKET OF basic_type
+            | RECORD multype END
+        '''
 
     def g_basic_type(self, node):
-        pass
+        '''
+        basic_type : INTEGER
+                    | REAL
+                    | BOOLEAN
+                    | CHAR
+        '''
 
-    def g_period(self, node):
-        pass
+        def g_period(self, node):
+            '''
+            period : period COM DIGITS POINTTO DIGITS
+                | DIGITS POINTTO DIGITS
+            '''
 
-    def g_record_type(self, node):
-        pass
+        def p_multype(p):
+            '''
+            multype : multype ID COLON type SEMICOLON
+                    | ID COLON type SEMICOLON
+            '''
 
-    def g_field_list(self, node):
-        pass
+        def g_subprogram_declarations(self, node):
+            '''
+            subprogram_declarations : subprogram_declarations subprogram SEMICOLON
+                                    | 
+            '''
 
-    def g_fixed_fields(self, node):
-        pass
+        def g_subprogram(self, node):
+            '''
+            subprogram : subprogram_head SEMICOLON subprogram_body
+            '''
 
-    def g_subprogram_declarations(self, node):
-        pass
+        def g_subprogram_head(self, node):
+            '''
+            subprogram_head : PROCEDURE seen_PROCEDURE ID formal_parameter
+                            | FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type 
+            '''
 
-    def g_subprogram(self, node):
-        pass
+        def g_formal_parameter(self, node):
+            '''
+            formal_parameter : LPAREN parameter_list RPAREN
+                            | 
+            '''
 
-    def g_subprogram_head(self, node):
-        pass
+        def g_parameter_list(self, node):
+            '''
+            parameter_list : parameter_list SEMICOLON parameter
+                        | parameter
+            '''
 
-    def g_formal_parameter(self, node):
-        pass
+        def g_parameter(self, node):
+            '''
+            parameter : var_parameter
+                    | value_parameter
+            '''
 
-    def g_parameter_list(self, node):
-        pass
+        def g_var_parameter(self, node):
+            '''
+            var_parameter : VAR value_parameter
+            '''
 
-    def g_parameter(self, node):
-        pass
+        def g_value_parameter(self, node):
+            '''
+            value_parameter : idlist COLON basic_type
+            '''
 
-    def g_var_parameter(self, node):
-        pass
-
-    def g_value_parameter(self, node):
-        pass
-
-    def g_subprogram_body(self, node):
-        pass
+        def g_subprogram_body(self, node):
+            '''
+            subprogram_body : const_declarations var_declarations compound_statement
+            '''
 
     # <---------------------------------分割线------------------------------------>
     def g_compound_statement(self, node):

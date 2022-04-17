@@ -21,7 +21,7 @@ class Parser:
 
     def __init__(self, debug=False, write_tables=False):
         tokens = ('REAL', 'COLON', 'LBRACKET', 'LPAREN',
-                  'DIGITS', 'ASSIGNOP', 'FOR', 'DO', 'QUO',
+                  'DIGITS', 'ASSIGNOP', 'FOR', 'DO',
                   'UMINUS', 'RECORD', 'OF', 'NUM', 'EQUAL',
                   'ELSE', 'CONST', 'COM', 'RPAREN', 'ARRAY',
                   'INTEGER', 'THEN', 'POINTTO', 'CHAR', 'MULOP',
@@ -68,7 +68,6 @@ class Parser:
         t_ASSIGNOP = r':='
         t_FOR = r'(?i)FOR'
         t_DO = r'(?i)DO'
-        t_QUO = r'\''
         t_RECORD = r'(?i)RECORD'
         t_OF = r'(?i)OF'
         t_EQUAL = r'='
@@ -86,7 +85,7 @@ class Parser:
         t_TO = r'(?i)TO'
         t_PROCEDURE = r'(?i)PROCEDURE'
         t_WHILE = r'(?i)WHILE'
-        t_LETTER = r'[a-zA-Z]'
+        t_LETTER = r'\'[a-zA-Z]\''
         t_RELOP = r'<=|>=|<>|<|>'
         t_VAR = r'(?i)VAR'
         t_BOOLEAN = r'(?i)BOOLEAN'
@@ -338,16 +337,16 @@ class Parser:
             p[0]["SymbolTable"] = p[1]["SymbolTable"] + [{
                 "id": self.id,
                 "token": p[3],
-                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
+                "type": "INTEGER" if type(p[5]["value"]) == int else ("REAL" if type(p[5]["value"]) == float else "CHAR"),
                 "value": p[5],
-                "positive": True if type(p[5]) != str and p[5] > 0 else False
+                "positive": True if type(p[5]["value"]) != str and p[5]["value"] > 0 else False
             }]
             self.symbolMap[self.id] = {
                 "id": self.id,
                 "token": p[3],
-                "type": "INTEGER" if type(p[5]) == int else ("REAL" if type(p[5]) == float else "CHAR"),
+                "type": "INTEGER" if type(p[5]["value"]) == int else ("REAL" if type(p[5]["value"]) == float else "CHAR"),
                 "value": p[5],
-                "positive": True if type(p[5]) != str and p[5] > 0 else False
+                "positive": True if type(p[5]["value"]) != str and p[5]["value"] > 0 else False
             }
             self.id += 1
             if self.inSubFun and p[3] in list(self.subSymbol.keys()):
@@ -389,16 +388,16 @@ class Parser:
             p[0]["SymbolTable"] = [{
                 "id": self.id,
                 "token": p[1],
-                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("REAL" if type(p[3]["value"]) == float else "CHAR"),
                 "value": p[3],
-                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
+                "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }]
             self.symbolMap[self.id] = {
                 "id": self.id,
                 "token": p[1],
-                "type": "digits" if type(p[3]) == int else ("NUM" if type(p[3]) == float else "LETTER"),
+                "type": "INTEGER" if type(p[3]["value"]) == int else ("REAL" if type(p[3]["value"]) == float else "CHAR"),
                 "value": p[3],
-                "positive": True if type(p[3]) != str and p[3]["value"] > 0 else False
+                "positive": True if type(p[3]["value"]) != str and p[3]["value"] > 0 else False
             }
             self.id += 1
             if self.inSubFun and p[1] in list(self.subSymbol.keys()):
@@ -450,13 +449,13 @@ class Parser:
 
         def p_const_value_letter(p):
             '''
-            const_value : QUO LETTER QUO
+            const_value : LETTER
             '''
             p[0] = {
                 "length": len(p),
                 "type": "const_value",
                 "_type": "LETTER",
-                "value": p[2]
+                "value": p[1].replace("'", "")
             }
 
         def p_var_declarations(p):
