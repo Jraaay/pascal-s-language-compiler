@@ -1,0 +1,27 @@
+{
+    "ast": null,
+    "symbolTable": {
+        "constants": [],
+        "variables": [],
+        "subFunc": []
+    },
+    "error": [
+        {
+            "code": "C-11",
+            "info": {
+                "line": 6,
+                "value": "gcd",
+                "lexpos": 132
+            }
+        },
+        {
+            "code": "B-01",
+            "info": {
+                "line": 7,
+                "value": "for",
+                "lexpos": 158
+            }
+        }
+    ],
+    "warning": []
+}
