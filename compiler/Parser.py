@@ -639,7 +639,7 @@ class Parser:
                     "type": "period",
                     "values": p[1]["values"] + [{
                         "start": p[3],
-                        "END": p[5]
+                        "end": p[5]
                     }]
                 }
                 p[0]["SymbolTable"] = {
@@ -664,7 +664,7 @@ class Parser:
                     "type": "period",
                     "values": [{
                         "start": p[1],
-                        "END": p[3]
+                        "end": p[3]
                     }]
                 }
                 p[0]["SymbolTable"] = {
