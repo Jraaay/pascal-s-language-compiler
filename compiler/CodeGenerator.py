@@ -548,7 +548,7 @@ class CodeGenerator:
         return result, typelist
         pass
 
-    def g_variable(self, node):
+    def g_variable(self, node, reference_judge=True):
         """
         variable -> id id_varpart
         """
