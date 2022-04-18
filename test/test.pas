@@ -16,7 +16,8 @@ Var
 Function gcd(var a, b : integer) : integer;
 Begin
   If b = 0 Then gcd := a
-  Else gcd := gcd(b, a Mod b)
+  Else gcd := gcd(b, b);
+  gcd(a,b)
 End;
 
 Begin

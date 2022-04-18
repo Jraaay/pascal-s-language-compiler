@@ -13,16 +13,17 @@ struct
 	bool f2[50][100];
 } f;
 
-int gcd(int &a, int &b)
+int gcd(int *a, int *b)
 {
-	if (b == 0)
+	if (*b == 0)
 	{
-		return a;
+		return *a;
 	}
 	else
 	{
-		return gcd(b, a % b);
+		return gcd(&*b, &*b);
 	}
+	gcd(&*a, &*b);
 }
 
 int main(int argc, char *argv[])
@@ -33,5 +34,5 @@ int main(int argc, char *argv[])
 	{
 		printf("x: %d\ny: %d\n", x, y);
 	}
-	gcd(x, y);
+	gcd(&x, &y);
 }
