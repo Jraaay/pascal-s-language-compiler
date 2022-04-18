@@ -580,7 +580,7 @@ class CodeGenerator:
         assert node["type"] == "procedure_call"
         result = ""
         result += "{}({})".format(node["ID"],
-                                  self.g_expression_list(node["expression_list"]))
+                                  self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
         return result
         pass
 
@@ -596,7 +596,7 @@ class CodeGenerator:
             result += "}"
         return result
 
-    def g_expression_list(self, node, for_array: bool = False, return_list=False):
+    def g_expression_list(self, node, for_array: bool = False, return_list=False, for_procedure_call: bool = False, procedure_id: str = ""):
         """
         expression_list -> expression_list , expression | expression
         """
@@ -616,6 +616,7 @@ class CodeGenerator:
                     tmp_node, for_array=for_array), self.g_expression(expression))
                 result += tmp
         else:
+            # def set_prefix(procedure_id="",)
             if len(node["expressions"]) == 1:
                 tmp = self.g_expression(node["expressions"][0])
                 if return_list == True:
@@ -776,8 +777,3 @@ if __name__ == "__main__":
     target_code = generator.code_generate()
     with open("{}.c".format(test_dir), 'w') as opt:
         opt.write(target_code)
-
-    '''----单独测试----'''
-    with open("compiler/generator_test/compound_statement.json") as f:
-        node = json.load(f)
-    generator.compound_statement_test(node)
