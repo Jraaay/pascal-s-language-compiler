@@ -765,6 +765,7 @@ class Parser:
                 self.subFuncMap[p[3]] = {
                     "type": None,
                     "variables": p[4]["SymbolTable"]["variables"],
+                    "references": p[4]["SymbolTable"]["references"],
                 }
                 self.id += 1
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
@@ -797,6 +798,7 @@ class Parser:
                 self.subFuncMap[p[3]] = {
                     "type": p[6]["SymbolTable"],
                     "variables": p[4]["SymbolTable"]["variables"],
+                    "references": p[4]["SymbolTable"]["references"],
                 }
                 self.id += 1
             for i in p[0]["SymbolTable"]["variables"]:
@@ -1586,6 +1588,16 @@ class Parser:
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
+                    if self.subFuncMap[p[1]]["references"][0][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
+                        if not self.error:
+                            self.error = []
+                        self.error += [{
+                            "code": "F-01",
+                            "info": {
+                                "line": p.lexer.lineno,
+                                "lexpos": p.lexer.lexpos
+                            }
+                        }]
 
         def p_factor_expression(p):
             '''

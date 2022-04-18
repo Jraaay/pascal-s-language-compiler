@@ -1025,6 +1025,14 @@
             }
         ]
     },
-    "error": [],
+    "error": [
+        {
+            "code": "F-01",
+            "info": {
+                "line": 19,
+                "lexpos": 337
+            }
+        }
+    ],
     "warning": []
 }
