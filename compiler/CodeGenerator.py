@@ -355,7 +355,7 @@ class CodeGenerator:
         assert node["type"] == "var_parameter"
         result = ''
         type = self.g_basic_type(node["value_parameter"]["basic_type"])
-        idlist = self.g_idlist(node["idlist"])
+        idlist = self.g_idlist(node["value_parameter"]["idlist"])
         for id in idlist:
             result += type + '* '
             result += id
