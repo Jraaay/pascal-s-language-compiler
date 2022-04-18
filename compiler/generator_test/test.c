@@ -14,10 +14,10 @@ f;
 
 int gcd(int a, int b){
 	if(b==0){
-		gcd=a;
+		return a;
 	}
 	else{
-		gcd=gcd(b,a mod b);
+		return gcd(b,a%b);
 	}
 }
 

@@ -20,5 +20,6 @@ Begin
 End;
 
 Begin
+write(x,y);
 gcd(x, y)
 End.
