@@ -30,6 +30,12 @@ class CodeGenerator:
             if code_list[i] == ')':
                 in_small -= 1
             if in_quote == False and in_small == 0:
+                if code_list[i] == '&' and code_list[i+1] == '*':
+                    code_list[i] = ''
+                    code_list[i+1] = ''
+                if code_list[i] == '*' and code_list[i+1] == '&':
+                    code_list[i] = ''
+                    code_list[i+1] = ''
                 if code_list[i] == '{':
                     code_list[i] += '\n'
                     indent += 1
