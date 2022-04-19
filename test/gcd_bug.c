@@ -1,3 +1,3 @@
 #include<stdio.h>
 
-/* Error, Parser gives no AST. */
+/* Error,  Parser gives no AST. */

@@ -16,5 +16,5 @@
         }
     ],
     "warning": [],
-    "code": "#include<stdio.h>\n\n/* Error, Parser gives no AST. */"
+    "code": "#include<stdio.h>\n\n/* Error,  Parser gives no AST. */"
 }

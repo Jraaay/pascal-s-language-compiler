@@ -1,6 +1,6 @@
 
-int x, y;
+int x, y; 
 
-int main(int argc, char* argv[]){
-	x=a>b;
+int main(int argc,  char* argv[]){
+	x = a > b; 
 }

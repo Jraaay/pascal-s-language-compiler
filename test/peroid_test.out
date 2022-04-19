@@ -651,5 +651,5 @@
     },
     "error": [],
     "warning": [],
-    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint x, y;\nint z[51];\n\nint gcd(int a, int b){\n\tif(b==0){\n\t\treturn a;\n\t}\n\telse{\n\t\treturn gcd(b,a%b);\n\t}\n}\n\nint main(int argc, char* argv[]){\n\tscanf(\"%d%d\",&x,&y);\n\tz[99]=x;\n\tprintf(\"gcd(x,y): %d\\n\",gcd(x,y));\n}\n"
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint x, y; \nint z[51]; \n\nint gcd(int a, int b){\n\tif(b == 0){\n\t\treturn a; \n\t}\n\telse{\n\t\treturn gcd(b, a % b); \n\t}\n}\n\nint main(int argc,  char* argv[]){\n\tscanf(\"%d%d\", &x, &y); \n\tz[99] = x; \n\tprintf(\"gcd(x, y): %d\\n\", gcd(x, y)); \n}\n"
 }

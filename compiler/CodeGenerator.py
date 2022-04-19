@@ -28,6 +28,8 @@ class CodeGenerator:
             if code_list[i] == '*' and code_list[i+1] == '&':
                 code_list[i] = ''
                 code_list[i+1] = ''
+            if code_list[i] == ',' or code_list[i] == ';':
+                code_list[i] += ' '
             if code_list[i] == '\"' or code_list[i] == '\'':
                 in_quote = ~in_quote
             if code_list[i] == '(':
@@ -41,7 +43,7 @@ class CodeGenerator:
                     add_indent = True
                 if code_list[i] == '}\n':
                     add_indent = True
-                if code_list[i] == ';':
+                if code_list[i] == '; ':
                     code_list[i] += '\n'
                     add_indent = True
                 if code_list[i] == '\n':
@@ -182,7 +184,7 @@ class CodeGenerator:
                 for id in idlist:
                     result += id
                     result += range
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
             elif it["type"]["_type"] == "RECORD":
                 result += 'struct ' + '{'
                 result += self.g_multype(it["type"]["multype"])
@@ -190,14 +192,14 @@ class CodeGenerator:
                 idlist = self.g_idlist(it["idlist"])
                 for id in idlist:
                     result += id
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
             else:
                 result += self.g_type(it["type"])
                 result += ' '
                 idlist = self.g_idlist(it["idlist"])
                 for id in idlist:
                     result += id
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
         return result
 
     def g_type(self, node):
@@ -250,7 +252,7 @@ class CodeGenerator:
                 for id in idlist:
                     result += id
                     result += range
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
             elif it["type"]["_type"] == "RECORD":
                 result += 'struct ' + '{'
                 result += self.g_multype(it["type"]["multype"])
@@ -258,14 +260,14 @@ class CodeGenerator:
                 idlist = self.g_idlist(it["idlist"])
                 for id in idlist:
                     result += id
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
             else:
                 result += self.g_type(it["type"])
                 result += ' '
                 idlist = self.g_idlist(it["idlist"])
                 for id in idlist:
                     result += id
-                    result += ', ' if id != idlist[-1] else ';'
+                    result += ',' if id != idlist[-1] else ';'
         return result
 
     def g_period(self, node):
@@ -342,7 +344,7 @@ class CodeGenerator:
         result = ''
         for it in node["parameters"]:
             result += self.g_parameter(it)
-            result += ', 'if it != node["parameters"][-1] else ''
+            result += ','if it != node["parameters"][-1] else ''
         return result
 
     def g_parameter(self, node):
@@ -369,7 +371,7 @@ class CodeGenerator:
         for id in idlist:
             result += type + '* '
             result += id
-            result += ', ' if id != idlist[-1] else ''
+            result += ',' if id != idlist[-1] else ''
         return result
 
     def g_value_parameter(self, node):
@@ -383,7 +385,7 @@ class CodeGenerator:
         for id in idlist:
             result += type + ' '
             result += id
-            result += ', ' if id != idlist[-1] else ''
+            result += ',' if id != idlist[-1] else ''
         return result
 
     def g_subprogram_body(self, node):
@@ -457,7 +459,7 @@ class CodeGenerator:
                 # in function
                 result = "return "
             else:
-                result += "="
+                result += " = "
             result += self.g_expression(node["expression"])
         elif type == "procedure_call":
             result += self.g_procedure_call(node["procedure_call"])
@@ -474,11 +476,11 @@ class CodeGenerator:
         elif type == "FOR":
             result += "for("
             result += node["ID"]
-            result += "="
+            result += " = "
             result += self.g_expression(node["expression"])
             result += ";"
             result += node["ID"]
-            result += "<"
+            result += " < "
             result += self.g_expression(node["to_expression"])
             result += ";"
             result += node["ID"]
@@ -658,14 +660,14 @@ class CodeGenerator:
             assert node["simple_expression_1"], "key missing: simple_expression_1"
             assert node["RELOP"], "key missing: RELOP"
             assert node["simple_expression_2"], "key missing: simple_expression_2"
-            result += self.g_simple_expression(node["simple_expression_1"])
+            result += self.g_simple_expression(node["simple_expression_1"]) + ' '
             if node["RELOP"] == "=":
                 result += "=="
             elif node["RELOP"] == "<>":
                 result += "!="
             else:
                 result += node["RELOP"]
-            result += self.g_simple_expression(node["simple_expression_2"])
+            result += ' ' + self.g_simple_expression(node["simple_expression_2"])
         return result
 
     def g_simple_expression(self, node):
@@ -682,12 +684,12 @@ class CodeGenerator:
             assert node["simple_expression"], "key missing: simple_expression"
             assert node["ADDOP"], "key missing: ADDOP"
             assert node["term"], "key missing: term"
-            result += self.g_simple_expression(node["simple_expression"])
+            result += self.g_simple_expression(node["simple_expression"]) + ' '
             if node["ADDOP"].lower() == "or":
                 result += "||"
             else:
                 result += node["ADDOP"]
-            result += self.g_term(node["term"])
+            result += ' ' + self.g_term(node["term"])
         return result
 
     def g_term(self, node):
@@ -704,7 +706,7 @@ class CodeGenerator:
             assert node["term"], "key missing: term"
             assert node["MULOP"], "key missing: MULOP"
             assert node["factor"], "key missing: factor"
-            result += self.g_term(node["term"])
+            result += self.g_term(node["term"]) + ' '
             if node["MULOP"].lower() == "mod":
                 result += "%"
             elif node["MULOP"].lower() in ["/", "div"]:
@@ -713,7 +715,7 @@ class CodeGenerator:
                 result += "&&"
             else:
                 result += node["MULOP"]
-            result += self.g_factor(node["factor"])
+            result += ' ' + self.g_factor(node["factor"])
         return result
 
     def g_factor(self, node):

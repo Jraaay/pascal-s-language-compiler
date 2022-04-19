@@ -357,5 +357,5 @@
         }
     ],
     "warning": [],
-    "code": "\nint x, y;\nstruct {\n\tchar title[50];\n\tchar author[50];\n\tchar subject[100];\n\tint bookid;\n}\na;\n\nint main(int argc, char* argv[]){\n\tx=a;\n}\n"
+    "code": "\nint x, y; \nstruct {\n\tchar title[50]; \n\tchar author[50]; \n\tchar subject[100]; \n\tint bookid; \n}\na; \n\nint main(int argc,  char* argv[]){\n\tx = a; \n}\n"
 }
