@@ -17,6 +17,6 @@ int gcd(int a, int b){
 
 int main(int argc,  char* argv[]){
 	scanf("%d%d", &x, &y); 
-	z[99-0] = x; 
+	z[49] = x; 
 	printf("gcd(x, y): %d\n", gcd(x, y)); 
 }

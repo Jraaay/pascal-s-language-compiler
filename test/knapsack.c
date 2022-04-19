@@ -21,11 +21,11 @@ int main(int argc,  char* argv[]){
 	}
 	for(i = 1; i < n; i++){
 		for(j = 0; j < t; j++){
-			f[i-0][j] = f[i - 1-0][j]; 
+			f[i-0][j-0] = f[i - 1-0][j-0]; 
 			if(j >= w[i-0]){
-				f[i-0][j] = max(f[i - 1-0][j - w[i-0]] + v[i-0], f[i-0][j]); 
+				f[i-0][j-0] = max(f[i - 1-0][j - w[i-0]-0] + v[i-0], f[i-0][j-0]); 
 			}
 		}
 	}
-	printf("f[n-0][t]: %d\n", f[n-0][t]); 
+	printf("f[n-0][t-0]: %d\n", f[n-0][t-0]); 
 }
