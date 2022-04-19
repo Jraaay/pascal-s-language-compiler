@@ -566,7 +566,7 @@ class CodeGenerator:
             if self.domain[-1] != "main":
                 subFunc_table = self.get_subFunc(self.domain[-1])["table"]
                 # for i, j in enumerate(subFunc_table["variables"]):
-                print(self.domain[-1])
+                # print(self.domain[-1])
                 if subFunc_table["references"] != None:
                     arg_num = len(subFunc_table["references"][0])
                     for i in range(arg_num):
@@ -639,7 +639,7 @@ class CodeGenerator:
                         func_variable_list += self.get_subFunc(
                             self.domain[-1])["table"]["variables"]
                     array_info = {}
-                    print("\narray_id:", array_id)
+                    # print("\narray_id:", array_id)
                     for v in func_variable_list:
                         # print(v)
                         if v["token"] == array_id:
@@ -690,7 +690,7 @@ class CodeGenerator:
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"][0]
-                        print(is_ref_list)
+                        # print(is_ref_list)
                         if is_ref_list[-1-arg_depth] == True:
                             result += "&"
 
@@ -710,7 +710,7 @@ class CodeGenerator:
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"][0]
-                        print(is_ref_list)
+                        # print(is_ref_list)
                         if is_ref_list[-1-arg_depth] == True:
                             result += "&"
                     result += self.g_expression(expression)

@@ -57,7 +57,6 @@
                                 "type": "type",
                                 "_type": "ARRAY",
                                 "period": {
-<<<<<<< HEAD
                                     "length": 6,
                                     "type": "period",
                                     "values": [
@@ -72,14 +71,6 @@
                                         {
                                             "start": 200,
                                             "end": 300
-=======
-                                    "length": 4,
-                                    "type": "period",
-                                    "values": [
-                                        {
-                                            "start": 50,
-                                            "end": 100
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                         }
                                     ]
                                 },
@@ -116,7 +107,6 @@
                                             "length": 2,
                                             "type": "parameter",
                                             "value": {
-<<<<<<< HEAD
                                                 "length": 3,
                                                 "type": "var_parameter",
                                                 "value_parameter": {
@@ -134,21 +124,6 @@
                                                         "type": "basic_type",
                                                         "_type": "INTEGER"
                                                     }
-=======
-                                                "length": 4,
-                                                "type": "value_parameter",
-                                                "idlist": {
-                                                    "length": 4,
-                                                    "type": "idlist",
-                                                    "ids": [
-                                                        "a",
-                                                        "b"
-                                                    ]
-                                                },
-                                                "basic_type": {
-                                                    "type": "basic_type",
-                                                    "_type": "INTEGER"
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                 }
                                             }
                                         }
@@ -189,11 +164,7 @@
                                                     "type": "period",
                                                     "values": [
                                                         {
-<<<<<<< HEAD
                                                             "start": 0,
-=======
-                                                            "start": 50,
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                             "end": 100
                                                         }
                                                     ]
@@ -366,11 +337,7 @@
                                                                                                 "length": 3,
                                                                                                 "type": "variable",
                                                                                                 "__type": "INTEGER",
-<<<<<<< HEAD
                                                                                                 "ID": "a",
-=======
-                                                                                                "ID": "b",
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                                                                 "id_varpart": null
                                                                                             }
                                                                                         }
@@ -386,33 +353,9 @@
                                                                                     "type": "simple_expression",
                                                                                     "__type": "INTEGER",
                                                                                     "term": {
-<<<<<<< HEAD
                                                                                         "length": 2,
                                                                                         "type": "term",
                                                                                         "__type": "INTEGER",
-=======
-                                                                                        "length": 4,
-                                                                                        "type": "term",
-                                                                                        "term": {
-                                                                                            "length": 2,
-                                                                                            "type": "term",
-                                                                                            "__type": "INTEGER",
-                                                                                            "factor": {
-                                                                                                "length": 2,
-                                                                                                "type": "factor",
-                                                                                                "_type": "variable",
-                                                                                                "__type": "INTEGER",
-                                                                                                "variable": {
-                                                                                                    "length": 3,
-                                                                                                    "type": "variable",
-                                                                                                    "__type": "INTEGER",
-                                                                                                    "ID": "a",
-                                                                                                    "id_varpart": null
-                                                                                                }
-                                                                                            }
-                                                                                        },
-                                                                                        "MULOP": "Mod",
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",
@@ -425,12 +368,7 @@
                                                                                                 "ID": "b",
                                                                                                 "id_varpart": null
                                                                                             }
-<<<<<<< HEAD
                                                                                         }
-=======
-                                                                                        },
-                                                                                        "__type": "INTEGER"
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                                                     }
                                                                                 }
                                                                             }
@@ -495,17 +433,11 @@
                                     "length": 4,
                                     "type": "id_varpart",
                                     "expression_list": {
-<<<<<<< HEAD
                                         "length": 4,
                                         "type": "expression_list",
                                         "__type": [
                                             "INTEGER",
                                             "INTEGER",
-=======
-                                        "length": 2,
-                                        "type": "expression_list",
-                                        "__type": [
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                             "INTEGER"
                                         ],
                                         "expressions": [
@@ -524,7 +456,6 @@
                                                         "factor": {
                                                             "length": 2,
                                                             "type": "factor",
-<<<<<<< HEAD
                                                             "_type": "variable",
                                                             "__type": "INTEGER",
                                                             "variable": {
@@ -578,11 +509,6 @@
                                                             "_type": "NUM",
                                                             "__type": "INTEGER",
                                                             "NUM": 300
-=======
-                                                            "_type": "NUM",
-                                                            "__type": "INTEGER",
-                                                            "NUM": 99
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                                                         }
                                                     }
                                                 }
@@ -622,7 +548,6 @@
                             }
                         },
                         {
-<<<<<<< HEAD
                             "length": 2,
                             "type": "statement",
                             "_type": "procedure_call",
@@ -699,8 +624,6 @@
                             }
                         },
                         {
-=======
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                             "length": 5,
                             "type": "statement",
                             "_type": "WRITE",
@@ -835,7 +758,6 @@
                 "token": "z",
                 "type": "INTEGER",
                 "isArray": true,
-<<<<<<< HEAD
                 "dimension": 3,
                 "size": [
                     101,
@@ -846,14 +768,6 @@
                     0,
                     100,
                     200
-=======
-                "dimension": 1,
-                "size": [
-                    51
-                ],
-                "start": [
-                    50
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                 ],
                 "recordTable": null
             }
@@ -867,13 +781,8 @@
                     "params": 2,
                     "references": [
                         [
-<<<<<<< HEAD
                             true,
                             true
-=======
-                            false,
-                            false
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                         ]
                     ],
                     "constants": [],
@@ -905,17 +814,10 @@
                             "isArray": true,
                             "dimension": 1,
                             "size": [
-<<<<<<< HEAD
                                 101
                             ],
                             "start": [
                                 0
-=======
-                                51
-                            ],
-                            "start": [
-                                50
->>>>>>> 13a701a6e25d9563f68c810eb181ffdf646c8cf6
                             ],
                             "recordTable": null
                         }
