@@ -68,6 +68,7 @@ class CodeGenerator:
         '''
         node = self.ast
         result = ""
+        self.domain += ["global"]
         if node is not None:
             assert node["type"] == "programstruct"
             result += self.g_program_head(node["program_head"])
@@ -90,7 +91,6 @@ class CodeGenerator:
         program_body : const_declarations var_declarations subprogram_declarations compound_statement
         '''
         assert node["type"] == "program_body"
-        self.domain += ["global"]
         result = ""
         result += self.g_const_declarations(node["const_declarations"])
         result += self.g_var_declarations(node["var_declarations"])
