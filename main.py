@@ -24,10 +24,11 @@ def main_test():
             ans = {}
             with open(test_file_path, "r") as f:
                 ans = parser.parse(f.read())
-            ans["code"] = generator.code_generate(
-                ans["ast"], ans["symbolTable"])
+            print(test_file_path.replace(".pas", ".out"))
             with open(test_file_path.replace(".pas", ".out"), "w") as f:
                 json.dump(ans, f, indent=4)
+            ans["code"] = generator.code_generate(
+                ans["ast"], ans["symbolTable"])
             with open(test_file_path.replace(".pas", ".c"), "w") as f:
                 f.write(ans["code"])
     dirs = os.listdir("./test")
@@ -53,7 +54,8 @@ async def pascal2c(request):
     if code is None:
         return sanic.response.json({"error": "No code provided"})
     ans = app.config['parser'].parse(code)
-    ans["code"] = app.config['generator'].code_generate(ans["ast"], ans["symbolTable"])
+    ans["code"] = app.config['generator'].code_generate(
+        ans["ast"], ans["symbolTable"])
     return sanic.response.json(ans)
 
 
