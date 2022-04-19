@@ -43,11 +43,11 @@ void quicksort(int l, int h){
 
 int main(int argc, char* argv[]){
 	x=0;
-	readarray;
+	readarray();
 	quicksort(0,4);
 	while(x<5){
 		y=a[x];
-		writeln(y);
+		printf("y: %d\n",y);
 		x=x+1;
 	}
 }

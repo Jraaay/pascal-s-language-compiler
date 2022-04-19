@@ -461,10 +461,8 @@ class CodeGenerator:
             result += self.g_expression(node["expression"])
         elif type == "procedure_call":
             result += self.g_procedure_call(node["procedure_call"])
-            pass
         elif type == "compound_statement":
             result += self.g_compound_statement(node["compound_statement"])
-            pass
         elif type == "IF":
             result += "if("
             result += self.g_expression(node["expression"])
@@ -473,7 +471,6 @@ class CodeGenerator:
             result += self.g_statement(node["statement"])
             result += "}"
             result += self.g_else_part(node["else_part"])
-            pass
         elif type == "FOR":
             result += "for("
             result += node["ID"]
@@ -489,7 +486,6 @@ class CodeGenerator:
             result += "){"
             result += self.g_statement(node["statement"])
             result += "}"
-            pass
         elif type == "READ":
             var, __type = self.g_variable_list(node["variable_list"])
             var = var.split(",")
@@ -505,12 +501,10 @@ class CodeGenerator:
             if self.f_stdio == False:
                 self.headFile.append("#include<stdio.h>\n")
                 self.f_stdio = True
-            pass
         elif type == "WRITE":
             var = self.g_expression_list(
                 node["expression_list"], return_list=True)
             __type = node["expression_list"]["__type"]
-            print(var, __type)
             assert len(var) == len(__type), len(var)
             assert len(var) > 0
             format_string = ""
@@ -524,11 +518,9 @@ class CodeGenerator:
             if self.f_stdio == False:
                 self.headFile.append("#include<stdio.h>\n")
                 self.f_stdio = True
-            pass
         elif type == "WHILE":
             result = "while({}){{{}}}".format(self.g_expression(node["expression"]),
                                               self.g_statement(node["statement"]))
-            pass
         if type in ["variable", "procedure_call", "READ", "WRITE"]:
             result += ";"
         return result
@@ -556,7 +548,6 @@ class CodeGenerator:
             result += var
             typelist.append(__type)
         return result, typelist
-        pass
 
     def g_variable(self, node, reference_judge=True):
         """
@@ -591,11 +582,11 @@ class CodeGenerator:
         """
         assert node["type"] == "procedure_call"
         result = ""
-        result += node["ID"]
+        result += node["ID"]+'('
         if node["length"] == 5:
-            result += "({})".format(self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
+            result += "{}".format(self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
+        result += ')'
         return result
-        pass
 
     def g_else_part(self, node):
         """
@@ -687,7 +678,6 @@ class CodeGenerator:
         if node["length"] == 2:
             assert node["term"], "key missing: term"
             result += self.g_term(node["term"])
-            pass
         elif node["length"] == 4:
             assert node["simple_expression"], "key missing: simple_expression"
             assert node["ADDOP"], "key missing: ADDOP"
@@ -698,7 +688,6 @@ class CodeGenerator:
             else:
                 result += node["ADDOP"]
             result += self.g_term(node["term"])
-            pass
         return result
 
     def g_term(self, node):
@@ -711,7 +700,6 @@ class CodeGenerator:
         if node["length"] == 2:
             assert node["factor"], "key missing: factor"
             result += self.g_factor(node["factor"])
-            pass
         elif node["length"] == 4:
             assert node["term"], "key missing: term"
             assert node["MULOP"], "key missing: MULOP"
@@ -726,7 +714,6 @@ class CodeGenerator:
             else:
                 result += node["MULOP"]
             result += self.g_factor(node["factor"])
-            pass
         return result
 
     def g_factor(self, node):
@@ -740,30 +727,23 @@ class CodeGenerator:
         type = node["_type"]
         if type == "NUM":
             result += str(node["NUM"])
-            pass
         elif type == "variable":
             result += self.g_variable(node["variable"])[0]
-            pass
         elif type == "procedure_id":
             result += "{}({})".format(node["ID"],
                                       self.g_expression_list(node["expression_list"]))
-            pass
         elif type == "expression":
             result += "("
             result += self.g_expression(node["expression"])
             result += ")"
-            pass
         elif type == "NOT":
             result += "!"
             result += self.g_factor(node["factor"])
-            pass
         elif type == "UMINUS":
             result += "-"
             result += self.g_factor(node["factor"])
-            pass
         elif type == "NORMAL":
             result += self.g_factor(node["factor"])
-            pass
 
         return result
 
