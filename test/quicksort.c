@@ -10,7 +10,7 @@ void readarray(){
 	i = 0; 
 	while(i < 5){
 		scanf("%d", &y); 
-		a[i-0] = y; 
+		a[i] = y; 
 		i = i + 1; 
 	}
 }
@@ -20,19 +20,19 @@ void quicksort(int l, int h){
 	
 	i = l; 
 	j = h; 
-	k = a[i-0]; 
+	k = a[i]; 
 	if(l < h){
 		while(i < j){
-			while((a[j-0] >= k) && (i < j)){
+			while((a[j] >= k) && (i < j)){
 				j = j - 1; 
 			}
-			a[i-0] = a[j-0]; 
-			while((a[i-0] <= k) && (i < j)){
+			a[i] = a[j]; 
+			while((a[i] <= k) && (i < j)){
 				i = i + 1; 
 			}
-			a[j-0] = a[i-0]; 
+			a[j] = a[i]; 
 		}
-		a[i-0] = k; 
+		a[i] = k; 
 		quicksort(l, i - 1); 
 		quicksort(j + 1, h); 
 	}
@@ -46,7 +46,7 @@ int main(int argc,  char* argv[]){
 	readarray(); 
 	quicksort(0, 4); 
 	while(x < 5){
-		y = a[x-0]; 
+		y = a[x]; 
 		printf("y: %d\n", y); 
 		x = x + 1; 
 	}

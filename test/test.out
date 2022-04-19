@@ -15,6 +15,5 @@
             }
         }
     ],
-    "warning": [],
-    "code": "#include<stdio.h>\n#include<stdbool.h>\n\n/* Error,  Parser gives no AST. */"
+    "warning": []
 }

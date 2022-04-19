@@ -3,17 +3,18 @@ Program peroid_test(input, output);
 
 Var
 x, y : integer;
-z : array[50..100] of integer;
-Function gcd( a, b : integer) : integer;
+z : array[0..100,100..200,200..300] of integer;
+Function gcd(var a, b : integer) : integer;
 var
-  z : array[50..100] of integer;
+  z : array[0..100] of integer;
 Begin
   If b = 0 Then gcd := a
-  Else gcd := gcd(b, a Mod b)
+  Else gcd := gcd(a, b)
 
 End;
 Begin
   read(x, y);
-  z[99] := x;
+  z[x,150,300] := x;
+  gcd(x,y);
   write(gcd(x, y))
 End.
