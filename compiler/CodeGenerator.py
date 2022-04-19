@@ -561,12 +561,12 @@ class CodeGenerator:
             result += '.'.join(node["ID"])
         if isinstance(node["ID"], str):
             result += node["ID"]
-        result += self.g_id_varpart(node["id_varpart"])
+        result += self.g_id_varpart(node["id_varpart"], array_id=node["ID"])
         return result, node["__type"]
 
-    def g_id_varpart(self, node):
+    def g_id_varpart(self, node, array_id=""):
         """
-        id_varpart -> [ expression_list ] | ε       #[1,2,3] 
+        id_varpart -> [ expression_list ] | ε       #[1,2,3]
         id_varpart -> expression_list | ε           #[1][2][3]
         """
         result = ""
@@ -575,7 +575,7 @@ class CodeGenerator:
         else:
             assert node["type"] == "id_varpart"
             result += self.g_expression_list(
-                node["expression_list"], for_array=True)
+                node["expression_list"], for_array=True, array_id=array_id)
             return result
 
     def g_procedure_call(self, node):
@@ -603,7 +603,7 @@ class CodeGenerator:
             result += "}"
         return result
 
-    def g_expression_list(self, node, for_array: bool = False, array_id="", index_depth=0, return_list=False, for_procedure_call: bool = False, procedure_id: str = ""):
+    def g_expression_list(self, node, for_array: bool = False, array_id="", index_depth=0, return_list=False, for_procedure_call: bool = False, procedure_id: str = "", arg_depth=0):
         """
         expression_list -> expression_list , expression | expression
         """
@@ -614,15 +614,15 @@ class CodeGenerator:
         if for_array == True:
             assert return_list == False
             if len(node["expressions"]) == 1:
-                func_variable_list = {}
+                func_variable_list = []
                 if self.domain[-1] == "main":
-                    func_variable_list = self.symbolTable["variables"]
+                    func_variable_list += self.symbolTable["variables"]
                 else:
-                    func_variable_list = self.get_subFunc(
+                    func_variable_list += self.symbolTable["variables"]
+                    func_variable_list += self.get_subFunc(
                         self.domain[-1])["table"]["variables"]
                 array_info = {}
-                print(self.domain[-1])
-                print(func_variable_list)
+                print("\narray_id:", array_id)
                 for v in func_variable_list:
                     print(v)
                     if v["token"] == array_id:
@@ -640,8 +640,8 @@ class CodeGenerator:
                 expression = tmp_node["expressions"].pop()
                 last_expression = copy.deepcopy(node)
                 last_expression["expressions"].clear()
-                last_expression["expressions"].push(expression)
-                tmp = "{}[{}]".format(
+                last_expression["expressions"].append(expression)
+                tmp = "{}{}".format(
                     self.g_expression_list(
                         tmp_node, for_array=for_array, array_id=array_id, index_depth=index_depth+1),
                     self.g_expression_list(last_expression, for_array=for_array, array_id=array_id, index_depth=index_depth))
@@ -653,6 +653,13 @@ class CodeGenerator:
                 if return_list == True:
                     result_list.append(tmp)
                 else:
+                    if for_procedure_call == True:
+                        print(procedure_id)
+                        is_ref = self.get_subFunc(procedure_id)[
+                            "table"]["references"][-1-arg_depth]
+                        if is_ref == True:
+                            result += "&"
+
                     result += tmp
 
             elif len(node["expressions"]) > 1:
@@ -666,6 +673,13 @@ class CodeGenerator:
                     result += self.g_expression_list(tmp_node,
                                                      for_array=for_array)
                     result += ","
+                    if for_procedure_call == True:
+                        is_ref_list = self.get_subFunc(procedure_id)[
+                            "table"]["references"][0]
+                        print(is_ref_list)
+
+                        if is_ref_list[-1-arg_depth] == True:
+                            result += "&"
                     result += self.g_expression(expression)
         if return_list == True:
             return result_list
@@ -785,8 +799,20 @@ class CodeGenerator:
         return self.targetCode  # 返回生成的目标代码
 
     def get_subFunc(self, subfunctoken=""):
-        print(subfunctoken)
+        # print(subfunctoken)
         for i in self.symbolTable["subFunc"]:
             if i["token"] == subfunctoken:
                 return i
         exit("\"{}\" doesn't exist in symbol table".format(subfunctoken))
+
+
+if __name__ == "__main__":
+    g = CodeGenerator()
+    test_file_path = "test/peroid_test.out"
+    with open(test_file_path, "r") as f:
+        out = json.load(f)
+
+    result = g.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
+
+    with open(test_file_path.replace(".out", ".c"), "w") as f:
+        f.write(result)
