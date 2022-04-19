@@ -3906,5 +3906,6 @@
         ]
     },
     "error": [],
-    "warning": []
+    "warning": [],
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint a[100], b[100], v[100], p[100];\nint n, m, i, ans, tot, x, y;\n\nvoid sort(int l, int r){\n\tint i, j, x, y;\n\t\n\ti=l;\n\tj=r;\n\tx=v[(l+r)/2];\n\twhile(i<=j){\n\t\twhile(v[i]<x){\n\t\t\ti=i+1;\n\t\t}\n\t\twhile(x<v[j]){\n\t\t\tj=j-1;\n\t\t}\n\t\tif(!(i>j)){\n\t\t\ty=v[i];\n\t\t\tv[i]=v[j];\n\t\t\tv[j]=y;\n\t\t\ty=a[i];\n\t\t\ta[i]=a[j];\n\t\t\ta[j]=y;\n\t\t\ty=b[i];\n\t\t\tb[i]=b[j];\n\t\t\tb[j]=y;\n\t\t\ti=i+1;\n\t\t\tj=j-1;\n\t\t}\n\t}\n\tif(l<j){\n\t\tsort(l,j);\n\t}\n\tif(i<r){\n\t\tsort(i,r);\n\t}\n}\n\nint doit(int x){\n\tif(p[x]==x){\n\t\tans=x;\n\t\treturn x;\n\t}\n\telse{\n\t\tp[x]=ans;\n\t\treturn doit(p[x]);\n\t}\n}\n\nint main(int argc, char* argv[]){\n\tscanf(\"%d%d\",&n,&m);\n\tfor(i=1;i<m;i++){\n\t\tscanf(\"%d%d%d\",&a[i],&b[i],&v[i]);\n\t}\n\tsort(1,m);\n\tfor(i=1;i<n;i++){\n\t\tp[i]=i;\n\t}\n\tfor(i=1;i<m;i++){\n\t\tx=doit(a[i]);\n\t\ty=doit(b[i]);\n\t\tif((x!=y)){\n\t\t\tp[x]=y;\n\t\t\ttot=tot+v[i];\n\t\t}\n\t}\n\tprintf(\"tot: %d\\n\",tot);\n}\n"
 }

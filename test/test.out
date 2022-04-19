@@ -1015,5 +1015,6 @@
         ]
     },
     "error": [],
-    "warning": []
+    "warning": [],
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n#include<stdbool.h>\n\nconst int a = 5;\nconst int b = -6;\nconst char c = 't';\n\nint x, y, d;\nchar e[50];\nstruct {\n\tfloat f1;\n\tbool f2[50][100];\n}\nf;\n\nint gcd(int* a, int* b){\n\tif(b==0){\n\t\treturn a;\n\t}\n\telse{\n\t\treturn gcd(b,b);\n\t}\n\tgcd(a,b);\n}\n\nint main(int argc, char* argv[]){\n\tscanf(\"%d%d\",&x,&y);\n\tprintf(\"x: %d\\ny: %d\\n\",x,y);\n\twhile(x!=y){\n\t\tprintf(\"x: %d\\ny: %d\\n\",x,y);\n\t}\n\tgcd(x,y);\n}\n"
 }

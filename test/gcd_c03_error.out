@@ -586,5 +586,6 @@
             }
         }
     ],
-    "warning": []
+    "warning": [],
+    "code": "#include<stdio.h>\n\nconst int a = 1;\n\nint a, x, y;\n\nint gcd(int a, int b){\n\tif(b==0){\n\t\treturn a;\n\t}\n\telse{\n\t\treturn gcd(b,a%b);\n\t}\n}\n\nint main(int argc, char* argv[]){\n\tscanf(\"%d%d\",&x,&y);\n\tprintf(\"gcd(x,y): %d\\n\",gcd(x,y));\n}\n"
 }

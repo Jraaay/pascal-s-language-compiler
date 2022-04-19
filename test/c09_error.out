@@ -181,5 +181,6 @@
             }
         }
     ],
-    "warning": []
+    "warning": [],
+    "code": "\nint x, y;\n\nint main(int argc, char* argv[]){\n\tx=a>b;\n}\n"
 }

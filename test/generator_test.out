@@ -671,5 +671,6 @@
         ]
     },
     "error": [],
-    "warning": []
+    "warning": [],
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint x, y, i;\n\nint gcd(int a, int b){\n\tif(b==0){\n\t\tgcd[114514]=a;\n\t}\n\telse{\n\t\treturn gcd(b,a%b);\n\t}\n\tfor(i=0;i<114514;i++){\n\t\tb=i;\n\t}\n}\n\nint main(int argc, char* argv[]){\n\tscanf(\"%d%d\",&x,&y);\n\tprintf(\"gcd(x,y): %d\\n\",gcd(x,y));\n}\n"
 }
