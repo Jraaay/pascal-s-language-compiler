@@ -1,5 +1,8 @@
 import copy
 import json
+import string
+
+from jmespath import search
 
 
 class CodeGenerator:
@@ -560,7 +563,20 @@ class CodeGenerator:
         if isinstance(node["ID"], list):
             result += '.'.join(node["ID"])
         if isinstance(node["ID"], str):
+            if self.domain[-1] != "main":
+                subFunc_table = self.get_subFunc(self.domain[-1])["table"]
+                # for i, j in enumerate(subFunc_table["variables"]):
+                print(self.domain[-1])
+                if subFunc_table["references"] != None:
+                    arg_num = len(subFunc_table["references"][0])
+                    for i in range(arg_num):
+                        if subFunc_table["variables"][i]["token"] == node["ID"]:
+                            if subFunc_table["references"][0][i] == True:
+                                result += "*"
+                                pass
+                            break
             result += node["ID"]
+
         result += self.g_id_varpart(node["id_varpart"], array_id=node["ID"])
         return result, node["__type"]
 
@@ -603,7 +619,7 @@ class CodeGenerator:
             result += "}"
         return result
 
-    def g_expression_list(self, node, for_array: bool = False, array_id="", index_depth=0, return_list=False, for_procedure_call: bool = False, procedure_id: str = "", arg_depth=0):
+    def g_expression_list(self, node, array_id="", for_array: bool = False, index_depth=0, return_list=False, for_procedure_call: bool = False, procedure_id: str = "", arg_depth=0):
         """
         expression_list -> expression_list , expression | expression
         """
@@ -614,26 +630,45 @@ class CodeGenerator:
         if for_array == True:
             assert return_list == False
             if len(node["expressions"]) == 1:
-                func_variable_list = []
-                if self.domain[-1] == "main":
-                    func_variable_list += self.symbolTable["variables"]
-                else:
-                    func_variable_list += self.symbolTable["variables"]
-                    func_variable_list += self.get_subFunc(
-                        self.domain[-1])["table"]["variables"]
-                array_info = {}
-                print("\narray_id:", array_id)
-                for v in func_variable_list:
-                    print(v)
-                    if v["token"] == array_id:
-                        array_info = v
-                assert array_info != {}
-                start_index = array_info["start"][-1-index_depth]
+                if isinstance(array_id, str):
+                    func_variable_list = []
+                    if self.domain[-1] == "main":
+                        func_variable_list += self.symbolTable["variables"]
+                    else:
+                        func_variable_list += self.symbolTable["variables"]
+                        func_variable_list += self.get_subFunc(
+                            self.domain[-1])["table"]["variables"]
+                    array_info = {}
+                    print("\narray_id:", array_id)
+                    for v in func_variable_list:
+                        # print(v)
+                        if v["token"] == array_id:
+                            array_info = v
+                    assert array_info != {}
+                elif isinstance(array_id, list):  # for record
+                    search_area = self.symbolTable["variables"]
+                    for i in search_area:
+                        if i["token"] == array_id[0]:
+                            search_area = i["recordTable"]["variables"]
+                            break
+
+                    for i in range(1, len(array_id)):
+                        target = array_id[i]  # for b c in a.b.c
+                        for j in search_area:
+                            if target in j["token"]["ids"]:
+                                if j["recordTable"] == None:
+                                    array_info = j
+                                    break
+                                else:
+                                    search_area = j["recordTable"]["variables"]
+                                    break
                 index = self.g_expression(node["expressions"][0])
+                start_index = array_info["start"][-1-index_depth]
                 if index.isdigit():
                     index = str(int(index)-start_index)
                 else:
-                    index += "-{}".format(str(start_index))
+                    if start_index != 0:
+                        index += "-{}".format(str(start_index))
                 result += "[{}]".format(index)
             elif len(node["expressions"]) > 1:
                 tmp_node = copy.deepcopy(node)
@@ -647,17 +682,16 @@ class CodeGenerator:
                     self.g_expression_list(last_expression, for_array=for_array, array_id=array_id, index_depth=index_depth))
                 result += tmp
         else:
-            # def set_prefix(procedure_id="",)
             if len(node["expressions"]) == 1:
                 tmp = self.g_expression(node["expressions"][0])
                 if return_list == True:
                     result_list.append(tmp)
                 else:
                     if for_procedure_call == True:
-                        print(procedure_id)
-                        is_ref = self.get_subFunc(procedure_id)[
-                            "table"]["references"][-1-arg_depth]
-                        if is_ref == True:
+                        is_ref_list = self.get_subFunc(procedure_id)[
+                            "table"]["references"][0]
+                        print(is_ref_list)
+                        if is_ref_list[-1-arg_depth] == True:
                             result += "&"
 
                     result += tmp
@@ -671,13 +705,12 @@ class CodeGenerator:
                     result_list.append(self.g_expression(expression))
                 else:
                     result += self.g_expression_list(tmp_node,
-                                                     for_array=for_array)
+                                                     for_array=for_array, for_procedure_call=for_procedure_call, procedure_id=procedure_id)
                     result += ","
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"][0]
                         print(is_ref_list)
-
                         if is_ref_list[-1-arg_depth] == True:
                             result += "&"
                     result += self.g_expression(expression)
@@ -774,7 +807,7 @@ class CodeGenerator:
             result += self.g_variable(node["variable"])[0]
         elif type == "procedure_id":
             result += "{}({})".format(node["ID"],
-                                      self.g_expression_list(node["expression_list"]))
+                                      self.g_expression_list(node["expression_list"], procedure_id=node["ID"], for_procedure_call=True))
         elif type == "expression":
             result += "("
             result += self.g_expression(node["expression"])
