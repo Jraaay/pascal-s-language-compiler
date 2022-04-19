@@ -7,7 +7,7 @@ int x, y;
 void readarray(){
 	int i;
 	
-i=0;
+	i=0;
 	while(i<5){
 		scanf("%d",&y);
 		a[i]=y;
@@ -18,7 +18,7 @@ i=0;
 void quicksort(int l, int h){
 	int i, j, k, m;
 	
-i=l;
+	i=l;
 	j=h;
 	k=a[i];
 	if(l<h){

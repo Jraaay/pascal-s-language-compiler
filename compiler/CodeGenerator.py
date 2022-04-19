@@ -44,6 +44,8 @@ class CodeGenerator:
                 if code_list[i] == ';':
                     code_list[i] += '\n'
                     add_indent = True
+                if code_list[i] == '\n':
+                    add_indent = True
                 if code_list[i+1] == '}':
                     code_list[i+1] += '\n'
                     indent -= 1

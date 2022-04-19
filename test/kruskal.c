@@ -7,7 +7,7 @@ int n, m, i, ans, tot, x, y;
 void sort(int l, int r){
 	int i, j, x, y;
 	
-i=l;
+	i=l;
 	j=r;
 	x=v[(l+r)/2];
 	while(i<=j){
