@@ -90,14 +90,14 @@ class CodeGenerator:
         program_body : const_declarations var_declarations subprogram_declarations compound_statement
         '''
         assert node["type"] == "program_body"
-        self.domain += "global"
+        self.domain += ["global"]
         result = ""
         result += self.g_const_declarations(node["const_declarations"])
         result += self.g_var_declarations(node["var_declarations"])
         result += self.g_subprogram_declarations(
             node["subprogram_declarations"])
         result += "int main(int argc, char* argv[])"
-        self.domain += "main"
+        self.domain += ["main"]
         result += '{'
         result += self.g_compound_statement(node["compound_statement"])
         result += '}'
@@ -318,7 +318,7 @@ class CodeGenerator:
         else:
             result += self.g_basic_type(node["basic_type"]) + ' '
         result += node["ID"]
-        self.domain.append(node["ID"])
+        self.domain += [node["ID"]]
         result += self.g_formal_parameter(node["formal_parameter"])
         return result
 
