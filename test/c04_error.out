@@ -190,11 +190,7 @@
                                 "type": "variable",
                                 "__type": "INTEGER",
                                 "ID": "x",
-                                "id_varpart": {
-                                    "length": 1,
-                                    "type": "id_varpart",
-                                    "expression_list": null
-                                }
+                                "id_varpart": null
                             },
                             "ASSIGNOP": ":=",
                             "expression": {
@@ -219,11 +215,7 @@
                                                 "type": "variable",
                                                 "__type": "RECORD",
                                                 "ID": "a",
-                                                "id_varpart": {
-                                                    "length": 1,
-                                                    "type": "id_varpart",
-                                                    "expression_list": null
-                                                }
+                                                "id_varpart": null
                                             }
                                         }
                                     }

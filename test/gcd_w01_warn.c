@@ -5,10 +5,10 @@ int x, y;
 
 bool gcd(int a, int b){
 	if(b==0){
-		return a;
+		g.c.d=a;
 	}
 	else{
-		return gcd(b,a%b);
+		g.c.d=gcd(b,a%b);
 	}
 }
 

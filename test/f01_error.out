@@ -137,11 +137,7 @@
                                                                 "type": "variable",
                                                                 "__type": "INTEGER",
                                                                 "ID": "b",
-                                                                "id_varpart": {
-                                                                    "length": 1,
-                                                                    "type": "id_varpart",
-                                                                    "expression_list": null
-                                                                }
+                                                                "id_varpart": null
                                                             }
                                                         }
                                                     }
@@ -174,11 +170,7 @@
                                                     "type": "variable",
                                                     "__type": "INTEGER",
                                                     "ID": "gcd",
-                                                    "id_varpart": {
-                                                        "length": 1,
-                                                        "type": "id_varpart",
-                                                        "expression_list": null
-                                                    }
+                                                    "id_varpart": null
                                                 },
                                                 "ASSIGNOP": ":=",
                                                 "expression": {
@@ -203,11 +195,7 @@
                                                                     "type": "variable",
                                                                     "__type": "INTEGER",
                                                                     "ID": "a",
-                                                                    "id_varpart": {
-                                                                        "length": 1,
-                                                                        "type": "id_varpart",
-                                                                        "expression_list": null
-                                                                    }
+                                                                    "id_varpart": null
                                                                 }
                                                             }
                                                         }
@@ -226,11 +214,7 @@
                                                         "type": "variable",
                                                         "__type": "INTEGER",
                                                         "ID": "gcd",
-                                                        "id_varpart": {
-                                                            "length": 1,
-                                                            "type": "id_varpart",
-                                                            "expression_list": null
-                                                        }
+                                                        "id_varpart": null
                                                     },
                                                     "ASSIGNOP": ":=",
                                                     "expression": {
@@ -281,11 +265,7 @@
                                                                                                 "type": "variable",
                                                                                                 "__type": "INTEGER",
                                                                                                 "ID": "b",
-                                                                                                "id_varpart": {
-                                                                                                    "length": 1,
-                                                                                                    "type": "id_varpart",
-                                                                                                    "expression_list": null
-                                                                                                }
+                                                                                                "id_varpart": null
                                                                                             }
                                                                                         }
                                                                                     }
@@ -316,11 +296,7 @@
                                                                                                     "type": "variable",
                                                                                                     "__type": "INTEGER",
                                                                                                     "ID": "a",
-                                                                                                    "id_varpart": {
-                                                                                                        "length": 1,
-                                                                                                        "type": "id_varpart",
-                                                                                                        "expression_list": null
-                                                                                                    }
+                                                                                                    "id_varpart": null
                                                                                                 }
                                                                                             }
                                                                                         },
@@ -335,11 +311,7 @@
                                                                                                 "type": "variable",
                                                                                                 "__type": "INTEGER",
                                                                                                 "ID": "b",
-                                                                                                "id_varpart": {
-                                                                                                    "length": 1,
-                                                                                                    "type": "id_varpart",
-                                                                                                    "expression_list": null
-                                                                                                }
+                                                                                                "id_varpart": null
                                                                                             }
                                                                                         },
                                                                                         "__type": "INTEGER"
@@ -382,22 +354,14 @@
                                         "type": "variable",
                                         "__type": "INTEGER",
                                         "ID": "x",
-                                        "id_varpart": {
-                                            "length": 1,
-                                            "type": "id_varpart",
-                                            "expression_list": null
-                                        }
+                                        "id_varpart": null
                                     },
                                     {
                                         "length": 3,
                                         "type": "variable",
                                         "__type": "INTEGER",
                                         "ID": "y",
-                                        "id_varpart": {
-                                            "length": 1,
-                                            "type": "id_varpart",
-                                            "expression_list": null
-                                        }
+                                        "id_varpart": null
                                     }
                                 ]
                             }
@@ -461,11 +425,7 @@
                                                                                 "type": "variable",
                                                                                 "__type": "INTEGER",
                                                                                 "ID": "x",
-                                                                                "id_varpart": {
-                                                                                    "length": 1,
-                                                                                    "type": "id_varpart",
-                                                                                    "expression_list": null
-                                                                                }
+                                                                                "id_varpart": null
                                                                             }
                                                                         }
                                                                     }
@@ -493,11 +453,7 @@
                                                                                 "type": "variable",
                                                                                 "__type": "INTEGER",
                                                                                 "ID": "y",
-                                                                                "id_varpart": {
-                                                                                    "length": 1,
-                                                                                    "type": "id_varpart",
-                                                                                    "expression_list": null
-                                                                                }
+                                                                                "id_varpart": null
                                                                             }
                                                                         }
                                                                     }

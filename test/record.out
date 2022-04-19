@@ -329,11 +329,7 @@
                                 "type": "variable",
                                 "__type": "INTEGER",
                                 "ID": "b",
-                                "id_varpart": {
-                                    "length": 1,
-                                    "type": "id_varpart",
-                                    "expression_list": null
-                                }
+                                "id_varpart": null
                             },
                             "ASSIGNOP": ":=",
                             "expression": {
@@ -361,11 +357,7 @@
                                                     "Books",
                                                     "bookid"
                                                 ],
-                                                "id_varpart": {
-                                                    "length": 1,
-                                                    "type": "id_varpart",
-                                                    "expression_list": null
-                                                }
+                                                "id_varpart": null
                                             }
                                         }
                                     }

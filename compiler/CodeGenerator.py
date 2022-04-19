@@ -562,7 +562,7 @@ class CodeGenerator:
         """
         assert node["type"] == "variable"
         result = ""
-        result += node["ID"]
+        result += '.'.join(node["ID"])
         result += self.g_id_varpart(node["id_varpart"])
         return result, node["__type"]
 
@@ -571,15 +571,14 @@ class CodeGenerator:
         id_varpart -> [ expression_list ] | ε       #[1,2,3] 
         id_varpart -> expression_list | ε           #[1][2][3]
         """
-        assert node["type"] == "id_varpart"
         result = ""
-        if node["expression_list"] == None:
+        if node is None:
             return result
         else:
+            assert node["type"] == "id_varpart"
             result += self.g_expression_list(
                 node["expression_list"], for_array=True)
             return result
-        pass
 
     def g_procedure_call(self, node):
         """
@@ -587,8 +586,9 @@ class CodeGenerator:
         """
         assert node["type"] == "procedure_call"
         result = ""
-        result += "{}({})".format(node["ID"],
-                                  self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
+        result += node["ID"]
+        if node["length"] == 5:
+            result += "({})".format(self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
         return result
         pass
 
@@ -745,7 +745,7 @@ class CodeGenerator:
             pass
         elif type == "expression":
             result += "("
-            result += self.g_expression_list(node["expression"])
+            result += self.g_expression(node["expression"])
             result += ")"
             pass
         elif type == "NOT":

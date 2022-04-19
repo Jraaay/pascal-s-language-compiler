@@ -7,10 +7,10 @@ int w[1001], v[1001];
 
 int max(int x, int y){
 	if(x>y){
-		return x;
+		m.a.x=x;
 	}
 	else{
-		return y;
+		m.a.x=y;
 	}
 }
 

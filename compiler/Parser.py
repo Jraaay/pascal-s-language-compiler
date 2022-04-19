@@ -715,7 +715,7 @@ class Parser:
                 "params": p[1]["SymbolTable"]["params"],
                 "references": p[1]["SymbolTable"]["references"],
                 "constants": p[3]["SymbolTable"]["constants"],
-                "variables": p[1]["SymbolTable"]["variables"] + p[3]["SymbolTable"]["variables"],
+                "variables": p[1]["SymbolTable"]["variables"] + p[3]["SymbolTable"]["variables"] if p[1]["SymbolTable"]["variables"] else p[3]["SymbolTable"]["variables"],
             }
 
         def p_PROCEDURE(p):
@@ -749,23 +749,23 @@ class Parser:
                     "id": self.id,
                     "token": p[3],
                     "type": None,
-                    "params": p[4]["SymbolTable"]["params"],
-                    "references": p[4]["SymbolTable"]["references"],
-                    "variables": p[4]["SymbolTable"]["variables"],
+                    "params": p[4]["SymbolTable"]["params"] if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
                 }
                 self.symbolMap[self.id] = {
                     "id": self.id,
                     "token": p[3],
                     "type": None,
-                    "params": p[4]["SymbolTable"]["params"],
-                    "references": p[4]["SymbolTable"]["references"],
-                    "variables": p[4]["SymbolTable"]["variables"],
+                    "params": p[4]["SymbolTable"]["params"]if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
                 }
                 self.subSymbol = {p[3]: self.id}
                 self.subFuncMap[p[3]] = {
                     "type": None,
-                    "variables": p[4]["SymbolTable"]["variables"],
-                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
                 }
                 self.id += 1
             elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
@@ -781,28 +781,29 @@ class Parser:
                     "id": self.id,
                     "token": p[3],
                     "type": p[6]["SymbolTable"],
-                    "params": p[4]["SymbolTable"]["params"],
-                    "references": p[4]["SymbolTable"]["references"],
-                    "variables": p[4]["SymbolTable"]["variables"],
+                    "params": p[4]["SymbolTable"]["params"]if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
                 }
                 self.symbolMap[self.id] = {
                     "id": self.id,
                     "token": p[3],
                     "type": p[6]["SymbolTable"],
-                    "params": p[4]["SymbolTable"]["params"],
-                    "references": p[4]["SymbolTable"]["references"],
-                    "variables": p[4]["SymbolTable"]["variables"],
+                    "params": p[4]["SymbolTable"]["params"]if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
                 }
                 # self.subSymbol = p[0]["SymbolTable"]["variables"]
                 self.subSymbol = {p[3]: self.id}
                 self.subFuncMap[p[3]] = {
                     "type": p[6]["SymbolTable"],
-                    "variables": p[4]["SymbolTable"]["variables"],
-                    "references": p[4]["SymbolTable"]["references"],
+                    "variables": p[4]["SymbolTable"]["variables"]if p[4] is not None else None,
+                    "references": p[4]["SymbolTable"]["references"]if p[4] is not None else None,
                 }
                 self.id += 1
-            for i in p[0]["SymbolTable"]["variables"]:
-                self.subSymbol[i["token"]] = i["id"]
+            if p[0]["SymbolTable"]["variables"] is not None:
+                for i in p[0]["SymbolTable"]["variables"]:
+                    self.subSymbol[i["token"]] = i["id"]
 
         def p_formal_parameter(p):
             '''
@@ -821,16 +822,7 @@ class Parser:
                     "variables": p[2]["SymbolTable"]["variables"],
                 }
             else:
-                p[0] = {
-                    "length": len(p),
-                    "type": "formal_parameter",
-                    "parameter_list": None
-                }
-                p[0]["SymbolTable"] = {
-                    "params": 0,
-                    "references": [],
-                    "variables": [],
-                }
+                p[0] = None
 
         def p_parameter_list(p):
             '''
@@ -1249,11 +1241,7 @@ class Parser:
                     "expression_list": p[2]
                 }
             else:
-                p[0] = {
-                    "length": len(p),
-                    "type": "id_varpart",
-                    "expression_list": None
-                }
+                p[0] = None
 
         def p_procedure_call(p):
             '''
