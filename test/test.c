@@ -16,10 +16,10 @@ f;
 
 int gcd(int* a, int* b){
 	if(b==0){
-		g.c.d=a;
+		return a;
 	}
 	else{
-		g.c.d=gcd(b,b);
+		return gcd(b,b);
 	}
 	gcd(a,b);
 }

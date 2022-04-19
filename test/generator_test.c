@@ -5,10 +5,10 @@ int x, y, i;
 
 int gcd(int a, int b){
 	if(b==0){
-		g.c.d[114514]=a;
+		gcd[114514]=a;
 	}
 	else{
-		g.c.d=gcd(b,a%b);
+		return gcd(b,a%b);
 	}
 	for(i=0;i<114514;i++){
 		b=i;

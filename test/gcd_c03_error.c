@@ -6,10 +6,10 @@ int a, x, y;
 
 int gcd(int a, int b){
 	if(b==0){
-		g.c.d=a;
+		return a;
 	}
 	else{
-		g.c.d=gcd(b,a%b);
+		return gcd(b,a%b);
 	}
 }
 

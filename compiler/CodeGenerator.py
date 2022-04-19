@@ -564,7 +564,10 @@ class CodeGenerator:
         """
         assert node["type"] == "variable"
         result = ""
-        result += '.'.join(node["ID"])
+        if isinstance(node["ID"], list):
+            result += '.'.join(node["ID"])
+        if isinstance(node["ID"], str):
+            result += node["ID"]
         result += self.g_id_varpart(node["id_varpart"])
         return result, node["__type"]
 

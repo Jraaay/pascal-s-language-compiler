@@ -41,12 +41,12 @@ void sort(int l, int r){
 
 int doit(int x){
 	if(p[x]==x){
-		a.n.s=x;
-		d.o.i.t=x;
+		ans=x;
+		return x;
 	}
 	else{
-		p[x]=a.n.s;
-		d.o.i.t=doit(p[x]);
+		p[x]=ans;
+		return doit(p[x]);
 	}
 }
 
@@ -64,8 +64,8 @@ int main(int argc, char* argv[]){
 		y=doit(b[i]);
 		if((x!=y)){
 			p[x]=y;
-			t.o.t=t.o.t+v[i];
+			tot=tot+v[i];
 		}
 	}
-	printf("t.o.t: %d\n",t.o.t);
+	printf("tot: %d\n",tot);
 }
