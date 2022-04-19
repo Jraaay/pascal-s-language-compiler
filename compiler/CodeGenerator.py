@@ -510,7 +510,6 @@ class CodeGenerator:
             var = self.g_expression_list(
                 node["expression_list"], return_list=True)
             __type = node["expression_list"]["__type"]
-            print(var, __type)
             assert len(var) == len(__type), len(var)
             assert len(var) > 0
             format_string = ""

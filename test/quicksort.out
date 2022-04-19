@@ -2366,5 +2366,6 @@
         ]
     },
     "error": [],
-    "warning": []
+    "warning": [],
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint a[5];\nint x, y;\n\nvoid readarray(){\n\tint i;\n\t\n\ti=0;\n\twhile(i<5){\n\t\tscanf(\"%d\",&y);\n\t\ta[i]=y;\n\t\ti=i+1;\n\t}\n}\n\nvoid quicksort(int l, int h){\n\tint i, j, k, m;\n\t\n\ti=l;\n\tj=h;\n\tk=a[i];\n\tif(l<h){\n\t\twhile(i<j){\n\t\t\twhile((a[j]>=k)&&(i<j)){\n\t\t\t\tj=j-1;\n\t\t\t}\n\t\t\ta[i]=a[j];\n\t\t\twhile((a[i]<=k)&&(i<j)){\n\t\t\t\ti=i+1;\n\t\t\t}\n\t\t\ta[j]=a[i];\n\t\t}\n\t\ta[i]=k;\n\t\tquicksort(l,i-1);\n\t\tquicksort(j+1,h);\n\t}\n\telse{\n\t\tm=0;\n\t}\n}\n\nint main(int argc, char* argv[]){\n\tx=0;\n\treadarray;\n\tquicksort(0,4);\n\twhile(x<5){\n\t\ty=a[x];\n\t\twriteln(y);\n\t\tx=x+1;\n\t}\n}\n"
 }

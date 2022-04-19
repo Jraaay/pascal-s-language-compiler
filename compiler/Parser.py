@@ -1733,13 +1733,6 @@ class Parser:
                 elif type(p[key]) == dict:
                     self._removeSymbolTable(p[key])
 
-    def _processAST(self, ast):
-        # add father node
-        for key in ast:
-            if type(ast[key]) == dict and not key == "father":
-                ast[key]["father"] = ast
-                self._processAST(ast[key])
-
     def parse(self, data):
         self.SymbolTable = {
             "constants": [],
@@ -1760,13 +1753,9 @@ class Parser:
         # except:
         #     pass
         self._removeSymbolTable(ast)
-        ast_raw = copy.deepcopy(ast)
-        if ast:
-            self._processAST(ast)
         return {
-            "ast": ast_raw,
+            "ast": ast,
             "symbolTable": self.SymbolTable,
             "error": self.error,
             "warning": self.warning,
-            "ast_prod": ast
         }
