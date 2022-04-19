@@ -1,4 +1,5 @@
 from compiler import Parser
+from compiler import CodeGenerator
 import os
 import json
 import sanic
@@ -6,7 +7,7 @@ import sanic
 app = sanic.Sanic(__name__)
 
 
-def main():
+def parser_main():
     # parser = Parser.Parser(debug=True)
     # with open("./test/generator_test.pas") as f:
     #     ans = parser.parse(f.read())
@@ -39,6 +40,37 @@ def main():
                         json.dump(ans, f, indent=4)
 
 
+def generator_main():
+    generator = CodeGenerator.CodeGenerator()
+    test_file_list = os.listdir("./test")
+    for test_file in test_file_list:
+        if test_file.endswith(".out"):
+            test_file_path = os.path.join("./test", test_file)
+            ans = ''
+            with open(test_file_path, "r") as ipt:
+                obj = json.load(ipt)
+                _ast = obj["ast"]
+                _symbolTable = obj["symbolTable"]
+            target_code = generator.code_generate(_ast, _symbolTable)
+            with open(test_file_path.replace(".out", ".c"), "w") as opt:
+                opt.write(target_code)
+    dirs = os.listdir("./test")
+    for dir in dirs:
+        if os.path.isdir(os.path.join("./test", dir)):
+            test_file_list = os.listdir(os.path.join("./test", dir))
+            for test_file in test_file_list:
+                if test_file.endswith(".out"):
+                    test_file_path = os.path.join("./test", test_file)
+                    ans = ''
+                    with open(test_file_path, "r") as ipt:
+                        obj = json.load(ipt)
+                        _ast = obj["ast"]
+                        _symbolTable = obj["symbolTable"]
+                    target_code = generator.code_generate(_ast, _symbolTable)
+                    with open(test_file_path.replace(".out", ".c"), "w") as opt:
+                        opt.write(target_code)
+
+
 @app.route("/api", methods=["POST"])
 async def pascal2c(request):
     code = request.body.decode("utf-8")
@@ -50,7 +82,8 @@ async def pascal2c(request):
 
 
 if __name__ == "__main__":
-    main()
+    parser_main()
+    generator_main()
     parser = Parser.Parser(debug=False)
     app.config['parser'] = parser
     app.run()

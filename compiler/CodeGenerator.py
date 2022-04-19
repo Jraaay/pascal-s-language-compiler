@@ -10,9 +10,8 @@ class CodeGenerator:
     ast = None  # 抽象语法树
     symbolTable = None  # 符号表
 
-    def __init__(self, _ast, _symbolTable):
-        self.ast = _ast
-        self.symbolTable = _symbolTable
+    def __init__(self):
+        pass
 
     # 代码格式化：添加换行、缩进
     def code_format(self):
@@ -23,6 +22,12 @@ class CodeGenerator:
         code_list = list(self.targetCode)
         for i in range(0, len(code_list)-1):
             add_indent = False
+            if code_list[i] == '&' and code_list[i+1] == '*':
+                code_list[i] = ''
+                code_list[i+1] = ''
+            if code_list[i] == '*' and code_list[i+1] == '&':
+                code_list[i] = ''
+                code_list[i+1] = ''
             if code_list[i] == '\"' or code_list[i] == '\'':
                 in_quote = ~in_quote
             if code_list[i] == '(':
@@ -30,12 +35,6 @@ class CodeGenerator:
             if code_list[i] == ')':
                 in_small -= 1
             if in_quote == False and in_small == 0:
-                if code_list[i] == '&' and code_list[i+1] == '*':
-                    code_list[i] = ''
-                    code_list[i+1] = ''
-                if code_list[i] == '*' and code_list[i+1] == '&':
-                    code_list[i] = ''
-                    code_list[i+1] = ''
                 if code_list[i] == '{':
                     code_list[i] += '\n'
                     indent += 1
@@ -64,10 +63,13 @@ class CodeGenerator:
         programstruct : program_head ; program_body .
         '''
         node = self.ast
-        assert node["type"] == "programstruct"
         result = ""
-        result += self.g_program_head(node["program_head"])
-        result += self.g_program_body(node["program_body"])
+        if node is not None:
+            assert node["type"] == "programstruct"
+            result += self.g_program_head(node["program_head"])
+            result += self.g_program_body(node["program_body"])
+        else:
+            result += '/* Error, Parser gives no AST. */'
         self.targetCode = result
         self.domain.pop()
 
@@ -760,7 +762,9 @@ class CodeGenerator:
 
         return result
 
-    def code_generate(self):
+    def code_generate(self, _ast, _symbolTable):
+        self.ast = _ast
+        self.symbolTable = _symbolTable
         self.g_programstruct()  # 从programstruct节点开始生成目标代码
         self.code_format()  # 代码格式化
         self.add_headfile()  # 添加头文件
@@ -771,15 +775,3 @@ class CodeGenerator:
             if i["token"] == subfunctoken:
                 return i
         exit("\"{}\" doesn't exist in symbol table".format(subfunctoken))
-
-
-if __name__ == "__main__":
-    test_dir = "test/test"
-    with open("{}.out".format(test_dir)) as test:
-        obj = json.load(test)
-        _ast = obj["ast"]
-        _symbolTable = obj["symbolTable"]
-    generator = CodeGenerator(_ast, _symbolTable)
-    target_code = generator.code_generate()
-    with open("{}.c".format(test_dir), 'w') as opt:
-        opt.write(target_code)
