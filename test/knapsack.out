@@ -1656,6 +1656,5 @@
         ]
     },
     "error": [],
-    "warning": [],
-    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nint n, t, i, j; \nint f[1001][1001]; \nint w[1001], v[1001]; \n\nint max(int x, int y){\n\tif(x > y){\n\t\treturn x; \n\t}\n\telse{\n\t\treturn y; \n\t}\n}\n\nint main(int argc,  char* argv[]){\n\tscanf(\"%d%d\", &t, &n); \n\tfor(i = 1; i < n; i++){\n\t\tscanf(\"%d%d\", &w[i], &v[i]); \n\t}\n\tfor(i = 1; i < n; i++){\n\t\tfor(j = 0; j < t; j++){\n\t\t\tf[i][j] = f[i - 1][j]; \n\t\t\tif(j >= w[i]){\n\t\t\t\tf[i][j] = max(f[i - 1][j - w[i]] + v[i], f[i][j]); \n\t\t\t}\n\t\t}\n\t}\n\tprintf(\"f[n][t]: %d\\n\", f[n][t]); \n}\n"
+    "warning": []
 }

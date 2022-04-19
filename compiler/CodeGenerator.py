@@ -586,7 +586,8 @@ class CodeGenerator:
         result = ""
         result += node["ID"]+'('
         if node["length"] == 5:
-            result += "{}".format(self.g_expression_list(node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
+            result += "{}".format(self.g_expression_list(
+                node["expression_list"], for_procedure_call=True, procedure_id=node["ID"]))
         result += ')'
         return result
 
@@ -602,7 +603,7 @@ class CodeGenerator:
             result += "}"
         return result
 
-    def g_expression_list(self, node, for_array: bool = False, return_list=False, for_procedure_call: bool = False, procedure_id: str = ""):
+    def g_expression_list(self, node, for_array: bool = False, array_id="", index_depth=0, return_list=False, for_procedure_call: bool = False, procedure_id: str = ""):
         """
         expression_list -> expression_list , expression | expression
         """
@@ -613,13 +614,37 @@ class CodeGenerator:
         if for_array == True:
             assert return_list == False
             if len(node["expressions"]) == 1:
-                tmp = "[{}]".format(self.g_expression(node["expressions"][0]))
-                result += tmp
+                func_variable_list = {}
+                if self.domain[-1] == "main":
+                    func_variable_list = self.symbolTable["variables"]
+                else:
+                    func_variable_list = self.get_subFunc(
+                        self.domain[-1])["table"]["variables"]
+                array_info = {}
+                print(self.domain[-1])
+                print(func_variable_list)
+                for v in func_variable_list:
+                    print(v)
+                    if v["token"] == array_id:
+                        array_info = v
+                assert array_info != {}
+                start_index = array_info["start"][-1-index_depth]
+                index = self.g_expression(node["expressions"][0])
+                if index.isdigit():
+                    index = str(int(index)-start_index)
+                else:
+                    index += "-{}".format(str(start_index))
+                result += "[{}]".format(index)
             elif len(node["expressions"]) > 1:
                 tmp_node = copy.deepcopy(node)
                 expression = tmp_node["expressions"].pop()
-                tmp = "{}[{}]".format(self.g_expression_list(
-                    tmp_node, for_array=for_array), self.g_expression(expression))
+                last_expression = copy.deepcopy(node)
+                last_expression["expressions"].clear()
+                last_expression["expressions"].push(expression)
+                tmp = "{}[{}]".format(
+                    self.g_expression_list(
+                        tmp_node, for_array=for_array, array_id=array_id, index_depth=index_depth+1),
+                    self.g_expression_list(last_expression, for_array=for_array, array_id=array_id, index_depth=index_depth))
                 result += tmp
         else:
             # def set_prefix(procedure_id="",)
@@ -660,14 +685,16 @@ class CodeGenerator:
             assert node["simple_expression_1"], "key missing: simple_expression_1"
             assert node["RELOP"], "key missing: RELOP"
             assert node["simple_expression_2"], "key missing: simple_expression_2"
-            result += self.g_simple_expression(node["simple_expression_1"]) + ' '
+            result += self.g_simple_expression(
+                node["simple_expression_1"]) + ' '
             if node["RELOP"] == "=":
                 result += "=="
             elif node["RELOP"] == "<>":
                 result += "!="
             else:
                 result += node["RELOP"]
-            result += ' ' + self.g_simple_expression(node["simple_expression_2"])
+            result += ' ' + \
+                self.g_simple_expression(node["simple_expression_2"])
         return result
 
     def g_simple_expression(self, node):
@@ -758,6 +785,7 @@ class CodeGenerator:
         return self.targetCode  # 返回生成的目标代码
 
     def get_subFunc(self, subfunctoken=""):
+        print(subfunctoken)
         for i in self.symbolTable["subFunc"]:
             if i["token"] == subfunctoken:
                 return i
