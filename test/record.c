@@ -18,7 +18,7 @@ Books;
 char a[100]; 
 int b; 
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	a[0] = Books.title[0]; 
 	a[0] = Books.Books2.title[0]; 
 	a[0] = Books.Books2.author[b]; 

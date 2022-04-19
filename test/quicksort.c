@@ -41,7 +41,7 @@ void quicksort(int l, int h){
 	}
 }
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	x = 0; 
 	readarray(); 
 	quicksort(0, 4); 

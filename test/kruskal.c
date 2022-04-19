@@ -50,7 +50,7 @@ int doit(int x){
 	}
 }
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	scanf("%d%d", &n, &m); 
 	for(i = 1; i < m; i++){
 		scanf("%d%d%d", &a[i-1], &b[i-1], &v[i-1]); 

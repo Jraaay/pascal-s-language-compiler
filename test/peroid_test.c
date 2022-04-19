@@ -15,7 +15,7 @@ int gcd(int* a, int* b){
 	}
 }
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	z[x][50][100] = x; 
 	gcd(&x, &y); 

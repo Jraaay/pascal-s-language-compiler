@@ -8,7 +8,7 @@ struct {
 }
 a; 
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	x = a + y; 
 	x = a * y; 
 }

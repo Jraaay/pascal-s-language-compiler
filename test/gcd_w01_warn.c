@@ -12,7 +12,7 @@ bool gcd(int a, int b){
 	}
 }
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	printf("gcd(x, y): %d\n", gcd(x, y)); 
 }

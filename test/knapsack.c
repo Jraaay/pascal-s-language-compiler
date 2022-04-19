@@ -14,7 +14,7 @@ int max(int x, int y){
 	}
 }
 
-int main(int argc,  char* argv[]){
+int main(int argc, char* argv[]){
 	scanf("%d%d", &t, &n); 
 	for(i = 1; i < n; i++){
 		scanf("%d%d", &w[i], &v[i]); 

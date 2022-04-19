@@ -96,7 +96,7 @@ class CodeGenerator:
         result += self.g_var_declarations(node["var_declarations"])
         result += self.g_subprogram_declarations(
             node["subprogram_declarations"])
-        result += "int main(int argc, char* argv[])"
+        result += "int main(int argc,char* argv[])"
         self.domain += ["main"]
         result += '{'
         result += self.g_compound_statement(node["compound_statement"])
