@@ -4,7 +4,7 @@
 int a[5];
 int x, y;
 
-void readarray{
+void readarray(){
 	int i;
 	
 i=0;

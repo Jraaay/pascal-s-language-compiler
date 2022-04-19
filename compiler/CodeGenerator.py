@@ -324,11 +324,11 @@ class CodeGenerator:
                         |
         '''
         result = ''
+        result += '('
         if node is not None:
             assert node["type"] == "formal_parameter"
-            result += '('
             result += self.g_parameter_list(node["parameter_list"])
-            result += ')'
+        result += ')'
         return result
 
     def g_parameter_list(self, node):
