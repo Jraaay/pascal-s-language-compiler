@@ -280,6 +280,5 @@
             }
         }
     ],
-    "warning": [],
-    "code": "\nint x, y; \n\nint main(int argc,  char* argv[]){\n\tc = a + y; \n\tx = a * y; \n}\n"
+    "warning": []
 }

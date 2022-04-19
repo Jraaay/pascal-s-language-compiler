@@ -4,7 +4,8 @@ Const
     a = 5; 
     b = -6; 
     c = 't';
-
+    s = array[50..100] of integer;
+    
 Var 
     x, y, d : integer;
     e : array [1..50] of char;
@@ -21,6 +22,7 @@ Begin
 End;
 
 Begin
+s[50]:=114514
 read(x,y);
 write(x,y);
 while x<>y do write(x,y);

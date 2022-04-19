@@ -523,5 +523,5 @@
         }
     ],
     "warning": [],
-    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nstruct {\n\tchar title[50]; \n\tchar author[50]; \n\tchar subject[100]; \n\tint bookid; \n}\nBooks; \nchar a[100]; \nint b; \n\nint main(int argc,  char* argv[]){\n\ta[1] = Books.title[1]; \n\tb = Books.bookid; \n}\n"
+    "code": "#include<stdio.h>\n#include<stdbool.h>\n\nstruct {\n\tchar title[50]; \n\tchar author[50]; \n\tchar subject[100]; \n\tint bookid; \n}\nBooks; \nchar a[100]; \nint b; \n\nint main(int argc,  char* argv[]){\n\ta[1-0] = Books.title[1-0]; \n\tb = Books.bookid; \n}\n"
 }
