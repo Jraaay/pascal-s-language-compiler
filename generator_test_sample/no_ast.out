@@ -1,0 +1,10 @@
+{
+    "ast": null,
+    "symbolTable": {
+        "constants": [],
+        "variables": [],
+        "subFunc": []
+    },
+    "error": [],
+    "warning": []
+}
