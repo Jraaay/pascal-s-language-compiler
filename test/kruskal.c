@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdbool.h>
 
 int a[100], b[100], v[100], p[100]; 
 int n, m, i, ans, tot, x, y; 

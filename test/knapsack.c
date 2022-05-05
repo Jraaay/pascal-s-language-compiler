@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdbool.h>
 
 int n, t, i, j; 
 int f[1001][1001]; 

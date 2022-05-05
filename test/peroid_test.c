@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdbool.h>
 
 int x, y; 
 int z[101][101][101]; 

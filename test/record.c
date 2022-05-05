@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<stdbool.h>
-
 struct {
 	char title[101]; 
 	char author[50]; 
