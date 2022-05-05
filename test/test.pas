@@ -4,7 +4,6 @@ Const
     a = 5; 
     b = -6; 
     c = 't';
-    s = array[50..100] of integer;
     
 Var 
     x, y, d : integer;
@@ -16,15 +15,14 @@ Var
 
 Function gcd(var a, b : integer) : integer;
 Begin
-  If b = 0 Then gcd := a
-  Else gcd := gcd(b, b);
-  gcd(a,b)
+    If b = 0 Then gcd := a
+    Else gcd := gcd(b, b);
+    gcd(a,b)
 End;
 
 Begin
-s[50]:=114514
-read(x,y);
-write(x,y);
-while x<>y do write(x,y);
-gcd(x, y)
+    read(x,y);
+    write(x,y);
+    while x<>y do write(x,y);
+    gcd(x, y)
 End.

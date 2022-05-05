@@ -5,6 +5,14 @@ import json
 class TestGenerator(object):
     generator = CodeGenerator.CodeGenerator()
 
+    def test_generator_all_cover(self):
+        with open("generator_test_sample/all_cover.out") as f:
+            out = json.load(f)
+            result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
+        with open('generator_test_sample/all_cover.c') as f:
+            expected = f.read()
+        assert result == expected
+
     def test_generator_gcd(self):
         with open("generator_test_sample/gcd.out") as f:
             out = json.load(f)
