@@ -5,9 +5,6 @@ import json
 class TestParser(object):
     myParser = Parser.Parser()
 
-    def __int__(self):
-        pass
-
     def test_parser_gcd(self):
         """
         id="44"
@@ -187,7 +184,7 @@ class TestParser(object):
         with open('./parser_test_sample/c06_error.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_c07_10_11_error(self):
         """
         id="90"
@@ -199,7 +196,7 @@ class TestParser(object):
         with open('./parser_test_sample/c07_10_11_error.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_c09_error(self):
         """
         id="93"
@@ -223,7 +220,7 @@ class TestParser(object):
         with open('./parser_test_sample/f01_error.out') as f:
             expected = json.load(f)
         assert ans == expected
-    
+
     def test_parser_c12_error(self):
         """
         id="98"
@@ -235,7 +232,7 @@ class TestParser(object):
         with open('./parser_test_sample/c12_error.out') as f:
             expected = json.load(f)
         assert ans == expected
-            
+
     def test_parser_c13_error(self):
         """
         id="100"
@@ -247,7 +244,7 @@ class TestParser(object):
         with open('./parser_test_sample/c13_error.out') as f:
             expected = json.load(f)
         assert ans == expected
-            
+
     def test_parser_c14_error(self):
         """
         id="102"
