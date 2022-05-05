@@ -10,7 +10,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/gcd.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_knapsack(self):
@@ -18,7 +18,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/knapsack.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_kruskal(self):
@@ -26,7 +26,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/kruskal.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_noAST(self):
@@ -34,7 +34,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/noAST.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_period(self):
@@ -42,7 +42,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/period.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_quicksort(self):
@@ -50,7 +50,7 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/quicksort.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
 
     def test_generator_record(self):
@@ -58,5 +58,5 @@ class TestGenerator(object):
             out = json.load(f)
             result = self.generator.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
         with open('generator_test_sample/record.c') as f:
-            expected = json.load(f)
+            expected = f.read()
         assert result == expected
