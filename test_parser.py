@@ -14,9 +14,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd.pas') as f:
+        with open('./parser_test_sample/gcd.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd.out') as f:
+        with open('./parser_test_sample/gcd.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -26,9 +26,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_bug.pas') as f:
+        with open('./parser_test_sample/gcd_bug.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_bug.out') as f:
+        with open('./parser_test_sample/gcd_bug.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -38,9 +38,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_bug_2.pas') as f:
+        with open('./parser_test_sample/gcd_bug_2.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_bug_2.out') as f:
+        with open('./parser_test_sample/gcd_bug_2.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -50,9 +50,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_no_blank.pas') as f:
+        with open('./parser_test_sample/gcd_no_blank.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_no_blank.out') as f:
+        with open('./parser_test_sample/gcd_no_blank.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -62,9 +62,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/knapsack.pas') as f:
+        with open('./parser_test_sample/knapsack.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/knapsack.out') as f:
+        with open('./parser_test_sample/knapsack.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -74,9 +74,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/kruskal.pas') as f:
+        with open('./parser_test_sample/kruskal.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/kruskal.out') as f:
+        with open('./parser_test_sample/kruskal.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -86,9 +86,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/quicksort.pas') as f:
+        with open('./parser_test_sample/quicksort.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/quicksort.out') as f:
+        with open('./parser_test_sample/quicksort.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -98,9 +98,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/record.pas') as f:
+        with open('./parser_test_sample/record.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/record.out') as f:
+        with open('./parser_test_sample/record.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -110,9 +110,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/record_period_error.pas') as f:
+        with open('./parser_test_sample/record_period_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/record_period_error.out') as f:
+        with open('./parser_test_sample/record_period_error.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -122,9 +122,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_c02_error.pas') as f:
+        with open('./parser_test_sample/gcd_c02_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_c02_error.out') as f:
+        with open('./parser_test_sample/gcd_c02_error.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -134,9 +134,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_c03_error.pas') as f:
+        with open('./parser_test_sample/gcd_c03_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_c03_error.out') as f:
+        with open('./parser_test_sample/gcd_c03_error.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -146,9 +146,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/gcd_w01_warn.pas') as f:
+        with open('./parser_test_sample/gcd_w01_warn.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/gcd_w01_warn.out') as f:
+        with open('./parser_test_sample/gcd_w01_warn.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -158,9 +158,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/c04_error.pas') as f:
+        with open('./parser_test_sample/c04_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/c04_error.out') as f:
+        with open('./parser_test_sample/c04_error.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -170,9 +170,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/c05_error.pas') as f:
+        with open('./parser_test_sample/c05_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/c05_error.out') as f:
+        with open('./parser_test_sample/c05_error.out') as f:
             expected = json.load(f)
         assert ans == expected
 
@@ -182,9 +182,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/c06_error.pas') as f:
+        with open('./parser_test_sample/c06_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/c06_error.out') as f:
+        with open('./parser_test_sample/c06_error.out') as f:
             expected = json.load(f)
         assert ans == expected
     
@@ -194,9 +194,9 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/c07_10_11_error.pas') as f:
+        with open('./parser_test_sample/c07_10_11_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/c07_10_11_error.out') as f:
+        with open('./parser_test_sample/c07_10_11_error.out') as f:
             expected = json.load(f)
         assert ans == expected
     
@@ -206,8 +206,56 @@ class TestParser(object):
         """
         ans = None
         expected = None
-        with open('./test/c09_error.pas') as f:
+        with open('./parser_test_sample/c09_error.pas') as f:
             ans = self.myParser.parse(f.read())
-        with open('./test/c09_error.out') as f:
+        with open('./parser_test_sample/c09_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+
+    def test_parser_f01_error(self):
+        """
+        id="96"
+        """
+        ans = None
+        expected = None
+        with open('./parser_test_sample/f01_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./parser_test_sample/f01_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+    
+    def test_parser_c12_error(self):
+        """
+        id="98"
+        """
+        ans = None
+        expected = None
+        with open('./parser_test_sample/c12_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./parser_test_sample/c12_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+            
+    def test_parser_c13_error(self):
+        """
+        id="100"
+        """
+        ans = None
+        expected = None
+        with open('./parser_test_sample/c13_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./parser_test_sample/c13_error.out') as f:
+            expected = json.load(f)
+        assert ans == expected
+            
+    def test_parser_c14_error(self):
+        """
+        id="102"
+        """
+        ans = None
+        expected = None
+        with open('./parser_test_sample/c14_error.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./parser_test_sample/c14_error.out') as f:
             expected = json.load(f)
         assert ans == expected

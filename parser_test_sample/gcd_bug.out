@@ -1,0 +1,19 @@
+{
+    "ast": null,
+    "symbolTable": {
+        "constants": [],
+        "variables": [],
+        "subFunc": []
+    },
+    "error": [
+        {
+            "code": "B-01",
+            "info": {
+                "line": 5,
+                "value": "=",
+                "lexpos": 121
+            }
+        }
+    ],
+    "warning": []
+}

@@ -1,0 +1,379 @@
+{
+    "ast": {
+        "length": 5,
+        "type": "programstruct",
+        "program_head": {
+            "length": 6,
+            "type": "program_head",
+            "ID": "example",
+            "idlist": {
+                "length": 4,
+                "type": "idlist",
+                "ids": [
+                    "input",
+                    "output"
+                ]
+            }
+        },
+        "program_body": {
+            "length": 5,
+            "type": "program_body",
+            "const_declarations": null,
+            "var_declarations": {
+                "length": 4,
+                "type": "var_declarations",
+                "var_declaration": {
+                    "length": 6,
+                    "type": "var_declaration",
+                    "values": [
+                        {
+                            "idlist": {
+                                "length": 4,
+                                "type": "idlist",
+                                "ids": [
+                                    "x",
+                                    "y"
+                                ]
+                            },
+                            "type": {
+                                "length": 2,
+                                "type": "type",
+                                "_type": {
+                                    "type": "basic_type",
+                                    "_type": "INTEGER"
+                                }
+                            }
+                        },
+                        {
+                            "idlist": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "a"
+                                ]
+                            },
+                            "type": {
+                                "length": 4,
+                                "type": "type",
+                                "_type": "RECORD",
+                                "multype": {
+                                    "length": 6,
+                                    "id": 5,
+                                    "type": "multype",
+                                    "values": [
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "title"
+                                                ]
+                                            },
+                                            "type": {
+                                                "length": 7,
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "length": 4,
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "end": 50
+                                                        }
+                                                    ]
+                                                },
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "author"
+                                                ]
+                                            },
+                                            "type": {
+                                                "length": 7,
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "length": 4,
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "end": 50
+                                                        }
+                                                    ]
+                                                },
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "subject"
+                                                ]
+                                            },
+                                            "type": {
+                                                "length": 7,
+                                                "type": "type",
+                                                "_type": "ARRAY",
+                                                "period": {
+                                                    "length": 4,
+                                                    "type": "period",
+                                                    "values": [
+                                                        {
+                                                            "start": 1,
+                                                            "end": 100
+                                                        }
+                                                    ]
+                                                },
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "CHAR"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "bookid"
+                                                ]
+                                            },
+                                            "type": {
+                                                "length": 2,
+                                                "type": "type",
+                                                "_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "INTEGER"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "subprogram_declarations": {
+                "length": 1,
+                "type": "subprogram_declarations",
+                "subprograms": []
+            },
+            "compound_statement": {
+                "length": 4,
+                "type": "compound_statement",
+                "statement_list": {
+                    "length": 4,
+                    "type": "statement_list",
+                    "statements": [
+                        {
+                            "length": 4,
+                            "type": "statement",
+                            "_type": "variable",
+                            "variable": {
+                                "length": 3,
+                                "type": "variable",
+                                "__type": "INTEGER",
+                                "ID": "x",
+                                "id_varpart": null
+                            },
+                            "ASSIGNOP": ":=",
+                            "expression": {
+                                "length": 4,
+                                "type": "expression",
+                                "__type": "BOOLEAN",
+                                "simple_expression_1": {
+                                    "length": 2,
+                                    "type": "simple_expression",
+                                    "__type": "RECORD",
+                                    "term": {
+                                        "length": 2,
+                                        "type": "term",
+                                        "__type": "RECORD",
+                                        "factor": {
+                                            "length": 2,
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "RECORD",
+                                            "variable": {
+                                                "length": 3,
+                                                "type": "variable",
+                                                "__type": "RECORD",
+                                                "ID": "a",
+                                                "id_varpart": null
+                                            }
+                                        }
+                                    }
+                                },
+                                "RELOP": ">",
+                                "simple_expression_2": {
+                                    "length": 2,
+                                    "type": "simple_expression",
+                                    "__type": "INTEGER",
+                                    "term": {
+                                        "length": 2,
+                                        "type": "term",
+                                        "__type": "INTEGER",
+                                        "factor": {
+                                            "length": 2,
+                                            "type": "factor",
+                                            "_type": "variable",
+                                            "__type": "INTEGER",
+                                            "variable": {
+                                                "length": 3,
+                                                "type": "variable",
+                                                "__type": "INTEGER",
+                                                "ID": "y",
+                                                "id_varpart": null
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "symbolTable": {
+        "constants": [],
+        "variables": [
+            {
+                "id": 0,
+                "token": "x",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 1,
+                "token": "y",
+                "type": "INTEGER",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": null
+            },
+            {
+                "id": 6,
+                "token": "a",
+                "type": "RECORD",
+                "isArray": false,
+                "dimension": 0,
+                "size": [],
+                "start": [],
+                "recordTable": {
+                    "variables": [
+                        {
+                            "id": 2,
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "title"
+                                ]
+                            },
+                            "type": "CHAR",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                50
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 3,
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "author"
+                                ]
+                            },
+                            "type": "CHAR",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                50
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 4,
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "subject"
+                                ]
+                            },
+                            "type": "CHAR",
+                            "isArray": true,
+                            "dimension": 1,
+                            "size": [
+                                100
+                            ],
+                            "start": [
+                                1
+                            ],
+                            "recordTable": null
+                        },
+                        {
+                            "id": 5,
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "bookid"
+                                ]
+                            },
+                            "type": "INTEGER",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": null
+                        }
+                    ]
+                }
+            }
+        ],
+        "subFunc": []
+    },
+    "error": [
+        {
+            "code": "C-05",
+            "info": {
+                "line": 11,
+                "lexpos": 208
+            }
+        }
+    ],
+    "warning": []
+}
