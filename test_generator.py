@@ -5,9 +5,6 @@ import json
 class TestGenerator(object):
     generator = CodeGenerator.CodeGenerator()
 
-    def __int__(self):
-        pass
-
     def test_generator_gcd(self):
         with open("generator_test_sample/gcd.out") as f:
             out = json.load(f)
