@@ -429,6 +429,7 @@ class CodeGenerator:
             tmp_node = copy.deepcopy(node)
             statement = tmp_node["statements"].pop()
             result += self.g_statement_list(tmp_node)
+            # result += " "
             result += self.g_statement(statement)
         return result
 
@@ -444,16 +445,14 @@ class CodeGenerator:
         | read ( variable_list )                                    | scanf("format_string",var1,var2)
         | write ( expression_list )                                 | printf("format_string",var1,var2)
         | while expression do statement                             | while(expression){statement}
-        | ε                                                         | ε
+        | ε                                                         | TBD
         '''
         if(node == None):
             return ""
         assert node["_type"] in ["variable", "procedure_call", "compound_statement",
                                  "IF", "FOR", "READ", "WRITE", "WHILE"], "_type:{}".format(node["_type"])
         format_tag_map = {"INTEGER": "%d",
-                          "REAL": "%f",
-                          "BOOLEAN": "%d",
-                          "CHAR": "%c"}
+                          "REAL": "%f", "BOOLEAN": "%d", "CHAR": "%c"}
         type = node["_type"]
         result = ""
         if type == "variable":
