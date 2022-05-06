@@ -59,6 +59,8 @@ class CodeGenerator:
 
     # 将分析阶段得到的头文件列表加到目标代码中
     def add_headfile(self):
+        if self.headFile == []:
+            return
         result = ('').join(self.headFile)
         self.targetCode = result + '\n' + self.targetCode
 
@@ -820,13 +822,13 @@ class CodeGenerator:
 
         return result
 
-    def code_generate(self, _ast, _symbolTable):
-        self.ast = _ast
-        self.symbolTable = _symbolTable
-        self.g_programstruct()  # 从programstruct节点开始生成目标代码
-        self.code_format()  # 代码格式化
-        self.add_headfile()  # 添加头文件
-        return self.targetCode  # 返回生成的目标代码
+    def reset_generator(self):
+        self.targetCode = ''  # 目标代码
+        self.domain = []  # 作用域栈
+        self.headFile = []  # 头文件
+        self.f_stdio = False
+        self.ast = None  # 抽象语法树
+        self.symbolTable = None  # 符号表
 
     def get_subFunc(self, subfunctoken=""):
         # print(subfunctoken)
@@ -835,14 +837,11 @@ class CodeGenerator:
                 return i
         exit("\"{}\" doesn't exist in symbol table".format(subfunctoken))
 
-
-if __name__ == "__main__":
-    g = CodeGenerator()
-    test_file_path = "test/peroid_test.out"
-    with open(test_file_path, "r") as f:
-        out = json.load(f)
-
-    result = g.code_generate(_ast=out["ast"], _symbolTable=out["symbolTable"])
-
-    with open(test_file_path.replace(".out", ".c"), "w") as f:
-        f.write(result)
+    def code_generate(self, _ast, _symbolTable):
+        self.reset_generator()  # 重置代码生成器
+        self.ast = _ast
+        self.symbolTable = _symbolTable
+        self.g_programstruct()  # 从programstruct节点开始生成目标代码
+        self.code_format()  # 代码格式化
+        self.add_headfile()  # 添加头文件
+        return self.targetCode  # 返回生成的目标代码

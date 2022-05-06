@@ -124,7 +124,7 @@
                                 "_type": "RECORD",
                                 "multype": {
                                     "length": 6,
-                                    "id": 8,
+                                    "id": 15,
                                     "type": "multype",
                                     "values": [
                                         {
@@ -175,6 +175,163 @@
                                                     "_type": "BOOLEAN"
                                                 }
                                             }
+                                        },
+                                        {
+                                            "idlist": {
+                                                "length": 2,
+                                                "type": "idlist",
+                                                "ids": [
+                                                    "f3"
+                                                ]
+                                            },
+                                            "type": {
+                                                "length": 4,
+                                                "type": "type",
+                                                "_type": "RECORD",
+                                                "multype": {
+                                                    "length": 6,
+                                                    "id": 14,
+                                                    "type": "multype",
+                                                    "values": [
+                                                        {
+                                                            "idlist": {
+                                                                "length": 2,
+                                                                "type": "idlist",
+                                                                "ids": [
+                                                                    "f31"
+                                                                ]
+                                                            },
+                                                            "type": {
+                                                                "length": 2,
+                                                                "type": "type",
+                                                                "_type": {
+                                                                    "type": "basic_type",
+                                                                    "_type": "REAL"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "idlist": {
+                                                                "length": 2,
+                                                                "type": "idlist",
+                                                                "ids": [
+                                                                    "f32"
+                                                                ]
+                                                            },
+                                                            "type": {
+                                                                "length": 7,
+                                                                "type": "type",
+                                                                "_type": "ARRAY",
+                                                                "period": {
+                                                                    "length": 6,
+                                                                    "type": "period",
+                                                                    "values": [
+                                                                        {
+                                                                            "start": 1,
+                                                                            "end": 50
+                                                                        },
+                                                                        {
+                                                                            "start": 1,
+                                                                            "end": 100
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "basic_type": {
+                                                                    "type": "basic_type",
+                                                                    "_type": "BOOLEAN"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "idlist": {
+                                                                "length": 2,
+                                                                "type": "idlist",
+                                                                "ids": [
+                                                                    "f33"
+                                                                ]
+                                                            },
+                                                            "type": {
+                                                                "length": 4,
+                                                                "type": "type",
+                                                                "_type": "RECORD",
+                                                                "multype": {
+                                                                    "length": 6,
+                                                                    "id": 13,
+                                                                    "type": "multype",
+                                                                    "values": [
+                                                                        {
+                                                                            "idlist": {
+                                                                                "length": 2,
+                                                                                "type": "idlist",
+                                                                                "ids": [
+                                                                                    "f331"
+                                                                                ]
+                                                                            },
+                                                                            "type": {
+                                                                                "length": 2,
+                                                                                "type": "type",
+                                                                                "_type": {
+                                                                                    "type": "basic_type",
+                                                                                    "_type": "REAL"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "idlist": {
+                                                                                "length": 2,
+                                                                                "type": "idlist",
+                                                                                "ids": [
+                                                                                    "f332"
+                                                                                ]
+                                                                            },
+                                                                            "type": {
+                                                                                "length": 7,
+                                                                                "type": "type",
+                                                                                "_type": "ARRAY",
+                                                                                "period": {
+                                                                                    "length": 6,
+                                                                                    "type": "period",
+                                                                                    "values": [
+                                                                                        {
+                                                                                            "start": 1,
+                                                                                            "end": 50
+                                                                                        },
+                                                                                        {
+                                                                                            "start": 1,
+                                                                                            "end": 100
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "basic_type": {
+                                                                                    "type": "basic_type",
+                                                                                    "_type": "BOOLEAN"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "idlist": {
+                                                                                "length": 2,
+                                                                                "type": "idlist",
+                                                                                "ids": [
+                                                                                    "f333"
+                                                                                ]
+                                                                            },
+                                                                            "type": {
+                                                                                "length": 2,
+                                                                                "type": "type",
+                                                                                "_type": {
+                                                                                    "type": "basic_type",
+                                                                                    "_type": "INTEGER"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
                                         }
                                     ]
                                 }
@@ -189,7 +346,7 @@
                 "subprograms": [
                     {
                         "length": 4,
-                        "id": 12,
+                        "id": 19,
                         "type": "subprogram",
                         "subprogram_head": {
                             "length": 7,
@@ -923,7 +1080,7 @@
                 "recordTable": null
             },
             {
-                "id": 9,
+                "id": 16,
                 "token": "f",
                 "type": "RECORD",
                 "isArray": false,
@@ -969,6 +1126,136 @@
                                 1
                             ],
                             "recordTable": null
+                        },
+                        {
+                            "id": 15,
+                            "token": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "f3"
+                                ]
+                            },
+                            "type": "RECORD",
+                            "isArray": false,
+                            "dimension": 0,
+                            "size": [],
+                            "start": [],
+                            "recordTable": {
+                                "variables": [
+                                    {
+                                        "id": 9,
+                                        "token": {
+                                            "length": 2,
+                                            "type": "idlist",
+                                            "ids": [
+                                                "f31"
+                                            ]
+                                        },
+                                        "type": "REAL",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 10,
+                                        "token": {
+                                            "length": 2,
+                                            "type": "idlist",
+                                            "ids": [
+                                                "f32"
+                                            ]
+                                        },
+                                        "type": "BOOLEAN",
+                                        "isArray": true,
+                                        "dimension": 2,
+                                        "size": [
+                                            50,
+                                            100
+                                        ],
+                                        "start": [
+                                            1,
+                                            1
+                                        ],
+                                        "recordTable": null
+                                    },
+                                    {
+                                        "id": 14,
+                                        "token": {
+                                            "length": 2,
+                                            "type": "idlist",
+                                            "ids": [
+                                                "f33"
+                                            ]
+                                        },
+                                        "type": "RECORD",
+                                        "isArray": false,
+                                        "dimension": 0,
+                                        "size": [],
+                                        "start": [],
+                                        "recordTable": {
+                                            "variables": [
+                                                {
+                                                    "id": 11,
+                                                    "token": {
+                                                        "length": 2,
+                                                        "type": "idlist",
+                                                        "ids": [
+                                                            "f331"
+                                                        ]
+                                                    },
+                                                    "type": "REAL",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordTable": null
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "token": {
+                                                        "length": 2,
+                                                        "type": "idlist",
+                                                        "ids": [
+                                                            "f332"
+                                                        ]
+                                                    },
+                                                    "type": "BOOLEAN",
+                                                    "isArray": true,
+                                                    "dimension": 2,
+                                                    "size": [
+                                                        50,
+                                                        100
+                                                    ],
+                                                    "start": [
+                                                        1,
+                                                        1
+                                                    ],
+                                                    "recordTable": null
+                                                },
+                                                {
+                                                    "id": 13,
+                                                    "token": {
+                                                        "length": 2,
+                                                        "type": "idlist",
+                                                        "ids": [
+                                                            "f333"
+                                                        ]
+                                                    },
+                                                    "type": "INTEGER",
+                                                    "isArray": false,
+                                                    "dimension": 0,
+                                                    "size": [],
+                                                    "start": [],
+                                                    "recordTable": null
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
@@ -976,7 +1263,7 @@
         ],
         "subFunc": [
             {
-                "id": 12,
+                "id": 19,
                 "token": "gcd",
                 "type": "INTEGER",
                 "table": {
@@ -990,7 +1277,7 @@
                     "constants": [],
                     "variables": [
                         {
-                            "id": 10,
+                            "id": 17,
                             "token": "a",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1000,7 +1287,7 @@
                             "recordType": null
                         },
                         {
-                            "id": 11,
+                            "id": 18,
                             "token": "b",
                             "type": "INTEGER",
                             "isArray": false,

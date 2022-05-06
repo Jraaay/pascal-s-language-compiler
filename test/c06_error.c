@@ -1,4 +1,3 @@
-
 int x, y; 
 struct {
 	char title[50]; 

@@ -1,4 +1,6 @@
 #include<stdbool.h>
+#include<stdbool.h>
+#include<stdbool.h>
 #include<stdio.h>
 
 const int a = 5; 
@@ -10,6 +12,17 @@ char e[50];
 struct {
 	float f1; 
 	bool f2[50][100]; 
+	struct {
+		float f31; 
+		bool f32[50][100]; 
+		struct {
+			float f331; 
+			bool f332[50][100]; 
+			int f333; 
+		}
+		f33; 
+	}
+	f3; 
 }
 f; 
 
