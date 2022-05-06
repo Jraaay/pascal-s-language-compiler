@@ -3807,10 +3807,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -3884,9 +3882,7 @@
                 "table": {
                     "params": 1,
                     "references": [
-                        [
-                            false
-                        ]
+                        false
                     ],
                     "constants": [],
                     "variables": [

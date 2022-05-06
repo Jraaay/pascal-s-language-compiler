@@ -505,10 +505,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            true,
-                            true
-                        ]
+                        true,
+                        true
                     ],
                     "constants": [],
                     "variables": [

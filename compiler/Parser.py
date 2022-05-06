@@ -836,9 +836,9 @@ class Parser:
                     "parameters": p[1]["parameters"] + [p[3]] if p[3] else p[1]["parameters"]
                 }
                 p[0]["SymbolTable"] = {
-                    "params": p[1]["SymbolTable"]["params"] + p[1]["SymbolTable"]["size"],
-                    "references": p[1]["SymbolTable"]["references"] + [p[3]["SymbolTable"]["references"]],
-                    "variables": p[1]["SymbolTable"]["variables"] + [p[3]["SymbolTable"]["variables"]],
+                    "params": p[1]["SymbolTable"]["params"] + p[3]["SymbolTable"]["size"],
+                    "references": p[1]["SymbolTable"]["references"] + p[3]["SymbolTable"]["references"],
+                    "variables": p[1]["SymbolTable"]["variables"] + p[3]["SymbolTable"]["variables"],
                 }
             else:
                 p[0] = {
@@ -848,7 +848,7 @@ class Parser:
                 }
                 p[0]["SymbolTable"] = {
                     "params": p[1]["SymbolTable"]["size"],
-                    "references": [p[1]["SymbolTable"]["references"]],
+                    "references": p[1]["SymbolTable"]["references"],
                     "variables": p[1]["SymbolTable"]["variables"],
                 }
 
@@ -1576,7 +1576,7 @@ class Parser:
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]
-                    if self.subFuncMap[p[1]]["references"][0][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
+                    if self.subFuncMap[p[1]]["references"][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
                         if not self.error:
                             self.error = []
                         self.error += [{
