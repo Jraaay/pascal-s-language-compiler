@@ -336,6 +336,38 @@
                                     ]
                                 }
                             }
+                        },
+                        {
+                            "idlist": {
+                                "length": 2,
+                                "type": "idlist",
+                                "ids": [
+                                    "g"
+                                ]
+                            },
+                            "type": {
+                                "length": 7,
+                                "type": "type",
+                                "_type": "ARRAY",
+                                "period": {
+                                    "length": 6,
+                                    "type": "period",
+                                    "values": [
+                                        {
+                                            "start": 1,
+                                            "end": 50
+                                        },
+                                        {
+                                            "start": 1,
+                                            "end": 100
+                                        }
+                                    ]
+                                },
+                                "basic_type": {
+                                    "type": "basic_type",
+                                    "_type": "BOOLEAN"
+                                }
+                            }
                         }
                     ]
                 }
@@ -346,7 +378,7 @@
                 "subprograms": [
                     {
                         "length": 4,
-                        "id": 19,
+                        "id": 20,
                         "type": "subprogram",
                         "subprogram_head": {
                             "length": 7,
@@ -364,23 +396,19 @@
                                             "length": 2,
                                             "type": "parameter",
                                             "value": {
-                                                "length": 3,
-                                                "type": "var_parameter",
-                                                "value_parameter": {
+                                                "length": 4,
+                                                "type": "value_parameter",
+                                                "idlist": {
                                                     "length": 4,
-                                                    "type": "value_parameter",
-                                                    "idlist": {
-                                                        "length": 4,
-                                                        "type": "idlist",
-                                                        "ids": [
-                                                            "a",
-                                                            "b"
-                                                        ]
-                                                    },
-                                                    "basic_type": {
-                                                        "type": "basic_type",
-                                                        "_type": "INTEGER"
-                                                    }
+                                                    "type": "idlist",
+                                                    "ids": [
+                                                        "a",
+                                                        "b"
+                                                    ]
+                                                },
+                                                "basic_type": {
+                                                    "type": "basic_type",
+                                                    "_type": "INTEGER"
                                                 }
                                             }
                                         }
@@ -598,6 +626,51 @@
                                                         }
                                                     }
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "length": 5,
+                                            "type": "statement",
+                                            "_type": "WRITE",
+                                            "expression_list": {
+                                                "length": 2,
+                                                "type": "expression_list",
+                                                "__type": [
+                                                    "UNDEFINED"
+                                                ],
+                                                "expressions": [
+                                                    {
+                                                        "length": 2,
+                                                        "type": "expression",
+                                                        "__type": "UNDEFINED",
+                                                        "simple_expression": {
+                                                            "length": 2,
+                                                            "type": "simple_expression",
+                                                            "__type": "UNDEFINED",
+                                                            "term": {
+                                                                "length": 2,
+                                                                "type": "term",
+                                                                "__type": "UNDEFINED",
+                                                                "factor": {
+                                                                    "length": 2,
+                                                                    "type": "factor",
+                                                                    "_type": "variable",
+                                                                    "__type": "UNDEFINED",
+                                                                    "variable": {
+                                                                        "length": 3,
+                                                                        "type": "variable",
+                                                                        "__type": "UNDEFINED",
+                                                                        "ID": [
+                                                                            "f",
+                                                                            "f1"
+                                                                        ],
+                                                                        "id_varpart": null
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         },
                                         {
@@ -1259,25 +1332,39 @@
                         }
                     ]
                 }
+            },
+            {
+                "id": 17,
+                "token": "g",
+                "type": "BOOLEAN",
+                "isArray": true,
+                "dimension": 2,
+                "size": [
+                    50,
+                    100
+                ],
+                "start": [
+                    1,
+                    1
+                ],
+                "recordTable": null
             }
         ],
         "subFunc": [
             {
-                "id": 19,
+                "id": 20,
                 "token": "gcd",
                 "type": "INTEGER",
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            true,
-                            true
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
                         {
-                            "id": 17,
+                            "id": 18,
                             "token": "a",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1287,7 +1374,7 @@
                             "recordType": null
                         },
                         {
-                            "id": 18,
+                            "id": 19,
                             "token": "b",
                             "type": "INTEGER",
                             "isArray": false,
@@ -1301,6 +1388,15 @@
             }
         ]
     },
-    "error": [],
+    "error": [
+        {
+            "code": "C-02",
+            "info": {
+                "line": 30,
+                "value": "f1",
+                "lexpos": 682
+            }
+        }
+    ],
     "warning": []
 }

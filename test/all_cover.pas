@@ -21,11 +21,22 @@ Var
             End;
         End;
     End;
+    g : array [1..50, 1..100] of boolean;
 
-Function gcd(a : integer; b : real) : integer;
+Function gcd(a,b : integer) : integer;
 Begin
     If b = 0 Then gcd := a
     Else gcd := gcd(b, b);
+    // write(g[10,20]);
+    write(f.f1);
+    // for i:=1 to b do
+    //     begin
+    //       read(b);
+    //     end;
+    // for i := a to b do
+    // begin
+    //     write(i);
+    // end;
     gcd(a,b)
 End;
 
