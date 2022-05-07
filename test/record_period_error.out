@@ -257,24 +257,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "CHAR",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "title"
@@ -335,24 +335,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "INTEGER",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "INTEGER",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "INTEGER",
                                                 "ID": [
                                                     "Books",
                                                     "bookid"
@@ -520,26 +520,10 @@
             }
         },
         {
-            "code": "C-10",
-            "info": {
-                "line": 14,
-                "value": "a",
-                "lexpos": 276
-            }
-        },
-        {
             "code": "C-02",
             "info": {
                 "line": 15,
                 "value": "bookid",
-                "lexpos": 297
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 15,
-                "value": "b",
                 "lexpos": 297
             }
         }

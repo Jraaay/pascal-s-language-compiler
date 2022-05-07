@@ -1712,10 +1712,34 @@ class Parser:
 
     def search_symbol(self, token, recordTable=None):
         if recordTable is None:
-            if self.inSubFun and token in list(self.subSymbol.keys()):
-                return self.symbolMap[self.subSymbol[token]]
-            elif token in list(self.curSymbol.keys()):
-                return self.symbolMap[self.curSymbol[token]]
+            if type(token) == str:
+                token = [token]
+            if self.inSubFun and token[0] in list(self.subSymbol.keys()):
+                if len(token) == 1:
+                    return self.symbolMap[self.subSymbol[token[0]]]
+                else:
+                    record = self.symbolMap[self.subSymbol[token[0]]]
+                    for i in range(1, len(token)):
+                        for j in record["recordTable"]["variables"]:
+                            if token[i] in j["token"]["ids"]:
+                                if j["type"] == "RECORD":
+                                    record = j
+                                    break
+                                else:
+                                    return j
+            elif token[0] in list(self.curSymbol.keys()):
+                if len(token) == 1:
+                    return self.symbolMap[self.curSymbol[token[0]]]
+                else:
+                    record = self.symbolMap[self.curSymbol[token[0]]]
+                    for i in range(1, len(token)):
+                        for j in record["recordTable"]["variables"]:
+                            if token[i] in j["token"]["ids"]:
+                                if j["type"] == "RECORD":
+                                    record = j
+                                    break
+                                else:
+                                    return j
         else:
             for i in recordTable["variables"]:
                 if i["token"] == token:
