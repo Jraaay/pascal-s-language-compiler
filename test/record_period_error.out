@@ -492,7 +492,7 @@
         {
             "code": "C-01",
             "info": {
-                "line": 5,
+                "line": 8,
                 "value": [
                     50,
                     1
@@ -503,28 +503,12 @@
         {
             "code": "C-01",
             "info": {
-                "line": 7,
+                "line": 10,
                 "value": [
                     100,
                     1
                 ],
                 "lexpos": 169
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 14,
-                "value": "title",
-                "lexpos": 276
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 15,
-                "value": "bookid",
-                "lexpos": 297
             }
         }
     ],

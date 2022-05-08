@@ -597,7 +597,7 @@
         {
             "code": "C-14",
             "info": {
-                "line": 10,
+                "line": 12,
                 "value": [
                     "b",
                     "RECORD",

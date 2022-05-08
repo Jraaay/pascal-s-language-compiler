@@ -346,7 +346,7 @@
         {
             "code": "C-04",
             "info": {
-                "line": 11,
+                "line": 12,
                 "value": [
                     "x",
                     "INTEGER",

@@ -535,7 +535,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 5,
+                "line": 35,
                 "value": "c",
                 "lexpos": 109
             }

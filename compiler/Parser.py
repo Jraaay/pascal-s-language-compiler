@@ -102,7 +102,6 @@ class Parser:
 
         def t_PROGRAM(t):
             r'(?i)PROGRAM'
-            t.lexer.lineno = 0
             return t
 
         def t_ignore_COMMENT(t):
@@ -193,6 +192,8 @@ class Parser:
                 "variables": p[3]["SymbolTable"]["variables"],
                 "subFunc": p[3]["SymbolTable"]["subFunc"]
             }
+            p.lexer.lineno = 0
+
 
         def p_program_head(p):
             '''
@@ -1226,6 +1227,10 @@ class Parser:
                         i)["recordTable"]["variables"]]  # possiable_token符号表成为该record的变量表
                     record_table = self.search_symbol(i)["recordTable"]
                 for j in p[1][1:]:  # record内部项
+                    new_possiable_token = []
+                    for record_item in possiable_token:
+                        new_possiable_token += record_item['ids']
+                    possiable_token = new_possiable_token
                     if j not in possiable_token:
                         if not self.error:
                             self.error = []
@@ -1767,7 +1772,7 @@ class Parser:
                                     return j
         else:
             for i in recordTable["variables"]:
-                if i["token"] == token:  # 名称与recordTable中某变量名称相同
+                if token in i['token']['ids']:  # 名称与recordTable中某变量名称相同
                     return i  # 返回recordTable中该变量
 
     def _removeSymbolTable(self, p):

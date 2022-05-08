@@ -430,14 +430,14 @@
         {
             "code": "C-06",
             "info": {
-                "line": 11,
+                "line": 13,
                 "lexpos": 208
             }
         },
         {
             "code": "C-04",
             "info": {
-                "line": 11,
+                "line": 13,
                 "value": [
                     "x",
                     "INTEGER",
@@ -449,14 +449,14 @@
         {
             "code": "C-06",
             "info": {
-                "line": 12,
+                "line": 14,
                 "lexpos": 222
             }
         },
         {
             "code": "C-04",
             "info": {
-                "line": 12,
+                "line": 14,
                 "value": [
                     "x",
                     "INTEGER",
