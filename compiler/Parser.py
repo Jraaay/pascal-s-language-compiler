@@ -101,7 +101,6 @@ class Parser:
         t_ADDOP = r'(?i)\+|-|OR'
         t_PROGRAM = r'(?i)PROGRAM'
 
-
         def t_ignore_COMMENT(t):
             r'\{.*\}|//.*|\(\*(.|\n)*\*\)'
             t.lexer.lineno += t.value.count('\n')
@@ -191,7 +190,6 @@ class Parser:
                 "subFunc": p[3]["SymbolTable"]["subFunc"]
             }
             p.lexer.lineno = 0
-
 
         def p_program_head(p):
             '''
@@ -878,7 +876,7 @@ class Parser:
                 "references": [True for i in range(p[2]["SymbolTable"]["size"])],
                 "variables": p[2]["SymbolTable"]["variables"],
                 "size": p[2]["SymbolTable"]["size"]
-            }  # 继承value_parameter的符号表
+            }  # 规约value_parameter的符号表
 
         def p_value_parameter(p):
             '''
@@ -944,7 +942,7 @@ class Parser:
             p[0] = {
                 "length": len(p),
                 "type": "compound_statement",
-                "statement_list": p[2]  # 继承语句的列表
+                "statement_list": p[2]  # 规约语句的列表
             }
 
         def p_statement_list(p):
@@ -1228,7 +1226,7 @@ class Parser:
                     new_possiable_token = []
                     for record_item in possiable_token:
                         new_possiable_token += record_item['ids']
-                    possiable_token = new_possiable_token
+                    possiable_token = new_possiable_token  # 更新possiable_token
                     if j not in possiable_token:
                         if not self.error:
                             self.error = []
@@ -1739,26 +1737,29 @@ class Parser:
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
     def search_symbol(self, token, recordTable=None):
-        if recordTable is None:
+        if recordTable is None:  # 没有recordTable
             if type(token) == str:
                 token = [token]
+            # 在子函数中
             if self.inSubFun and token[0] in list(self.subSymbol.keys()):
                 if len(token) == 1:
+                    # 不是record，返回子函数符号表
                     return self.symbolMap[self.subSymbol[token[0]]]
-                else:
+                else:  # record
                     record = self.symbolMap[self.subSymbol[token[0]]]
-                    for i in range(1, len(token)):
+                    for i in range(1, len(token)):  # 遍历record内部项
                         for j in record["recordTable"]["variables"]:
                             if token[i] in j["token"]["ids"]:
-                                if j["type"] == "RECORD":
+                                if j["type"] == "RECORD":  # 该项类型仍是record
                                     record = j
                                     break
                                 else:
-                                    return j
-            elif token[0] in list(self.curSymbol.keys()):
+                                    return j  # 返回非record类型的变量
+            elif token[0] in list(self.curSymbol.keys()):  # 在当前符号表中
                 if len(token) == 1:
+                    # 不是record，返回当前符号表
                     return self.symbolMap[self.curSymbol[token[0]]]
-                else:
+                else:  # record
                     record = self.symbolMap[self.curSymbol[token[0]]]
                     for i in range(1, len(token)):
                         for j in record["recordTable"]["variables"]:
@@ -1767,7 +1768,7 @@ class Parser:
                                     record = j
                                     break
                                 else:
-                                    return j
+                                    return j  # 返回非record类型的变量
         else:
             for i in recordTable["variables"]:
                 if token in i['token']['ids']:  # 名称与recordTable中某变量名称相同
