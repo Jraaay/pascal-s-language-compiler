@@ -99,10 +99,8 @@ class Parser:
         t_BEGIN = r'(?i)BEGIN'
         t_SEMICOLON = r';'
         t_ADDOP = r'(?i)\+|-|OR'
+        t_PROGRAM = r'(?i)PROGRAM'
 
-        def t_PROGRAM(t):
-            r'(?i)PROGRAM'
-            return t
 
         def t_ignore_COMMENT(t):
             r'\{.*\}|//.*|\(\*(.|\n)*\*\)'
@@ -242,7 +240,7 @@ class Parser:
             p[0] = {
                 "length": len(p),
                 "type": "idlist",
-                "ids": p[1]["ids"] + [p[3]] if p[3] else p[1]["ids"]
+                "ids": p[1]["ids"] + [p[3]]
             }
             if self.inSubFun and p[3] in list(self.subSymbol.keys()) and p[3]:
                 if not self.error:
