@@ -1736,12 +1736,35 @@ class Parser:
         self.parser = yacc(debug=debug, write_tables=write_tables)
 
     def search_symbol(self, token, recordTable=None):
-        if recordTable is None:  # 没有record
-            if self.inSubFun and token in list(self.subSymbol.keys()):
-                # 如果在子函数里，则返回子函数符号表
-                return self.symbolMap[self.subSymbol[token]]
-            elif token in list(self.curSymbol.keys()):
-                return self.symbolMap[self.curSymbol[token]]  # 否则返回当前符号表
+        if recordTable is None:
+            if type(token) == str:
+                token = [token]
+            if self.inSubFun and token[0] in list(self.subSymbol.keys()):
+                if len(token) == 1:
+                    return self.symbolMap[self.subSymbol[token[0]]]
+                else:
+                    record = self.symbolMap[self.subSymbol[token[0]]]
+                    for i in range(1, len(token)):
+                        for j in record["recordTable"]["variables"]:
+                            if token[i] in j["token"]["ids"]:
+                                if j["type"] == "RECORD":
+                                    record = j
+                                    break
+                                else:
+                                    return j
+            elif token[0] in list(self.curSymbol.keys()):
+                if len(token) == 1:
+                    return self.symbolMap[self.curSymbol[token[0]]]
+                else:
+                    record = self.symbolMap[self.curSymbol[token[0]]]
+                    for i in range(1, len(token)):
+                        for j in record["recordTable"]["variables"]:
+                            if token[i] in j["token"]["ids"]:
+                                if j["type"] == "RECORD":
+                                    record = j
+                                    break
+                                else:
+                                    return j
         else:
             for i in recordTable["variables"]:
                 if i["token"] == token:  # 名称与recordTable中某变量名称相同

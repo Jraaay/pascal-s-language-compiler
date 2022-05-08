@@ -636,30 +636,30 @@
                                                 "length": 2,
                                                 "type": "expression_list",
                                                 "__type": [
-                                                    "UNDEFINED"
+                                                    "REAL"
                                                 ],
                                                 "expressions": [
                                                     {
                                                         "length": 2,
                                                         "type": "expression",
-                                                        "__type": "UNDEFINED",
+                                                        "__type": "REAL",
                                                         "simple_expression": {
                                                             "length": 2,
                                                             "type": "simple_expression",
-                                                            "__type": "UNDEFINED",
+                                                            "__type": "REAL",
                                                             "term": {
                                                                 "length": 2,
                                                                 "type": "term",
-                                                                "__type": "UNDEFINED",
+                                                                "__type": "REAL",
                                                                 "factor": {
                                                                     "length": 2,
                                                                     "type": "factor",
                                                                     "_type": "variable",
-                                                                    "__type": "UNDEFINED",
+                                                                    "__type": "REAL",
                                                                     "variable": {
                                                                         "length": 3,
                                                                         "type": "variable",
-                                                                        "__type": "UNDEFINED",
+                                                                        "__type": "REAL",
                                                                         "ID": [
                                                                             "f",
                                                                             "f1"
