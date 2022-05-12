@@ -6,7 +6,8 @@ class CodeGenerator:
     targetCode = ''  # 目标代码
     domain = []  # 作用域栈
     headFile = []  # 头文件
-    f_stdio = False
+    f_stdio = False  # stdio存在标识
+    f_stdbool = False  # stdbool存在标识
     ast = None  # 抽象语法树
     symbolTable = None  # 符号表
 
@@ -233,7 +234,9 @@ class CodeGenerator:
         if node["_type"] == "REAL":
             return "float"
         if node["_type"] == "BOOLEAN":
-            self.headFile.append("#include<stdbool.h>\n")
+            if self.f_stdbool == False:
+                self.headFile.append("#include<stdbool.h>\n")
+                self.f_stdbool = True
             return "bool"
         if node["_type"] == "CHAR":
             return "char"
@@ -826,7 +829,8 @@ class CodeGenerator:
         self.targetCode = ''  # 目标代码
         self.domain = []  # 作用域栈
         self.headFile = []  # 头文件
-        self.f_stdio = False
+        self.f_stdio = False  # stdio存在标识
+        self.f_stdbool = False  # stdbool存在标识
         self.ast = None  # 抽象语法树
         self.symbolTable = None  # 符号表
 
