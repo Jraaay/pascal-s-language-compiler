@@ -5,6 +5,7 @@ import copy
 
 class Parser:
     parser = None
+    lexer = None
     SymbolTable = {
         "constants": [],
         "variables": [],
@@ -185,7 +186,7 @@ class Parser:
             })
             t.lexer.skip(1)  # 错误处理：跳过该错误
 
-        lexer = lex(debug=debug)
+        self.lexer = lex(debug=debug)
 
         def p_programstruct(p):
             '''
@@ -204,8 +205,6 @@ class Parser:
                 "variables": p[3]["SymbolTable"]["variables"],
                 "subFunc": p[3]["SymbolTable"]["subFunc"]
             }
-            # 该程序编译完毕，重置lineno
-            p.lexer.lineno = 0
 
         def p_program_head(p):
             '''
@@ -788,11 +787,11 @@ class Parser:
 
         def p_subprogram_head(p):
             '''
-            subprogram_head : PROCEDURE seen_PROCEDURE ID formal_parameter
-                            | FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type 
+            subprogram_head : seen_PROCEDURE PROCEDURE ID formal_parameter
+                            | seen_FUNCTION FUNCTION ID formal_parameter COLON basic_type 
             '''
             # 产生式1 subprogram_head -> procedure id formal_parameter ，其中 seen_PROCEDURE 用以进行初始化动作操作
-            if not type(p[1]) == dict and p[1].upper() == 'PROCEDURE':
+            if not type(p[2]) == dict and p[2].upper() == 'PROCEDURE':
                 p[0] = {
                     "length": len(p),
                     "type": "subprogram_head",
@@ -828,7 +827,7 @@ class Parser:
                 }
                 self.id += 1
             # 产生式2 subprogram_head -> function seen_FUNCTION id formal_parameter : basic_type， 其中 seen_FUNCTION 用以进行初始化动作操作
-            elif not type(p[1]) == dict and p[1].upper() == 'FUNCTION':
+            elif not type(p[2]) == dict and p[2].upper() == 'FUNCTION':
                 p[0] = {
                     "length": len(p),
                     "type": "subprogram_head",
@@ -1869,10 +1868,9 @@ class Parser:
         self.symbolMap = {}
         self.subFuncMap = {}
         ast = None
-        # try:
         ast = self.parser.parse(data)
-        # except:
-        #     pass
+        # 该程序编译完毕，重置lineno
+        self.lexer.lineno = 0
         self._removeSymbolTable(ast)
         return {
             "ast": ast,

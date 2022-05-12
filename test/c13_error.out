@@ -516,7 +516,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 8,
+                "line": 7,
                 "value": "c",
                 "lexpos": 149
             }
@@ -524,7 +524,7 @@
         {
             "code": "C-13",
             "info": {
-                "line": 9,
+                "line": 8,
                 "value": [
                     "UNDEFINED",
                     "INTEGER"

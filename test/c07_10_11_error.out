@@ -220,7 +220,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 7,
+                "line": 6,
                 "value": "c",
                 "lexpos": 66
             }
@@ -228,7 +228,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 7,
+                "line": 6,
                 "value": "a",
                 "lexpos": 70
             }
@@ -236,14 +236,14 @@
         {
             "code": "C-07",
             "info": {
-                "line": 7,
+                "line": 6,
                 "lexpos": 73
             }
         },
         {
             "code": "C-11",
             "info": {
-                "line": 7,
+                "line": 6,
                 "value": "c",
                 "lexpos": 73
             }
@@ -251,7 +251,7 @@
         {
             "code": "C-10",
             "info": {
-                "line": 7,
+                "line": 6,
                 "value": "c",
                 "lexpos": 73
             }
@@ -259,7 +259,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 8,
+                "line": 7,
                 "value": "a",
                 "lexpos": 84
             }
@@ -267,14 +267,14 @@
         {
             "code": "C-07",
             "info": {
-                "line": 8,
+                "line": 7,
                 "lexpos": 87
             }
         },
         {
             "code": "C-10",
             "info": {
-                "line": 8,
+                "line": 7,
                 "value": "x",
                 "lexpos": 87
             }

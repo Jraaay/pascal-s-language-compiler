@@ -9,7 +9,7 @@
         {
             "code": "B-01",
             "info": {
-                "line": 20,
+                "line": 6,
                 "value": "=",
                 "lexpos": 121
             }
@@ -17,7 +17,7 @@
         {
             "code": "A-02",
             "info": {
-                "line": 26,
+                "line": 12,
                 "value": "!",
                 "lexpos": 201
             }
@@ -25,7 +25,7 @@
         {
             "code": "A-02",
             "info": {
-                "line": 27,
+                "line": 13,
                 "value": "~",
                 "lexpos": 205
             }

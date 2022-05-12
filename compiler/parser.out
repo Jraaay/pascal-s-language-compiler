@@ -36,8 +36,8 @@ Rule 30    subprogram_declarations -> <empty>
 Rule 31    subprogram -> subprogram_head SEMICOLON subprogram_body
 Rule 32    seen_PROCEDURE -> <empty>
 Rule 33    seen_FUNCTION -> <empty>
-Rule 34    subprogram_head -> PROCEDURE seen_PROCEDURE ID formal_parameter
-Rule 35    subprogram_head -> FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type
+Rule 34    subprogram_head -> seen_PROCEDURE PROCEDURE ID formal_parameter
+Rule 35    subprogram_head -> seen_FUNCTION FUNCTION ID formal_parameter COLON basic_type
 Rule 36    formal_parameter -> LPAREN parameter_list RPAREN
 Rule 37    formal_parameter -> <empty>
 Rule 38    parameter_list -> parameter_list SEMICOLON parameter
@@ -346,16 +346,20 @@ state 17
     (29) subprogram_declarations -> subprogram_declarations . subprogram SEMICOLON
     (45) compound_statement -> . BEGIN statement_list END
     (31) subprogram -> . subprogram_head SEMICOLON subprogram_body
-    (34) subprogram_head -> . PROCEDURE seen_PROCEDURE ID formal_parameter
-    (35) subprogram_head -> . FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type
+    (34) subprogram_head -> . seen_PROCEDURE PROCEDURE ID formal_parameter
+    (35) subprogram_head -> . seen_FUNCTION FUNCTION ID formal_parameter COLON basic_type
+    (32) seen_PROCEDURE -> .
+    (33) seen_FUNCTION -> .
 
     BEGIN           shift and go to state 26
-    PROCEDURE       shift and go to state 28
-    FUNCTION        shift and go to state 29
+    PROCEDURE       reduce using rule 32 (seen_PROCEDURE -> .)
+    FUNCTION        reduce using rule 33 (seen_FUNCTION -> .)
 
     compound_statement             shift and go to state 24
     subprogram                     shift and go to state 25
     subprogram_head                shift and go to state 27
+    seen_PROCEDURE                 shift and go to state 28
+    seen_FUNCTION                  shift and go to state 29
 
 state 18
 
@@ -474,21 +478,17 @@ state 27
 
 state 28
 
-    (34) subprogram_head -> PROCEDURE . seen_PROCEDURE ID formal_parameter
-    (32) seen_PROCEDURE -> .
+    (34) subprogram_head -> seen_PROCEDURE . PROCEDURE ID formal_parameter
 
-    ID              reduce using rule 32 (seen_PROCEDURE -> .)
+    PROCEDURE       shift and go to state 52
 
-    seen_PROCEDURE                 shift and go to state 52
 
 state 29
 
-    (35) subprogram_head -> FUNCTION . seen_FUNCTION ID formal_parameter COLON basic_type
-    (33) seen_FUNCTION -> .
+    (35) subprogram_head -> seen_FUNCTION . FUNCTION ID formal_parameter COLON basic_type
 
-    ID              reduce using rule 33 (seen_FUNCTION -> .)
+    FUNCTION        shift and go to state 53
 
-    seen_FUNCTION                  shift and go to state 53
 
 state 30
 
@@ -751,14 +751,14 @@ state 51
 
 state 52
 
-    (34) subprogram_head -> PROCEDURE seen_PROCEDURE . ID formal_parameter
+    (34) subprogram_head -> seen_PROCEDURE PROCEDURE . ID formal_parameter
 
     ID              shift and go to state 90
 
 
 state 53
 
-    (35) subprogram_head -> FUNCTION seen_FUNCTION . ID formal_parameter COLON basic_type
+    (35) subprogram_head -> seen_FUNCTION FUNCTION . ID formal_parameter COLON basic_type
 
     ID              shift and go to state 91
 
@@ -1376,7 +1376,7 @@ state 89
 
 state 90
 
-    (34) subprogram_head -> PROCEDURE seen_PROCEDURE ID . formal_parameter
+    (34) subprogram_head -> seen_PROCEDURE PROCEDURE ID . formal_parameter
     (36) formal_parameter -> . LPAREN parameter_list RPAREN
     (37) formal_parameter -> .
 
@@ -1387,7 +1387,7 @@ state 90
 
 state 91
 
-    (35) subprogram_head -> FUNCTION seen_FUNCTION ID . formal_parameter COLON basic_type
+    (35) subprogram_head -> seen_FUNCTION FUNCTION ID . formal_parameter COLON basic_type
     (36) formal_parameter -> . LPAREN parameter_list RPAREN
     (37) formal_parameter -> .
 
@@ -1860,9 +1860,9 @@ state 118
 
 state 119
 
-    (34) subprogram_head -> PROCEDURE seen_PROCEDURE ID formal_parameter .
+    (34) subprogram_head -> seen_PROCEDURE PROCEDURE ID formal_parameter .
 
-    SEMICOLON       reduce using rule 34 (subprogram_head -> PROCEDURE seen_PROCEDURE ID formal_parameter .)
+    SEMICOLON       reduce using rule 34 (subprogram_head -> seen_PROCEDURE PROCEDURE ID formal_parameter .)
 
 
 state 120
@@ -1888,7 +1888,7 @@ state 120
 
 state 121
 
-    (35) subprogram_head -> FUNCTION seen_FUNCTION ID formal_parameter . COLON basic_type
+    (35) subprogram_head -> seen_FUNCTION FUNCTION ID formal_parameter . COLON basic_type
 
     COLON           shift and go to state 150
 
@@ -2238,7 +2238,7 @@ state 149
 
 state 150
 
-    (35) subprogram_head -> FUNCTION seen_FUNCTION ID formal_parameter COLON . basic_type
+    (35) subprogram_head -> seen_FUNCTION FUNCTION ID formal_parameter COLON . basic_type
     (23) basic_type -> . INTEGER
     (24) basic_type -> . REAL
     (25) basic_type -> . BOOLEAN
@@ -2463,9 +2463,9 @@ state 165
 
 state 166
 
-    (35) subprogram_head -> FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type .
+    (35) subprogram_head -> seen_FUNCTION FUNCTION ID formal_parameter COLON basic_type .
 
-    SEMICOLON       reduce using rule 35 (subprogram_head -> FUNCTION seen_FUNCTION ID formal_parameter COLON basic_type .)
+    SEMICOLON       reduce using rule 35 (subprogram_head -> seen_FUNCTION FUNCTION ID formal_parameter COLON basic_type .)
 
 
 state 167
