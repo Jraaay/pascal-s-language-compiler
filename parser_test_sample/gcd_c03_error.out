@@ -578,7 +578,7 @@
         {
             "code": "C-03",
             "info": {
-                "line": 2,
+                "line": 3,
                 "value": "a",
                 "lexpos": 52
             }

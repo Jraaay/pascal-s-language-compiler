@@ -536,7 +536,7 @@
         {
             "code": "W-01",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": [
                     "gcd",
                     "BOOLEAN",
