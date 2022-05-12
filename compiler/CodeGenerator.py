@@ -570,10 +570,10 @@ class CodeGenerator:
                 # for i, j in enumerate(subFunc_table["variables"]):
                 # print(self.domain[-1])
                 if subFunc_table["references"] != None:
-                    arg_num = len(subFunc_table["references"][0])
+                    arg_num = len(subFunc_table["references"])
                     for i in range(arg_num):
                         if subFunc_table["variables"][i]["token"] == node["ID"]:
-                            if subFunc_table["references"][0][i] == True:
+                            if subFunc_table["references"][i] == True:
                                 result += "*"
                                 pass
                             break
@@ -691,7 +691,7 @@ class CodeGenerator:
                 else:
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
-                            "table"]["references"][0]
+                            "table"]["references"]
                         # print(is_ref_list)
                         if is_ref_list[-1-arg_depth] == True:
                             result += "&"
@@ -711,7 +711,7 @@ class CodeGenerator:
                     result += ","
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
-                            "table"]["references"][0]
+                            "table"]["references"]
                         # print(is_ref_list)
                         if is_ref_list[-1-arg_depth] == True:
                             result += "&"

@@ -482,10 +482,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -518,7 +516,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": "c",
                 "lexpos": 149
             }
@@ -526,7 +524,7 @@
         {
             "code": "C-13",
             "info": {
-                "line": 7,
+                "line": 8,
                 "value": [
                     "UNDEFINED",
                     "INTEGER"

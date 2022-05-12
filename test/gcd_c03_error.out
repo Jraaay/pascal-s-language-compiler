@@ -544,10 +544,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -580,7 +578,7 @@
         {
             "code": "C-03",
             "info": {
-                "line": 2,
+                "line": 3,
                 "value": "a",
                 "lexpos": 52
             }

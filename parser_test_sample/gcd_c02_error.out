@@ -501,10 +501,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -537,7 +535,7 @@
         {
             "code": "C-02",
             "info": {
-                "line": 5,
+                "line": 6,
                 "value": "c",
                 "lexpos": 109
             }

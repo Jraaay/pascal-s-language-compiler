@@ -379,24 +379,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "CHAR",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "title"
@@ -491,24 +491,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "CHAR",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "Books2",
@@ -604,24 +604,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "CHAR",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "Books2",
@@ -723,24 +723,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "CHAR",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "CHAR",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "CHAR",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "CHAR",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "CHAR",
                                                 "ID": [
                                                     "Books",
                                                     "Books2",
@@ -802,24 +802,24 @@
                             "expression": {
                                 "length": 2,
                                 "type": "expression",
-                                "__type": "UNDEFINED",
+                                "__type": "INTEGER",
                                 "simple_expression": {
                                     "length": 2,
                                     "type": "simple_expression",
-                                    "__type": "UNDEFINED",
+                                    "__type": "INTEGER",
                                     "term": {
                                         "length": 2,
                                         "type": "term",
-                                        "__type": "UNDEFINED",
+                                        "__type": "INTEGER",
                                         "factor": {
                                             "length": 2,
                                             "type": "factor",
                                             "_type": "variable",
-                                            "__type": "UNDEFINED",
+                                            "__type": "INTEGER",
                                             "variable": {
                                                 "length": 3,
                                                 "type": "variable",
-                                                "__type": "UNDEFINED",
+                                                "__type": "INTEGER",
                                                 "ID": [
                                                     "Books",
                                                     "bookid"
@@ -1050,111 +1050,6 @@
         ],
         "subFunc": []
     },
-    "error": [
-        {
-            "code": "C-02",
-            "info": {
-                "line": 20,
-                "value": "title",
-                "lexpos": 435
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 20,
-                "value": "a",
-                "lexpos": 435
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 21,
-                "value": "Books2",
-                "lexpos": 470
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 21,
-                "value": "title",
-                "lexpos": 470
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 21,
-                "value": "a",
-                "lexpos": 470
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 22,
-                "value": "Books2",
-                "lexpos": 504
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 22,
-                "value": "author",
-                "lexpos": 504
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 22,
-                "value": "a",
-                "lexpos": 504
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 23,
-                "value": "Books2",
-                "lexpos": 539
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 23,
-                "value": "author",
-                "lexpos": 539
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 23,
-                "value": "a",
-                "lexpos": 539
-            }
-        },
-        {
-            "code": "C-02",
-            "info": {
-                "line": 24,
-                "value": "bookid",
-                "lexpos": 560
-            }
-        },
-        {
-            "code": "C-10",
-            "info": {
-                "line": 24,
-                "value": "b",
-                "lexpos": 560
-            }
-        }
-    ],
+    "error": [],
     "warning": []
 }

@@ -501,10 +501,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -538,7 +536,7 @@
         {
             "code": "W-01",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": [
                     "gcd",
                     "BOOLEAN",

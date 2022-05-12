@@ -505,10 +505,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            true,
-                            true
-                        ]
+                        true,
+                        true
                     ],
                     "constants": [],
                     "variables": [
@@ -541,7 +539,7 @@
         {
             "code": "F-01",
             "info": {
-                "line": 7,
+                "line": 8,
                 "lexpos": 162
             }
         }

@@ -530,10 +530,8 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        [
-                            false,
-                            false
-                        ]
+                        false,
+                        false
                     ],
                     "constants": [],
                     "variables": [
@@ -566,7 +564,7 @@
         {
             "code": "C-12",
             "info": {
-                "line": 7,
+                "line": 8,
                 "value": [
                     3,
                     2
