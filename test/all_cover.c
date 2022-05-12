@@ -28,15 +28,15 @@ struct {
 f; 
 bool g[50][100]; 
 
-int gcd(int a, int b){
+int gcd(int* a, float b){
 	if(b == 0){
-		return a; 
+		return *a; 
 	}
 	else{
-		return gcd(b, b); 
+		return gcd(*a, b); 
 	}
 	printf("f.f1: %f\n", f.f1); 
-	gcd(a, b); 
+	gcd(*a, b); 
 }
 
 int main(int argc, char* argv[]){

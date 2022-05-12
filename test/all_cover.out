@@ -389,9 +389,32 @@
                                 "length": 4,
                                 "type": "formal_parameter",
                                 "parameter_list": {
-                                    "length": 2,
+                                    "length": 4,
                                     "type": "parameter_list",
                                     "parameters": [
+                                        {
+                                            "length": 2,
+                                            "type": "parameter",
+                                            "value": {
+                                                "length": 3,
+                                                "type": "var_parameter",
+                                                "value_parameter": {
+                                                    "length": 4,
+                                                    "type": "value_parameter",
+                                                    "idlist": {
+                                                        "length": 2,
+                                                        "type": "idlist",
+                                                        "ids": [
+                                                            "a"
+                                                        ]
+                                                    },
+                                                    "basic_type": {
+                                                        "type": "basic_type",
+                                                        "_type": "INTEGER"
+                                                    }
+                                                }
+                                            }
+                                        },
                                         {
                                             "length": 2,
                                             "type": "parameter",
@@ -399,16 +422,15 @@
                                                 "length": 4,
                                                 "type": "value_parameter",
                                                 "idlist": {
-                                                    "length": 4,
+                                                    "length": 2,
                                                     "type": "idlist",
                                                     "ids": [
-                                                        "a",
                                                         "b"
                                                     ]
                                                 },
                                                 "basic_type": {
                                                     "type": "basic_type",
-                                                    "_type": "INTEGER"
+                                                    "_type": "REAL"
                                                 }
                                             }
                                         }
@@ -442,20 +464,20 @@
                                                 "simple_expression_1": {
                                                     "length": 2,
                                                     "type": "simple_expression",
-                                                    "__type": "INTEGER",
+                                                    "__type": "REAL",
                                                     "term": {
                                                         "length": 2,
                                                         "type": "term",
-                                                        "__type": "INTEGER",
+                                                        "__type": "REAL",
                                                         "factor": {
                                                             "length": 2,
                                                             "type": "factor",
                                                             "_type": "variable",
-                                                            "__type": "INTEGER",
+                                                            "__type": "REAL",
                                                             "variable": {
                                                                 "length": 3,
                                                                 "type": "variable",
-                                                                "__type": "INTEGER",
+                                                                "__type": "REAL",
                                                                 "ID": "b",
                                                                 "id_varpart": null
                                                             }
@@ -560,7 +582,7 @@
                                                                         "type": "expression_list",
                                                                         "__type": [
                                                                             "INTEGER",
-                                                                            "INTEGER"
+                                                                            "REAL"
                                                                         ],
                                                                         "expressions": [
                                                                             {
@@ -584,7 +606,7 @@
                                                                                                 "length": 3,
                                                                                                 "type": "variable",
                                                                                                 "__type": "INTEGER",
-                                                                                                "ID": "b",
+                                                                                                "ID": "a",
                                                                                                 "id_varpart": null
                                                                                             }
                                                                                         }
@@ -594,24 +616,24 @@
                                                                             {
                                                                                 "length": 2,
                                                                                 "type": "expression",
-                                                                                "__type": "INTEGER",
+                                                                                "__type": "REAL",
                                                                                 "simple_expression": {
                                                                                     "length": 2,
                                                                                     "type": "simple_expression",
-                                                                                    "__type": "INTEGER",
+                                                                                    "__type": "REAL",
                                                                                     "term": {
                                                                                         "length": 2,
                                                                                         "type": "term",
-                                                                                        "__type": "INTEGER",
+                                                                                        "__type": "REAL",
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
-                                                                                            "__type": "INTEGER",
+                                                                                            "__type": "REAL",
                                                                                             "variable": {
                                                                                                 "length": 3,
                                                                                                 "type": "variable",
-                                                                                                "__type": "INTEGER",
+                                                                                                "__type": "REAL",
                                                                                                 "ID": "b",
                                                                                                 "id_varpart": null
                                                                                             }
@@ -686,7 +708,7 @@
                                                     "type": "expression_list",
                                                     "__type": [
                                                         "INTEGER",
-                                                        "INTEGER"
+                                                        "REAL"
                                                     ],
                                                     "expressions": [
                                                         {
@@ -720,24 +742,24 @@
                                                         {
                                                             "length": 2,
                                                             "type": "expression",
-                                                            "__type": "INTEGER",
+                                                            "__type": "REAL",
                                                             "simple_expression": {
                                                                 "length": 2,
                                                                 "type": "simple_expression",
-                                                                "__type": "INTEGER",
+                                                                "__type": "REAL",
                                                                 "term": {
                                                                     "length": 2,
                                                                     "type": "term",
-                                                                    "__type": "INTEGER",
+                                                                    "__type": "REAL",
                                                                     "factor": {
                                                                         "length": 2,
                                                                         "type": "factor",
                                                                         "_type": "variable",
-                                                                        "__type": "INTEGER",
+                                                                        "__type": "REAL",
                                                                         "variable": {
                                                                             "length": 3,
                                                                             "type": "variable",
-                                                                            "__type": "INTEGER",
+                                                                            "__type": "REAL",
                                                                             "ID": "b",
                                                                             "id_varpart": null
                                                                         }
@@ -1358,7 +1380,7 @@
                 "table": {
                     "params": 2,
                     "references": [
-                        false,
+                        true,
                         false
                     ],
                     "constants": [],
@@ -1376,7 +1398,7 @@
                         {
                             "id": 19,
                             "token": "b",
-                            "type": "INTEGER",
+                            "type": "REAL",
                             "isArray": false,
                             "dimension": 0,
                             "size": [],

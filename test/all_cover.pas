@@ -23,10 +23,11 @@ Var
     End;
     g : array [1..50, 1..100] of boolean;
 
-Function gcd(a,b : integer) : integer;
+Function gcd(var a: integer; b:real) : integer;
+// Function gcd(var a : integer,b : integer) : integer;
 Begin
     If b = 0 Then gcd := a
-    Else gcd := gcd(b, b);
+    Else gcd := gcd(a, b);
     // write(g[10,20]);
     write(f.f1);
     // for i:=1 to b do
