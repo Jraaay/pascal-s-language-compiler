@@ -256,3 +256,15 @@ class TestParser(object):
         with open('./parser_test_sample/c14_error.out') as f:
             expected = json.load(f)
         assert ans == expected
+
+    def test_parser_all_cover(self):
+        """
+        id="104"
+        """
+        ans = None
+        expected = None
+        with open('./parser_test_sample/all_cover.pas') as f:
+            ans = self.myParser.parse(f.read())
+        with open('./parser_test_sample/all_cover.out') as f:
+            expected = json.load(f)
+        assert ans == expected
