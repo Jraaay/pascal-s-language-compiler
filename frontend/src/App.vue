@@ -365,6 +365,7 @@ export default defineComponent({
                     code: e.code,
                     line: e.info.line + empty,
                     column: calcColumn(codeSrc.value.trim(), e.info.lexpos),
+                    end_column: e.info.end_lexpos ? calcColumn(codeSrc.value.trim(), e.info.end_lexpos) : undefined,
                     message: errStr(e.code, e.info.value),
                 }
             })
@@ -378,7 +379,7 @@ export default defineComponent({
                     startLineNumber: e.line,
                     startColumn: (e.column || firstNonSpaceIndex) + 1,
                     endLineNumber: e.line,
-                    endColumn: line.length + 1,
+                    endColumn: e.end_column ? e.end_column : line.length + 1,
                     severity: e.code.includes('W') ? MarkerSeverity.Warning : MarkerSeverity.Error,
                     message: e.message,
                     code: e.code,

@@ -160,23 +160,25 @@
         {
             "code": "C-02",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": "a",
-                "lexpos": 70
+                "lexpos": 73,
+                "end_lexpos": 74
             }
         },
         {
             "code": "C-02",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": "b",
-                "lexpos": 73
+                "lexpos": 77,
+                "end_lexpos": 78
             }
         },
         {
             "code": "C-09",
             "info": {
-                "line": 6,
+                "line": 7,
                 "lexpos": 73
             }
         }

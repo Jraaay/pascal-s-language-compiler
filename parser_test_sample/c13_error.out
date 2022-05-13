@@ -516,9 +516,10 @@
         {
             "code": "C-02",
             "info": {
-                "line": 7,
+                "line": 8,
                 "value": "c",
-                "lexpos": 149
+                "lexpos": 154,
+                "end_lexpos": 155
             }
         },
         {
@@ -529,7 +530,7 @@
                     "UNDEFINED",
                     "INTEGER"
                 ],
-                "lexpos": 153
+                "lexpos": 147
             }
         }
     ],

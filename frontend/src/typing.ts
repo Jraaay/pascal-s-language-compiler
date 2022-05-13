@@ -4,6 +4,7 @@ export interface IErrorData {
         line: number
         lexpos: number
         value: string[]
+        end_lexpos?: number
     }
 }
 export type ISymbolType = 'INTEGER' | 'REAL' | 'BOOLEAN' | 'RECORD' | 'CHAR'

@@ -535,9 +535,10 @@
         {
             "code": "C-02",
             "info": {
-                "line": 6,
+                "line": 7,
                 "value": "c",
-                "lexpos": 109
+                "lexpos": 112,
+                "end_lexpos": 113
             }
         }
     ],

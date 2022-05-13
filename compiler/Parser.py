@@ -1099,9 +1099,9 @@ class Parser:
                             self.warning += [{
                                 "code": "W-01",
                                 "info": {
-                                    "line": p.lexer.lineno,
+                                    "line": p.slice[3].lineno,
                                     "value": [p[2], id["type"], p[4]["__type"]],
-                                    "lexpos": p.lexer.lexpos
+                                    "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1
                                 }
                             }]  # 警告类型：变量赋值类型不匹配，转换可能造成数据丢失
                         else:  # 错误赋值
@@ -1181,9 +1181,9 @@ class Parser:
                             self.warning += [{
                                 "code": "W-01",
                                 "info": {
-                                    "line": p.lexer.lineno,
+                                    "line": p.slice[2].lineno,
                                     "value": [p[1]["ID"], id["type"], p[3]["__type"]],
-                                    "lexpos": p.lexer.lexpos
+                                    "lexpos": p.slice[2].lexpos + p.slice[2].lineno - 1
                                 }
                             }]  # 警告类型：变量赋值类型不匹配，转换可能造成数据丢失
                         else:
@@ -1265,9 +1265,10 @@ class Parser:
                 self.error += [{
                     "code": "C-02",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[1].lineno,
                         "value": p[1],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
                 }]  # 错误类型：使用的变量未定义（变量标识符）
             elif type(p[1]) == list:  # 如果ID是list，则为record
@@ -1280,9 +1281,10 @@ class Parser:
                     self.error += [{
                         "code": "C-02",
                         "info": {
-                            "line": p.lexer.lineno,
+                            "line": p.slice[1].lineno,
                             "value": i,
-                            "lexpos": p.lexer.lexpos
+                            "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                            "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                         }
                     }]  # 错误类型：使用的变量未定义
                 elif self.search_symbol(i)["recordTable"]:  # 如果该变量已定义，且它的record存在
@@ -1300,9 +1302,10 @@ class Parser:
                         self.error += [{
                             "code": "C-02",
                             "info": {
-                                "line": p.lexer.lineno,
+                                "line": p.slice[1].lineno,
                                 "value": j,
-                                "lexpos": p.lexer.lexpos
+                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                             }
                         }]  # 错误类型：使用的变量未定义
                     # 该项已定义，在recordTable内部查，逐层循环
@@ -1625,9 +1628,9 @@ class Parser:
                 self.error += [{
                     "code": "C-12",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[1].lineno,
                         "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"])],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                     }
                 }]  # 错误类型：函数调用时变量个数不匹配
             else:  # 函数调用时变量数量一致
@@ -1640,9 +1643,9 @@ class Parser:
                         self.error += [{
                             "code": "C-13",
                             "info": {
-                                "line": p.lexer.lineno,
+                                "line": p.slice[1].lineno,
                                 "value": [from_type, to_type],
-                                "lexpos": p.lexer.lexpos
+                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
                             }
                         }]  # 错误类型：函数调用时参数未定义
                     elif to_type not in safe_assign[from_type]:  # 不属于安全赋值类型
@@ -1663,9 +1666,9 @@ class Parser:
                             self.error += [{
                                 "code": "C-14",
                                 "info": {
-                                    "line": p.lexer.lineno,
+                                    "line": p.slice[1].lineno,
                                     "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
-                                    "lexpos": p.lexer.lexpos
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
                                 }
                             }]  # 错误类型：函数调用时参数类型不匹配，且不能转换
                     if self.subFuncMap[p[1]]["references"][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
@@ -1675,8 +1678,8 @@ class Parser:
                         self.error += [{
                             "code": "F-01",
                             "info": {
-                                "line": p.lexer.lineno,
-                                "lexpos": p.lexer.lexpos
+                                "line": p.slice[1].lineno,
+                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
                             }
                         }]  # 无法翻译错误：引用调用时使用了无法引用的表达式
 
@@ -1870,7 +1873,7 @@ class Parser:
         ast = None
         ast = self.parser.parse(data)
         # 该程序编译完毕，重置lineno
-        self.lexer.lineno = 0
+        self.lexer.lineno = 1
         self._removeSymbolTable(ast)
         return {
             "ast": ast,

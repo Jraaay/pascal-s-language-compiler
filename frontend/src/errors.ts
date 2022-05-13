@@ -20,8 +20,8 @@ const errstr = {
     'C-13': 'Passing undefined variable to %s in function call',
     'C-14': 'Parameter %s got incompatible type %s, expected %s',
     'F-01': 'Uncompatible reference',
-    'W-01': 'Converting %s from %s to %s may lose precision',
-    'W-02': 'Converting parameter %s from %s to %s may lose precision',
+    'W-01': 'Assigning %s ( %s ) with type %s may lose precision',
+    'W-02': 'Assigning parameter %s ( %s ) with type %s may lose precision',
 } as Record<string, string>
 export function errStr(code: string, value: string[]) {
     if (!errstr[code]) {
