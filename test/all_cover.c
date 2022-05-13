@@ -1,7 +1,4 @@
 #include<stdbool.h>
-#include<stdbool.h>
-#include<stdbool.h>
-#include<stdbool.h>
 #include<stdio.h>
 
 const int a = 5; 
@@ -28,15 +25,22 @@ struct {
 f; 
 bool g[50][100]; 
 
-int gcd(int* a, float b){
+int func(int* a, float b){
+	int i; 
+	
+	for(i = 1; i < *a; i++){
+		printf("b: %f\n", b); 
+	}
+	while(i < 5){
+		printf("y: %d\n", y); 
+	}
+	func(*a, b); 
 	if(b == 0){
 		return *a; 
 	}
 	else{
-		return gcd(*a, b); 
+		return func(*a, b); 
 	}
-	printf("f.f1: %f\n", f.f1); 
-	gcd(*a, b); 
 }
 
 int main(int argc, char* argv[]){
@@ -45,5 +49,5 @@ int main(int argc, char* argv[]){
 	while(x != y){
 		printf("x: %d\ny: %d\n", x, y); 
 	}
-	gcd(x, y); 
+	func(x, y); 
 }

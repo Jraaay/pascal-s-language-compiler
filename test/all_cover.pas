@@ -23,27 +23,26 @@ Var
     End;
     g : array [1..50, 1..100] of boolean;
 
-Function gcd(var a: integer; b:real) : integer;
-// Function gcd(var a : integer,b : integer) : integer;
+Function func(var a: integer; b:real) : integer;
+// Function func(var a : integer,b : integer) : integer;
+var i:integer;
 Begin
-    If b = 0 Then gcd := a
-    Else gcd := gcd(a, b);
-    // write(g[10,20]);
-    write(f.f1);
-    // for i:=1 to b do
-    //     begin
-    //       read(b);
-    //     end;
-    // for i := a to b do
-    // begin
-    //     write(i);
-    // end;
-    gcd(a,b)
+    for i:=1 to a do
+        begin
+          write(b);
+        end;
+    While i<5 Do
+        begin
+            write(y);
+        end;
+    func(a,b);
+    If b = 0 Then func := a
+    Else func := func(a, b);
 End;
 
 Begin
     read(x,y);
     write(x,y);
     while x<>y do write(x,y);
-    gcd(x, y)
+    func(x, y)
 End.
