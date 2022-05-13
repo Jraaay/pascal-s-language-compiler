@@ -28,26 +28,25 @@ bool g[50][100];
 int func(int* a, float b){
 	int i; 
 	
-	for(i = 1; i < *a; i++){
-		printf("b: %f\n", b); 
-	}
-	while(i < 5){
-		printf("y: %d\n", y); 
-	}
-	func(*a, b); 
 	if(b == 0){
 		return *a; 
 	}
 	else{
 		return func(*a, b); 
 	}
+	for(i = 1; i < *a; i++){
+		printf("b: %f\n", b); 
+	}
+	i = 0; 
+	while(i < 5){
+		printf("b: %f\n", b); 
+		i = i + 1; 
+	}
+	func(*a, b); 
 }
 
 int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	printf("x: %d\ny: %d\n", x, y); 
-	while(x != y){
-		printf("x: %d\ny: %d\n", x, y); 
-	}
 	func(x, y); 
 }
