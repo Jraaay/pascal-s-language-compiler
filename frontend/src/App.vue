@@ -4,6 +4,14 @@
             <el-col :span="12">
                 <div class="left title">Pas2C GUI</div>
                 <div class="right">
+                    <el-select class="precode" placeholder="加载预置代码" @change="codeSrc = $event.trim()">
+                        <el-option
+                            v-for="i in precode"
+                            :key="i.file_name"
+                            :label="i.file_name"
+                            :value="i.code"
+                        ></el-option>
+                    </el-select>
                     <button class="run-btn" :disabled="loading" @click="apiCompile">
                         <i :class="loading ? 'codicon codicon-refresh' : 'codicon codicon-play'"></i>
                     </button>
@@ -435,6 +443,21 @@ export default defineComponent({
             }
             loading.value = false
         }
+        const precode = ref([] as { file_name: string; code: string }[])
+        fetch('/api').then(async (res) => {
+            if (!res.ok) {
+                ElNotification.error({
+                    title: '获取预置代码失败',
+                    message: `${res.status} ${res.statusText}`,
+                })
+                return
+            }
+            const data = await res.json()
+            precode.value = data
+            precode.value = precode.value.sort((a, b) => {
+                return a.file_name.localeCompare(b.file_name)
+            })
+        })
         const treeCon = ref(null as null | HTMLDivElement)
         const { height: treeConHeight } = useElementSize(treeCon)
         return {
@@ -452,6 +475,7 @@ export default defineComponent({
             computedErrors,
             loading,
             apiCompile,
+            precode,
         }
     },
 })
@@ -511,6 +535,10 @@ body,
                 background: transparent;
             }
         }
+    }
+    .precode {
+        width: 130px;
+        margin-right: 15px;
     }
 }
 
