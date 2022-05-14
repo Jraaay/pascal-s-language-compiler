@@ -42,5 +42,6 @@ End;
 Begin
     read(x,y);
     write(x,y);
-    func(x, y)
+    func(x, y);
+    func(x)
 End.

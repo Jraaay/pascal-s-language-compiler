@@ -39,18 +39,19 @@
         <el-row class="c-content">
             <el-col :span="12">
                 <MonacoEditor
+                    ref="srcEditor"
                     class="c-editor ed-left"
                     theme="vs-dark"
                     language="pascal"
                     :value="codeSrc"
                     @change="editorChange"
                     @editor-will-mount="editorWillMount"
-                    @editor-did-mount="editorMount"
             /></el-col>
             <el-col :span="12" style="border-left: 1px solid #444444">
                 <div ref="treeCon" style="height: 100%">
                     <div v-show="currentTab === 'output'" class="ed-right-container">
                         <MonacoEditor
+                            ref="dstEditor"
                             class="c-editor ed-right"
                             theme="vs-dark"
                             language="c"
@@ -199,7 +200,7 @@
 import { MarkerSeverity } from 'monaco-editor'
 import { errStr } from './errors'
 import { ISymbolTable, IErrorData } from './typing'
-import { useElementSize } from '@vueuse/core'
+import { useElementSize, useEventListener, useDebounceFn } from '@vueuse/core'
 import { defineComponent, computed, ref, h, watch } from 'vue'
 import MonacoEditor from 'vue-monaco'
 import { ElNotification } from 'element-plus'
@@ -212,6 +213,7 @@ export default defineComponent({
         const currentTab = ref('output')
         const codeSrc = ref(``)
         const results = ref({
+            srcCode: ``,
             code: ``,
             ast: {},
             symbolTable: {},
@@ -223,13 +225,20 @@ export default defineComponent({
                 codeSrc.value = ev
             }
         }
-        const editor = ref(null as any)
+        const srcEditor = ref(null as any)
+        const dstEditor = ref(null as any)
+        const debouncedEditorResize = useDebounceFn(() => {
+            if (srcEditor.value) {
+                srcEditor.value.getEditor().layout()
+            }
+            if (dstEditor.value) {
+                dstEditor.value.getEditor().layout()
+            }
+        }, 100)
+        useEventListener('resize', debouncedEditorResize, { passive: true })
         let monaco: any = null
         const editorWillMount = (m: any) => {
             monaco = m
-        }
-        const editorMount = (ed: any) => {
-            editor.value = ed
         }
         const objectToElTree = (obj: any, id = { id: 0 }): any => {
             const elTree = []
@@ -358,7 +367,7 @@ export default defineComponent({
         }
         const computedErrors = computed(() => {
             // 获取开头空行的数量
-            const lines = codeSrc.value.split('\n')
+            const lines = results.value.srcCode.split('\n')
             let empty = 0
             for (const i of lines) {
                 if (i.trim() === '') {
@@ -372,16 +381,25 @@ export default defineComponent({
                 return {
                     code: e.code,
                     line: e.info.line + empty,
-                    column: calcColumn(codeSrc.value.trim(), e.info.lexpos),
-                    end_column: e.info.end_lexpos ? calcColumn(codeSrc.value.trim(), e.info.end_lexpos) : undefined,
+                    column: calcColumn(results.value.srcCode.trim(), e.info.lexpos),
+                    end_column: e.info.end_lexpos
+                        ? calcColumn(results.value.srcCode.trim(), e.info.end_lexpos)
+                        : undefined,
                     message: errStr(e.code, e.info.value),
                 }
             })
         })
         const computedMarkers = computed(() => {
+            const srcLine = codeSrc.value.split('\n')
+            const dstLine = results.value.srcCode.split('\n')
+            if (srcLine.length !== dstLine.length) {
+                return []
+            }
             return computedErrors.value.map((e) => {
-                const line = codeSrc.value.split('\n')[e.line - 1]
-                if (!line) return {}
+                const line = dstLine[e.line - 1]
+                const sline = srcLine[e.line - 1]
+                console.log(line, sline)
+                if (!line || line.trim() !== sline.trim()) return {}
                 const firstNonSpaceIndex = line.search(/\S/)
                 return {
                     startLineNumber: e.line,
@@ -395,9 +413,9 @@ export default defineComponent({
             })
         })
 
-        watch([computedMarkers, editor], () => {
-            if (!editor.value || !monaco) return
-            monaco.editor.setModelMarkers(editor.value.getModel(), 'pas2c', computedMarkers.value)
+        watch([computedMarkers, srcEditor], () => {
+            if (!srcEditor.value || !monaco) return
+            monaco.editor.setModelMarkers(srcEditor.value.getEditor().getModel(), 'pas2c', computedMarkers.value)
         })
         const toJsType = (type: string) => {
             switch (type) {
@@ -417,18 +435,20 @@ export default defineComponent({
             if (loading.value) return
             loading.value = true
             codeSrc.value = codeSrc.value.trim()
+            const s = codeSrc.value
             try {
                 const res = await fetch('/api', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'text/plain',
                     },
-                    body: codeSrc.value,
+                    body: s,
                 })
                 if (!res.ok) {
                     throw new Error(`${res.status} ${res.statusText}`)
                 }
                 const data = await res.json()
+                data.srcCode = s
                 results.value = data
                 if (data.error.length > 0) {
                     currentTab.value = 'err'
@@ -464,7 +484,6 @@ export default defineComponent({
             codeSrc,
             results,
             editorChange,
-            editorMount,
             editorWillMount,
             currentTab,
             computedAstData,
@@ -476,6 +495,8 @@ export default defineComponent({
             loading,
             apiCompile,
             precode,
+            srcEditor,
+            dstEditor,
         }
     },
 })

@@ -51,4 +51,5 @@ int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	printf("x: %d\ny: %d\n", x, y); 
 	func(&x, y); 
+	func(&x); 
 }
