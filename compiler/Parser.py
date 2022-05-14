@@ -1092,8 +1092,8 @@ class Parser:
                                 "lexpos": p.lexer.lexpos
                             }
                         }]  # 错误类型：使用未定义的变量进行赋值
-                    elif id["type"] not in safe_assign[p[4]["__type"]]:  # 不是安全赋值类型
-                        if id["type"] in warn_assign[p[4]["__type"]]:  # 属于warn复制类型
+                    elif not p[4]["__type"] or id["type"] not in safe_assign[p[4]["__type"]]:  # 不是安全赋值类型
+                        if p[4]["__type"] and id["type"] in warn_assign[p[4]["__type"]]:  # 属于warn复制类型
                             if not self.warning:
                                 self.warning = []
                             self.warning += [{
@@ -1111,7 +1111,7 @@ class Parser:
                                 "code": "C-04",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": [p[2], id["type"], p[4]["__type"]],
+                                    "value": [p[2], id["type"] if id["type"] else "VOID", p[4]["__type"] if p[4]["__type"] else "VOID"],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]  # 错误类型：变量赋值类型不匹配，且不能转换
@@ -1174,8 +1174,8 @@ class Parser:
                         }
                     }]  # 错误类型：使用未定义的变量进行赋值
                 elif id:  # 找到id
-                    if id["type"] not in safe_assign[p[3]["__type"]]:
-                        if id["type"] in warn_assign[p[3]["__type"]]:
+                    if not p[3]["__type"] or id["type"] not in safe_assign[p[3]["__type"]]:
+                        if p[3]["__type"] and id["type"] in warn_assign[p[3]["__type"]]:
                             if not self.warning:
                                 self.warning = []
                             self.warning += [{
@@ -1193,7 +1193,7 @@ class Parser:
                                 "code": "C-04",
                                 "info": {
                                     "line": p.lexer.lineno,
-                                    "value": [p[1]["ID"], id["type"], p[3]["__type"]],
+                                    "value": [p[1]["ID"], id["type"] if id["type"] else "VOID", p[3]["__type"] if p[3]["__type"] else "VOID"],
                                     "lexpos": p.lexer.lexpos
                                 }
                             }]  # 错误类型：变量赋值类型不匹配，且不能转换
