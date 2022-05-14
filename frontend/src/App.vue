@@ -535,6 +535,7 @@ body,
 
 .c-header {
     flex-basis: 40px;
+    min-height: 40px;
     max-height: 40px;
     overflow: hidden;
     .right {

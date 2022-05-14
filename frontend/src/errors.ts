@@ -1,5 +1,11 @@
 export function printf(tpl: string, ...args: any[]): string {
-    return tpl.replace(/%[sdf]/g, () => args.shift() || '')
+    return tpl.replace(/%[sdf]/g, () => {
+        const a = args.shift()
+        if (a === undefined || a === null) {
+            return ''
+        }
+        return a
+    })
 }
 const errstr = {
     'A-01': 'Identifier %s started with a digit',
