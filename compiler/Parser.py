@@ -1350,7 +1350,7 @@ class Parser:
                         "code": "C-12",
                         "info": {
                             "line": p.slice[1].lineno,
-                            "value": ["0", len(self.subFuncMap[p[1]]["variables"])],
+                            "value": ["0", len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                             "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                         }
                     }]
@@ -1361,14 +1361,14 @@ class Parser:
                     "ID": p[1],
                     "expression_list": p[3]
                 }
-                if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"]):  # 变量数量不一致
+                if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else []):  # 变量数量不一致
                     if not self.error:
                         self.error = []
                     self.error += [{
                         "code": "C-12",
                         "info": {
                             "line": p.slice[1].lineno,
-                            "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"])],
+                            "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                             "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                         }
                     }]  # 错误类型：函数调用时变量个数不匹配
@@ -1693,14 +1693,14 @@ class Parser:
                 "ID": p[1],
                 "expression_list": p[3]
             }
-            if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"]):  # 变量数量不一致
+            if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else []):  # 变量数量不一致
                 if not self.error:
                     self.error = []
                 self.error += [{
                     "code": "C-12",
                     "info": {
                         "line": p.slice[1].lineno,
-                        "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"])],
+                        "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                         "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                     }
                 }]  # 错误类型：函数调用时变量个数不匹配
