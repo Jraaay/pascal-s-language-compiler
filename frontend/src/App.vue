@@ -163,8 +163,8 @@
                                             </span>
                                         </span>
                                         <span v-else-if="data.table">
-                                            <span class="symtype" :class="data.type.toLowerCase()">
-                                                {{ data.type }}
+                                            <span class="symtype" :class="data.type ? data.type.toLowerCase() : 'void'">
+                                                {{ data.type || 'VOID' }}
                                             </span>
                                             <span class="key object">
                                                 {{ data.token }}(<span v-for="i in data.table.params" :key="i">

@@ -1343,6 +1343,17 @@ class Parser:
                     "type": "procedure_call",
                     "ID": p[1]
                 }
+                if self.subFuncMap[p[1]]["type"]:
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-12",
+                        "info": {
+                            "line": p.slice[1].lineno,
+                            "value": ["0", len(self.subFuncMap[p[1]]["variables"])],
+                            "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        }
+                    }]
             else:  # procedure_call : ID LPAREN expression_list RPAREN
                 p[0] = {
                     "length": len(p),
