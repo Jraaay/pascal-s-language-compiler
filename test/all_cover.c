@@ -32,7 +32,7 @@ int func(int* a, float b){
 		return *a; 
 	}
 	else{
-		return func(*a, b); 
+		return func(a, b); 
 	}
 	for(i = 1; i < *a; i++){
 		printf("b: %f\n", b); 
@@ -42,11 +42,13 @@ int func(int* a, float b){
 		printf("b: %f\n", b); 
 		i = i + 1; 
 	}
-	func(*a, b); 
+	func(a, b); 
+	func(&i, *a); 
+	func(&i, *a, b, c, d); 
 }
 
 int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	printf("x: %d\ny: %d\n", x, y); 
-	func(x, y); 
+	func(&x, y); 
 }
