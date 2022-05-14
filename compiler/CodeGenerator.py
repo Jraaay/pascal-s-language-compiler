@@ -694,8 +694,9 @@ class CodeGenerator:
                             "table"]["references"]
                         # print(is_ref_list)
 
-                        if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
-                            result += "&"
+                        if node["__type"] is not None and is_ref_list is not None:
+                            if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
+                                result += "&"
 
                     result += tmp
 
@@ -714,8 +715,9 @@ class CodeGenerator:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"]
                         # print(is_ref_list)
-                        if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
-                            result += "&"
+                        if node["__type"] is not None and is_ref_list is not None:
+                            if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
+                                result += "&"
                     result += self.g_expression(expression)
         if return_list == True:
             return result_list
