@@ -540,7 +540,8 @@
             "code": "F-01",
             "info": {
                 "line": 8,
-                "lexpos": 150
+                "lexpos": 150,
+                "end_lexpos": 166
             }
         }
     ],

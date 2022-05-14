@@ -580,7 +580,8 @@
             "info": {
                 "line": 4,
                 "value": "a",
-                "lexpos": 52
+                "lexpos": 53,
+                "end_lexpos": 54
             }
         }
     ],

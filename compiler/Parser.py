@@ -264,9 +264,10 @@ class Parser:
                 self.error.append({
                     "code": "C-03",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[3].lineno,
                         "value": p[3],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1,
+                        "end_lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1 + len(p[3])
                     }
                 })
             # ID 已存在于 curSymbol
@@ -277,9 +278,10 @@ class Parser:
                 self.error.append({
                     "code": "C-03",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[3].lineno,
                         "value": p[3],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1,
+                        "end_lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1 + len(p[3])
                     }
                 })
 
@@ -299,9 +301,10 @@ class Parser:
                 self.error.append({
                     "code": "C-03",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[1].lineno,
                         "value": p[1],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
                 })
             elif not self.inSubFun and p[1] in list(self.curSymbol.keys()) and p[1]:
@@ -310,9 +313,10 @@ class Parser:
                 self.error.append({
                     "code": "C-03",
                     "info": {
-                        "line": p.lexer.lineno,
+                        "line": p.slice[1].lineno,
                         "value": p[1],
-                        "lexpos": p.lexer.lexpos
+                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
                 })
 
@@ -669,9 +673,10 @@ class Parser:
                     self.error += [{
                         "code": "C-01",
                         "info": {
-                            "line": p.lexer.lineno,
+                            "line": p.slice[3].lineno,
                             "value": [p[3], p[5]],
-                            "lexpos": p.lexer.lexpos
+                            "lexpos": p.slice[3].lineno + p.slice[3].lexpos - 1,
+                            "end_lexpos": p.slice[5].lineno + p.slice[5].lexpos + len(str(p[5]))
                         }
                     }]
                 p[0] = {
@@ -697,9 +702,10 @@ class Parser:
                     self.error += [{
                         "code": "C-01",
                         "info": {
-                            "line": p.lexer.lineno,
+                            "line": p.slice[1].lineno,
                             "value": [p[1], p[3]],
-                            "lexpos": p.lexer.lexpos
+                            "lexpos": p.slice[1].lineno + p.slice[1].lexpos - 1,
+                            "end_lexpos": p.slice[3].lineno + p.slice[3].lexpos + len(str(p[3]))
                         }
                     }]
                 p[0] = {
@@ -1110,9 +1116,9 @@ class Parser:
                             self.error += [{
                                 "code": "C-04",
                                 "info": {
-                                    "line": p.lexer.lineno,
+                                    "line": p.slice[3].lineno,
                                     "value": [p[2], id["type"] if id["type"] else "VOID", p[4]["__type"] if p[4]["__type"] else "VOID"],
-                                    "lexpos": p.lexer.lexpos
+                                    "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1
                                 }
                             }]  # 错误类型：变量赋值类型不匹配，且不能转换
             #  statement : READ LPAREN variable_list  RPAREN
@@ -1192,9 +1198,9 @@ class Parser:
                             self.error += [{
                                 "code": "C-04",
                                 "info": {
-                                    "line": p.lexer.lineno,
+                                    "line": p.slice[2].lineno,
                                     "value": [p[1]["ID"], id["type"] if id["type"] else "VOID", p[3]["__type"] if p[3]["__type"] else "VOID"],
-                                    "lexpos": p.lexer.lexpos
+                                    "lexpos": p.slice[2].lexpos + p.slice[2].lineno - 1
                                 }
                             }]  # 错误类型：变量赋值类型不匹配，且不能转换
                 else:
@@ -1352,6 +1358,7 @@ class Parser:
                             "line": p.slice[1].lineno,
                             "value": ["0", len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                             "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                            "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                         }
                     }]
             else:  # procedure_call : ID LPAREN expression_list RPAREN
@@ -1370,6 +1377,7 @@ class Parser:
                             "line": p.slice[1].lineno,
                             "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                             "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                            "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                         }
                     }]  # 错误类型：函数调用时变量个数不匹配
                 else:  # 函数调用时变量数量一致
@@ -1384,7 +1392,8 @@ class Parser:
                                 "info": {
                                     "line": p.slice[1].lineno,
                                     "value": [from_type, to_type],
-                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                    "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                                 }
                             }]  # 错误类型：函数调用时参数未定义
                         elif to_type not in safe_assign[from_type]:  # 不属于安全赋值类型
@@ -1407,7 +1416,8 @@ class Parser:
                                     "info": {
                                         "line": p.slice[1].lineno,
                                         "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
-                                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                        "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                                     }
                                 }]  # 错误类型：函数调用时参数类型不匹配，且不能转换
                         if self.subFuncMap[p[1]]["references"][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
@@ -1418,7 +1428,8 @@ class Parser:
                                 "code": "F-01",
                                 "info": {
                                     "line": p.slice[1].lineno,
-                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                    "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                                 }
                             }]  # 无法翻译错误：引用调用时使用了无法引用的表达式
 
@@ -1702,6 +1713,7 @@ class Parser:
                         "line": p.slice[1].lineno,
                         "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"] if self.subFuncMap[p[1]]["variables"] else [])],
                         "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                     }
                 }]  # 错误类型：函数调用时变量个数不匹配
             else:  # 函数调用时变量数量一致
@@ -1716,7 +1728,8 @@ class Parser:
                             "info": {
                                 "line": p.slice[1].lineno,
                                 "value": [from_type, to_type],
-                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                             }
                         }]  # 错误类型：函数调用时参数未定义
                     elif to_type not in safe_assign[from_type]:  # 不属于安全赋值类型
@@ -1739,7 +1752,8 @@ class Parser:
                                 "info": {
                                     "line": p.slice[1].lineno,
                                     "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
-                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                    "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                                 }
                             }]  # 错误类型：函数调用时参数类型不匹配，且不能转换
                     if self.subFuncMap[p[1]]["references"][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
@@ -1750,7 +1764,8 @@ class Parser:
                             "code": "F-01",
                             "info": {
                                 "line": p.slice[1].lineno,
-                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                                "end_lexpos": p.slice[4].lexpos + p.slice[4].lineno + len(p[4])
                             }
                         }]  # 无法翻译错误：引用调用时使用了无法引用的表达式
 

@@ -603,7 +603,8 @@
                     "RECORD",
                     "INTEGER"
                 ],
-                "lexpos": 205
+                "lexpos": 205,
+                "end_lexpos": 219
             }
         }
     ],

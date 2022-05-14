@@ -443,7 +443,7 @@
                     "INTEGER",
                     "RECORD"
                 ],
-                "lexpos": 208
+                "lexpos": 211
             }
         },
         {
@@ -462,7 +462,7 @@
                     "INTEGER",
                     "RECORD"
                 ],
-                "lexpos": 222
+                "lexpos": 226
             }
         }
     ],
