@@ -1493,6 +1493,53 @@
                                     ]
                                 }
                             }
+                        },
+                        {
+                            "length": 2,
+                            "type": "statement",
+                            "_type": "procedure_call",
+                            "procedure_call": {
+                                "length": 5,
+                                "type": "procedure_call",
+                                "ID": "func",
+                                "expression_list": {
+                                    "length": 2,
+                                    "type": "expression_list",
+                                    "__type": [
+                                        "INTEGER"
+                                    ],
+                                    "expressions": [
+                                        {
+                                            "length": 2,
+                                            "type": "expression",
+                                            "__type": "INTEGER",
+                                            "simple_expression": {
+                                                "length": 2,
+                                                "type": "simple_expression",
+                                                "__type": "INTEGER",
+                                                "term": {
+                                                    "length": 2,
+                                                    "type": "term",
+                                                    "__type": "INTEGER",
+                                                    "factor": {
+                                                        "length": 2,
+                                                        "type": "factor",
+                                                        "_type": "variable",
+                                                        "__type": "INTEGER",
+                                                        "variable": {
+                                                            "length": 3,
+                                                            "type": "variable",
+                                                            "__type": "INTEGER",
+                                                            "ID": "x",
+                                                            "id_varpart": null
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
