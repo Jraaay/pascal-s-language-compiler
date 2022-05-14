@@ -44,6 +44,10 @@
                     theme="vs-dark"
                     language="pascal"
                     :value="codeSrc"
+                    :options="{
+                        DefaultEndOfLine: 1,
+                        EndOfLinePreference: 1,
+                    }"
                     @change="editorChange"
                     @editor-will-mount="editorWillMount"
             /></el-col>
@@ -201,7 +205,7 @@ import { MarkerSeverity } from 'monaco-editor'
 import { errStr } from './errors'
 import { ISymbolTable, IErrorData } from './typing'
 import { useElementSize, useEventListener, useDebounceFn } from '@vueuse/core'
-import { defineComponent, computed, ref, h, watch } from 'vue'
+import { defineComponent, computed, ref, h, watch, nextTick } from 'vue'
 import MonacoEditor from 'vue-monaco'
 import { ElNotification } from 'element-plus'
 MonacoEditor.render = () => h('section')
@@ -220,13 +224,20 @@ export default defineComponent({
             error: [] as IErrorData[],
             warning: [] as IErrorData[],
         })
+        const srcEditor = ref(null as any)
+        const dstEditor = ref(null as any)
         const editorChange = (ev: unknown) => {
             if (typeof ev === 'string') {
                 codeSrc.value = ev
             }
         }
-        const srcEditor = ref(null as any)
-        const dstEditor = ref(null as any)
+        watch(codeSrc, async () => {
+            await nextTick()
+            await nextTick()
+            if (srcEditor.value) {
+                srcEditor.value.getEditor().getModel().setEOL(1)
+            }
+        })
         const debouncedEditorResize = useDebounceFn(() => {
             if (srcEditor.value) {
                 srcEditor.value.getEditor().layout()
@@ -398,7 +409,6 @@ export default defineComponent({
             return computedErrors.value.map((e) => {
                 const line = dstLine[e.line - 1]
                 const sline = srcLine[e.line - 1]
-                console.log(line, sline)
                 if (!line || line.trim() !== sline.trim()) return {}
                 const firstNonSpaceIndex = line.search(/\S/)
                 return {
