@@ -1858,9 +1858,9 @@ class Parser:
             self.error.append({
                 "code": "B-01",
                 "info": {
-                    "line": p.lineno,
-                    "value": p.value,
-                    "lexpos": p.lexpos
+                    "line": p.lineno if p else 0,
+                    "value": p.value if p else "",
+                    "lexpos": p.lexpos if p else 0
                 }
             })  # 错误类型：不符合语法
 

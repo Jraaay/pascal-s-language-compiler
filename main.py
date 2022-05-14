@@ -59,13 +59,17 @@ for test_file in test_file_list:
 
 @app.route("/api", methods=["POST"])
 async def pascal2c(request):
-    code = request.body.decode("utf-8")
-    code = code.replace("\r\n", "\n")
+    try:
+        code = request.json.get("code", None)
+    except Exception as e:
+        return sanic.response.json({"error": str(e)})
     if code is None:
         return sanic.response.json({"error": "No code provided"})
+    code = code.replace("\r\n", "\n")
     ans = app.config['parser'].parse(code)
     ans["code"] = app.config['generator'].code_generate(
         ans["ast"], ans["symbolTable"])
+    ans["src_code"] = code
     return sanic.response.json(ans)
 
 @app.route("/api", methods=["GET"])
