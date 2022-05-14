@@ -1876,6 +1876,29 @@
             }
         ]
     },
-    "error": [],
+    "error": [
+        {
+            "code": "C-12",
+            "info": {
+                "line": 40,
+                "value": [
+                    5,
+                    2
+                ],
+                "lexpos": 902
+            }
+        },
+        {
+            "code": "C-12",
+            "info": {
+                "line": 46,
+                "value": [
+                    1,
+                    2
+                ],
+                "lexpos": 986
+            }
+        }
+    ],
     "warning": []
 }
