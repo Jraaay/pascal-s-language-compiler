@@ -45,6 +45,17 @@ def main_test():
                     with open(test_file_path.replace(".pas", ".out"), "w") as f:
                         json.dump(ans, f, indent=4)
 
+file_list = []
+test_file_list = os.listdir("./test")
+for test_file in test_file_list:
+    if test_file.endswith(".pas"):
+        test_file_path = os.path.join("./test", test_file)
+        ans = {}
+        with open(test_file_path, "r") as f:
+            file_list.append({
+                "file_name": test_file,
+                "code": f.read()
+            })
 
 @app.route("/api", methods=["POST"])
 async def pascal2c(request):
@@ -56,6 +67,10 @@ async def pascal2c(request):
     ans["code"] = app.config['generator'].code_generate(
         ans["ast"], ans["symbolTable"])
     return sanic.response.json(ans)
+
+@app.route("/api", methods=["GET"])
+async def pascal2c(request):
+    return sanic.response.json(file_list)
 
 
 if __name__ == "__main__":
