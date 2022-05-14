@@ -693,7 +693,8 @@ class CodeGenerator:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"]
                         # print(is_ref_list)
-                        if is_ref_list[-1-arg_depth] == True:
+
+                        if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
                             result += "&"
 
                     result += tmp
@@ -707,13 +708,13 @@ class CodeGenerator:
                     result_list.append(self.g_expression(expression))
                 else:
                     result += self.g_expression_list(tmp_node,
-                                                     for_array=for_array, for_procedure_call=for_procedure_call, procedure_id=procedure_id)
+                                                     for_array=for_array, for_procedure_call=for_procedure_call, procedure_id=procedure_id, arg_depth=arg_depth+1)
                     result += ","
                     if for_procedure_call == True:
                         is_ref_list = self.get_subFunc(procedure_id)[
                             "table"]["references"]
                         # print(is_ref_list)
-                        if is_ref_list[-1-arg_depth] == True:
+                        if len(node["__type"])-1-arg_depth < len(is_ref_list) and is_ref_list[len(node["__type"])-1-arg_depth] == True:
                             result += "&"
                     result += self.g_expression(expression)
         if return_list == True:
