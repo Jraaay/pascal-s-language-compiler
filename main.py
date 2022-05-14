@@ -63,6 +63,7 @@ async def pascal2c(request):
     if code is None or "":
         return sanic.response.json({"error": "No code provided"})
     code = code.replace("\r\n", "\n")
+    app.config['parser'].lexer.lineno = 1
     ans = app.config['parser'].parse(code)
     ans["code"] = app.config['generator'].code_generate(
         ans["ast"], ans["symbolTable"])
