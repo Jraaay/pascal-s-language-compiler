@@ -1350,6 +1350,66 @@ class Parser:
                     "ID": p[1],
                     "expression_list": p[3]
                 }
+                if len(p[3]["__type"]) != len(self.subFuncMap[p[1]]["variables"]):  # 变量数量不一致
+                    if not self.error:
+                        self.error = []
+                    self.error += [{
+                        "code": "C-12",
+                        "info": {
+                            "line": p.slice[1].lineno,
+                            "value": [len(p[3]["__type"]), len(self.subFuncMap[p[1]]["variables"])],
+                            "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
+                        }
+                    }]  # 错误类型：函数调用时变量个数不匹配
+                else:  # 函数调用时变量数量一致
+                    for i in range(len(p[3]["__type"])):  # 遍历expression_list
+                        from_type = p[3]["__type"][i]
+                        to_type = self.subFuncMap[p[1]]["variables"][i]["type"]
+                        if from_type == "UNDEFINED":
+                            if not self.error:
+                                self.error = []
+                            self.error += [{
+                                "code": "C-13",
+                                "info": {
+                                    "line": p.slice[1].lineno,
+                                    "value": [from_type, to_type],
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                }
+                            }]  # 错误类型：函数调用时参数未定义
+                        elif to_type not in safe_assign[from_type]:  # 不属于安全赋值类型
+                            if to_type in warn_assign[from_type]:  # 属于warn赋值类型
+                                if not self.warning:
+                                    self.warning = []
+                                self.warning += [{
+                                    "code": "W-02",
+                                    "info": {
+                                        "line": p.lexer.lineno,
+                                        "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
+                                        "lexpos": p.lexer.lexpos
+                                    }
+                                }]  # 错误类型：函数调用时参数类型不匹配，转换可能造成数据丢失
+                            else:  # 错误复制类型
+                                if not self.error:
+                                    self.error = []
+                                self.error += [{
+                                    "code": "C-14",
+                                    "info": {
+                                        "line": p.slice[1].lineno,
+                                        "value": [self.subFuncMap[p[1]]["variables"][i]['token'], from_type, to_type],
+                                        "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                    }
+                                }]  # 错误类型：函数调用时参数类型不匹配，且不能转换
+                        if self.subFuncMap[p[1]]["references"][i] and not (p[3]["expressions"] and p[3]["expressions"][i] and p[3]["expressions"][i]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["length"] == 2 and p[3]["expressions"][i]["simple_expression"]["term"]["factor"]["_type"] == "variable"):
+                            # 判断函数的传参是否正确（expression/variable）
+                            if not self.error:
+                                self.error = []
+                            self.error += [{
+                                "code": "F-01",
+                                "info": {
+                                    "line": p.slice[1].lineno,
+                                    "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1
+                                }
+                            }]  # 无法翻译错误：引用调用时使用了无法引用的表达式
 
         def p_else_part(p):
             '''
