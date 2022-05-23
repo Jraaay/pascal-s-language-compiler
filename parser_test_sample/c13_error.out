@@ -530,7 +530,8 @@
                     "UNDEFINED",
                     "INTEGER"
                 ],
-                "lexpos": 147
+                "lexpos": 147,
+                "end_lexpos": 157
             }
         }
     ],

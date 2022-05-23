@@ -24,7 +24,7 @@ Function func(var a: integer; b:real) : integer;
 var i:integer;
 Begin
     If b = 0 Then func := a
-    Else func := func(a, b);
+    Else func := func(a,b);
     for i:=1 to a do
         begin
             write(b);
@@ -36,9 +36,12 @@ Begin
             i:=i+1;
         end;
     func(a,b);
+    func(i,a);
+    func(i,a,b,c,d)
 End;
 Begin
     read(x,y);
     write(x,y);
-    func(x, y)
+    func(x, y);
+    func(x)
 End.
