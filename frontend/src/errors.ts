@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function printf(tpl: string, ...args: any[]): string {
     return tpl.replace(/%[sdf]/g, () => {
         const a = args.shift()

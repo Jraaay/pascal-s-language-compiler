@@ -95,7 +95,6 @@
                                 node-key="id"
                                 :data="computedAstData.tree"
                                 :default-expanded-keys="computedAstData.expanded"
-                                :indent="36"
                             >
                                 <template #default="{ data }">
                                     <span class="el-tree-node__label">
@@ -172,7 +171,7 @@
                                                         class="symtype functype"
                                                         :class="data.table.variables[i - 1].type.toLowerCase()"
                                                     >
-                                                        {{ data.type }}
+                                                        {{ data.table.variables[i - 1].type }}
                                                     </span>
                                                     <span v-if="data.table.references[i - 1]" class="funcref">&</span>
                                                     <span class="jstype variable">{{
