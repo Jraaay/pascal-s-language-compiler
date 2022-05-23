@@ -857,7 +857,7 @@
                                                         }
                                                     }
                                                 },
-                                                "RELOP": "<",
+                                                "RELOP": "<>",
                                                 "simple_expression_2": {
                                                     "length": 2,
                                                     "type": "simple_expression",
@@ -1068,245 +1068,6 @@
                                                     ]
                                                 }
                                             }
-                                        },
-                                        {
-                                            "length": 2,
-                                            "type": "statement",
-                                            "_type": "procedure_call",
-                                            "procedure_call": {
-                                                "length": 5,
-                                                "type": "procedure_call",
-                                                "ID": "func",
-                                                "expression_list": {
-                                                    "length": 4,
-                                                    "type": "expression_list",
-                                                    "__type": [
-                                                        "INTEGER",
-                                                        "INTEGER"
-                                                    ],
-                                                    "expressions": [
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "i",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "a",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "length": 2,
-                                            "type": "statement",
-                                            "_type": "procedure_call",
-                                            "procedure_call": {
-                                                "length": 5,
-                                                "type": "procedure_call",
-                                                "ID": "func",
-                                                "expression_list": {
-                                                    "length": 4,
-                                                    "type": "expression_list",
-                                                    "__type": [
-                                                        "INTEGER",
-                                                        "INTEGER",
-                                                        "REAL",
-                                                        "CHAR",
-                                                        "INTEGER"
-                                                    ],
-                                                    "expressions": [
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "i",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "a",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "REAL",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "REAL",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "REAL",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "REAL",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "REAL",
-                                                                            "ID": "b",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "CHAR",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "CHAR",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "CHAR",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "CHAR",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "CHAR",
-                                                                            "ID": "c",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "length": 2,
-                                                            "type": "expression",
-                                                            "__type": "INTEGER",
-                                                            "simple_expression": {
-                                                                "length": 2,
-                                                                "type": "simple_expression",
-                                                                "__type": "INTEGER",
-                                                                "term": {
-                                                                    "length": 2,
-                                                                    "type": "term",
-                                                                    "__type": "INTEGER",
-                                                                    "factor": {
-                                                                        "length": 2,
-                                                                        "type": "factor",
-                                                                        "_type": "variable",
-                                                                        "__type": "INTEGER",
-                                                                        "variable": {
-                                                                            "length": 3,
-                                                                            "type": "variable",
-                                                                            "__type": "INTEGER",
-                                                                            "ID": "d",
-                                                                            "id_varpart": null
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            }
                                         }
                                     ]
                                 }
@@ -1322,6 +1083,52 @@
                     "length": 4,
                     "type": "statement_list",
                     "statements": [
+                        {
+                            "length": 5,
+                            "type": "statement",
+                            "_type": "WRITE",
+                            "expression_list": {
+                                "length": 2,
+                                "type": "expression_list",
+                                "__type": [
+                                    "REAL"
+                                ],
+                                "expressions": [
+                                    {
+                                        "length": 2,
+                                        "type": "expression",
+                                        "__type": "REAL",
+                                        "simple_expression": {
+                                            "length": 2,
+                                            "type": "simple_expression",
+                                            "__type": "REAL",
+                                            "term": {
+                                                "length": 2,
+                                                "type": "term",
+                                                "__type": "REAL",
+                                                "factor": {
+                                                    "length": 2,
+                                                    "type": "factor",
+                                                    "_type": "variable",
+                                                    "__type": "REAL",
+                                                    "variable": {
+                                                        "length": 3,
+                                                        "type": "variable",
+                                                        "__type": "REAL",
+                                                        "ID": [
+                                                            "f",
+                                                            "f3",
+                                                            "f31"
+                                                        ],
+                                                        "id_varpart": null
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
                         {
                             "length": 5,
                             "type": "statement",
@@ -1484,53 +1291,6 @@
                                                             "type": "variable",
                                                             "__type": "INTEGER",
                                                             "ID": "y",
-                                                            "id_varpart": null
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        {
-                            "length": 2,
-                            "type": "statement",
-                            "_type": "procedure_call",
-                            "procedure_call": {
-                                "length": 5,
-                                "type": "procedure_call",
-                                "ID": "func",
-                                "expression_list": {
-                                    "length": 2,
-                                    "type": "expression_list",
-                                    "__type": [
-                                        "INTEGER"
-                                    ],
-                                    "expressions": [
-                                        {
-                                            "length": 2,
-                                            "type": "expression",
-                                            "__type": "INTEGER",
-                                            "simple_expression": {
-                                                "length": 2,
-                                                "type": "simple_expression",
-                                                "__type": "INTEGER",
-                                                "term": {
-                                                    "length": 2,
-                                                    "type": "term",
-                                                    "__type": "INTEGER",
-                                                    "factor": {
-                                                        "length": 2,
-                                                        "type": "factor",
-                                                        "_type": "variable",
-                                                        "__type": "INTEGER",
-                                                        "variable": {
-                                                            "length": 3,
-                                                            "type": "variable",
-                                                            "__type": "INTEGER",
-                                                            "ID": "x",
                                                             "id_varpart": null
                                                         }
                                                     }
@@ -1876,31 +1636,6 @@
             }
         ]
     },
-    "error": [
-        {
-            "code": "C-12",
-            "info": {
-                "line": 40,
-                "value": [
-                    5,
-                    2
-                ],
-                "lexpos": 902,
-                "end_lexpos": 918
-            }
-        },
-        {
-            "code": "C-12",
-            "info": {
-                "line": 46,
-                "value": [
-                    1,
-                    2
-                ],
-                "lexpos": 986,
-                "end_lexpos": 994
-            }
-        }
-    ],
+    "error": [],
     "warning": []
 }

@@ -30,18 +30,17 @@ Begin
             write(b);
         end;
     i:=0;
-    While i<5 Do
+    While i<>5 Do
         begin
             write(b);
             i:=i+1;
         end;
     func(a,b);
-    func(i,a);
-    func(i,a,b,c,d)
 End;
 Begin
+    write(f.f3.f31);
+    
     read(x,y);
     write(x,y);
     func(x, y);
-    func(x)
 End.
