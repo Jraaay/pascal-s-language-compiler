@@ -857,7 +857,7 @@
                                                         }
                                                     }
                                                 },
-                                                "RELOP": "<",
+                                                "RELOP": "<>",
                                                 "simple_expression_2": {
                                                     "length": 2,
                                                     "type": "simple_expression",
@@ -1083,6 +1083,52 @@
                     "length": 4,
                     "type": "statement_list",
                     "statements": [
+                        {
+                            "length": 5,
+                            "type": "statement",
+                            "_type": "WRITE",
+                            "expression_list": {
+                                "length": 2,
+                                "type": "expression_list",
+                                "__type": [
+                                    "REAL"
+                                ],
+                                "expressions": [
+                                    {
+                                        "length": 2,
+                                        "type": "expression",
+                                        "__type": "REAL",
+                                        "simple_expression": {
+                                            "length": 2,
+                                            "type": "simple_expression",
+                                            "__type": "REAL",
+                                            "term": {
+                                                "length": 2,
+                                                "type": "term",
+                                                "__type": "REAL",
+                                                "factor": {
+                                                    "length": 2,
+                                                    "type": "factor",
+                                                    "_type": "variable",
+                                                    "__type": "REAL",
+                                                    "variable": {
+                                                        "length": 3,
+                                                        "type": "variable",
+                                                        "__type": "REAL",
+                                                        "ID": [
+                                                            "f",
+                                                            "f3",
+                                                            "f31"
+                                                        ],
+                                                        "id_varpart": null
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
                         {
                             "length": 5,
                             "type": "statement",

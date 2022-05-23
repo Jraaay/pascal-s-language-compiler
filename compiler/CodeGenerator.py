@@ -448,7 +448,7 @@ class CodeGenerator:
         | read ( variable_list )                                    | scanf("format_string",var1,var2)
         | write ( expression_list )                                 | printf("format_string",var1,var2)
         | while expression do statement                             | while(expression){statement}
-        | ε                                                         | TBD
+        | ε                                                         | ε
         '''
         if(node == None):
             return ""

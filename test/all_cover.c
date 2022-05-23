@@ -38,7 +38,7 @@ int func(int* a, float b){
 		printf("b: %f\n", b); 
 	}
 	i = 0; 
-	while(i < 5){
+	while(i != 5){
 		printf("b: %f\n", b); 
 		i = i + 1; 
 	}
@@ -46,6 +46,7 @@ int func(int* a, float b){
 }
 
 int main(int argc, char* argv[]){
+	printf("f.f3.f31: %f\n", f.f3.f31); 
 	scanf("%d%d", &x, &y); 
 	printf("x: %d\ny: %d\n", x, y); 
 	func(&x, y); 
