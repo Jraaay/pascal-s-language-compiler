@@ -43,13 +43,10 @@ int func(int* a, float b){
 		i = i + 1; 
 	}
 	func(a, b); 
-	func(&i, *a); 
-	func(&i, *a, b, c, d); 
 }
 
 int main(int argc, char* argv[]){
 	scanf("%d%d", &x, &y); 
 	printf("x: %d\ny: %d\n", x, y); 
 	func(&x, y); 
-	func(&x); 
 }

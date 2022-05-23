@@ -792,6 +792,41 @@
                                             }
                                         },
                                         {
+                                            "length": 4,
+                                            "type": "statement",
+                                            "_type": "variable",
+                                            "variable": {
+                                                "length": 3,
+                                                "type": "variable",
+                                                "__type": "INTEGER",
+                                                "ID": "i",
+                                                "id_varpart": null
+                                            },
+                                            "ASSIGNOP": ":=",
+                                            "expression": {
+                                                "length": 2,
+                                                "type": "expression",
+                                                "__type": "INTEGER",
+                                                "simple_expression": {
+                                                    "length": 2,
+                                                    "type": "simple_expression",
+                                                    "__type": "INTEGER",
+                                                    "term": {
+                                                        "length": 2,
+                                                        "type": "term",
+                                                        "__type": "INTEGER",
+                                                        "factor": {
+                                                            "length": 2,
+                                                            "type": "factor",
+                                                            "_type": "NUM",
+                                                            "__type": "INTEGER",
+                                                            "NUM": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
                                             "length": 5,
                                             "type": "statement",
                                             "_type": "WHILE",
@@ -860,31 +895,31 @@
                                                                     "length": 2,
                                                                     "type": "expression_list",
                                                                     "__type": [
-                                                                        "INTEGER"
+                                                                        "REAL"
                                                                     ],
                                                                     "expressions": [
                                                                         {
                                                                             "length": 2,
                                                                             "type": "expression",
-                                                                            "__type": "INTEGER",
+                                                                            "__type": "REAL",
                                                                             "simple_expression": {
                                                                                 "length": 2,
                                                                                 "type": "simple_expression",
-                                                                                "__type": "INTEGER",
+                                                                                "__type": "REAL",
                                                                                 "term": {
                                                                                     "length": 2,
                                                                                     "type": "term",
-                                                                                    "__type": "INTEGER",
+                                                                                    "__type": "REAL",
                                                                                     "factor": {
                                                                                         "length": 2,
                                                                                         "type": "factor",
                                                                                         "_type": "variable",
-                                                                                        "__type": "INTEGER",
+                                                                                        "__type": "REAL",
                                                                                         "variable": {
                                                                                             "length": 3,
                                                                                             "type": "variable",
-                                                                                            "__type": "INTEGER",
-                                                                                            "ID": "y",
+                                                                                            "__type": "REAL",
+                                                                                            "ID": "b",
                                                                                             "id_varpart": null
                                                                                         }
                                                                                     }
@@ -892,6 +927,65 @@
                                                                             }
                                                                         }
                                                                     ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "length": 4,
+                                                                "type": "statement",
+                                                                "_type": "variable",
+                                                                "variable": {
+                                                                    "length": 3,
+                                                                    "type": "variable",
+                                                                    "__type": "INTEGER",
+                                                                    "ID": "i",
+                                                                    "id_varpart": null
+                                                                },
+                                                                "ASSIGNOP": ":=",
+                                                                "expression": {
+                                                                    "length": 2,
+                                                                    "type": "expression",
+                                                                    "__type": "INTEGER",
+                                                                    "simple_expression": {
+                                                                        "length": 4,
+                                                                        "type": "simple_expression",
+                                                                        "simple_expression": {
+                                                                            "length": 2,
+                                                                            "type": "simple_expression",
+                                                                            "__type": "INTEGER",
+                                                                            "term": {
+                                                                                "length": 2,
+                                                                                "type": "term",
+                                                                                "__type": "INTEGER",
+                                                                                "factor": {
+                                                                                    "length": 2,
+                                                                                    "type": "factor",
+                                                                                    "_type": "variable",
+                                                                                    "__type": "INTEGER",
+                                                                                    "variable": {
+                                                                                        "length": 3,
+                                                                                        "type": "variable",
+                                                                                        "__type": "INTEGER",
+                                                                                        "ID": "i",
+                                                                                        "id_varpart": null
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "ADDOP": "+",
+                                                                        "term": {
+                                                                            "length": 2,
+                                                                            "type": "term",
+                                                                            "__type": "INTEGER",
+                                                                            "factor": {
+                                                                                "length": 2,
+                                                                                "type": "factor",
+                                                                                "_type": "NUM",
+                                                                                "__type": "INTEGER",
+                                                                                "NUM": 1
+                                                                            }
+                                                                        },
+                                                                        "__type": "INTEGER"
+                                                                    }
                                                                 }
                                                             }
                                                         ]
@@ -1083,134 +1177,6 @@
                                         }
                                     }
                                 ]
-                            }
-                        },
-                        {
-                            "length": 5,
-                            "type": "statement",
-                            "_type": "WHILE",
-                            "expression": {
-                                "length": 4,
-                                "type": "expression",
-                                "__type": "BOOLEAN",
-                                "simple_expression_1": {
-                                    "length": 2,
-                                    "type": "simple_expression",
-                                    "__type": "INTEGER",
-                                    "term": {
-                                        "length": 2,
-                                        "type": "term",
-                                        "__type": "INTEGER",
-                                        "factor": {
-                                            "length": 2,
-                                            "type": "factor",
-                                            "_type": "variable",
-                                            "__type": "INTEGER",
-                                            "variable": {
-                                                "length": 3,
-                                                "type": "variable",
-                                                "__type": "INTEGER",
-                                                "ID": "x",
-                                                "id_varpart": null
-                                            }
-                                        }
-                                    }
-                                },
-                                "RELOP": "<>",
-                                "simple_expression_2": {
-                                    "length": 2,
-                                    "type": "simple_expression",
-                                    "__type": "INTEGER",
-                                    "term": {
-                                        "length": 2,
-                                        "type": "term",
-                                        "__type": "INTEGER",
-                                        "factor": {
-                                            "length": 2,
-                                            "type": "factor",
-                                            "_type": "variable",
-                                            "__type": "INTEGER",
-                                            "variable": {
-                                                "length": 3,
-                                                "type": "variable",
-                                                "__type": "INTEGER",
-                                                "ID": "y",
-                                                "id_varpart": null
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "statement": {
-                                "length": 5,
-                                "type": "statement",
-                                "_type": "WRITE",
-                                "expression_list": {
-                                    "length": 4,
-                                    "type": "expression_list",
-                                    "__type": [
-                                        "INTEGER",
-                                        "INTEGER"
-                                    ],
-                                    "expressions": [
-                                        {
-                                            "length": 2,
-                                            "type": "expression",
-                                            "__type": "INTEGER",
-                                            "simple_expression": {
-                                                "length": 2,
-                                                "type": "simple_expression",
-                                                "__type": "INTEGER",
-                                                "term": {
-                                                    "length": 2,
-                                                    "type": "term",
-                                                    "__type": "INTEGER",
-                                                    "factor": {
-                                                        "length": 2,
-                                                        "type": "factor",
-                                                        "_type": "variable",
-                                                        "__type": "INTEGER",
-                                                        "variable": {
-                                                            "length": 3,
-                                                            "type": "variable",
-                                                            "__type": "INTEGER",
-                                                            "ID": "x",
-                                                            "id_varpart": null
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "length": 2,
-                                            "type": "expression",
-                                            "__type": "INTEGER",
-                                            "simple_expression": {
-                                                "length": 2,
-                                                "type": "simple_expression",
-                                                "__type": "INTEGER",
-                                                "term": {
-                                                    "length": 2,
-                                                    "type": "term",
-                                                    "__type": "INTEGER",
-                                                    "factor": {
-                                                        "length": 2,
-                                                        "type": "factor",
-                                                        "_type": "variable",
-                                                        "__type": "INTEGER",
-                                                        "variable": {
-                                                            "length": 3,
-                                                            "type": "variable",
-                                                            "__type": "INTEGER",
-                                                            "ID": "y",
-                                                            "id_varpart": null
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
                             }
                         },
                         {

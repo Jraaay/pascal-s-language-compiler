@@ -36,12 +36,9 @@ Begin
             i:=i+1;
         end;
     func(a,b);
-    func(i,a);
-    func(i,a,b,c,d)
 End;
 Begin
     read(x,y);
     write(x,y);
     func(x, y);
-    func(x)
 End.
