@@ -1,28 +1,30 @@
-{Bonus Features: Record}
-
 Program example(input, output);
+Var 
+    x, y, d : integer;
+    f : record
+        f1 : real;
+        f2 : array [1..50, 1..100] of boolean;
+        f3 : record
+            f31 : real;
+            f32 : array [1..50, 1..100] of boolean;
+            f33 : record
+                f331 : real;
+                f332 : array [1..50, 1..100] of boolean;
+                f333 : integer;
+            End;
+        End;
+    End;
 
-
-var
-Books : record
-  title: array [100..200] of char;
-  author: array [1..50] of char;
-  subject: array [1..100] of char;
-  bookid: integer;
-  Books2: record
-    title: array [200..300] of char;
-    author: array [0..50] of char;
-    subject: array [1..100] of char;
-    bookid: integer;
-  end;
-end;
-a : array [1..100] of char;
-b : integer;
+Function func(var a: integer; b:real) : integer;
+var i:integer;
+Begin
+    write(a,b);
+    read(a);
+    func(a,b);
+End;
 
 Begin
-  a[1] := Books.title[100];
-  a[1] := Books.Books2.title[200];
-  a[1] := Books.Books2.author[b];
-  a[1] := Books.Books2.author[10];
-  b := Books.bookid;
+    write(f.f3.f31);
+    read(x,y);
+    func(x, y);
 End.

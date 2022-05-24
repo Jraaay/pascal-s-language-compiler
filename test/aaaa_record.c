@@ -1,24 +1,34 @@
+#include<stdbool.h>
+#include<stdio.h>
+
+int x, y, d; 
 struct {
-	char title[101]; 
-	char author[50]; 
-	char subject[100]; 
-	int bookid; 
+	float f1; 
+	bool f2[50][100]; 
 	struct {
-		char title[101]; 
-		char author[51]; 
-		char subject[100]; 
-		int bookid; 
+		float f31; 
+		bool f32[50][100]; 
+		struct {
+			float f331; 
+			bool f332[50][100]; 
+			int f333; 
+		}
+		f33; 
 	}
-	Books2; 
+	f3; 
 }
-Books; 
-char a[100]; 
-int b; 
+f; 
+
+int func(int* a, float b){
+	int i; 
+	
+	printf("*a: %d\nb: %f\n", *a, b); 
+	scanf("%d", a); 
+	func(a, b); 
+}
 
 int main(int argc, char* argv[]){
-	a[0] = Books.title[0]; 
-	a[0] = Books.Books2.title[0]; 
-	a[0] = Books.Books2.author[b]; 
-	a[0] = Books.Books2.author[10]; 
-	b = Books.bookid; 
+	printf("f.f3.f31: %f\n", f.f3.f31); 
+	scanf("%d%d", &x, &y); 
+	func(&x, y); 
 }
