@@ -147,7 +147,7 @@ class Parser:
                             "code": "A-01",
                             "info": {
                                 "line": t.lineno,
-                                "value": t.value.split('\n')[0],
+                                "value": [t.value.split('\n')[0]],
                                 "lexpos": t.lexpos
                             }
                         })
@@ -161,7 +161,7 @@ class Parser:
                         "code": "A-01",
                         "info": {
                             "line": t.lineno,
-                            "value": t.value.split('\n')[0],
+                            "value": [t.value.split('\n')[0]],
                             "lexpos": t.lexpos
                         }
                     })
@@ -180,7 +180,7 @@ class Parser:
                 "code": "A-02",
                 "info": {
                     "line": t.lineno,
-                    "value": t.value.split('\n')[0],
+                    "value": [t.value.split('\n')[0]],
                     "lexpos": t.lexpos
                 }
             })
@@ -265,7 +265,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.slice[3].lineno,
-                        "value": p[3],
+                        "value": [p[3]],
                         "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1,
                         "end_lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1 + len(p[3])
                     }
@@ -279,7 +279,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.slice[3].lineno,
-                        "value": p[3],
+                        "value": [p[3]],
                         "lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1,
                         "end_lexpos": p.slice[3].lexpos + p.slice[3].lineno - 1 + len(p[3])
                     }
@@ -302,7 +302,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.slice[1].lineno,
-                        "value": p[1],
+                        "value": [p[1]],
                         "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                         "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
@@ -314,7 +314,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.slice[1].lineno,
-                        "value": p[1],
+                        "value": [p[1]],
                         "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                         "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
@@ -389,7 +389,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
-                        "value": p[3],
+                        "value": [p[3]],
                         "lexpos": p.lexer.lexpos
                     }
                 })
@@ -400,7 +400,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
-                        "value": p[3],
+                        "value": [p[3]],
                         "lexpos": p.lexer.lexpos
                     }
                 })
@@ -441,7 +441,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
-                        "value": p[1],
+                        "value": [p[1]],
                         "lexpos": p.lexer.lexpos
                     }
                 })
@@ -452,7 +452,7 @@ class Parser:
                     "code": "C-03",
                     "info": {
                         "line": p.lexer.lineno,
-                        "value": p[1],
+                        "value": [p[1]],
                         "lexpos": p.lexer.lexpos
                     }
                 })
@@ -1081,7 +1081,7 @@ class Parser:
                         "code": "C-11",
                         "info": {
                             "line": p.lexer.lineno,
-                            "value": p[2],
+                            "value": [p[2]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]  # 错误类型：给未定义的变量赋值
@@ -1094,7 +1094,7 @@ class Parser:
                             "code": "C-10",
                             "info": {
                                 "line": p.lexer.lineno,
-                                "value": p[2],
+                                "value": [p[2]],
                                 "lexpos": p.lexer.lexpos
                             }
                         }]  # 错误类型：使用未定义的变量进行赋值
@@ -1163,7 +1163,7 @@ class Parser:
                         "code": "C-11",
                         "info": {
                             "line": p.lexer.lineno,
-                            "value": p[1]["ID"],
+                            "value": [p[1]["ID"]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]  # 错误类型：给未定义的变量赋值
@@ -1175,7 +1175,7 @@ class Parser:
                         "code": "C-10",
                         "info": {
                             "line": p.lexer.lineno,
-                            "value": p[1]["ID"],
+                            "value": [p[1]["ID"]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]  # 错误类型：使用未定义的变量进行赋值
@@ -1210,7 +1210,7 @@ class Parser:
                         "code": "C-11",
                         "info": {
                             "line": p.lexer.lineno,
-                            "value": p[1]["ID"],
+                            "value": [p[1]["ID"]],
                             "lexpos": p.lexer.lexpos
                         }
                     }]  # 错误类型：给未定义的变量赋值
@@ -1272,7 +1272,7 @@ class Parser:
                     "code": "C-02",
                     "info": {
                         "line": p.slice[1].lineno,
-                        "value": p[1],
+                        "value": [p[1]],
                         "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                         "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                     }
@@ -1288,7 +1288,7 @@ class Parser:
                         "code": "C-02",
                         "info": {
                             "line": p.slice[1].lineno,
-                            "value": i,
+                            "value": [i],
                             "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                             "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                         }
@@ -1309,7 +1309,7 @@ class Parser:
                             "code": "C-02",
                             "info": {
                                 "line": p.slice[1].lineno,
-                                "value": j,
+                                "value": [j],
                                 "lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1,
                                 "end_lexpos": p.slice[1].lexpos + p.slice[1].lineno - 1 + len(p[1])
                             }
@@ -1885,7 +1885,7 @@ class Parser:
                 "code": "B-01",
                 "info": {
                     "line": p.lineno if p else 0,
-                    "value": p.value if p else "",
+                    "value": [p.value if p else ""],
                     "lexpos": p.lexpos if p else 0
                 }
             })  # 错误类型：不符合语法

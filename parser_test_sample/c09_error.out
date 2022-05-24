@@ -161,7 +161,9 @@
             "code": "C-02",
             "info": {
                 "line": 7,
-                "value": "a",
+                "value": [
+                    "a"
+                ],
                 "lexpos": 73,
                 "end_lexpos": 74
             }
@@ -170,7 +172,9 @@
             "code": "C-02",
             "info": {
                 "line": 7,
-                "value": "b",
+                "value": [
+                    "b"
+                ],
                 "lexpos": 77,
                 "end_lexpos": 78
             }

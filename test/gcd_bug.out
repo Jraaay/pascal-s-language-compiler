@@ -10,7 +10,9 @@
             "code": "B-01",
             "info": {
                 "line": 7,
-                "value": "=",
+                "value": [
+                    "="
+                ],
                 "lexpos": 121
             }
         }

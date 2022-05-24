@@ -579,7 +579,9 @@
             "code": "C-03",
             "info": {
                 "line": 4,
-                "value": "a",
+                "value": [
+                    "a"
+                ],
                 "lexpos": 53,
                 "end_lexpos": 54
             }

@@ -118,21 +118,21 @@
                                                 "simple_expression_1": {
                                                     "length": 2,
                                                     "type": "simple_expression",
-                                                    "__type": "INTEGER",
+                                                    "__type": "UNDEFINED",
                                                     "term": {
                                                         "length": 2,
                                                         "type": "term",
-                                                        "__type": "INTEGER",
+                                                        "__type": "UNDEFINED",
                                                         "factor": {
                                                             "length": 2,
                                                             "type": "factor",
                                                             "_type": "variable",
-                                                            "__type": "INTEGER",
+                                                            "__type": "UNDEFINED",
                                                             "variable": {
                                                                 "length": 3,
                                                                 "type": "variable",
-                                                                "__type": "INTEGER",
-                                                                "ID": "b",
+                                                                "__type": "UNDEFINED",
+                                                                "ID": "undefined_var",
                                                                 "id_varpart": null
                                                             }
                                                         }
@@ -236,7 +236,7 @@
                                                                         "type": "expression_list",
                                                                         "__type": [
                                                                             "INTEGER",
-                                                                            "UNDEFINED"
+                                                                            "INTEGER"
                                                                         ],
                                                                         "expressions": [
                                                                             {
@@ -270,28 +270,47 @@
                                                                             {
                                                                                 "length": 2,
                                                                                 "type": "expression",
-                                                                                "__type": "UNDEFINED",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "length": 2,
                                                                                     "type": "simple_expression",
-                                                                                    "__type": "UNDEFINED",
+                                                                                    "__type": "INTEGER",
                                                                                     "term": {
-                                                                                        "length": 2,
+                                                                                        "length": 4,
                                                                                         "type": "term",
-                                                                                        "__type": "UNDEFINED",
+                                                                                        "term": {
+                                                                                            "length": 2,
+                                                                                            "type": "term",
+                                                                                            "__type": "INTEGER",
+                                                                                            "factor": {
+                                                                                                "length": 2,
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "__type": "INTEGER",
+                                                                                                "variable": {
+                                                                                                    "length": 3,
+                                                                                                    "type": "variable",
+                                                                                                    "__type": "INTEGER",
+                                                                                                    "ID": "a",
+                                                                                                    "id_varpart": null
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        "MULOP": "Mod",
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
-                                                                                            "__type": "UNDEFINED",
+                                                                                            "__type": "INTEGER",
                                                                                             "variable": {
                                                                                                 "length": 3,
                                                                                                 "type": "variable",
-                                                                                                "__type": "UNDEFINED",
-                                                                                                "ID": "c",
+                                                                                                "__type": "INTEGER",
+                                                                                                "ID": "b",
                                                                                                 "id_varpart": null
                                                                                             }
-                                                                                        }
+                                                                                        },
+                                                                                        "__type": "INTEGER"
                                                                                     }
                                                                                 }
                                                                             }
@@ -516,24 +535,12 @@
         {
             "code": "C-02",
             "info": {
-                "line": 8,
+                "line": 6,
                 "value": [
-                    "c"
+                    "undefined_var"
                 ],
-                "lexpos": 154,
-                "end_lexpos": 155
-            }
-        },
-        {
-            "code": "C-13",
-            "info": {
-                "line": 8,
-                "value": [
-                    "UNDEFINED",
-                    "INTEGER"
-                ],
-                "lexpos": 147,
-                "end_lexpos": 157
+                "lexpos": 110,
+                "end_lexpos": 123
             }
         }
     ],

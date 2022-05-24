@@ -93,7 +93,7 @@
                             },
                             "basic_type": {
                                 "type": "basic_type",
-                                "_type": "INTEGER"
+                                "_type": "BOOLEAN"
                             }
                         },
                         "subprogram_body": {
@@ -164,7 +164,7 @@
                                                 "variable": {
                                                     "length": 3,
                                                     "type": "variable",
-                                                    "__type": "INTEGER",
+                                                    "__type": "BOOLEAN",
                                                     "ID": "gcd",
                                                     "id_varpart": null
                                                 },
@@ -208,7 +208,7 @@
                                                     "variable": {
                                                         "length": 3,
                                                         "type": "variable",
-                                                        "__type": "INTEGER",
+                                                        "__type": "BOOLEAN",
                                                         "ID": "gcd",
                                                         "id_varpart": null
                                                     },
@@ -216,27 +216,27 @@
                                                     "expression": {
                                                         "length": 2,
                                                         "type": "expression",
-                                                        "__type": "INTEGER",
+                                                        "__type": "BOOLEAN",
                                                         "simple_expression": {
                                                             "length": 2,
                                                             "type": "simple_expression",
-                                                            "__type": "INTEGER",
+                                                            "__type": "BOOLEAN",
                                                             "term": {
                                                                 "length": 2,
                                                                 "type": "term",
-                                                                "__type": "INTEGER",
+                                                                "__type": "BOOLEAN",
                                                                 "factor": {
                                                                     "length": 5,
                                                                     "type": "factor",
                                                                     "_type": "procedure_id",
-                                                                    "__type": "INTEGER",
+                                                                    "__type": "BOOLEAN",
                                                                     "ID": "gcd",
                                                                     "expression_list": {
                                                                         "length": 4,
                                                                         "type": "expression_list",
                                                                         "__type": [
                                                                             "INTEGER",
-                                                                            "UNDEFINED"
+                                                                            "INTEGER"
                                                                         ],
                                                                         "expressions": [
                                                                             {
@@ -270,28 +270,47 @@
                                                                             {
                                                                                 "length": 2,
                                                                                 "type": "expression",
-                                                                                "__type": "UNDEFINED",
+                                                                                "__type": "INTEGER",
                                                                                 "simple_expression": {
                                                                                     "length": 2,
                                                                                     "type": "simple_expression",
-                                                                                    "__type": "UNDEFINED",
+                                                                                    "__type": "INTEGER",
                                                                                     "term": {
-                                                                                        "length": 2,
+                                                                                        "length": 4,
                                                                                         "type": "term",
-                                                                                        "__type": "UNDEFINED",
+                                                                                        "term": {
+                                                                                            "length": 2,
+                                                                                            "type": "term",
+                                                                                            "__type": "INTEGER",
+                                                                                            "factor": {
+                                                                                                "length": 2,
+                                                                                                "type": "factor",
+                                                                                                "_type": "variable",
+                                                                                                "__type": "INTEGER",
+                                                                                                "variable": {
+                                                                                                    "length": 3,
+                                                                                                    "type": "variable",
+                                                                                                    "__type": "INTEGER",
+                                                                                                    "ID": "a",
+                                                                                                    "id_varpart": null
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        "MULOP": "Mod",
                                                                                         "factor": {
                                                                                             "length": 2,
                                                                                             "type": "factor",
                                                                                             "_type": "variable",
-                                                                                            "__type": "UNDEFINED",
+                                                                                            "__type": "INTEGER",
                                                                                             "variable": {
                                                                                                 "length": 3,
                                                                                                 "type": "variable",
-                                                                                                "__type": "UNDEFINED",
-                                                                                                "ID": "c",
+                                                                                                "__type": "INTEGER",
+                                                                                                "ID": "b",
                                                                                                 "id_varpart": null
                                                                                             }
-                                                                                        }
+                                                                                        },
+                                                                                        "__type": "INTEGER"
                                                                                     }
                                                                                 }
                                                                             }
@@ -351,26 +370,26 @@
                                 "length": 2,
                                 "type": "expression_list",
                                 "__type": [
-                                    "INTEGER"
+                                    "BOOLEAN"
                                 ],
                                 "expressions": [
                                     {
                                         "length": 2,
                                         "type": "expression",
-                                        "__type": "INTEGER",
+                                        "__type": "BOOLEAN",
                                         "simple_expression": {
                                             "length": 2,
                                             "type": "simple_expression",
-                                            "__type": "INTEGER",
+                                            "__type": "BOOLEAN",
                                             "term": {
                                                 "length": 2,
                                                 "type": "term",
-                                                "__type": "INTEGER",
+                                                "__type": "BOOLEAN",
                                                 "factor": {
                                                     "length": 5,
                                                     "type": "factor",
                                                     "_type": "procedure_id",
-                                                    "__type": "INTEGER",
+                                                    "__type": "BOOLEAN",
                                                     "ID": "gcd",
                                                     "expression_list": {
                                                         "length": 4,
@@ -478,7 +497,7 @@
             {
                 "id": 4,
                 "token": "gcd",
-                "type": "INTEGER",
+                "type": "BOOLEAN",
                 "table": {
                     "params": 2,
                     "references": [
@@ -514,28 +533,78 @@
     },
     "error": [
         {
-            "code": "C-02",
+            "code": "A-02",
             "info": {
-                "line": 8,
+                "line": 2,
                 "value": [
-                    "c"
+                    "||\\\\^?"
                 ],
-                "lexpos": 154,
-                "end_lexpos": 155
+                "lexpos": 32
             }
         },
         {
-            "code": "C-13",
+            "code": "A-02",
             "info": {
-                "line": 8,
+                "line": 2,
                 "value": [
-                    "UNDEFINED",
-                    "INTEGER"
+                    "|\\\\^?"
                 ],
-                "lexpos": 147,
-                "end_lexpos": 157
+                "lexpos": 33
+            }
+        },
+        {
+            "code": "A-02",
+            "info": {
+                "line": 2,
+                "value": [
+                    "\\\\^?"
+                ],
+                "lexpos": 34
+            }
+        },
+        {
+            "code": "A-02",
+            "info": {
+                "line": 2,
+                "value": [
+                    "\\^?"
+                ],
+                "lexpos": 35
+            }
+        },
+        {
+            "code": "A-02",
+            "info": {
+                "line": 2,
+                "value": [
+                    "^?"
+                ],
+                "lexpos": 36
+            }
+        },
+        {
+            "code": "A-02",
+            "info": {
+                "line": 2,
+                "value": [
+                    "?"
+                ],
+                "lexpos": 37
             }
         }
     ],
-    "warning": []
+    "warning": [
+        {
+            "code": "W-01",
+            "info": {
+                "line": 6,
+                "value": [
+                    "gcd",
+                    "BOOLEAN",
+                    "INTEGER"
+                ],
+                "lexpos": 131
+            }
+        }
+    ]
 }
