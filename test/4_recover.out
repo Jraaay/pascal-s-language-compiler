@@ -93,7 +93,7 @@
                             },
                             "basic_type": {
                                 "type": "basic_type",
-                                "_type": "BOOLEAN"
+                                "_type": "INTEGER"
                             }
                         },
                         "subprogram_body": {
@@ -164,7 +164,7 @@
                                                 "variable": {
                                                     "length": 3,
                                                     "type": "variable",
-                                                    "__type": "BOOLEAN",
+                                                    "__type": "INTEGER",
                                                     "ID": "gcd",
                                                     "id_varpart": null
                                                 },
@@ -208,7 +208,7 @@
                                                     "variable": {
                                                         "length": 3,
                                                         "type": "variable",
-                                                        "__type": "BOOLEAN",
+                                                        "__type": "INTEGER",
                                                         "ID": "gcd",
                                                         "id_varpart": null
                                                     },
@@ -216,20 +216,20 @@
                                                     "expression": {
                                                         "length": 2,
                                                         "type": "expression",
-                                                        "__type": "BOOLEAN",
+                                                        "__type": "INTEGER",
                                                         "simple_expression": {
                                                             "length": 2,
                                                             "type": "simple_expression",
-                                                            "__type": "BOOLEAN",
+                                                            "__type": "INTEGER",
                                                             "term": {
                                                                 "length": 2,
                                                                 "type": "term",
-                                                                "__type": "BOOLEAN",
+                                                                "__type": "INTEGER",
                                                                 "factor": {
                                                                     "length": 5,
                                                                     "type": "factor",
                                                                     "_type": "procedure_id",
-                                                                    "__type": "BOOLEAN",
+                                                                    "__type": "INTEGER",
                                                                     "ID": "gcd",
                                                                     "expression_list": {
                                                                         "length": 4,
@@ -370,26 +370,26 @@
                                 "length": 2,
                                 "type": "expression_list",
                                 "__type": [
-                                    "BOOLEAN"
+                                    "INTEGER"
                                 ],
                                 "expressions": [
                                     {
                                         "length": 2,
                                         "type": "expression",
-                                        "__type": "BOOLEAN",
+                                        "__type": "INTEGER",
                                         "simple_expression": {
                                             "length": 2,
                                             "type": "simple_expression",
-                                            "__type": "BOOLEAN",
+                                            "__type": "INTEGER",
                                             "term": {
                                                 "length": 2,
                                                 "type": "term",
-                                                "__type": "BOOLEAN",
+                                                "__type": "INTEGER",
                                                 "factor": {
                                                     "length": 5,
                                                     "type": "factor",
                                                     "_type": "procedure_id",
-                                                    "__type": "BOOLEAN",
+                                                    "__type": "INTEGER",
                                                     "ID": "gcd",
                                                     "expression_list": {
                                                         "length": 4,
@@ -497,7 +497,7 @@
             {
                 "id": 4,
                 "token": "gcd",
-                "type": "BOOLEAN",
+                "type": "INTEGER",
                 "table": {
                     "params": 2,
                     "references": [
@@ -593,18 +593,5 @@
             }
         }
     ],
-    "warning": [
-        {
-            "code": "W-01",
-            "info": {
-                "line": 6,
-                "value": [
-                    "gcd",
-                    "BOOLEAN",
-                    "INTEGER"
-                ],
-                "lexpos": 131
-            }
-        }
-    ]
+    "warning": []
 }

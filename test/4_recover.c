@@ -1,9 +1,8 @@
-#include<stdbool.h>
 #include<stdio.h>
 
 int x, y; 
 
-bool gcd(int a, int b){
+int gcd(int a, int b){
 	if(b == 0){
 		return a; 
 	}
