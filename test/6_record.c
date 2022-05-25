@@ -22,6 +22,10 @@ f;
 int func(int* a, float b){
 	int i; 
 	
+	while(i != 5){
+		printf("b: %f\n", b); 
+		i = i + 1; 
+	}
 	printf("*a: %d\nb: %f\n", *a, b); 
 	scanf("%d", a); 
 	func(a, b); 

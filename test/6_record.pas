@@ -18,6 +18,11 @@ Var
 Function func(var a: integer; b:real) : integer;
 var i:integer;
 Begin
+    While i<>5 Do
+        begin
+            write(b);
+            i:=i+1;
+        end;
     write(a,b);
     read(a);
     func(a,b);
